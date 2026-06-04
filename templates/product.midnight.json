@@ -1,0 +1,277 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "loox_reviews_loox_rating_wMb4nh": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-rating/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "contentSize": 16,
+            "pattern": "",
+            "hideText": true,
+            "alignment": "",
+            "layout": "",
+            "textColor": "",
+            "starColor": "",
+            "showAllReviews": true,
+            "looxOpenFloatingWidget": true,
+            "emptyRatingWidget": false
+          }
+        },
+        "07b2f4eb-d5bd-46bf-8ef7-7c3a9dbff7b7": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h3",
+            "content": "{{ product.title }}",
+            "text_color": "rgba(0,0,0,0)"
+          }
+        },
+        "946375dc-aa95-407e-a9cd-35be355f8dc4": {
+          "type": "rating",
+          "settings": {
+            "show_empty_rating": false,
+            "star_size": 20
+          }
+        },
+        "c0b62d1f-e562-4b86-84cb-fc22c849e93e": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false,
+            "use_bold_font": true
+          }
+        },
+        "4923f5c8-62d3-42db-a835-6e0613c4a182": {
+          "type": "payment_installments",
+          "settings": {}
+        },
+        "5a84f252-bc58-4ca7-8b59-5a727a61c21f": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "type": "radio",
+            "color_picker_type": "radio",
+            "block_style_rounded": true,
+            "block_style": "filled",
+            "size_chart_page": "",
+            "size_chart_option_name": "Size"
+          }
+        },
+        "0f473fb4-422c-40a7-8c15-2fd164440f80": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "a730fe0e-baa3-47bc-90c9-21c5a5d75f2d": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout_buttons": true,
+            "show_gift_card_recipient": true,
+            "add_to_cart_background_color": "rgba(0,0,0,0)",
+            "add_to_cart_text_color": "rgba(0,0,0,0)",
+            "buy_it_now_background_color": "rgba(0,0,0,0)",
+            "buy_it_now_text_color": "rgba(0,0,0,0)"
+          }
+        }
+      },
+      "block_order": [
+        "loox_reviews_loox_rating_wMb4nh",
+        "07b2f4eb-d5bd-46bf-8ef7-7c3a9dbff7b7",
+        "946375dc-aa95-407e-a9cd-35be355f8dc4",
+        "c0b62d1f-e562-4b86-84cb-fc22c849e93e",
+        "4923f5c8-62d3-42db-a835-6e0613c4a182",
+        "5a84f252-bc58-4ca7-8b59-5a727a61c21f",
+        "0f473fb4-422c-40a7-8c15-2fd164440f80",
+        "a730fe0e-baa3-47bc-90c9-21c5a5d75f2d"
+      ],
+      "settings": {
+        "show_breadcrumbs": false,
+        "desktop_media_width": 56,
+        "media_size": "",
+        "media_layout_desktop": "carousel_vertical",
+        "media_mobile_indicator": "thumbnails",
+        "media_zoom": "lightbox",
+        "media_enable_video_autoplay": true,
+        "media_enable_video_looping": true,
+        "media_fit_height": true,
+        "show_sticky_add_to_cart": true,
+        "sticky_add_to_cart_position": "right",
+        "background_color": "rgba(0,0,0,0)",
+        "text_color": "",
+        "heading_color": ""
+      }
+    },
+    "main-details": {
+      "type": "main-product-details",
+      "blocks": {
+        "5bbfd876-e943-47d3-b984-06f967dfd314": {
+          "type": "description",
+          "settings": {
+            "collapse_content": true,
+            "collapse_open": true,
+            "heading": "Description"
+          }
+        },
+        "096eee3c-a9d6-48a0-b676-2f8ecf38fe75": {
+          "type": "collapsible_content",
+          "disabled": true,
+          "settings": {
+            "collapse_open": false,
+            "heading": "How it works",
+            "content": "<p>Morning Intention</p><p>Begin your day with the power of the Breathelet. Within five seconds of unplugging, it vibrates, inspiring you to set your intentions for the day. It will be your simple, yet powerful tool that can help you stay focused and motivated throughout the day.</p><p>Daytime Dance</p><p>As the day unfolds, your breathelet will become a whimsical companion, offering unexpected vibrations every 90 to 150 minutes. These are moments </p><p>sprinkled throughout your day for you to pause and take a deep breath.</p><p>Evening Embrace</p><p>As evening approaches, place your Breathelet back on its charger. When in charge mode, it does not vibrate.</p><p>Reduce your screen time with phoneless evenings by utilizing<a href=\"https://breathelet.com/product/charging-dock\"> The Charging Stand</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "5bbfd876-e943-47d3-b984-06f967dfd314",
+        "096eee3c-a9d6-48a0-b676-2f8ecf38fe75"
+      ],
+      "settings": {}
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "full_width": true,
+        "carousel": true,
+        "products_count": 8,
+        "grid_columns": 4,
+        "grid_columns_mobile": "2",
+        "subheading": "",
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "content": "",
+        "text_alignment": "text-center",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_html_tag": "p"
+      }
+    },
+    "video_with_text_Mmdccn": {
+      "type": "video-with-text",
+      "blocks": {
+        "subheading_cq8WW7": {
+          "type": "subheading",
+          "settings": {
+            "text": "Breathelet Classic with"
+          }
+        },
+        "heading_JQtBy8": {
+          "type": "heading",
+          "settings": {
+            "heading": "Adjustable pull-string",
+            "heading_size": "h1",
+            "heading_html_tag": "p"
+          }
+        },
+        "text_nBeQBW": {
+          "type": "text",
+          "settings": {
+            "text": "<p>The Classic model features a slip-on string that can be loosened to slip onto your wrist and tightened in place. There are 3 sizes available of this type of breathelet string: small, medium, and large. </p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_cq8WW7",
+        "heading_JQtBy8",
+        "text_nBeQBW"
+      ],
+      "name": "t:sections.video-with-text.presets__0.name",
+      "settings": {
+        "full_width": false,
+        "remove_bottom_spacing": false,
+        "autoplay": true,
+        "loop": true,
+        "video": "shopify://files/videos/Breathelet_oldstring_anim.webm",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "image_size": "media--ratio-16-9",
+        "image_position": "right",
+        "image_width": 50,
+        "text_alignment": "text-left",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": ""
+      }
+    },
+    "1762166999700880a7": {
+      "type": "apps",
+      "blocks": {
+        "loox_reviews_loox_dynamic_section_F3HEbM": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-dynamic-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "disabled": true,
+          "settings": {
+            "only_photos": false,
+            "aggregated": false,
+            "limit": 20,
+            "hide_thumbnails": false,
+            "maxwidth": 1080,
+            "is_sample": true
+          }
+        }
+      },
+      "block_order": [
+        "loox_reviews_loox_dynamic_section_F3HEbM"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_horizontal_space": false,
+        "remove_vertical_space": false,
+        "background_color": "",
+        "text_color": ""
+      }
+    },
+    "1762274722281eac5f": {
+      "type": "apps",
+      "blocks": {
+        "loox_reviews_loox_card_carousel_section_8RBp6U": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-card-carousel-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "maxWidth": 1100,
+            "borderRadius": 8,
+            "itemsPerView": 4,
+            "mobileItemsPerView": 1,
+            "maxNumberOfCharacters": 100,
+            "imageRatio": "0.72",
+            "reviewerNameColor": "#000000",
+            "textColor": "#000000",
+            "itemBackgroundColor": "#ffffff",
+            "starsColor": "",
+            "starsBackgroundColor": "#ffffff",
+            "arrows_backgroundColor": "#FFFFFF",
+            "arrows_iconColor": "#9A9A9A",
+            "shadow": "offset-dark",
+            "border_active": false,
+            "border_width": 2,
+            "border_color": "#000000",
+            "productIds": ""
+          }
+        }
+      },
+      "block_order": [
+        "loox_reviews_loox_card_carousel_section_8RBp6U"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_horizontal_space": false,
+        "remove_vertical_space": false,
+        "background_color": "",
+        "text_color": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "main-details",
+    "related-products",
+    "video_with_text_Mmdccn",
+    "1762166999700880a7",
+    "1762274722281eac5f"
+  ]
+}

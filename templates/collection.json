@@ -1,0 +1,61 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main-banner": {
+      "type": "main-collection-banner",
+      "settings": {
+        "full_width": true,
+        "enable_transparent_header": true,
+        "show_collection_title": true,
+        "show_collection_description": true,
+        "show_collection_image": true,
+        "use_original_media_size": false,
+        "banner_spacing": 220,
+        "heading_size": "h2",
+        "text_alignment": "md:content-middle-center",
+        "text_alignment_mobile": "content-middle-center",
+        "background_color": "#000000",
+        "text_color": "rgba(0,0,0,0)",
+        "heading_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 25,
+        "overlay_type": "solid",
+        "heading_html_tag": "h1"
+      }
+    },
+    "main-product-grid": {
+      "type": "main-collection-grid",
+      "settings": {
+        "products_per_row": 3,
+        "products_per_row_mobile": "products-collection-grid--mobile-two-col",
+        "space_between_products": "block-spacing-extra-large",
+        "include_collection_url": false,
+        "products_per_page": 13,
+        "pagination_type": "classic",
+        "filter_type": "horizontal",
+        "show_filters": false,
+        "show_filter_match_count": false,
+        "show_filter_values_with_no_matches": false,
+        "enable_color_swatches": false,
+        "show_selected_filter_type": false,
+        "show_sort_by": false,
+        "show_results_count": false,
+        "default_open_filters": 2,
+        "background_color": "#000000",
+        "text_color": "#ffffff"
+      }
+    }
+  },
+  "order": [
+    "main-banner",
+    "main-product-grid"
+  ]
+}

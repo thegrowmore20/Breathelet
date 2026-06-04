@@ -1,0 +1,49 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "full_width": true,
+        "content_width": "normal",
+        "content_text_size": "prose md:prose-lg",
+        "heading_size": "h2",
+        "heading_alignment": "text-center",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": ""
+      }
+    },
+    "video_PFhLQe": {
+      "type": "video",
+      "name": "t:sections.video.presets__0.name",
+      "settings": {
+        "full_width": false,
+        "video": "shopify://files/videos/Breathelet_sunshine string_552b23e0-36c9-4f9e-abc8-094de5606997.webm",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "image_size": "media--ratio-16-9",
+        "subheading": "",
+        "heading": "",
+        "heading_size": "h2",
+        "content": "",
+        "text_alignment": "text-center",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_html_tag": "p"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "video_PFhLQe"
+  ]
+}

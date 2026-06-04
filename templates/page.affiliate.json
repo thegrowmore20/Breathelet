@@ -1,0 +1,106 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "content_width": "normal",
+        "content_text_size": "prose md:prose-lg",
+        "heading_size": "h0",
+        "heading_alignment": "text-center",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": ""
+      }
+    },
+    "ee8f8c3b-ed9c-495b-a572-e66f48281fcc": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "template--20599120724260__ee8f8c3b-ed9c-495b-a572-e66f48281fcc-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Join the Movement. Inspire Presence",
+            "heading_size": "h1",
+            "heading_html_tag": "p"
+          }
+        }
+      },
+      "block_order": [
+        "template--20599120724260__ee8f8c3b-ed9c-495b-a572-e66f48281fcc-heading-1"
+      ],
+      "settings": {
+        "full_width": true,
+        "enable_transparent_header": false,
+        "use_original_media_size": false,
+        "image": "shopify://shop_images/hands.png",
+        "content_alignment": "md:content-bottom-left",
+        "content_alignment_mobile": "content-bottom-left",
+        "link": "",
+        "min_height": 600,
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 35,
+        "overlay_type": "gradient"
+      }
+    },
+    "rich_text_bDzATx": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_T3xndE": {
+          "type": "heading",
+          "settings": {
+            "heading": "Breathelet Affiliate Program",
+            "heading_size": "h1",
+            "heading_html_tag": "p"
+          }
+        },
+        "text_X9mLdA": {
+          "type": "text",
+          "settings": {
+            "text": "<h1><strong>Share Mindfulness. Earn Rewards.</strong></h1><p>Join the Breathelet Affiliate Program and help others live calmer, more focused lives — while earning commissions for every sale.</p><h3>💫 About Breathelet</h3><p>At <strong>Breathelet</strong>, we believe mindfulness should feel effortless. Our minimalist, adjustable bracelet uses gentle, spontaneous vibrations to remind you to pause, breathe, and refocus — helping you build mindfulness and balance into your daily routine.When you become an affiliate, you’re not just promoting a product — you’re sharing a mindful lifestyle that truly makes a difference.</p><h3>🌸 Who Can Join</h3><p>If you believe in mindfulness, personal growth, and intentional living — you’re a perfect fit. Whether you’re a content creator, yoga instructor, wellness coach, or simply someone who loves inspiring others, you’re welcome in our community.</p><h3>✨ How It Works</h3><ol><li><strong>Apply</strong> to join the Breathelet Affiliate Program.</li><li><strong>Share</strong> your unique link with your audience through social media, blogs, or videos.</li><li><strong>Earn</strong> commissions on every sale made through your link.</li></ol><p>It’s that simple — share calm, earn income, and help others breathe a little easier.</p><h3>❤️ Let’s Grow Together</h3><p>Be part of a movement that spreads mindfulness and balance — one breath at a time.<a href=\"https://ui.awin.com/express-signup/en/awin/121054/b4de8bf0-d505-4bae-8110-16c33b47822b?t=zFuiyEuvWzRDom5d9UfMVLvZZ-c9AxpVaBcpvgEGjHU\" title=\"https://ui.awin.com/express-signup/en/awin/121054/b4de8bf0-d505-4bae-8110-16c33b47822b?t=zFuiyEuvWzRDom5d9UfMVLvZZ-c9AxpVaBcpvgEGjHU\">👉 <strong>Apply now to become a Breathelet Affiliate</strong></a> and start turning calm into commissions.<br/><br/></p>"
+          }
+        },
+        "button_H9gpaN": {
+          "type": "button",
+          "settings": {
+            "button_text": "Join the Affiliate Program",
+            "button_link": "https://ui.awin.com/express-signup/en/awin/121054/b4de8bf0-d505-4bae-8110-16c33b47822b?t=zFuiyEuvWzRDom5d9UfMVLvZZ-c9AxpVaBcpvgEGjHU",
+            "button_style": "button-outline",
+            "button_size": "text-sm md:text-base",
+            "button_background_color": "#ffffff",
+            "button_text_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "heading_T3xndE",
+        "text_X9mLdA",
+        "button_H9gpaN"
+      ],
+      "name": "t:sections.rich-text.presets__0.name",
+      "settings": {
+        "full_width": true,
+        "text_alignment": "text-left",
+        "content_width": "normal",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "ee8f8c3b-ed9c-495b-a572-e66f48281fcc",
+    "rich_text_bDzATx"
+  ]
+}

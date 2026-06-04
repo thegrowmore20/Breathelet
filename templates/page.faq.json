@@ -1,0 +1,484 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "content_width": "normal",
+        "content_text_size": "prose md:prose-lg",
+        "heading_size": "h0",
+        "heading_alignment": "text-center",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": ""
+      }
+    },
+    "ee8f8c3b-ed9c-495b-a572-e66f48281fcc": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "template--20599120724260__ee8f8c3b-ed9c-495b-a572-e66f48281fcc-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Frequently Asked Questions",
+            "heading_size": "h1",
+            "heading_html_tag": "p"
+          }
+        }
+      },
+      "block_order": [
+        "template--20599120724260__ee8f8c3b-ed9c-495b-a572-e66f48281fcc-heading-1"
+      ],
+      "settings": {
+        "full_width": true,
+        "enable_transparent_header": false,
+        "use_original_media_size": false,
+        "image": "shopify://shop_images/IMG_6427_1.jpg",
+        "content_alignment": "md:content-bottom-left",
+        "content_alignment_mobile": "content-bottom-left",
+        "link": "",
+        "min_height": 600,
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 35,
+        "overlay_type": "gradient"
+      }
+    },
+    "2ab75f39-7f55-452b-b9d7-e513d395c914": {
+      "type": "collapsible-content",
+      "blocks": {
+        "template--20862860820772__2ab75f39-7f55-452b-b9d7-e513d395c914-block-1": {
+          "type": "block",
+          "settings": {
+            "title": "1. What is Breathelet?",
+            "content": "<p>Breathelet is a stylish bracelet that delivers <strong>random, gentle vibrations</strong> as subtle cues to <strong>take a pause and reconnect with yourself</strong>. It’s your wearable companion for mindfulness, calm, and intentional living.</p>",
+            "content_from_page": "",
+            "open": false,
+            "heading_html_tag": "p"
+          }
+        },
+        "template--20862860820772__2ab75f39-7f55-452b-b9d7-e513d395c914-block-2": {
+          "type": "block",
+          "settings": {
+            "title": "2. How does Breathelet work?",
+            "content": "<p>Breathelet sends tested, random vibrations designed to give the most beneficial reminders. Each vibration encourages you to slow down, reset your focus, and be present in the moment. Over time, these nudges encourage mindfulness and a calmer state of mind.</p>",
+            "content_from_page": "",
+            "open": false,
+            "heading_html_tag": "p"
+          }
+        },
+        "template--20862860820772__2ab75f39-7f55-452b-b9d7-e513d395c914-block-3": {
+          "type": "block",
+          "settings": {
+            "title": "3. Who is Breathelet for?",
+            "content": "<p>Anyone looking to live more mindfully, reduce stress, or build positive daily habits. Whether at work, commuting, or at home, Breathelet is there to gently remind you to take a pause.</p>",
+            "content_from_page": "",
+            "open": false,
+            "heading_html_tag": "p"
+          }
+        },
+        "block_bAmgKe": {
+          "type": "block",
+          "settings": {
+            "title": "4. Can I use it for things other than breathing?",
+            "content": "<p> Absolutely! Breathelet can help you:</p><ul><li>Take a mindful breath</li><li>Practice gratitude</li><li>Hydrate</li><li>Share a smile</li><li>Check in with yourself and stay grounded in the moment</li></ul>",
+            "content_from_page": "",
+            "open": false,
+            "heading_html_tag": "p"
+          }
+        },
+        "block_gF4iTE": {
+          "type": "block",
+          "disabled": true,
+          "settings": {
+            "title": "5. How should I wear my Breathelet?",
+            "content": "<p>For the intended experience, Breathelet should be worn <strong>snug against your wrist — not loose</strong>.</p><p>A loose fit may reduce or completely limit your ability to feel these subtle reminders. A secure, close fit ensures you stay connected to every moment of calm.</p><p><strong>Important:</strong> A loose fit is the #1 reason users don’t feel the vibration properly.</p>",
+            "content_from_page": "",
+            "open": false,
+            "heading_html_tag": "p"
+          }
+        },
+        "block_nk7TGJ": {
+          "type": "block",
+          "disabled": true,
+          "settings": {
+            "title": "6. What is the ideal fit?",
+            "content": "<p>Breathelet should feel:</p><ul><li><strong>Secure and stable</strong> on your wrist </li><li><strong>Comfortably snug</strong>, without restricting movement </li></ul><p>If the bracelet shifts, slides, or hangs away from your wrist, it is too loose.</p>",
+            "content_from_page": "",
+            "open": false,
+            "heading_html_tag": "p"
+          }
+        },
+        "block_yPWnmA": {
+          "type": "block",
+          "disabled": true,
+          "settings": {
+            "title": "7. Why am I not feeling the vibration?",
+            "content": "<p>This is usually due to the fit. <br/>Make sure that:</p><ul><li> The Breathelet is worn snug on your wrist </li><li> The bracelet is not loose or dangling </li></ul><p>Once properly adjusted, you should feel the gentle vibration clearly.</p>",
+            "content_from_page": "",
+            "open": false,
+            "heading_html_tag": "p"
+          }
+        },
+        "block_pLAmgT": {
+          "type": "block",
+          "settings": {
+            "title": "5. Is it waterproof?",
+            "content": "<p>Yes. Both Classic and OneFit- are water-resistant, so they handle everyday splashes, sweat, or rain.</p>",
+            "content_from_page": "",
+            "open": false,
+            "heading_html_tag": "p"
+          }
+        },
+        "block_PMRppU": {
+          "type": "block",
+          "settings": {
+            "title": "6. Are there any screens or apps?",
+            "content": "<p>No screens. No Bluetooth. No distractions. Breathelet is designed to be a simple, elegant wearable that helps you reconnect with your mind and body.</p>",
+            "content_from_page": "",
+            "open": false,
+            "heading_html_tag": "p"
+          }
+        },
+        "block_GJqnQJ": {
+          "type": "block",
+          "settings": {
+            "title": "7. How can I get support?",
+            "content": "<p>For questions, troubleshooting, or replacement strings, contact support@breathelet.com<br/><br/></p>",
+            "content_from_page": "",
+            "open": false,
+            "heading_html_tag": "p"
+          }
+        }
+      },
+      "block_order": [
+        "template--20862860820772__2ab75f39-7f55-452b-b9d7-e513d395c914-block-1",
+        "template--20862860820772__2ab75f39-7f55-452b-b9d7-e513d395c914-block-2",
+        "template--20862860820772__2ab75f39-7f55-452b-b9d7-e513d395c914-block-3",
+        "block_bAmgKe",
+        "block_gF4iTE",
+        "block_nk7TGJ",
+        "block_yPWnmA",
+        "block_pLAmgT",
+        "block_PMRppU",
+        "block_GJqnQJ"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "heading": "Discover Breathelet — Your Wearable Calm Companion",
+        "content": "<p>Breathelet is a discreet, stylish wearable device designed to help you slow down, feel grounded, and reconnect with yourself anytime, anywhere. With gentle, randomized vibrations, Breathelet encourages mindful moments throughout your day—whether that’s taking a deep breath, practicing gratitude, hydrating, sharing a smile, or simply checking in with yourself.</p>",
+        "heading_size": "h2",
+        "text_position": "left",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": "",
+        "accordion_background_color": "",
+        "accordion_title_color": "",
+        "accordion_text_color": "",
+        "heading_html_tag": "p"
+      }
+    },
+    "custom_liquid_a93R39": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "full_width": true,
+        "remove_horizontal_space": false,
+        "remove_vertical_space": true,
+        "custom_liquid": "",
+        "background_color": "#1c1c1c",
+        "text_color": ""
+      }
+    },
+    "collapsible_content_aEz7Aq": {
+      "type": "collapsible-content",
+      "blocks": {
+        "block_tP8RVh": {
+          "type": "block",
+          "settings": {
+            "title": "1. How should I wear my Breathelet?",
+            "content": "<p>For the intended experience, Breathelet should be worn <strong>snug against your wrist — not loose</strong>.</p><p>A loose fit may reduce or completely limit your ability to feel these subtle reminders. A secure, close fit ensures you stay connected to every moment of calm.</p><p><strong>Important:</strong> A loose fit is the #1 reason users don’t feel the vibration properly.</p>",
+            "content_from_page": "",
+            "open": false,
+            "heading_html_tag": "p"
+          }
+        },
+        "block_a8pErL": {
+          "type": "block",
+          "settings": {
+            "title": "2. What is the ideal fit?",
+            "content": "<p>Breathelet should feel:</p><ul><li><strong>Secure and stable</strong> on your wrist </li><li><strong>Comfortably snug</strong>, without restricting movement </li></ul><p>If the bracelet shifts, slides, or hangs away from your wrist, it is too loose.</p>",
+            "content_from_page": "",
+            "open": false,
+            "heading_html_tag": "p"
+          }
+        },
+        "block_kVFgKX": {
+          "type": "block",
+          "settings": {
+            "title": "3. Why am I not feeling the vibration?",
+            "content": "<p>This is usually due to the fit. <br/>Make sure that:</p><ul><li> The Breathelet is worn snug on your wrist </li><li> The bracelet is not loose or dangling </li></ul><p>Once properly adjusted, you should feel the gentle vibration clearly.</p>",
+            "content_from_page": "",
+            "open": false,
+            "heading_html_tag": "p"
+          }
+        }
+      },
+      "block_order": [
+        "block_tP8RVh",
+        "block_a8pErL",
+        "block_kVFgKX"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "heading": "Wear Breathelet — find the most comfortable and stable way",
+        "content": "<p>Breathelet is intended to be used snug against your wrist for the best results.</p>",
+        "heading_size": "h2",
+        "text_position": "left",
+        "background_color": "rgba(0,0,0,0)",
+        "text_color": "",
+        "heading_color": "",
+        "accordion_background_color": "",
+        "accordion_title_color": "",
+        "accordion_text_color": "",
+        "heading_html_tag": "p"
+      }
+    },
+    "custom_liquid_tmBGTh": {
+      "type": "custom-liquid",
+      "custom_css": [
+        "section {padding-top: 10px;}"
+      ],
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "full_width": true,
+        "remove_horizontal_space": false,
+        "remove_vertical_space": true,
+        "custom_liquid": "",
+        "background_color": "#434343",
+        "text_color": ""
+      }
+    },
+    "rich_text_9mqqhf": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_XhKfd7": {
+          "type": "heading",
+          "settings": {
+            "heading": "How to adjust the different Breathelet models?",
+            "heading_size": "h2",
+            "heading_html_tag": "p"
+          }
+        }
+      },
+      "block_order": [
+        "heading_XhKfd7"
+      ],
+      "name": "t:sections.rich-text.presets__0.name",
+      "settings": {
+        "full_width": true,
+        "text_alignment": "text-center mx-auto",
+        "content_width": "full-width",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": ""
+      }
+    },
+    "video_with_text_jmnQAA": {
+      "type": "video-with-text",
+      "blocks": {
+        "subheading_ycRRpd": {
+          "type": "subheading",
+          "settings": {
+            "text": ""
+          }
+        },
+        "heading_XdYgMB": {
+          "type": "heading",
+          "settings": {
+            "heading": "Breathelet Classic:",
+            "heading_size": "h2",
+            "heading_html_tag": "p"
+          }
+        },
+        "text_3TLXCz": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Adjustable design with multiple size options to comfortably fit most wrists.<br/></p>"
+          }
+        },
+        "button_qzGQrB": {
+          "type": "button",
+          "settings": {
+            "button_text": "SHOP Classic",
+            "button_link": "shopify://products/breathelet",
+            "button_style": "button-outline",
+            "button_size": "text-sm md:text-base",
+            "button_background_color": "#ffffff",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "subheading_ycRRpd",
+        "heading_XdYgMB",
+        "text_3TLXCz",
+        "button_qzGQrB"
+      ],
+      "disabled": true,
+      "name": "t:sections.video-with-text.presets__0.name",
+      "settings": {
+        "full_width": false,
+        "remove_bottom_spacing": true,
+        "autoplay": false,
+        "loop": false,
+        "video": "shopify://files/videos/Breathelet_oldstring_anim.webm",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "image_size": "media--ratio-16-9",
+        "image_position": "right",
+        "image_width": 50,
+        "text_alignment": "text-left",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": ""
+      }
+    },
+    "video_with_text_FYgkDL": {
+      "type": "video-with-text",
+      "blocks": {
+        "subheading_giHxh7": {
+          "type": "subheading",
+          "settings": {
+            "text": ""
+          }
+        },
+        "heading_HaKYxN": {
+          "type": "heading",
+          "settings": {
+            "heading": "Breathelet OneFit:",
+            "heading_size": "h2",
+            "heading_html_tag": "p"
+          }
+        },
+        "text_DAzaPw": {
+          "type": "text",
+          "settings": {
+            "text": "<p>One-size adjustable design that comfortably fits most wrists.<br/></p>"
+          }
+        },
+        "button_a8MmiL": {
+          "type": "button",
+          "settings": {
+            "button_text": "SHOP OneFit",
+            "button_link": "shopify://products/breathelet-onefit",
+            "button_style": "button-outline",
+            "button_size": "text-sm md:text-base",
+            "button_background_color": "#ffffff",
+            "button_text_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_giHxh7",
+        "heading_HaKYxN",
+        "text_DAzaPw",
+        "button_a8MmiL"
+      ],
+      "name": "t:sections.video-with-text.presets__0.name",
+      "settings": {
+        "full_width": false,
+        "remove_bottom_spacing": true,
+        "autoplay": false,
+        "loop": false,
+        "video": "shopify://files/videos/Breathelet_how-to_upd_v2.webm",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "image_size": "media--ratio-16-9",
+        "image_position": "left",
+        "image_width": 50,
+        "text_alignment": "text-left",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": ""
+      }
+    },
+    "rich_text_ccgjnM": {
+      "type": "rich-text",
+      "name": "t:sections.rich-text.presets__0.name",
+      "settings": {
+        "full_width": true,
+        "text_alignment": "text-center mx-auto",
+        "content_width": "normal",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": ""
+      }
+    },
+    "f5839382-ef3f-4a18-84ac-194c93e9d7cf": {
+      "type": "rich-text",
+      "blocks": {
+        "template--20599120724260__f5839382-ef3f-4a18-84ac-194c93e9d7cf-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Couldn't find your answer?",
+            "heading_size": "h3",
+            "heading_html_tag": "p"
+          }
+        },
+        "template--20599120724260__f5839382-ef3f-4a18-84ac-194c93e9d7cf-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We're here to help. If you couldn't find the information you were looking for, please reach out to us directly. Our team is eager to assist you.</p>"
+          }
+        },
+        "template--20599120724260__f5839382-ef3f-4a18-84ac-194c93e9d7cf-button-1": {
+          "type": "button",
+          "settings": {
+            "button_text": "Contact us now",
+            "button_link": "shopify://pages/contact",
+            "button_style": "button-outline",
+            "button_size": "text-sm md:text-base",
+            "button_background_color": "#ffffff",
+            "button_text_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "template--20599120724260__f5839382-ef3f-4a18-84ac-194c93e9d7cf-heading-1",
+        "template--20599120724260__f5839382-ef3f-4a18-84ac-194c93e9d7cf-text-1",
+        "template--20599120724260__f5839382-ef3f-4a18-84ac-194c93e9d7cf-button-1"
+      ],
+      "settings": {
+        "full_width": true,
+        "text_alignment": "text-center mx-auto",
+        "content_width": "normal",
+        "background_color": "rgba(0,0,0,0)",
+        "text_color": "",
+        "heading_color": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "ee8f8c3b-ed9c-495b-a572-e66f48281fcc",
+    "2ab75f39-7f55-452b-b9d7-e513d395c914",
+    "custom_liquid_a93R39",
+    "collapsible_content_aEz7Aq",
+    "custom_liquid_tmBGTh",
+    "rich_text_9mqqhf",
+    "video_with_text_jmnQAA",
+    "video_with_text_FYgkDL",
+    "rich_text_ccgjnM",
+    "f5839382-ef3f-4a18-84ac-194c93e9d7cf"
+  ]
+}

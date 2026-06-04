@@ -1,0 +1,81 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "content_width": "normal",
+        "content_text_size": "prose md:prose-lg",
+        "heading_size": "h2",
+        "heading_alignment": "text-center",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": ""
+      }
+    },
+    "212a3c16-6c50-4d61-942b-fdadda48f9e7": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "template--19974638960932__212a3c16-6c50-4d61-942b-fdadda48f9e7-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Contact us",
+            "heading_size": "h1",
+            "heading_html_tag": "p"
+          }
+        }
+      },
+      "block_order": [
+        "template--19974638960932__212a3c16-6c50-4d61-942b-fdadda48f9e7-heading-1"
+      ],
+      "settings": {
+        "full_width": false,
+        "enable_transparent_header": false,
+        "use_original_media_size": false,
+        "image": "shopify://shop_images/nano-banana-no-bg-2025-08-30T10-58-29.jpg",
+        "content_alignment": "md:content-bottom-left",
+        "content_alignment_mobile": "content-bottom-left",
+        "link": "",
+        "min_height": 440,
+        "text_color": "#363636",
+        "overlay_color": "#000000",
+        "overlay_opacity": 20,
+        "overlay_type": "solid"
+      }
+    },
+    "form": {
+      "type": "contact-form",
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "heading": "Contact form",
+        "content": "",
+        "heading_size": "h2",
+        "text_position": "left",
+        "button_style": "",
+        "show_button_icon": true,
+        "background_color": "rgba(0,0,0,0)",
+        "text_color": "",
+        "heading_color": "",
+        "button_background_color": "rgba(0,0,0,0)",
+        "button_text_color": "rgba(0,0,0,0)",
+        "heading_html_tag": "p"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "212a3c16-6c50-4d61-942b-fdadda48f9e7",
+    "form"
+  ]
+}

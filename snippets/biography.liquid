@@ -1,0 +1,123 @@
+<style>
+    .bio-blocks-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+        padding: 20px;
+    }
+
+    .quote-card {    
+        padding: 15px;
+        width: 100%;      
+    }
+
+    .profile-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 16px;
+    }
+
+    .avatar-wrapper {
+        width: 56px;
+        height: 56px;
+        margin-right: 14px;
+        flex-shrink: 0;
+    }
+
+    .avatar {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        background-color: #f7f7f7;
+        display: block;
+    }
+
+    .placeholder-avatar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #e2e8f0;
+    }
+
+    .placeholder-avatar svg {
+        width: 28px;
+        height: 28px;
+    }
+
+    .meta-info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .author-name {
+        font-size: 19px;
+        font-weight: 700;
+        margin: 0;
+        line-height: 1.3;
+    }
+
+    .author-designation {
+        font-size: 14px;
+        margin: 2px 0 0 0;
+        line-height: 1.3;
+    }
+
+    .quote-content {
+        margin: 0;
+        word-wrap: break-word;
+        white-space: pre-line; 
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 480px) {
+        .avatar-wrapper {
+            width: 48px;
+            height: 48px;
+            margin-right: 10px;
+        }
+        .author-name {
+            font-size: 17px;
+        }
+        .author-designation {
+            font-size: 14px;
+        }
+        .quote-content {
+            font-size: 16px;
+        }
+    }
+    </style>
+    <div class="quote-card" {{ attrs }}>
+    <div class="profile-container">
+        
+        <div class="avatar-wrapper">
+        {%- if block.settings.author_image != blank -%}
+            {{ block.settings.author_image | image_url: width: 60, height: 60, crop: 'center' | image_tag: 
+            class: 'avatar', 
+            loading: 'lazy', 
+            alt: block.settings.author_name 
+            }}
+        {%- else -%}
+            {%- comment -%} Premium, clean SVG placeholder if no image is uploaded {%- endcomment -%}
+            <div class="avatar placeholder-avatar">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z" fill="#a0aec0"/></svg>
+            </div>
+        {%- endif -%}
+        </div>
+
+        <div class="meta-info">
+        {%- if block.settings.author_name != blank -%}
+            <h3 class="author-name">{{ block.settings.author_name | escape }}</h3>
+        {%- endif -%}
+        
+        {%- if block.settings.author_designation != blank -%}
+            <p class="author-designation">{{ block.settings.author_designation | escape }}</p>
+        {%- endif -%}
+        </div>
+    </div>
+
+    {%- if block.settings.quotation_text != blank -%}
+        <div class="quote-content"> <p> {{ block.settings.quotation_text }} </p></div>
+    {%- endif -%}
+    </div>

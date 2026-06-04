@@ -1,0 +1,111 @@
+{% liquid
+  if card_product == empty
+    assign card_product = null
+  endif
+
+  case settings.product_card_text_alignment
+    when 'center'
+      assign product_card_info_class = 'text-center items-center'
+  endcase
+
+  assign url = card_product.url
+
+  if section.settings.include_collection_url and collection
+    assign url = url | within: collection
+  endif
+
+%}
+
+<div class="product-card group color rounded-block {{ class }}" {{ attrs }}>
+  <div class="relative overflow-hidden group/media">
+    <a href="{{ url }}" tabindex="-1" data-instant aria-label="{{ card_product.title | default: 'Product' }}">
+      <div
+        class="product-card-media media rounded-block [--aspect-ratio:--product-card-image-aspect] md:pb-6"
+      >
+        {% if card_product %}
+          {% if card_product.featured_media %}
+            <lqip-element class="image-loader h-full">
+              {{
+                card_product.featured_media
+                | image_url: width: 900
+                | image_tag:
+                  widths: '360, 450, 540, 630, 720, 900',
+                  sizes: sizes,
+                  loading: 'lazy',
+                  class: 'product-card__image product-thumbnail-shade'
+                | escape
+              }}
+
+              {{
+                card_product.featured_media
+                | image_url: width: 20
+                | image_tag: class: 'media-lq-placeholder', fetchpriority: 'low'
+              }}
+            </lqip-element>
+          {% else %}
+            {% render 'placeholder', type: 'image' %}
+          {% endif %}
+
+        {% else %}
+          {% capture placeholder_type %}product-{{ index | modulo: 6 | plus: 1 }}{% endcapture %}
+          {% render 'placeholder', type: placeholder_type %}
+        {% endif %}
+
+        <div class="product-card__media-spinner">{% render 'spinner' %}</div>   
+        
+       
+
+      </div>
+    </a>
+
+    {% if badges != false %}
+      <div
+        class="
+          product-badges-container flex flex-col gap-1 md:gap-2 items-end absolute
+          top-0 left-0 pointer-events-none z-10
+        "
+      >
+        {% if settings.product_card_sold_out_badge and card_product.available == false %}
+          <div class="info-badge sold-out-badge">
+            {{ 'products.product.sold_out' | t }}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+  </div>
+
+  <div class="product-card__info pt-2 flex flex-col grow max-md:text-sm {{ product_card_info_class }}">
+
+    {% if settings.product_card_vendor and vendor != false %}
+      <div class="product-vendor text-foreground/75 tracking-wider text-xs md:text-sm mb-1">
+        <span class="visually-hidden">{{ 'accessibility.by' | t }}</span>
+        <span>{{ card_product.vendor | default: 'Vendor' }}</span>
+      </div>
+    {% endif %}
+
+    <h2 class="product-name">
+      <a data-instant href="{{ url }}">{{ card_product.title | default: 'Product' }}</a>
+    </h2>
+
+    <a href="/#looxReviews">
+      <div class="loox-rating"
+        data-pattern="[rating] ([count])"
+          data-show-empty-stars="true"
+          data-id="{{ card_product.id }}"
+          data-rating="{{ card_product.metafields.loox.avg_rating }}"
+          data-raters="{{ card_product.metafields.loox.num_reviews }}"
+          data-floating-product-reviews-enabled="true">
+      </div>
+    </a>
+
+    {% if settings.product_card_product_rating and rating != false %}
+      {% if settings.product_card_show_empty_rating or card_product.metafields.reviews.rating.value != blank %}
+        <div class="product-rating pt-2">
+          {% render 'product-rating', product: card_product %}
+        </div>
+      {% endif %}
+    {% endif %}
+
+  </div>
+</div>

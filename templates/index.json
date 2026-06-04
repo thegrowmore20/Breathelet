@@ -1,0 +1,945 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "slideshow_7aaerb": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_htxF98": {
+          "type": "slide",
+          "settings": {
+            "video": "shopify://files/videos/breathelet__1.webm",
+            "mobile_video": "shopify://files/videos/Breathelet_mobile_1.webm",
+            "content_width_maximum": 640,
+            "desktop_content_position": "bottom-left",
+            "mobile_content_position": "bottom-left",
+            "desktop_text_alignment": "default",
+            "subheading": "",
+            "heading": "Breathelet - Premium Mindful Wearable",
+            "heading_size": "h3",
+            "text": "",
+            "hide_text_on_mobile": false,
+            "button_size": "text-xs md:text-sm",
+            "custom_liquid": "{% if shop.metafields.loox[\"global_stats\"] %}\n                    {% assign looxstats = shop.metafields.loox[\"global_stats\"] | split: ',' %} \n                    <div class=\"loox-rating loox-rating-hp\" data-rating=\"{{ looxstats[0] }}\" data-raters=\"{{ looxstats[1] }}\" data-pattern=\"[rating] ([count])\"></div> \n                    {% endif %}",
+            "button_link": "shopify://products/breathelet-onefit",
+            "button_text": "Shop Breathelet",
+            "button_style": "button-outline",
+            "button_background_color": "#ffffff",
+            "button_text_color": "#000000",
+            "button2_link": "",
+            "button2_text": "",
+            "button2_style": "",
+            "button2_background_color": "",
+            "button2_text_color": "",
+            "background_color": "",
+            "color_text": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "overlay_type": "solid",
+            "heading_html_tag": "p"
+          }
+        },
+        "slide_NaiKPy": {
+          "type": "slide",
+          "settings": {
+            "video": "shopify://files/videos/breathelet__2.webm",
+            "mobile_video": "shopify://files/videos/Breathelet_mobile_2.webm",
+            "content_width_maximum": 640,
+            "desktop_content_position": "bottom-left",
+            "mobile_content_position": "bottom-left",
+            "desktop_text_alignment": "left",
+            "subheading": "",
+            "heading": "A Gentle Vibration That Brings You Back.",
+            "heading_size": "h3",
+            "text": "",
+            "hide_text_on_mobile": false,
+            "button_size": "text-xs md:text-sm",
+            "custom_liquid": "{% if shop.metafields.loox[\"global_stats\"] %}\n                    {% assign looxstats = shop.metafields.loox[\"global_stats\"] | split: ',' %} \n                    <div class=\"loox-rating loox-rating-hp\" data-rating=\"{{ looxstats[0] }}\" data-raters=\"{{ looxstats[1] }}\" data-pattern=\"[rating] ([count])\"></div> \n                    {% endif %}",
+            "button_link": "shopify://products/breathelet-onefit",
+            "button_text": "Shop Breathelet",
+            "button_style": "button-outline",
+            "button_background_color": "#ffffff",
+            "button_text_color": "#000000",
+            "button2_link": "",
+            "button2_text": "",
+            "button2_style": "",
+            "button2_background_color": "",
+            "button2_text_color": "",
+            "background_color": "",
+            "color_text": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "overlay_type": "solid",
+            "heading_html_tag": "p"
+          }
+        },
+        "slide_KMnCXe": {
+          "type": "slide",
+          "settings": {
+            "video": "shopify://files/videos/breathelet__3.webm",
+            "mobile_video": "shopify://files/videos/Breathelet_mobile_3.webm",
+            "content_width_maximum": 540,
+            "desktop_content_position": "bottom-left",
+            "mobile_content_position": "bottom-left",
+            "desktop_text_alignment": "left",
+            "subheading": "",
+            "heading": "No App, No Screen, No Bluetooth.",
+            "heading_size": "h3",
+            "text": "",
+            "hide_text_on_mobile": false,
+            "button_size": "text-xs md:text-sm",
+            "custom_liquid": "{% if shop.metafields.loox[\"global_stats\"] %}\n                    {% assign looxstats = shop.metafields.loox[\"global_stats\"] | split: ',' %} \n                    <div class=\"loox-rating loox-rating-hp\" data-rating=\"{{ looxstats[0] }}\" data-raters=\"{{ looxstats[1] }}\" data-pattern=\"[rating] ([count])\"></div> \n                    {% endif %}",
+            "button_link": "shopify://products/breathelet-onefit",
+            "button_text": "Shop Breathelet",
+            "button_style": "button-outline",
+            "button_background_color": "#ffffff",
+            "button_text_color": "#000000",
+            "button2_link": "",
+            "button2_text": "",
+            "button2_style": "",
+            "button2_background_color": "",
+            "button2_text_color": "",
+            "background_color": "",
+            "color_text": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "overlay_type": "solid",
+            "heading_html_tag": "p"
+          }
+        }
+      },
+      "block_order": [
+        "slide_htxF98",
+        "slide_NaiKPy",
+        "slide_KMnCXe"
+      ],
+      "name": "t:sections.slideshow.presets__0.name",
+      "settings": {
+        "full_width": true,
+        "enable_transparent_header": true,
+        "use_original_media_size": false,
+        "autoplay": true,
+        "speed": 4,
+        "height": 1020,
+        "controls": "dots",
+        "background_animation": "ZoomOut",
+        "content_animation": "ClipLineByLine",
+        "background_color": "#000000"
+      }
+    },
+    "featured_collection_jdUFMc": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.name",
+      "settings": {
+        "full_width": true,
+        "carousel": true,
+        "products_count": 8,
+        "grid_columns": 3,
+        "grid_columns_mobile": "2",
+        "products": [
+          "eternal-love-pair",
+          "breathelet-onefit"
+        ],
+        "collection": "",
+        "subheading": "",
+        "heading": "",
+        "heading_size": "h2",
+        "text_alignment": "text-center",
+        "link_text": "View all",
+        "link_url": "",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_html_tag": "p"
+      }
+    },
+    "1779445986c7e74670": {
+      "type": "apps",
+      "blocks": {
+        "ot_instagram_feed_ot_easy_instagram_feed_zJxrXN": {
+          "type": "shopify://apps/ot-instagram-feed/blocks/ot-easy-instagram-feed/75d29d92-c4c5-4091-87e8-4dde82e3828c",
+          "disabled": true,
+          "settings": {
+            "feed_id": "",
+            "title": "",
+            "show_tagged_posts": false,
+            "titleColor": "#000000",
+            "titleSize": 40,
+            "title_tag": "span",
+            "profileTextColor": "#000000",
+            "description": "",
+            "desColor": "#000000",
+            "section_full_width_desktop": false,
+            "show_divider_desktop": false,
+            "top_padding_desktop": 0,
+            "bottom_padding_desktop": 0,
+            "section_full_width_mobile": false,
+            "show_divider_mobile": false,
+            "use_title_settings": false,
+            "titleSizeMobile": 24,
+            "top_padding_mobile": 0,
+            "bottom_padding_mobile": 0,
+            "bss_custom_code": "",
+            "bss_advanced_custom_code": ""
+          }
+        },
+        "gsc_instagram_feed_instafeed_aEadQT": {
+          "type": "shopify://apps/gsc-instagram-feed/blocks/instafeed/96970b1b-b770-454f-b16b-51f47e1aa4ed",
+          "settings": {
+            "widget_id": "GSC-sAHTOcJrWJWcwdi"
+          }
+        }
+      },
+      "block_order": [
+        "ot_instagram_feed_ot_easy_instagram_feed_zJxrXN",
+        "gsc_instagram_feed_instafeed_aEadQT"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_horizontal_space": false,
+        "remove_vertical_space": false,
+        "subheading": "",
+        "heading": "FOLLOW US ON INSTAGRAM",
+        "content": "",
+        "heading_size": "h2",
+        "text_alignment": "text-center",
+        "link_text": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"25px\" height=\"25px\" viewbox=\"0 0 2500 2500\"><defs><radialgradient id=\"0\" cx=\"332.14\" cy=\"2511.81\" r=\"3263.54\" gradientunits=\"userSpaceOnUse\"><stop offset=\".09\" stop-color=\"#fa8f21\"></stop><stop offset=\".78\" stop-color=\"#d82d7e\"></stop></radialgradient><radialgradient id=\"1\" cx=\"1516.14\" cy=\"2623.81\" r=\"2572.12\" gradientunits=\"userSpaceOnUse\"><stop offset=\".64\" stop-color=\"#8c3aaa\" stop-opacity=\"0\"></stop><stop offset=\"1\" stop-color=\"#8c3aaa\"></stop></radialgradient></defs><path d=\"M833.4,1250c0-230.11,186.49-416.7,416.6-416.7s416.7,186.59,416.7,416.7-186.59,416.7-416.7,416.7S833.4,1480.11,833.4,1250m-225.26,0c0,354.5,287.36,641.86,641.86,641.86S1891.86,1604.5,1891.86,1250,1604.5,608.14,1250,608.14,608.14,895.5,608.14,1250M1767.27,582.69a150,150,0,1,0,150.06-149.94h-0.06a150.07,150.07,0,0,0-150,149.94M745,2267.47c-121.87-5.55-188.11-25.85-232.13-43-58.36-22.72-100-49.78-143.78-93.5s-70.88-85.32-93.5-143.68c-17.16-44-37.46-110.26-43-232.13-6.06-131.76-7.27-171.34-7.27-505.15s1.31-373.28,7.27-505.15c5.55-121.87,26-188,43-232.13,22.72-58.36,49.78-100,93.5-143.78s85.32-70.88,143.78-93.5c44-17.16,110.26-37.46,232.13-43,131.76-6.06,171.34-7.27,505-7.27s373.28,1.31,505.15,7.27c121.87,5.55,188,26,232.13,43,58.36,22.62,100,49.78,143.78,93.5s70.78,85.42,93.5,143.78c17.16,44,37.46,110.26,43,232.13,6.06,131.87,7.27,171.34,7.27,505.15s-1.21,373.28-7.27,505.15c-5.55,121.87-25.95,188.11-43,232.13-22.72,58.36-49.78,100-93.5,143.68s-85.42,70.78-143.78,93.5c-44,17.16-110.26,37.46-232.13,43-131.76,6.06-171.34,7.27-505.15,7.27s-373.28-1.21-505-7.27M734.65,7.57c-133.07,6.06-224,27.16-303.41,58.06C349,97.54,279.38,140.35,209.81,209.81S97.54,349,65.63,431.24c-30.9,79.46-52,170.34-58.06,303.41C1.41,867.93,0,910.54,0,1250s1.41,382.07,7.57,515.35c6.06,133.08,27.16,223.95,58.06,303.41,31.91,82.19,74.62,152,144.18,221.43S349,2402.37,431.24,2434.37c79.56,30.9,170.34,52,303.41,58.06C868,2498.49,910.54,2500,1250,2500s382.07-1.41,515.35-7.57c133.08-6.06,223.95-27.16,303.41-58.06,82.19-32,151.86-74.72,221.43-144.18s112.18-139.24,144.18-221.43c30.9-79.46,52.1-170.34,58.06-303.41,6.06-133.38,7.47-175.89,7.47-515.35s-1.41-382.07-7.47-515.35c-6.06-133.08-27.16-224-58.06-303.41-32-82.19-74.72-151.86-144.18-221.43S2150.95,97.54,2068.86,65.63c-79.56-30.9-170.44-52.1-303.41-58.06C1632.17,1.51,1589.56,0,1250.1,0S868,1.41,734.65,7.57\" fill=\"url(#0)\"></path><path d=\"M833.4,1250c0-230.11,186.49-416.7,416.6-416.7s416.7,186.59,416.7,416.7-186.59,416.7-416.7,416.7S833.4,1480.11,833.4,1250m-225.26,0c0,354.5,287.36,641.86,641.86,641.86S1891.86,1604.5,1891.86,1250,1604.5,608.14,1250,608.14,608.14,895.5,608.14,1250M1767.27,582.69a150,150,0,1,0,150.06-149.94h-0.06a150.07,150.07,0,0,0-150,149.94M745,2267.47c-121.87-5.55-188.11-25.85-232.13-43-58.36-22.72-100-49.78-143.78-93.5s-70.88-85.32-93.5-143.68c-17.16-44-37.46-110.26-43-232.13-6.06-131.76-7.27-171.34-7.27-505.15s1.31-373.28,7.27-505.15c5.55-121.87,26-188,43-232.13,22.72-58.36,49.78-100,93.5-143.78s85.32-70.88,143.78-93.5c44-17.16,110.26-37.46,232.13-43,131.76-6.06,171.34-7.27,505-7.27s373.28,1.31,505.15,7.27c121.87,5.55,188,26,232.13,43,58.36,22.62,100,49.78,143.78,93.5s70.78,85.42,93.5,143.78c17.16,44,37.46,110.26,43,232.13,6.06,131.87,7.27,171.34,7.27,505.15s-1.21,373.28-7.27,505.15c-5.55,121.87-25.95,188.11-43,232.13-22.72,58.36-49.78,100-93.5,143.68s-85.42,70.78-143.78,93.5c-44,17.16-110.26,37.46-232.13,43-131.76,6.06-171.34,7.27-505.15,7.27s-373.28-1.21-505-7.27M734.65,7.57c-133.07,6.06-224,27.16-303.41,58.06C349,97.54,279.38,140.35,209.81,209.81S97.54,349,65.63,431.24c-30.9,79.46-52,170.34-58.06,303.41C1.41,867.93,0,910.54,0,1250s1.41,382.07,7.57,515.35c6.06,133.08,27.16,223.95,58.06,303.41,31.91,82.19,74.62,152,144.18,221.43S349,2402.37,431.24,2434.37c79.56,30.9,170.34,52,303.41,58.06C868,2498.49,910.54,2500,1250,2500s382.07-1.41,515.35-7.57c133.08-6.06,223.95-27.16,303.41-58.06,82.19-32,151.86-74.72,221.43-144.18s112.18-139.24,144.18-221.43c30.9-79.46,52.1-170.34,58.06-303.41,6.06-133.38,7.47-175.89,7.47-515.35s-1.41-382.07-7.47-515.35c-6.06-133.08-27.16-224-58.06-303.41-32-82.19-74.72-151.86-144.18-221.43S2150.95,97.54,2068.86,65.63c-79.56-30.9-170.44-52.1-303.41-58.06C1632.17,1.51,1589.56,0,1250.1,0S868,1.41,734.65,7.57\" fill=\"url(#1)\"></path></svg>@thebreathelet",
+        "link_url": "https://www.instagram.com/thebreathelet",
+        "new_tab": true,
+        "background_color": "",
+        "text_color": ""
+      }
+    },
+    "video_with_text_6kqVVV": {
+      "type": "video-with-text",
+      "blocks": {
+        "subheading_6pyhgm": {
+          "type": "subheading",
+          "settings": {
+            "text": ""
+          }
+        },
+        "heading_YeFWNT": {
+          "type": "heading",
+          "settings": {
+            "heading": "A Proper Conscious, Deep Breath",
+            "heading_size": "h2",
+            "heading_html_tag": "h2"
+          }
+        },
+        "text_rAkiMf": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Perfect for any wrist, Breathelet helps you stay present, build better routines, and support daily clarity with soft vibration reminders designed to keep you aligned all day. For a full reset, sit straight, relax your shoulders, inhale deeply through your nose, let your breath expand, then exhale slowly and completely.</p>"
+          }
+        },
+        "bio_xX9PmC": {
+          "type": "bio",
+          "settings": {
+            "author_image": "shopify://shop_images/James-Nestor.webp",
+            "author_name": "James Nestor",
+            "author_designation": "famous researcher on breathing",
+            "quotation_text": "<em>“A rhythm of 5.5-second inhales followed by 5.5-second exhales is the most efficient breathing pattern.”</em>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_6pyhgm",
+        "heading_YeFWNT",
+        "text_rAkiMf",
+        "bio_xX9PmC"
+      ],
+      "name": "t:sections.video-with-text.presets__0.name",
+      "settings": {
+        "custom_class": "video-with-text-section",
+        "full_width": true,
+        "remove_bottom_spacing": true,
+        "autoplay": true,
+        "loop": true,
+        "video": "shopify://files/videos/Breath_square.webm",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "image_size": "media--ratio-4-3",
+        "image_position": "right",
+        "image_width": 50,
+        "text_alignment": "text-left",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": ""
+      }
+    },
+    "apps_EWV9wq": {
+      "type": "apps",
+      "blocks": {
+        "loox_reviews_loox_agg_section_b4Rb8h": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-agg-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "reviews_to_display": "",
+            "default_tab": "automatic",
+            "only_photos": false,
+            "hide_thumbnails": false,
+            "product_handle": "breathelet-onefit",
+            "aggregated": true,
+            "data-limit": 8,
+            "maxwidth": 1080,
+            "is_sample": true
+          }
+        }
+      },
+      "block_order": [
+        "loox_reviews_loox_agg_section_b4Rb8h"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_horizontal_space": false,
+        "remove_vertical_space": false,
+        "subheading": "",
+        "heading": "WHY DO PEOPLE LOVE BREATHELET?",
+        "content": "",
+        "heading_size": "h2",
+        "text_alignment": "text-center",
+        "link_text": "View all",
+        "link_url": "",
+        "new_tab": false,
+        "background_color": "",
+        "text_color": ""
+      }
+    },
+    "1771334505e4d5ee02": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_5f2401e_6V3A8K": {
+          "type": "ai_gen_block_5f2401e",
+          "settings": {
+            "loading_eager": false,
+            "background_image_desktop": "shopify://shop_images/Barbie_wide_56528f6a-5708-4550-9aa7-9c7ccfef573f.png",
+            "background_image_mobile": "shopify://shop_images/ChatGPT_Image_Feb_17_2026_03_07_19_PM.png",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0.3,
+            "border_radius": 4,
+            "desktop_width_percent": 100,
+            "padding_vertical": 70,
+            "padding_horizontal": 20,
+            "padding_vertical_mobile": 40,
+            "padding_horizontal_mobile": 20,
+            "gap": 60,
+            "gap_mobile": 30,
+            "icon_background_style": "circle",
+            "icon_size": 36,
+            "icon_spacing": 10,
+            "icon_color": "#ffffff",
+            "icon_background_color": "#000000",
+            "title_size": 14,
+            "title_spacing": 15,
+            "title_color": "#e1e1e1",
+            "text_size": 13,
+            "text_color": "#ffffff",
+            "feature_1_icon": "shopify://shop_images/evening-1_14e65db3-3418-4c64-b25b-db83fde17c1f.svg",
+            "feature_1_title": "Feel Present Again",
+            "feature_1_text": "",
+            "feature_2_icon": "shopify://shop_images/day-1_14264bd5-8440-443b-ac98-c2421e71f2a6.svg",
+            "feature_2_title": "Calm That Fits Your Day",
+            "feature_2_text": "",
+            "feature_3_icon": "shopify://shop_images/hands-01_41c479bf-d1ea-4ba1-a63d-b39d9c4394b6.svg",
+            "feature_3_title": "Reset Anywhere, Anytime",
+            "feature_3_text": "",
+            "feature_4_icon": "shopify://shop_images/smile.svg",
+            "feature_4_title": "Mindful Habits",
+            "feature_4_text": "",
+            "feature_5_icon": "shopify://shop_images/hands-01_41c479bf-d1ea-4ba1-a63d-b39d9c4394b6.svg",
+            "feature_5_title": "Screenless Wellness",
+            "feature_5_text": "",
+            "feature_6_icon": "shopify://shop_images/hands-01_41c479bf-d1ea-4ba1-a63d-b39d9c4394b6.svg",
+            "feature_6_title": "Meaningful Gift",
+            "feature_6_text": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_5f2401e_6V3A8K"
+      ],
+      "settings": {}
+    },
+    "custom_section_HgdMYY": {
+      "type": "custom-section",
+      "blocks": {
+        "product_meta_short_i4BNrV": {
+          "type": "product-meta-short",
+          "name": "Product Shorts",
+          "settings": {
+            "metafield_namespace": "custom",
+            "metafield_key": "",
+            "autoplay": true,
+            "muted": true,
+            "video_border_radius": 12,
+            "slides_desktop": 4,
+            "slides_medium": 3,
+            "slides_mobile": 2,
+            "slide_gap": 15,
+            "desktop_width_percent": 100,
+            "section_padding": 40,
+            "show_arrows": true,
+            "show_dots": true,
+            "controls_spacing": 25,
+            "arrow_size": 40,
+            "arrow_background": "#000000",
+            "arrow_color": "#ffffff",
+            "arrow_hover_background": "#333333",
+            "arrow_hover_color": "#ffffff",
+            "dot_size": 8,
+            "dot_color": "#cccccc",
+            "dot_active_color": "#000000"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "product_meta_short_i4BNrV"
+      ],
+      "name": "Custom Section",
+      "settings": {
+        "full_width": true,
+        "remove_horizontal_space": false,
+        "remove_vertical_space": false,
+        "content_width": "normal",
+        "subheading": "",
+        "heading": "FOLLOW US ON YOUTUBE",
+        "heading_size": "h2",
+        "text_alignment": "text-center",
+        "link_text": "<svg xmlns=\"http://www.w3.org/2000/svg\" x=\"0px\" y=\"0px\" width=\"25\" height=\"25\" viewbox=\"0 0 48 48\"><path fill=\"#FF3D00\" d=\"M43.2,33.9c-0.4,2.1-2.1,3.7-4.2,4c-3.3,0.5-8.8,1.1-15,1.1c-6.1,0-11.6-0.6-15-1.1c-2.1-0.3-3.8-1.9-4.2-4C4.4,31.6,4,28.2,4,24c0-4.2,0.4-7.6,0.8-9.9c0.4-2.1,2.1-3.7,4.2-4C12.3,9.6,17.8,9,24,9c6.2,0,11.6,0.6,15,1.1c2.1,0.3,3.8,1.9,4.2,4c0.4,2.3,0.9,5.7,0.9,9.9C44,28.2,43.6,31.6,43.2,33.9z\"></path><path fill=\"#FFF\" d=\"M20 31L20 17 32 24z\"></path></svg>@Breathelet",
+        "link_url": "https://www.youtube.com/@Breathelet",
+        "new_tab": false,
+        "heading_html_tag": "h2",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": ""
+      }
+    },
+    "multicolumn_Pxn6VQ": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_x7jMzy": {
+          "type": "column",
+          "settings": {
+            "video_autoplay": true,
+            "heading": "15-day returns ",
+            "heading_size": "h5",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "button",
+            "heading_html_tag": "p"
+          }
+        },
+        "column_KfE8Dc": {
+          "type": "column",
+          "settings": {
+            "video_autoplay": true,
+            "heading": "Lifetime replacement",
+            "heading_size": "h5",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "button",
+            "heading_html_tag": "p"
+          }
+        },
+        "column_DwbRUR": {
+          "type": "column",
+          "settings": {
+            "video_autoplay": true,
+            "heading": "Water-resistant",
+            "heading_size": "h5",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "button",
+            "heading_html_tag": "p"
+          }
+        }
+      },
+      "block_order": [
+        "column_x7jMzy",
+        "column_KfE8Dc",
+        "column_DwbRUR"
+      ],
+      "name": "t:sections.multicolumn.presets__0.name",
+      "settings": {
+        "full_width": true,
+        "enable_swipe_on_mobile": false,
+        "number_of_columns_on_desktop": 3,
+        "space_between_columns": 48,
+        "image_width": 100,
+        "image_size": "",
+        "column_text_alignment": "text-center items-center",
+        "column_text_alignment_mobile": "",
+        "subheading": "",
+        "heading": "",
+        "heading_size": "h4",
+        "content": "",
+        "text_alignment": "text-center",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_html_tag": "p"
+      }
+    },
+    "fa63dde0-c7d9-4ac7-9f3d-90ef6a67184f": {
+      "type": "image-with-text",
+      "blocks": {
+        "ec265dd3-f55f-46a2-9caf-3bf07ff3a06d": {
+          "type": "heading",
+          "settings": {
+            "heading": "Digital detox jewelry.",
+            "heading_size": "h2",
+            "heading_html_tag": "h2"
+          }
+        },
+        "heading_tT4GPB": {
+          "type": "heading",
+          "settings": {
+            "heading": "",
+            "heading_size": "h4",
+            "heading_html_tag": "p"
+          }
+        },
+        "heading_w8eNt4": {
+          "type": "heading",
+          "settings": {
+            "heading": "",
+            "heading_size": "h3",
+            "heading_html_tag": "p"
+          }
+        },
+        "bdb75fd8-0a89-4189-9614-b2d55f963058": {
+          "type": "text",
+          "settings": {
+            "text": "<p>You check your phone 150 times a day. Breathelet reminds you to check yourself.<strong> A vibration only you can feel.</strong></p>"
+          }
+        }
+      },
+      "block_order": [
+        "ec265dd3-f55f-46a2-9caf-3bf07ff3a06d",
+        "heading_tT4GPB",
+        "heading_w8eNt4",
+        "bdb75fd8-0a89-4189-9614-b2d55f963058"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_bottom_spacing": false,
+        "image": "shopify://shop_images/d989e3f2-1a42-444b-97e3-2879e680b4ff-1.jpg",
+        "image_size": "",
+        "image_position": "left",
+        "image_width": 50,
+        "text_alignment": "text-left",
+        "background_color": "#000000",
+        "text_color": "#ffffff",
+        "heading_color": "#ffffff"
+      }
+    },
+    "image_with_text_WjQwNJ": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_6hXwMi": {
+          "type": "heading",
+          "settings": {
+            "heading": "Two Breathelets. One Shared Connection.",
+            "heading_size": "h2",
+            "heading_html_tag": "h2"
+          }
+        },
+        "text_hzBErV": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Two Breathelets, one shared reminder to breathe, reset, and stay present — together.</p>"
+          }
+        },
+        "button_wtdHzk": {
+          "type": "button",
+          "settings": {
+            "button_text": "Buy Everlasting Love Duo",
+            "button_link": "shopify://products/eternal-love-pair",
+            "button_style": "",
+            "button_size": "text-sm md:text-base",
+            "button_background_color": "#ffffff",
+            "button_text_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "heading_6hXwMi",
+        "text_hzBErV",
+        "button_wtdHzk"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_bottom_spacing": false,
+        "image": "shopify://shop_images/breathelet_pwhite-741_jpg.webp",
+        "image_size": "",
+        "image_position": "right",
+        "image_width": 50,
+        "text_alignment": "text-left",
+        "background_color": "#000000",
+        "text_color": "#ffffff",
+        "heading_color": "#ffffff"
+      }
+    },
+    "featured_product_9ybD34": {
+      "type": "featured-product",
+      "blocks": {
+        "title_qxpjjD": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h2",
+            "text_color": ""
+          }
+        },
+        "rating_3mY8jc": {
+          "type": "rating",
+          "settings": {
+            "show_empty_rating": false,
+            "star_size": 20
+          }
+        },
+        "price_LcGYdh": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false,
+            "use_bold_font": true
+          }
+        },
+        "variant_picker_FFz6wj": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "type": "radio",
+            "color_picker_type": "radio",
+            "block_style_rounded": false,
+            "block_style": "filled",
+            "size_chart_page": "",
+            "size_chart_option_name": "Size"
+          }
+        },
+        "inventory_krijVW": {
+          "type": "inventory",
+          "settings": {
+            "enable_low_stock_message": false,
+            "enable_backorder_message": false,
+            "low_stock_threshold": 5
+          }
+        },
+        "quantity_selector_AYifwB": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons_rgTktY": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout_buttons": true,
+            "show_gift_card_recipient": true,
+            "add_to_cart_background_color": "",
+            "add_to_cart_text_color": "",
+            "buy_it_now_background_color": "",
+            "buy_it_now_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "title_qxpjjD",
+        "rating_3mY8jc",
+        "price_LcGYdh",
+        "variant_picker_FFz6wj",
+        "inventory_krijVW",
+        "quantity_selector_AYifwB",
+        "buy_buttons_rgTktY"
+      ],
+      "disabled": true,
+      "name": "t:sections.featured-product.presets__0.name",
+      "settings": {
+        "full_width": true,
+        "featured_product": "eternal-love-pair",
+        "desktop_media_width": 56,
+        "media_size": "1",
+        "media_layout_desktop": "carousel_horizontal",
+        "media_mobile_indicator": "dots",
+        "media_zoom": "lightbox",
+        "media_enable_video_autoplay": false,
+        "media_enable_video_looping": false,
+        "media_fit_height": true,
+        "background_color": "",
+        "text_color": "",
+        "heading_color": ""
+      }
+    },
+    "rich_text_zPXUB9": {
+      "type": "rich-text",
+      "blocks": {
+        "text_h3gqdn": {
+          "type": "text",
+          "settings": {
+            "text": "<p>                                                              </p>"
+          }
+        },
+        "text_eCDkXP": {
+          "type": "text",
+          "settings": {
+            "text": "<p>The breath should not be forced, without tension in your body, and without a loud sound.</p><p>James Nestor, the famous researcher on breathing, mentions that a rhythm of “5.5-second inhales followed by 5.5-second exhales” is the most efficient breathing pattern.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_h3gqdn",
+        "text_eCDkXP"
+      ],
+      "name": "t:sections.rich-text.presets__0.name",
+      "settings": {
+        "full_width": true,
+        "text_alignment": "text-left",
+        "content_width": "normal",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": ""
+      }
+    },
+    "image_hotspots_MEWGdp": {
+      "type": "image-hotspots",
+      "blocks": {
+        "hotspot_AMxJ37": {
+          "type": "hotspot",
+          "settings": {
+            "x": 37,
+            "y": 39,
+            "x_mobile": 76,
+            "y_mobile": 50,
+            "heading": "Gun Metal",
+            "content": ""
+          }
+        },
+        "hotspot_9XmhJ8": {
+          "type": "hotspot",
+          "settings": {
+            "x": 60,
+            "y": 60,
+            "x_mobile": 50,
+            "y_mobile": 50,
+            "heading": "Rose Gold",
+            "content": ""
+          }
+        }
+      },
+      "block_order": [
+        "hotspot_AMxJ37",
+        "hotspot_9XmhJ8"
+      ],
+      "name": "t:sections.image-hotspots.presets__0.name",
+      "settings": {
+        "full_width": true,
+        "image": "shopify://shop_images/877fd284-bb41-4b9b-bab2-eff3bfac6e8d-scaled.png",
+        "image_max_width": 1920,
+        "subheading": "For a clean, classic bracelet look.Adjustable fit",
+        "heading": "Gunmetal — Rose Gold",
+        "heading_size": "h2",
+        "content": "",
+        "text_alignment": "text-center",
+        "background_color": "#000000",
+        "text_color": "",
+        "heading_color": "",
+        "dot_background_color": "",
+        "dot_icon_color": "",
+        "popover_background_color": "",
+        "popover_text_color": "",
+        "heading_html_tag": "p"
+      }
+    },
+    "rich_text_fq93c9": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_7DAAYy": {
+          "type": "heading",
+          "settings": {
+            "heading": "Features",
+            "heading_size": "h1",
+            "heading_html_tag": "p"
+          }
+        }
+      },
+      "block_order": [
+        "heading_7DAAYy"
+      ],
+      "name": "t:sections.rich-text.presets__0.name",
+      "settings": {
+        "full_width": true,
+        "text_alignment": "text-center mx-auto",
+        "content_width": "normal",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": ""
+      }
+    },
+    "177133889400aad7f9": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_634672e_C6V3eQ": {
+          "type": "ai_gen_block_634672e",
+          "settings": {
+            "desktop_width_percent": 100,
+            "columns_desktop": 3,
+            "columns_mobile": "2",
+            "alignment": "center",
+            "grid_gap": 10,
+            "section_padding": 30,
+            "item_background_color": "#000000",
+            "item_border_radius": 8,
+            "item_padding": 25,
+            "logo_max_width": 80,
+            "spacing_below_logo": 0,
+            "title_font_size": 16,
+            "title_color": "#ffffff",
+            "spacing_below_title": 8,
+            "text_font_size": 13,
+            "text_color": "#ffffff",
+            "logo_1": "shopify://shop_images/icons-01.svg",
+            "title_1": "No app. No Bluetooth. No screen.",
+            "text_1": "No setup. No syncing. No dopamine traps. No EMF.",
+            "logo_2": "shopify://shop_images/icons-02.svg",
+            "title_2": "Water-resistant",
+            "text_2": "Cry. sweat. shower. live. It’s made for daily wear.",
+            "logo_3": "shopify://shop_images/icons-03.svg",
+            "title_3": "Gentle randomized vibrations",
+            "text_3": "A soft touch — not a buzz.",
+            "logo_4": "shopify://shop_images/icons-04.svg",
+            "title_4": "Looks like jewelry, not a gadget",
+            "text_4": "Minimal design. Premium feel.",
+            "logo_5": "shopify://shop_images/icons-05.svg",
+            "title_5": "Giftable price",
+            "text_5": "From 29.99 — the easiest “yes” gift.",
+            "logo_6": "shopify://shop_images/icons-06.svg",
+            "title_6": "Two styles",
+            "text_6": "Choose your fit: Rose Gold or Gunmetal."
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_634672e_C6V3eQ"
+      ],
+      "settings": {}
+    },
+    "image_with_text_tHGRPd": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_EGbNaG": {
+          "type": "heading",
+          "settings": {
+            "heading": "The perfect gift for someone who’s always “busy.”",
+            "heading_size": "h2",
+            "heading_html_tag": "p"
+          }
+        },
+        "text_bHQAA3": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Give them something that doesn’t add pressure — it gives relief.</p><p>Under $30. Looks premium. Actually useful.</p>"
+          }
+        },
+        "button_qJcVAf": {
+          "type": "button",
+          "settings": {
+            "button_text": "Gift Breathelet - $39.99",
+            "button_link": "shopify://products/breathelet-onefit",
+            "button_style": "button-outline",
+            "button_size": "text-sm md:text-base",
+            "button_background_color": "#ffffff",
+            "button_text_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "heading_EGbNaG",
+        "text_bHQAA3",
+        "button_qJcVAf"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_bottom_spacing": false,
+        "image": "shopify://shop_images/image-1.jpg",
+        "image_size": "",
+        "image_position": "left",
+        "image_width": 50,
+        "text_alignment": "text-left",
+        "background_color": "#0a0b0c",
+        "text_color": "#ffffff",
+        "heading_color": "#ffffff"
+      }
+    },
+    "featured_collection_MU6wJG": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "carousel": true,
+        "products_count": 8,
+        "grid_columns": 4,
+        "grid_columns_mobile": "2",
+        "products": [],
+        "collection": "accessories",
+        "subheading": "",
+        "heading": "Accessories",
+        "heading_size": "h2",
+        "text_alignment": "text-center",
+        "link_text": "View all",
+        "link_url": "shopify://collections/accessories",
+        "background_color": "#0a0b0c",
+        "text_color": "",
+        "heading_color": "",
+        "heading_html_tag": "p"
+      }
+    },
+    "47953464-d278-497d-be52-ea15912c52d9": {
+      "type": "featured-blog",
+      "settings": {
+        "full_width": true,
+        "carousel": true,
+        "blog": "news",
+        "articles_count": 3,
+        "grid_columns": 3,
+        "heading": "Blog posts",
+        "heading_size": "h2",
+        "text_alignment": "text-left",
+        "link_text": "View all",
+        "show_category": true,
+        "background_color": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_html_tag": "p"
+      }
+    }
+  },
+  "order": [
+    "slideshow_7aaerb",
+    "featured_collection_jdUFMc",
+    "1779445986c7e74670",
+    "video_with_text_6kqVVV",
+    "apps_EWV9wq",
+    "1771334505e4d5ee02",
+    "custom_section_HgdMYY",
+    "multicolumn_Pxn6VQ",
+    "fa63dde0-c7d9-4ac7-9f3d-90ef6a67184f",
+    "image_with_text_WjQwNJ",
+    "featured_product_9ybD34",
+    "rich_text_zPXUB9",
+    "image_hotspots_MEWGdp",
+    "rich_text_fq93c9",
+    "177133889400aad7f9",
+    "image_with_text_tHGRPd",
+    "featured_collection_MU6wJG",
+    "47953464-d278-497d-be52-ea15912c52d9"
+  ]
+}

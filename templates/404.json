@@ -1,0 +1,35 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-404",
+      "settings": {
+        "full_width": true,
+        "subheading": "404",
+        "heading": "Page not found",
+        "content": "",
+        "heading_size": "h2",
+        "text_alignment": "text-center",
+        "button_text": "Continue shopping",
+        "button_url": "shopify://collections/all",
+        "button_style": "",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": "",
+        "button_background_color": "",
+        "button_text_color": ""
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

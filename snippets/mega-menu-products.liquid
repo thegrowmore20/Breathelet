@@ -1,0 +1,48 @@
+<mega-menu-horizontal
+  interaction-handler="{{ interaction_handler | default: "click" }}"
+  style="--promo-image-width: {{ block.settings.promo_image_width }}px;"
+  {{ block.shopify_attributes }}
+  data-block-id="{{ block.id }}"
+>
+  <details>
+    <summary>
+      <a href="{{ link.url }}" class="menu-item">
+        {{ link.title }}
+
+        <div class="collapse-chevron w-3 ml-2">
+          {% render 'icon-chevron' %}
+        </div>
+      </a>
+    </summary>
+    <div
+      class="mega__menu_products mega-menu-horizontal absolute left-0 right-0 top-full overflow-hidden"
+    >
+      <div
+        class="mega-menu-horizontal__inner overflow-y-auto overscroll-y-contain border-t bg-background min-h-[300px]"
+      >
+        <div class="container flex gap-12 xl:gap-16 pt-8 pb-16 hd:pt-12">
+
+          {% capture image_sizes %}
+            {% render 'product-carousel-image-sizes',
+                enabled: false,
+                grid_columns: false,
+                grid_columns_mobile: false
+            %}
+          {% endcapture %}
+
+          {% capture card_attrs %}
+          data-animation="block"
+          data-animation-group="{{ section.id }}-product-cards"
+          {% endcapture %}
+
+          <div class="grow auto-rows-min grid grid-cols-mega-menu-horizontal-items mega-menu-width-adjust {{ block.settings.menu_max_width }} gap-x-3 gap-y-3 styled-links break-anywhere">
+            {% for product in block.settings.products %}
+                {% render 'mega-menu-product-cards', card_product: product, attrs: card_attrs, class: "h-full", sizes: image_sizes %}
+            {% endfor %}
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </details>
+</mega-menu-horizontal>

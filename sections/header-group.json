@@ -1,0 +1,114 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "88bc7a37-77b6-4afc-9071-f324b1ecedef": {
+          "type": "announcement",
+          "settings": {
+            "text": "Welcome to our store",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "88bc7a37-77b6-4afc-9071-f324b1ecedef"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "text_size": "announcement-bar--text-sm",
+        "transition": "slide-y",
+        "autoplay": true,
+        "change_message_every": 4,
+        "background_color": "#f9f9f9",
+        "text_color": "rgba(0,0,0,0)"
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "mega_menu_products_WaidzF": {
+          "type": "mega_menu_products",
+          "settings": {
+            "menu_item": "Shop Breathelet",
+            "type": "horizontal",
+            "menu_max_width": "max-w-[50%]",
+            "products": [
+              "charging-dock",
+              "breathelet-onefit-replacement-strings",
+              "eternal-love-pair",
+              "breathelet-onefit"
+            ]
+          }
+        },
+        "mega_menu_products_3Bq3jm": {
+          "type": "mega_menu_products",
+          "settings": {
+            "menu_item": "Shop Accessories",
+            "type": "horizontal",
+            "menu_max_width": "max-w-sm",
+            "products": [
+              "charging-dock",
+              "breathelet-onefit-replacement-strings"
+            ]
+          }
+        }
+      },
+      "block_order": [
+        "mega_menu_products_WaidzF",
+        "mega_menu_products_3Bq3jm"
+      ],
+      "settings": {
+        "sticky_header_mode": "scroll-up",
+        "logo": "shopify://shop_images/breathelet-logo-03_df31c2b7-7a2f-4010-bcfe-ddc961ec73e3.svg",
+        "logo_width": 128,
+        "logo_width_mobile": 108,
+        "menu": "header-menu",
+        "menu_mobile": "main-menu",
+        "desktop_layout": "logo-left-nav-center",
+        "mobile_layout": "logo-left",
+        "open_dropdowns_on": "hover",
+        "text_color_header_transparent": "#ffffff",
+        "logo_header_transparent": "shopify://shop_images/breathelet-logo-var-01.png",
+        "enable_country_selector": false,
+        "country_selector_show_country_flag": false,
+        "country_selector_show_country_name": false,
+        "country_selector_show_currency": false,
+        "enable_language_selector": true,
+        "enable_search": true,
+        "enable_h1_on_index": true
+      }
+    },
+    "9e2ab7e9-ef20-4927-a77f-7d8d1f2e7b7d": {
+      "type": "promotion-bar",
+      "disabled": true,
+      "settings": {
+        "show_only_on_homepage": false,
+        "content": "<p><strong>SPECIAL OFFER</strong></p><p>Insert your text about your sale, discount code, or special offer here.</p>",
+        "url": "shopify://collections/all",
+        "text_size": "text-sm md:text-base",
+        "section_height": "py-2",
+        "background_color": "#ffc60d",
+        "text_color": "",
+        "heading_color": ""
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header",
+    "9e2ab7e9-ef20-4927-a77f-7d8d1f2e7b7d"
+  ]
+}

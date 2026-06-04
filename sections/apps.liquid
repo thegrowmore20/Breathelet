@@ -1,0 +1,174 @@
+{% liquid
+  assign section_classes = ' app-section '
+
+  if section.settings.remove_horizontal_space
+    assign section_classes = section_classes | append: ' !px-0 '
+  endif
+
+  if section.settings.remove_vertical_space
+    assign section_classes = section_classes | append: ' !py-0 '
+  endif
+
+    if section.settings.link_url != blank
+    assign link_url = section.settings.link_url
+  elsif section.settings.collection != blank
+    assign link_url = section.settings.collection.url
+  else
+    assign link_url = null
+  endif
+
+%}
+
+{% render 'section-bg-number-vars' %}
+
+<div {% render 'section-attrs', class: section_classes %}>
+
+  {% if section.settings.heading != blank %}
+    {% render 'section-header', link_text: section.settings.link_text, link_url: link_url, new_tab, section.settings.new_tab %}
+  {% endif %}
+
+  <div class="section-body">    
+    {%- for block in section.blocks -%}
+      {% render block %}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.apps.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "t:sections.all.full_width.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "remove_horizontal_space",
+      "label": "t:sections.apps.settings.remove_horizontal_space.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "remove_vertical_space",
+      "label": "t:sections.apps.settings.remove_vertical_space.label"
+    },
+     {
+      "type": "header",
+      "content": "t:sections.all.headers.heading"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "t:sections.all.subheading.label"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:sections.featured-collection.settings.heading.label"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "t:sections.all.content.label"      
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "t:sections.all.heading_size.label",
+      "options": [
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__0.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h3",
+          "label": "t:sections.all.heading_size.options__3.label"
+        },
+        {
+          "value": "h4",
+          "label": "t:sections.all.heading_size.options__4.label"
+        },
+        {
+          "value": "h5",
+          "label": "t:sections.all.heading_size.options__5.label"
+        },
+        {
+          "value": "h6",
+          "label": "t:sections.all.heading_size.options__6.label"
+        }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "t:sections.all.text_alignment.label",
+      "options": [
+        {
+          "value": "text-left",
+          "label": "t:sections.all.text_alignment.options.text_left.label"
+        },
+        {
+          "value": "text-center",
+          "label": "t:sections.all.text_alignment.options.text_center.label"
+        }
+      ],
+      "default": "text-center"
+    },
+    {
+      "type": "html",
+      "id": "link_text",
+      "label": "t:sections.featured-collection.settings.link_text.label",
+      "default": "View all"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "t:sections.featured-collection.settings.link_url.label",
+      "info": "t:sections.featured-collection.settings.link_url.info"
+    },
+    {
+      "type" : "checkbox",
+      "id" : "new_tab",
+      "label" : "Open in New Tab",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.headers.colors"
+    },
+    {
+      "type": "color",
+      "label": "t:sections.all.background_color.label",
+      "id": "background_color"
+    },
+    {
+      "type": "color",
+      "label": "t:sections.all.text_color.label",
+      "id": "text_color"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"      
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.apps.presets.name"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,364 @@
+<mega-menu-horizontal
+  interaction-handler="{{ interaction_handler | default: "click" }}"
+  style="--promo-image-width: {{ block.settings.promo_image_width }}px;"
+  {{ block.shopify_attributes }}
+  data-block-id="{{ block.id }}"
+>
+  <details>
+    <summary>
+      <a href="{{ link.url }}" class="menu-item pb-4 -mb-4">
+        {{ link.title }}
+
+        <div class="collapse-chevron w-3 ml-2">
+          {% render 'icon-chevron' %}
+        </div>
+      </a>
+    </summary>
+    <div
+      class="mega__menu_category mega-menu-horizontal absolute left-0 right-0 top-full overflow-hidden"
+    >
+      <div
+        class="mega-menu-horizontal__inner overflow-y-auto overscroll-y-contain border-t bg-background min-h-[400px]"
+      >
+        <div class="container flex gap-12 xl:gap-16 pt-8 pb-16 hd:pt-12">
+                <div class="product-tabs-{{ section.id }}">
+                <div class="showcase-container">
+                    {% assign collections = block.settings.collections %}
+                    <!-- Sidebar Menu -->
+                    <div class="sidebar">
+                        <ul class="category-list" role="tablist">                            
+                            {%- for block in collections -%}
+                                <li class="category-item {% if forloop.first %}active{% endif %}" 
+                                    role="tab"
+                                    aria-controls="cat-{{ section.id }}-{{ block.id }}"
+                                    aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+                                    data-target="cat-{{ section.id }}-{{ block.id }}" 
+                                    data-section="{{ section.id }}"
+                                    {{ block.shopify_attributes }}>
+                                    <a href="{{ block.url }}" title="{{ block.title }}">
+                                    {{ block.title | escape }} 
+                                        <span class="collection-product-count">
+                                        ({{ block.products_count }})
+                                        </span>
+                                    </a>
+                                </li>
+                            {%- endfor -%}
+                        </ul>
+                    </div>
+                     {% capture image_sizes %}
+                        {% render 'product-carousel-image-sizes',
+                            enabled: false,
+                            grid_columns: false,
+                            grid_columns_mobile: false
+                        %}
+                    {% endcapture %}
+                    {% capture card_attrs %}
+                        data-animation="block"
+                        data-animation-group="{{ section.id }}-product-cards"
+                    {% endcapture %}
+                         <!-- Product Areas -->
+                    <div class="product-display">
+                        {%- for block in block.settings.collections -%}
+                            <div class="w-full product-grid {% if forloop.first %}active{% endif %}" 
+                                id="cat-{{ section.id }}-{{ block.id }}"
+                                role="tabpanel"
+                                aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}">
+                    
+                                {%- if block != blank and block.products_count > 0 -%}
+                                    {%- for product in block.products limit: 5 -%}
+                                        {% render 'mega-menu-product-cards', card_product: product, attrs: card_attrs, class: "h-full", sizes: image_sizes %}
+                                    {%- endfor -%}
+                                    {%- if block.products_count > 5 -%}
+                                        <a href="{{ block.url | default: "#." }}" class="product-arrow">
+                                            {% render 'icon-chevron' %}
+                                        </a>
+                                    {%- endif -%}
+                                {%- else -%}
+                                    <p style="color: var(--text-muted); text-align: center; width: 100%; grid-column: 1 / -1; padding: 2rem;">
+                                        No products found in this category. Select a valid collection in the theme editor.
+                                    </p>
+                                {%- endif -%}
+                            </div>
+                        {%- endfor -%}
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</mega-menu-horizontal>
+
+<script>
+  // Scoped within an event listener to not pollute global namespace (CWV/JS optimization), ensures DOM is ready
+  document.addEventListener('DOMContentLoaded', () => {
+      const sectionId = "{{ section.id }}";
+      const categoryItems = document.querySelectorAll(`.category-item[data-section="${sectionId}"]`);
+      const productGrids = document.querySelectorAll(`.product-tabs-${sectionId} .product-grid`);
+      categoryItems.forEach(item => {
+          // Hover logic, keeping it lightweight
+          item.addEventListener('mouseenter', function() {
+              categoryItems.forEach(cat => {
+                 cat.classList.remove('active');
+                 cat.setAttribute('aria-selected', 'false');
+              });
+
+              productGrids.forEach(grid => {
+                 grid.classList.remove('active');
+                 grid.setAttribute('aria-hidden', 'true');
+              });
+              this.classList.add('active');
+              this.setAttribute('aria-selected', 'true');
+              
+              const targetId = this.getAttribute('data-target');
+              const targetGrid = document.getElementById(targetId);
+              
+              if (targetGrid) {
+                  targetGrid.classList.add('active');
+                  targetGrid.setAttribute('aria-hidden', 'false');
+              }
+          });
+          
+          // Fallback for touch devices
+          item.addEventListener('click', function(e) {
+              if (window.matchMedia("(hover: none)").matches) {
+                 categoryItems.forEach(cat => {
+                    cat.classList.remove('active');
+                    cat.setAttribute('aria-selected', 'false');
+                 });
+                 productGrids.forEach(grid => {
+                    grid.classList.remove('active');
+                    grid.setAttribute('aria-hidden', 'true');
+                 });
+                 this.classList.add('active');
+                 this.setAttribute('aria-selected', 'true');
+                 
+                 const targetId = this.getAttribute('data-target');
+                 const targetGrid = document.getElementById(targetId);
+                 
+                 if (targetGrid) {
+                     targetGrid.classList.add('active');
+                     targetGrid.setAttribute('aria-hidden', 'false');
+                 }
+              }
+          });
+      });
+  });
+</script>
+
+<style>
+  /* Scoped specifically to this exact section instance so it doesn't bleed */
+  .product-tabs-{{ section.id }} {
+      --primary-color: {{ section.settings.primary_color }}; 
+      --text-main: #333333;
+      --text-muted: #666666;
+      --bg-card: #ffffff;
+      --border-color: #e5e5e5;
+      --transition-speed: 0.3s;
+      --gold-color: #FBBC05;
+      
+      display: flex;
+      justify-content: center;
+      width: 100%;      
+  }
+  /* Container for the whole component */
+  .product-tabs-{{ section.id }} .showcase-container {
+      display: flex;
+      background: var(--bg-card);
+      border-radius: 12px;            
+      width: 100%;      
+  }
+  /* Sidebar Styling */
+  .product-tabs-{{ section.id }} .sidebar {
+      width: 290px;
+      border-right: 1px solid var(--border-color);      
+      background: #fff;
+      flex-shrink: 0;
+  }
+  .product-tabs-{{ section.id }} .category-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+  }
+  .product-tabs-{{ section.id }} .category-item {
+      padding: .25rem 2rem .25rem 1rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;      
+      color: var(--text-main);
+      transition: color var(--transition-speed) ease;
+      position: relative;
+      line-height: normal;
+  }
+
+  .product-arrow {
+    border: 1px solid #000;
+    border-radius: 50%;
+    height: 2.2rem;
+    width: 2.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: -50px;
+}
+
+.product-arrow svg {
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.product-arrow:hover {
+    background-color: #000;
+}
+
+.product-arrow:hover svg path {
+    stroke: #fff;
+}
+
+  /* Arrow indicator */
+  .product-tabs-{{ section.id }} .category-item::after {
+      content: '›';
+      font-size: 1.5rem;
+      color: transparent;
+      line-height: normal;
+      transition: color var(--transition-speed) ease;      
+    margin-bottom: 2px;
+  }
+  /* Active/Hover states for sidebar items */
+  @media (hover: hover) {
+      .product-tabs-{{ section.id }} .category-item:hover {
+          color: var(--primary-color);
+      }
+      .product-tabs-{{ section.id }} .category-item:hover::after {
+          color: var(--primary-color);
+      }
+  }
+  
+  .product-tabs-{{ section.id }} .category-item.active {
+      color: var(--gold-color);
+  }
+  .product-tabs-{{ section.id }} .category-item.active::after {
+      color: var(--gold-color);
+  }
+  /* Product Display Area */
+  .product-tabs-{{ section.id }} .product-display {
+    flex-grow: 1;
+    padding: 2rem 0rem 2rem 2rem;
+    background: #fff;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  /* Individual category grids */
+  .product-tabs-{{ section.id }} .product-grid {
+      display: none; /* Hidden by default */
+    --mega-menu-horizontal-column-width-category: clamp(130px, 77.7778px + 8.8889vw, 150px);
+
+      grid-template-columns: repeat(auto-fill, minmax(var(--mega-menu-horizontal-column-width-category), 1fr));      
+      gap: .75rem;
+      opacity: 0;
+      transform: translateY(10px);
+      /* CWV: Use only opacity and transform for performant paints */
+      transition: opacity var(--transition-speed) ease, transform var(--transition-speed) ease;
+      align-items: center;      
+  }
+  /* Active grid state */
+  .product-tabs-{{ section.id }} .product-grid.active {
+      display: grid;
+      opacity: 1;
+      transform: translateY(0);
+      animation: fadeIn-{{ section.id }} 0.4s ease-out forwards;
+  }
+  /* Product Card Styling */
+  .product-tabs-{{ section.id }} .product-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      text-decoration: none;
+      color: inherit;
+      transition: transform var(--transition-speed) ease;
+  }
+  @media (hover: hover) {
+      .product-tabs-{{ section.id }} .product-card:hover .product-image-wrapper img {
+          transform: scale(1.05); /* GPU Accelerated */
+      }
+      .product-tabs-{{ section.id }} .product-card:hover .product-title {
+          color: var(--primary-color);
+      }
+  }
+  /* CWV/CLS Optimization: Strict aspect ratio to prevent layout shifts before img load */
+  .product-tabs-{{ section.id }} .product-image-wrapper {
+      width: 100%;
+      aspect-ratio: 1; 
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      overflow: hidden;
+  }
+  .product-tabs-{{ section.id }} .product-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      /* GPU Accelerated scale transform on hover */
+      transition: transform var(--transition-speed) ease;
+      will-change: transform;
+  }
+  .product-tabs-{{ section.id }} .product-title {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: color var(--transition-speed) ease;
+  }
+  @keyframes fadeIn-{{ section.id }} {
+      from {
+          opacity: 0;
+          transform: translateY(10px);
+      }
+      to {
+          opacity: 1;
+          transform: translateY(0);
+      }
+  }
+  /* Responsive Constraints */
+  @media (max-width: 768px) {
+      .product-tabs-{{ section.id }} .showcase-container {
+          flex-direction: column;
+      }
+      .product-tabs-{{ section.id }} .sidebar {
+          width: 100%;
+          border-right: none;
+          border-bottom: 1px solid var(--border-color);
+          padding: 1rem 0;
+      }
+      .product-tabs-{{ section.id }} .category-list {
+          flex-direction: row;
+          overflow-x: auto;
+          overflow-y: hidden;
+          padding-bottom: 0.5rem;
+          -webkit-overflow-scrolling: touch;
+      }
+      .product-tabs-{{ section.id }} .category-item {
+          white-space: nowrap;
+          padding: 0.5rem 1rem;
+      }
+      .product-tabs-{{ section.id }} .category-item::after {
+          display: none; /* Hide chevron on mobile top menu */
+      }
+      .product-tabs-{{ section.id }} .product-grid {
+          grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+          gap: 1rem;
+      }
+  }
+</style>
