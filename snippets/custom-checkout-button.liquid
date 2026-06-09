@@ -1,0 +1,73 @@
+<div class="checkout-custom-button {% unless product.selected_or_first_available_variant.available %} hidden {% endunless %}" id="checkout-custom-button-form">
+<form method="post" id="custom-checkout-form" action="{{ routes.cart_add_url }}" novalidate="novalidate" data-type="add-to-cart-form" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+    <input type="hidden" name="quantity" value="1">
+    <input type="hidden" name="return_to" value="/checkout">
+    
+    <button type="submit" id="custom-checkout-button-pdp" class="custom-checkout-btn button button-primary" style="width: 100%;">
+    <span id="custom-checkout-text">Buy it Now</span>
+    </button>
+</form>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const checkoutBtn = document.getElementById("custom-checkout-button-pdp");
+    if (!checkoutBtn) return;
+
+    checkoutBtn.addEventListener("click", async function(e) {
+    e.preventDefault();
+    
+    const btnText = document.getElementById('custom-checkout-text');
+    this.classList.add('is-loading');
+    this.disabled = true;
+    btnText.textContent = 'Redirecting...';
+
+    setTimeout(async () => {
+        try {
+        const customForm = checkoutBtn.closest('form');
+        const formData = new FormData(customForm);
+        
+        const mainForm = document.querySelector('form[action*="/cart/add"]:not(#custom-checkout-form)');
+
+        if (mainForm) {
+            const appInputs = mainForm.querySelectorAll('[name^="properties"]:not([type="checkbox"]):not([type="radio"]), [name^="properties"]:checked');
+            for (const input of appInputs) {
+            if (input.value.trim() !== "") {
+                formData.set(input.name, input.value);
+            }
+            }
+        }
+
+        const response = await fetch(`${window.Shopify?.routes?.root || '/'}cart/add.js`, {
+            method: 'POST',
+            body: formData,
+            headers: { 'X-Requested-With': 'XMLHttpRequest' }
+        });
+
+        if (!response.ok) throw new Error('Cart submission failed');
+        window.location.href = '/checkout';
+
+        } catch (error) {
+        console.error('Checkout Error:', error);
+        checkoutBtn.closest('form').submit();
+        }
+    }, 0);
+    });
+});
+</script>
+    <style>
+    .custom-checkout-btn {
+            width: 100%;                  
+            min-height: 48px;
+            transition: all .2s ease;
+    }    
+    .custom-checkout-btn:hover{
+        background-color: #333333;
+    }
+    @media screen and (max-width: 520px){
+        .custom-checkout-btn {                 
+            min-height: 40px;
+        }  
+    }
+    </style>

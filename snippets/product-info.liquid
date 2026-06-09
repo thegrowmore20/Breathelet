@@ -115,6 +115,10 @@
           >
             {% render 'product-page-price', product: product, block: block %}
           </div>
+        {% when 'delivery' %}
+          {% if product.selected_or_first_available_variant.available %}
+            {% render 'product-delivery-dates', block: block, class: 'my-4', text_size_delivery_class: 'text-sm md:text-base' %}           
+          {% endif %}
         {% when 'payment_installments' %}
           <div {{ block.shopify_attributes }}>
             {%- assign installment_id = 'Installment-' | append: section.id -%}
@@ -134,6 +138,7 @@
               {% render 'product-variant-picker', product: product, product_form_id: product_form_id, block: block %}
             </div>
           {% endunless %}
+
         {% when 'inventory' %}
           <div
             class="product-stock-info my-6 empty:hidden"
@@ -143,6 +148,38 @@
           >
             {% render 'product-stock-info', product: product, block: block %}
           </div>
+
+        {% when 'qty_btn_selector' %}
+
+        {% render 'addons_and_free_gifts', product: product %}
+          
+        <div class="wrapper-with-custom-checkout flex gap-2 flex-col">
+          <div class="qty-button-wrapper flex justify-start items-center gap-2 sm:gap-6" {{ block.shopify_attributes }}>
+            <div class="qty-wrap">
+              <div class="qty-selector-wrapper">
+                {% capture qty_selector_id %}{{ section.id }}-qty-input{% endcapture %}
+  
+                <label class="label label-product-info mb-3 hidden" for="{{ qty_selector_id }}">
+                  {{ 'products.product.quantity.label' | t }}
+                </label>
+  
+                <div>
+                  {% render 'qty-selector', product: product, product_form_id: product_form_id, id: qty_selector_id %}
+                </div>
+              </div>
+            </div>
+            <div class="buy-btn-wrap {% unless block.settings.show_dynamic_checkout_buttons %}grow{% endunless %}">
+              <div class="product-buy-buttons">
+               {% render 'product-page-buy-buttons', product: product, product_form_id: product_form_id, block: block %}
+             </div>
+            </div>            
+          </div>          
+
+          {% render 'custom-checkout-button', product: product %}
+      
+
+          </div>  
+
         {% when 'quantity_selector' %}
           <div class="qty-selector-wrapper my-6" {{ block.shopify_attributes }}>
             {% capture qty_selector_id %}{{ section.id }}-qty-input{% endcapture %}

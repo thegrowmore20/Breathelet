@@ -1005,6 +1005,7 @@ th {
   display: grid;
   gap: var(--grid-gap);
   grid: auto / auto-flow var(--grid-item-width);
+  padding-top: 5px;
 }
 :not(.grid-carousel--stack).grid-carousel--pseudo-pr > :last-child {
   position: relative;
@@ -1775,16 +1776,16 @@ video-player {
   width: 100%;
 }
 .cart-modal {
-  --cart-modal-px: 1.5rem;
+  --cart-modal-px: 1rem;
 }
 @media (min-width: 576px) {
   .cart-modal {
-    --cart-modal-px: 2rem;
+    --cart-modal-px: 1rem;
   }
 }
 @media (min-width: 768px) {
   .cart-modal {
-    --cart-modal-px: 2.5rem;
+    --cart-modal-px: 1.5rem;
   }
 }
 .cart-modal::part(panel) {
@@ -1802,15 +1803,15 @@ video-player {
   border-bottom-width: 1.25px;
   padding-left: 2rem;
   padding-right: 2rem;
-  padding-bottom: 1.5rem;
+  padding-bottom: .75rem;
   padding-top: 1.5rem;
 }
 @media (min-width: 576px) {
   .modal-header {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
-    padding-bottom: 2rem;
-    padding-top: 2rem;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
   }
 }
 .modal-body {
@@ -5024,7 +5025,7 @@ sticky-add-to-cart {
 }
 @media (min-width: 992px) {
   sticky-add-to-cart {
-    max-width: 42rem;
+    max-width: 36rem;
   }
 }
 sticky-add-to-cart {
@@ -5035,10 +5036,7 @@ sticky-add-to-cart {
 }
 @media (min-width: 992px) {
   sticky-add-to-cart {
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding: 10px;
   }
 }
 sticky-add-to-cart {
@@ -5087,7 +5085,7 @@ sticky-add-to-cart .product-thumbnail {
 @media (min-width: 992px) {
   sticky-add-to-cart .product-thumbnail {
     margin-inline-end: 1.5rem;
-    height: 6rem;
+    height: 5rem;
   }
 }
 @media not all and (min-width: 768px) {
@@ -6438,14 +6436,19 @@ media-carousel[adaptive-height]:not(:defined) .product-gallery__slide:not(:first
   }
 }
 .buy-buttons :where(.button, .shopify-payment-button__button--unbranded) {
-  min-height: 52px;
+  min-height: 40px;
   padding-top: 0px;
   padding-bottom: 0px;
   font-size: var(--size-text-base) !important;
 }
 @media (min-width: 768px) {
   .buy-buttons :where(.button, .shopify-payment-button__button--unbranded) {
-    min-height: 60px !important;
+    min-height: 48px;
+  }
+}
+@media (max-width: 350px) {
+  .buy-buttons :where(.button, .shopify-payment-button__button--unbranded) {
+    font-size: 14px !important;
   }
 }
 .buy-buttons > * {
@@ -8542,6 +8545,9 @@ shopify-accelerated-checkout-cart {
 .pt-2 {
   padding-top: 0.5rem;
 }
+.pt-3 {
+  padding-top: 0.75rem;
+}
 .pt-4 {
   padding-top: 1rem;
 }
@@ -8611,6 +8617,9 @@ shopify-accelerated-checkout-cart {
 }
 .text-xs {
   font-size: var(--size-text-xs);
+}
+.font-600 {
+  font-weight: 600;
 }
 .font-bold {
   font-weight: var(--font-body-weight-bold);

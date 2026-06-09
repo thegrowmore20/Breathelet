@@ -1,0 +1,64 @@
+ <div class="product-delivery-dates block product-delivery-dates block pr-4 {{ class }}">
+	<span class="caption-large flex free-ship-note items-center rte tax-note gap-2">
+		<div class="icon-md">                                
+		{% render 'icon-truck' %}
+	</div> 
+	{% assign today = 'now' | date: '%s' %}
+	{% assign one_day = 86400 %}
+	{% assign start_days = block.settings.delivery_from | default: 3 %}
+	{% assign end_days = block.settings.delivery_to | default: 5 %}
+	
+	{% assign start_date = today %}
+	{% assign end_date = today %}
+	{% assign business_days = 0 %}
+	
+	{%- comment -%}
+	Calculate start date (3 business days ahead)
+	{%- endcomment -%}
+	{% for i in (1..20) %}
+		{% assign start_date = start_date | plus: one_day %}
+		{% assign day_name = start_date | date: '%a' %}
+		{% if day_name != 'Sat' and day_name != 'Sun' %}
+			{% assign business_days = business_days | plus: 1 %}
+		{% endif %}
+		{% if business_days == start_days %}
+			{% break %}
+		{% endif %}
+	{% endfor %}
+	
+	{% assign start_display = start_date | date: '%b %e' %}
+	
+	{%- comment -%}
+	Calculate end date (5 business days ahead)
+	{%- endcomment -%}
+	{% assign business_days = 0 %}
+	{% assign end_date = today %}
+	{% for i in (1..25) %}
+		{% assign end_date = end_date | plus: one_day %}
+		{% assign day_name = end_date | date: '%a' %}
+		{% if day_name != 'Sat' and day_name != 'Sun' %}
+			{% assign business_days = business_days | plus: 1 %}
+		{% endif %}
+		{% if business_days == end_days %}
+			{% break %}
+		{% endif %}
+	{% endfor %}
+	
+	{%- comment -%}
+	Compare months safely (assign first)
+	{%- endcomment -%}
+	{% assign start_month = start_date | date: '%b' %}
+	{% assign end_month = end_date | date: '%b' %}
+	{% assign start_day = start_date | date: '%e' %}
+	{% assign end_day = end_date | date: '%e' %}
+	
+	{%- comment -%}
+	Output display format
+	{%- endcomment -%}
+	{% if start_month == end_month %}
+		<span class="{{ text_size_delivery_class }}">Receive by {{ start_month }} {{ start_day }} - {{ end_month }} {{ end_day }}</span>
+	{% else %}
+		<span class="{{ text_size_delivery_class }}">Receive by {{ start_month }} {{ start_day }} - {{ end_month }} {{ end_day }}</span>
+	{% endif %}
+</span>
+</div>   

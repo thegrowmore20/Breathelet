@@ -1,30 +1,22 @@
+
 {% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
 
 {% liquid
-  assign metafield_namespace = block.settings.metafield_namespace
-  assign metafield_key = block.settings.metafield_key
-  assign video_links = product.metafields[metafield_namespace][metafield_key].value
-  assign use_metaobject = false
+  assign metafield_namespace = block.settings.metafield_namespace | strip
+  assign metafield_key = block.settings.metafield_key | strip
+  assign video_entries = product.metafields[metafield_namespace][metafield_key].value
 
-  if video_links == blank or video_links.size == 0
-    assign metaobject_entries = shop.metaobjects['youtube_shorts'].values
-    assign use_metaobject = true
+  if video_entries == blank
+    assign video_entries = product.metafields.custom.youtube_shorts.value
+  endif
+
+  if video_entries == blank
+    assign video_entries = shop.metaobjects.youtube_shorts.values
   endif
 %}
 
-{% liquid
-  if use_metaobject
-    if metaobject_entries != blank and metaobject_entries.size > 0
-      assign has_videos = true
-    else
-      assign has_videos = false
-    endif
-  else
-    assign has_videos = true
-  endif
-%}
 
-{% if has_videos %}
+{% if video_entries != blank %}
   {% style %}
     .ai-video-slider-{{ ai_gen_id }} {
       display: block;
@@ -37,7 +29,8 @@
     .ai-video-slider-wrapper-{{ ai_gen_id }} {
       position: relative;
       overflow: hidden;
-      padding: 0 20px;
+      width: 100%;
+      padding: 0;
       cursor: grab;
     }
 
@@ -158,109 +151,85 @@
         flex: 0 0 calc((100% - ({{ block.settings.slides_mobile | minus: 1 }} * {{ block.settings.slide_gap }}px)) / {{ block.settings.slides_mobile }});
       }
 
-      .ai-video-slider-wrapper-{{ ai_gen_id }} {
-        padding: 0;
-      }
     }
   {% endstyle %}
 
   <video-slider-{{ ai_gen_id }} class="ai-video-slider-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
     <div class="ai-video-slider-wrapper-{{ ai_gen_id }}" data-wrapper>
       <div class="ai-video-slider-track-{{ ai_gen_id }}" data-track>
+        {% assign slide_count = 0 %}
+        {% for entry in video_entries limit: block.settings.max_items %}
+          {% liquid
+            assign video_url = entry.link.value
+            assign video_id = ''
+            assign video_type = ''
 
-        {% if use_metaobject %}
-
-          {% for entry in metaobject_entries %}
-            {% liquid
-              assign video_url = entry.link.value
-              assign video_id = ''
-              assign video_type = ''
-
-              if video_url contains 'youtube.com' or video_url contains 'youtu.be'
-                assign video_type = 'youtube'
-                if video_url contains 'youtu.be/'
-                  assign video_id = video_url | split: 'youtu.be/' | last | split: '?' | first
-                elsif video_url contains 'watch?v='
-                  assign video_id = video_url | split: 'watch?v=' | last | split: '&' | first
-                elsif video_url contains 'embed/'
-                  assign video_id = video_url | split: 'embed/' | last | split: '?' | first
-                endif
-              elsif video_url contains 'vimeo.com'
-                assign video_type = 'vimeo'
-                assign video_id = video_url | split: 'vimeo.com/' | last | split: '/' | first
+            if video_url contains 'youtube.com' or video_url contains 'youtu.be'
+              assign video_type = 'youtube'
+              if video_url contains 'youtu.be/'
+                assign video_id = video_url | split: 'youtu.be/' | last | split: '?' | first
+              elsif video_url contains 'shorts/'
+                assign video_id = video_url | split: 'shorts/' | last | split: '?' | first
+              elsif video_url contains 'watch?v='
+                assign video_id = video_url | split: 'watch?v=' | last | split: '&' | first
+              elsif video_url contains 'embed/'
+                assign video_id = video_url | split: 'embed/' | last | split: '?' | first
               endif
-            %}
+            elsif video_url contains 'vimeo.com'
+              assign video_type = 'vimeo'
+              assign video_id = video_url | split: 'vimeo.com/' | last | split: '/' | first
+            endif
+          %}
 
-            {% if video_id != blank %}
-              <div class="ai-video-slide-{{ ai_gen_id }}" data-slide>
-                {% if video_type == 'youtube' %}
+          {% if video_id != blank %}
+            {% assign slide_count = slide_count | plus: 1 %}
+            <div class="ai-video-slide-{{ ai_gen_id }}" data-slide>
+              {% if video_type == 'youtube' %}
+                {% assign yt_params = '' %}
+                {% if block.settings.autoplay %}{% assign yt_params = yt_params | append: 'autoplay=1&' %}{% endif %}
+                {% if block.settings.muted %}{% assign yt_params = yt_params | append: 'mute=1&' %}{% endif %}
+                {% assign yt_src = 'https://www.youtube.com/embed/' | append: video_id | append: '?' | append: yt_params | append: 'loop=1&playlist=' | append: video_id | append: '&controls=1&modestbranding=1&rel=0' %}
+                {% if slide_count == 1 %}
                   <iframe
-                    src="https://www.youtube.com/embed/{{ video_id }}?{% if block.settings.autoplay %}autoplay=1&{% endif %}{% if block.settings.muted %}mute=1&{% endif %}loop=1&playlist={{ video_id }}&controls=1&modestbranding=1&rel=0"
+                    src="{{ yt_src }}"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen
-                    loading="lazy"
+                    loading="eager"
                     title="Video {{ forloop.index }}"
                   ></iframe>
-                {% elsif video_type == 'vimeo' %}
+                {% else %}
                   <iframe
-                    src="https://player.vimeo.com/video/{{ video_id }}?{% if block.settings.autoplay %}autoplay=1&{% endif %}{% if block.settings.muted %}muted=1&{% endif %}loop=1&controls=1"
-                    allow="autoplay; fullscreen; picture-in-picture"
+                    data-src="{{ yt_src }}"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen
-                    loading="lazy"
                     title="Video {{ forloop.index }}"
                   ></iframe>
                 {% endif %}
-              </div>
-            {% endif %}
-          {% endfor %}
-
-        {% else %}
-
-          {% for video_url in video_links %}
-            {% liquid
-              assign video_id = ''
-              assign video_type = ''
-
-              if video_url contains 'youtube.com' or video_url contains 'youtu.be'
-                assign video_type = 'youtube'
-                if video_url contains 'youtu.be/'
-                  assign video_id = video_url | split: 'youtu.be/' | last | split: '?' | first
-                elsif video_url contains 'watch?v='
-                  assign video_id = video_url | split: 'watch?v=' | last | split: '&' | first
-                elsif video_url contains 'embed/'
-                  assign video_id = video_url | split: 'embed/' | last | split: '?' | first
-                endif
-              elsif video_url contains 'vimeo.com'
-                assign video_type = 'vimeo'
-                assign video_id = video_url | split: 'vimeo.com/' | last | split: '/' | first
-              endif
-            %}
-
-            {% if video_id != blank %}
-              <div class="ai-video-slide-{{ ai_gen_id }}" data-slide>
-                {% if video_type == 'youtube' %}
+              {% elsif video_type == 'vimeo' %}
+                {% assign vm_params = '' %}
+                {% if block.settings.autoplay %}{% assign vm_params = vm_params | append: 'autoplay=1&' %}{% endif %}
+                {% if block.settings.muted %}{% assign vm_params = vm_params | append: 'muted=1&' %}{% endif %}
+                {% assign vm_src = 'https://player.vimeo.com/video/' | append: video_id | append: '?' | append: vm_params | append: 'loop=1&controls=1' %}
+                {% if slide_count == 1 %}
                   <iframe
-                    src="https://www.youtube.com/embed/{{ video_id }}?{% if block.settings.autoplay %}autoplay=1&{% endif %}{% if block.settings.muted %}mute=1&{% endif %}loop=1&playlist={{ video_id }}&controls=1&modestbranding=1&rel=0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                    loading="lazy"
-                    title="Video {{ forloop.index }}"
-                  ></iframe>
-                {% elsif video_type == 'vimeo' %}
-                  <iframe
-                    src="https://player.vimeo.com/video/{{ video_id }}?{% if block.settings.autoplay %}autoplay=1&{% endif %}{% if block.settings.muted %}muted=1&{% endif %}loop=1&controls=1"
+                    src="{{ vm_src }}"
                     allow="autoplay; fullscreen; picture-in-picture"
                     allowfullscreen
-                    loading="lazy"
+                    loading="eager"
+                    title="Video {{ forloop.index }}"
+                  ></iframe>
+                {% else %}
+                  <iframe
+                    data-src="{{ vm_src }}"
+                    allow="autoplay; fullscreen; picture-in-picture"
+                    allowfullscreen
                     title="Video {{ forloop.index }}"
                   ></iframe>
                 {% endif %}
-              </div>
-            {% endif %}
-          {% endfor %}
-
-        {% endif %}
-
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
       </div>
     </div>
 
@@ -311,21 +280,47 @@
 
           this.slidesPerView = this.getSlidesPerView();
           this.totalSlides = this.slides.length;
+          this.setSlideWidths();
           this.maxIndex = Math.max(0, this.totalSlides - this.slidesPerView);
 
           if (this.totalSlides <= this.slidesPerView) {
             if (this.controlsContainer) {
               this.controlsContainer.style.display = 'none';
             }
+            this.loadVisibleSlides();
             return;
           }
 
           this.setupEventListeners();
           this.createDots();
           this.updateControls();
+          this.loadVisibleSlides();
 
           window.addEventListener('resize', () => {
             this.handleResize();
+          });
+        }
+
+        loadVisibleSlides() {
+          const start = this.currentIndex;
+          const end = Math.min(this.currentIndex + this.slidesPerView + 1, this.totalSlides);
+          for (let i = start; i < end; i++) {
+            const iframe = this.slides[i] && this.slides[i].querySelector('iframe[data-src]');
+            if (iframe) {
+              iframe.src = iframe.getAttribute('data-src');
+              iframe.removeAttribute('data-src');
+            }
+          }
+        }
+
+        setSlideWidths() {
+          const wrapperWidth = this.wrapper.offsetWidth;
+          if (!wrapperWidth) return;
+          const gap = {{ block.settings.slide_gap }};
+          const perView = this.slidesPerView;
+          const slideWidth = (wrapperWidth - gap * (perView - 1)) / perView;
+          this.slides.forEach(slide => {
+            slide.style.flex = `0 0 ${slideWidth}px`;
           });
         }
 
@@ -342,27 +337,26 @@
 
         handleResize() {
           const newSlidesPerView = this.getSlidesPerView();
-          if (newSlidesPerView !== this.slidesPerView) {
-            this.slidesPerView = newSlidesPerView;
-            this.maxIndex = Math.max(0, this.totalSlides - this.slidesPerView);
+          this.slidesPerView = newSlidesPerView;
+          this.maxIndex = Math.max(0, this.totalSlides - this.slidesPerView);
+          this.setSlideWidths();
 
-            if (this.currentIndex > this.maxIndex) {
-              this.currentIndex = this.maxIndex;
-            }
-
-            if (this.totalSlides <= this.slidesPerView) {
-              if (this.controlsContainer) {
-                this.controlsContainer.style.display = 'none';
-              }
-            } else {
-              if (this.controlsContainer) {
-                this.controlsContainer.style.display = 'flex';
-              }
-            }
-
-            this.createDots();
-            this.updateSlider();
+          if (this.currentIndex > this.maxIndex) {
+            this.currentIndex = this.maxIndex;
           }
+
+          if (this.totalSlides <= this.slidesPerView) {
+            if (this.controlsContainer) {
+              this.controlsContainer.style.display = 'none';
+            }
+          } else {
+            if (this.controlsContainer) {
+              this.controlsContainer.style.display = 'flex';
+            }
+          }
+
+          this.createDots();
+          this.updateSlider();
         }
 
         setupEventListeners() {
@@ -375,10 +369,10 @@
 
           this.wrapper.addEventListener('mousedown', this.dragStart.bind(this));
           this.wrapper.addEventListener('touchstart', this.dragStart.bind(this), { passive: true });
-
+          
           window.addEventListener('mouseup', this.dragEnd.bind(this));
           window.addEventListener('touchend', this.dragEnd.bind(this));
-
+          
           window.addEventListener('mousemove', this.drag.bind(this));
           window.addEventListener('touchmove', this.drag.bind(this), { passive: false });
 
@@ -392,7 +386,7 @@
 
         createDots() {
           if (!this.dotsContainer) return;
-
+          
           this.dotsContainer.innerHTML = '';
           const dotsCount = this.maxIndex + 1;
 
@@ -445,6 +439,7 @@
           }
 
           this.updateControls();
+          this.loadVisibleSlides();
         }
 
         prev() {
@@ -473,7 +468,7 @@
           this.startPos = this.getPositionX(event);
           this.track.classList.add('dragging');
           this.wrapper.classList.add('dragging');
-
+          
           const slideWidth = this.slides[0].offsetWidth;
           const gap = {{ block.settings.slide_gap }};
           this.prevTranslate = -(this.currentIndex * (slideWidth + gap));
@@ -481,30 +476,30 @@
 
         drag(event) {
           if (!this.isDragging) return;
-
+          
           const currentPosition = this.getPositionX(event);
           const diff = currentPosition - this.startPos;
-
+          
           if (Math.abs(diff) > 5) {
             this.hasDragged = true;
             event.preventDefault();
           }
-
+          
           this.currentTranslate = this.prevTranslate + diff;
           this.track.style.transform = `translateX(${this.currentTranslate}px)`;
         }
 
         dragEnd() {
           if (!this.isDragging) return;
-
+          
           this.isDragging = false;
           this.track.classList.remove('dragging');
           this.wrapper.classList.remove('dragging');
-
+          
           const movedBy = this.currentTranslate - this.prevTranslate;
           const dragDuration = Date.now() - this.dragStartTime;
           const velocity = Math.abs(movedBy) / dragDuration;
-
+          
           const threshold = velocity > 0.5 ? 30 : 100;
 
           if (movedBy < -threshold && this.currentIndex < this.maxIndex) {
@@ -549,11 +544,20 @@
       "type": "text",
       "id": "metafield_key",
       "label": "Metafield key",
-      "default": "product_short_videos"
+      "default": "youtube_shorts"
     },
     {
       "type": "header",
       "content": "Video settings"
+    },
+    {
+      "type": "range",
+      "id": "max_items",
+      "label": "Maximum items to display",
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "default": 10
     },
     {
       "type": "checkbox",

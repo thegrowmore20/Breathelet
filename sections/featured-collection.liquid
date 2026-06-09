@@ -33,7 +33,7 @@ data-animation-group="{{ section.id }}-product-cards"
   {% render 'section-header', link_text: section.settings.link_text, link_url: link_url %}
 
   <div class="section-body">
-    {% capture items %}
+    {% comment %} {% capture items %}
       {% if products != empty %}
         {% for product in products limit: section.settings.products_count %}
           <div class="grid-carousel-item">
@@ -48,6 +48,41 @@ data-animation-group="{{ section.id }}-product-cards"
         {% endfor %}
       {% endif %}
 
+    {% endcapture %} {% endcomment %}
+     {% capture items %}
+      {% if products != empty %}
+        {% if section.settings.show_variants %}
+          {% assign cards_rendered = 0 %}
+          {% for product in products %}
+            {% for variant in product.variants %}
+              {% if cards_rendered >= section.settings.products_count %}{% break %}{% endif %}
+              <div class="grid-carousel-item">
+                {% render 'product-card',
+                  card_product: product,
+                  card_variant: variant,
+                  attrs: card_attrs,
+                  class: "h-full",
+                  sizes: image_sizes
+                %}
+              </div>
+              {% assign cards_rendered = cards_rendered | plus: 1 %}
+            {% endfor %}
+            {% if cards_rendered >= section.settings.products_count %}{% break %}{% endif %}
+          {% endfor %}
+        {% else %}
+          {% for product in products limit: section.settings.products_count %}
+            <div class="grid-carousel-item">
+              {% render 'product-card', card_product: product, attrs: card_attrs, class: "h-full", sizes: image_sizes %}
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% else %}
+        {% for n in (1..8) %}
+          <div class="grid-carousel-item">
+            {% render 'product-card', index: forloop.index0, attrs: card_attrs, class: "h-full" %}
+          </div>
+        {% endfor %}
+      {% endif %}
     {% endcapture %}
 
     {% render 'product-carousel',
@@ -75,6 +110,13 @@ data-animation-group="{{ section.id }}-product-cards"
       "id": "carousel",
       "label": "t:sections.all.carousel.label",
       "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_variants",
+      "label": "Show product variations as separate cards",
+      "info": "When enabled, each variant renders its own card instead of one card per product.",
+      "default": false
     },
     {
       "type": "range",

@@ -52,6 +52,7 @@
         },
         "f4eea022-78fd-4497-ab68-10cbc86fe6b4": {
           "type": "inventory",
+          "disabled": true,
           "settings": {
             "enable_low_stock_message": true,
             "enable_backorder_message": false,
@@ -75,7 +76,40 @@
         },
         "4923f5c8-62d3-42db-a835-6e0613c4a182": {
           "type": "payment_installments",
+          "disabled": true,
           "settings": {}
+        },
+        "collapsible_content_mAb4iV": {
+          "type": "collapsible_content",
+          "settings": {
+            "collapse_open": false,
+            "heading": "How it works",
+            "content": "{{ product.metafields.custom.how_it_works | metafield_tag }}"
+          }
+        },
+        "collapsible_content_zBae6i": {
+          "type": "collapsible_content",
+          "settings": {
+            "collapse_open": false,
+            "heading": "What's included",
+            "content": "{{ product.metafields.custom.what_s_included | metafield_tag }}"
+          }
+        },
+        "collapsible_content_nwQVbU": {
+          "type": "collapsible_content",
+          "settings": {
+            "collapse_open": false,
+            "heading": "How to use",
+            "content": "{{ product.metafields.custom.how_to_use | metafield_tag }}"
+          }
+        },
+        "collapsible_content_MiJAiU": {
+          "type": "collapsible_content",
+          "settings": {
+            "collapse_open": false,
+            "heading": "Specs",
+            "content": "{{ product.metafields.custom.specs | metafield_tag }}"
+          }
         }
       },
       "block_order": [
@@ -87,12 +121,16 @@
         "f4eea022-78fd-4497-ab68-10cbc86fe6b4",
         "0f473fb4-422c-40a7-8c15-2fd164440f80",
         "a730fe0e-baa3-47bc-90c9-21c5a5d75f2d",
-        "4923f5c8-62d3-42db-a835-6e0613c4a182"
+        "4923f5c8-62d3-42db-a835-6e0613c4a182",
+        "collapsible_content_mAb4iV",
+        "collapsible_content_zBae6i",
+        "collapsible_content_nwQVbU",
+        "collapsible_content_MiJAiU"
       ],
       "settings": {
         "show_breadcrumbs": false,
         "desktop_media_width": 56,
-        "media_size": "",
+        "media_size": "1",
         "media_layout_desktop": "carousel_vertical",
         "media_mobile_indicator": "thumbnails",
         "media_zoom": "lightbox",

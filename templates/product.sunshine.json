@@ -12,6 +12,14 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "07b2f4eb-d5bd-46bf-8ef7-7c3a9dbff7b7": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h3",
+            "content": "{{ product.title }}",
+            "text_color": "rgba(0,0,0,0)"
+          }
+        },
         "loox_reviews_loox_rating_KiAJFf": {
           "type": "shopify://apps/loox-reviews/blocks/loox-rating/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
           "settings": {
@@ -25,14 +33,6 @@
             "showAllReviews": false,
             "looxOpenFloatingWidget": true,
             "emptyRatingWidget": false
-          }
-        },
-        "07b2f4eb-d5bd-46bf-8ef7-7c3a9dbff7b7": {
-          "type": "title",
-          "settings": {
-            "heading_size": "h3",
-            "content": "{{ product.title }}",
-            "text_color": "rgba(0,0,0,0)"
           }
         },
         "946375dc-aa95-407e-a9cd-35be355f8dc4": {
@@ -62,12 +62,25 @@
             "size_chart_option_name": "Size"
           }
         },
+        "qty_btn_selector_WyAQ8y": {
+          "type": "qty_btn_selector",
+          "settings": {
+            "show_dynamic_checkout_buttons": false,
+            "show_gift_card_recipient": false,
+            "add_to_cart_background_color": "",
+            "add_to_cart_text_color": "",
+            "buy_it_now_background_color": "",
+            "buy_it_now_text_color": ""
+          }
+        },
         "0f473fb4-422c-40a7-8c15-2fd164440f80": {
           "type": "quantity_selector",
+          "disabled": true,
           "settings": {}
         },
         "a730fe0e-baa3-47bc-90c9-21c5a5d75f2d": {
           "type": "buy_buttons",
+          "disabled": true,
           "settings": {
             "show_dynamic_checkout_buttons": true,
             "show_gift_card_recipient": true,
@@ -77,25 +90,84 @@
             "buy_it_now_text_color": "rgba(0,0,0,0)"
           }
         },
+        "delivery_C87KwU": {
+          "type": "delivery",
+          "settings": {
+            "delivery_from": 3,
+            "delivery_to": 5
+          }
+        },
         "4923f5c8-62d3-42db-a835-6e0613c4a182": {
           "type": "payment_installments",
+          "disabled": true,
           "settings": {}
+        },
+        "complementary_products_K3fTUK": {
+          "type": "complementary_products",
+          "settings": {
+            "carousel": true,
+            "products_to_show": 2,
+            "heading": "Complete your purchase",
+            "background_color": "",
+            "text_color": "",
+            "add_to_cart_background_color": "",
+            "add_to_cart_text_color": ""
+          }
+        },
+        "collapsible_content_yYk4nx": {
+          "type": "collapsible_content",
+          "settings": {
+            "collapse_open": false,
+            "heading": "How it works",
+            "content": "{{ product.metafields.custom.how_it_works | metafield_tag }}"
+          }
+        },
+        "collapsible_content_DdLzEb": {
+          "type": "collapsible_content",
+          "settings": {
+            "collapse_open": false,
+            "heading": "Whats included",
+            "content": "{{ product.metafields.custom.what_s_included | metafield_tag }}"
+          }
+        },
+        "collapsible_content_m7m6NL": {
+          "type": "collapsible_content",
+          "settings": {
+            "collapse_open": false,
+            "heading": "How to use",
+            "content": "{{ product.metafields.custom.how_to_use | metafield_tag }}"
+          }
+        },
+        "collapsible_content_3rnLaJ": {
+          "type": "collapsible_content",
+          "settings": {
+            "collapse_open": false,
+            "heading": "Specs",
+            "content": "{{ product.metafields.custom.specs | metafield_tag }}"
+          }
         }
       },
       "block_order": [
-        "loox_reviews_loox_rating_KiAJFf",
         "07b2f4eb-d5bd-46bf-8ef7-7c3a9dbff7b7",
+        "loox_reviews_loox_rating_KiAJFf",
         "946375dc-aa95-407e-a9cd-35be355f8dc4",
         "c0b62d1f-e562-4b86-84cb-fc22c849e93e",
         "5a84f252-bc58-4ca7-8b59-5a727a61c21f",
+        "qty_btn_selector_WyAQ8y",
         "0f473fb4-422c-40a7-8c15-2fd164440f80",
         "a730fe0e-baa3-47bc-90c9-21c5a5d75f2d",
-        "4923f5c8-62d3-42db-a835-6e0613c4a182"
+        "delivery_C87KwU",
+        "4923f5c8-62d3-42db-a835-6e0613c4a182",
+        "complementary_products_K3fTUK",
+        "collapsible_content_yYk4nx",
+        "collapsible_content_DdLzEb",
+        "collapsible_content_m7m6NL",
+        "collapsible_content_3rnLaJ"
       ],
       "settings": {
         "show_breadcrumbs": false,
         "desktop_media_width": 56,
-        "media_size": "",
+        "media_size": "1",
         "media_layout_desktop": "carousel_vertical",
         "media_mobile_indicator": "thumbnails",
         "media_zoom": "lightbox",
@@ -136,25 +208,6 @@
       ],
       "settings": {}
     },
-    "related-products": {
-      "type": "related-products",
-      "settings": {
-        "full_width": true,
-        "carousel": true,
-        "products_count": 8,
-        "grid_columns": 4,
-        "grid_columns_mobile": "2",
-        "subheading": "",
-        "heading": "You may also like",
-        "heading_size": "h2",
-        "content": "",
-        "text_alignment": "text-center",
-        "background_color": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_html_tag": "p"
-      }
-    },
     "video_with_text_Mmdccn": {
       "type": "video-with-text",
       "blocks": {
@@ -186,6 +239,7 @@
       ],
       "name": "t:sections.video-with-text.presets__0.name",
       "settings": {
+        "custom_class": "",
         "full_width": false,
         "remove_bottom_spacing": false,
         "autoplay": true,
@@ -201,11 +255,81 @@
         "heading_color": ""
       }
     },
+    "custom_section_MwQNrf": {
+      "type": "custom-section",
+      "blocks": {
+        "product_meta_short_qPJFHH": {
+          "type": "product-meta-short",
+          "name": "Product Shorts",
+          "settings": {
+            "metafield_namespace": "custom",
+            "metafield_key": "",
+            "max_items": 10,
+            "autoplay": true,
+            "muted": true,
+            "video_border_radius": 12,
+            "slides_desktop": 4,
+            "slides_medium": 3,
+            "slides_mobile": 2,
+            "slide_gap": 15,
+            "desktop_width_percent": 100,
+            "section_padding": 0,
+            "show_arrows": true,
+            "show_dots": true,
+            "controls_spacing": 25,
+            "arrow_size": 40,
+            "arrow_background": "#000000",
+            "arrow_color": "#ffffff",
+            "arrow_hover_background": "#333333",
+            "arrow_hover_color": "#ffffff",
+            "dot_size": 8,
+            "dot_color": "#cccccc",
+            "dot_active_color": "#e0a96d"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "product_meta_short_qPJFHH"
+      ],
+      "name": "Custom Section",
+      "settings": {
+        "full_width": true,
+        "remove_horizontal_space": false,
+        "remove_vertical_space": false,
+        "content_width": "normal",
+        "subheading": "",
+        "heading": "FOLLOW US ON YOUTUBE",
+        "heading_size": "h2",
+        "text_alignment": "text-center",
+        "link_text": "<svg xmlns=\"http://www.w3.org/2000/svg\" x=\"0px\" y=\"0px\" width=\"25\" height=\"25\" viewbox=\"0 0 48 48\"><path fill=\"#FF3D00\" d=\"M43.2,33.9c-0.4,2.1-2.1,3.7-4.2,4c-3.3,0.5-8.8,1.1-15,1.1c-6.1,0-11.6-0.6-15-1.1c-2.1-0.3-3.8-1.9-4.2-4C4.4,31.6,4,28.2,4,24c0-4.2,0.4-7.6,0.8-9.9c0.4-2.1,2.1-3.7,4.2-4C12.3,9.6,17.8,9,24,9c6.2,0,11.6,0.6,15,1.1c2.1,0.3,3.8,1.9,4.2,4c0.4,2.3,0.9,5.7,0.9,9.9C44,28.2,43.6,31.6,43.2,33.9z\"></path><path fill=\"#FFF\" d=\"M20 31L20 17 32 24z\"></path></svg>@Breathelet",
+        "link_url": "https://www.youtube.com/@Breathelet",
+        "new_tab": false,
+        "heading_html_tag": "h2",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": ""
+      }
+    },
     "176227481753d6d67f": {
       "type": "apps",
       "blocks": {
+        "loox_reviews_loox_dynamic_section_DAkYTq": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-dynamic-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "reviews_to_display": "",
+            "default_tab": "automatic",
+            "only_photos": false,
+            "aggregated": false,
+            "limit": 10,
+            "hide_thumbnails": false,
+            "maxwidth": 1080,
+            "is_sample": true
+          }
+        },
         "loox_reviews_loox_card_carousel_section_q8t43T": {
           "type": "shopify://apps/loox-reviews/blocks/loox-card-carousel-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "disabled": true,
           "settings": {
             "maxWidth": 1100,
             "borderRadius": 8,
@@ -229,22 +353,51 @@
         }
       },
       "block_order": [
+        "loox_reviews_loox_dynamic_section_DAkYTq",
         "loox_reviews_loox_card_carousel_section_q8t43T"
       ],
       "settings": {
         "full_width": true,
         "remove_horizontal_space": false,
         "remove_vertical_space": false,
+        "subheading": "",
+        "heading": "",
+        "content": "",
+        "heading_size": "h2",
+        "text_alignment": "text-center",
+        "link_text": "View all",
+        "link_url": "",
+        "new_tab": false,
         "background_color": "",
         "text_color": ""
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "full_width": true,
+        "carousel": true,
+        "products_count": 8,
+        "grid_columns": 4,
+        "grid_columns_mobile": "2",
+        "subheading": "",
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "content": "",
+        "text_alignment": "text-center",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_html_tag": "p"
       }
     }
   },
   "order": [
     "main",
     "main-details",
-    "related-products",
     "video_with_text_Mmdccn",
-    "176227481753d6d67f"
+    "custom_section_MwQNrf",
+    "176227481753d6d67f",
+    "related-products"
   ]
 }

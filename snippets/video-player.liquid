@@ -26,12 +26,17 @@
     autoplay="false"
   {% endif %}
 
+  {% if muted %}
+    muted
+  {% endif %}
+
   {% if video == blank %}
     host="{{ video_url.type }}"
     video-id="{{ video_url.id }}"
   {% endif %}
 >
   {% if background != true %}
+  {% unless autoplay %}
     <button class="cursor-pointer w-full h-full" data-poster aria-label="{{ 'accessibility.play_video' | t }}">
       {% if video_poster != blank %}
         {{
@@ -48,6 +53,7 @@
         {% render 'spinner' %}
       </div>
     </button>
+  {% endunless %}
   {% endif %}
 
   {% if video != blank %}

@@ -1,4 +1,4 @@
-{% liquid
+{% comment %} {% liquid
   if card_product == empty
     assign card_product = null
   endif
@@ -26,6 +26,55 @@
   endif
 
   assign size_option = card_product.options_by_name[settings.product_card_size_option_name]
+%} {% endcomment %}
+
+{% liquid
+  if card_product == empty
+    assign card_product = null
+  endif
+
+  case settings.product_card_text_alignment
+    when 'center'
+      assign product_card_info_class = 'text-center items-center'
+  endcase
+
+  # variant-aware fields: default to product, override when a variant is passed
+  assign card_image = card_product.featured_media
+  assign card_price = card_product.price
+  assign card_compare = card_product.compare_at_price
+  assign card_available = card_product.available
+  assign card_title = card_product.title
+  assign url = card_product.url
+
+  if card_variant
+    if card_variant.featured_media
+      assign card_image = card_variant.featured_media
+    endif
+    assign card_price = card_variant.price
+    assign card_compare = card_variant.compare_at_price
+    assign card_available = card_variant.available
+    assign url = card_variant.url
+    unless card_variant.title == 'Default Title'
+      assign card_title = card_product.title | append: ' - ' | append: card_variant.title
+    endunless
+  endif
+
+  if card_compare > card_price
+    assign discount_amount = card_compare | minus: card_price
+    assign percent_discount = discount_amount | times: 100 | divided_by: card_compare
+
+    if settings.product_card_show_discount_as == 'saving'
+      assign discount_badge_value = discount_amount | money | strip_html
+    else
+      assign discount_badge_value = percent_discount | append: '%'
+    endif
+  endif
+
+  if section.settings.include_collection_url and collection
+    assign url = url | within: collection
+  endif
+
+  assign size_option = card_product.options_by_name[settings.product_card_size_option_name]
 %}
 
 <div class="product-card group color rounded-block {{ class }}" {{ attrs }}>
@@ -35,10 +84,10 @@
         class="media rounded-block [--aspect-ratio:--product-card-image-aspect]"
       >
         {% if card_product %}
-          {% if card_product.featured_media %}
+          {% if card_image %}
             <lqip-element class="image-loader h-full">
               {{
-                card_product.featured_media
+                card_image
                 | image_url: width: 1440
                 | image_tag:
                   widths: '360, 450, 540, 630, 720, 900, 1050, 1200, 1320, 1440',
@@ -49,13 +98,13 @@
               }}
 
               {{
-                card_product.featured_media
+                card_image
                 | image_url: width: 20
                 | image_tag: class: 'media-lq-placeholder', fetchpriority: 'low'
               }}
             </lqip-element>
 
-            {% if settings.product_card_second_image_on_hover and card_product.images[1] %}
+            {% if settings.product_card_second_image_on_hover and card_product.images[1] and card_variant == nil %}
               <div
                 class="
                   product-card__second-image bg-background absolute inset-0 touch:hidden
@@ -102,7 +151,7 @@
         {% endif %}
 
         {% if settings.product_card_discount_badge
-          and card_product.compare_at_price > card_product.price
+          and card_compare > card_price
           and sale_badge != false
         %}
           <div class="info-badge sale-badge">
@@ -116,10 +165,12 @@
       </div>
     {% endif %}
 
-    {% if settings.product_card_quick_add_to_cart and card_product.available and quick_add != false %}
+    {% if settings.product_card_quick_add_to_cart and card_available and quick_add != false %}
       <quick-add-button
         class="no-js-hidden"
-        {% if card_product.has_only_default_variant or card_product.variants.size == 1 %}
+        {% if card_variant %}
+          variant-id="{{ card_variant.id }}"
+        {% elsif card_product.has_only_default_variant or card_product.variants.size == 1 %}
           variant-id="{{ card_product.first_available_variant.id }}"
         {% endif %}
         handle="{{ card_product.handle }}"
@@ -157,24 +208,24 @@
     {% endif %}
 
     <h2 class="product-name">
-      <a data-instant href="{{ url }}">{{ card_product.title | default: 'Product' }}</a>
+      <a data-instant href="{{ url }}">{{ card_title | default: 'Product' }}</a>
     </h2>
 
     <div class="mt-2">
       {% if card_product %}
-        {% render 'price', product: card_product %}
+        {% render 'price', product: card_product, use_variant: card_variant %}
       {% else %}
         {{ 5000 | money }}
       {% endif %}
     </div>
 
-    {% if settings.product_card_color_display != 'disabled' and swatches != false %}
+    {% if settings.product_card_color_display != 'disabled' and swatches != false and card_variant == nil %}
       <div class="mt-4 empty:hidden">
         {%- render 'product-card-swatches', product: card_product, sizes: sizes -%}
       </div>
     {% endif %}
 
-    {% if settings.product_card_size_preview and size_option %}
+    {% if settings.product_card_size_preview and size_option and card_variant == nil %}
       <div class="product-card-sizes {% if settings.product_card_text_alignment == 'center' %} justify-center {% endif %}">
         {%- for option_value in size_option.values -%}
           <a

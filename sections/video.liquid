@@ -39,7 +39,10 @@
         video: section.settings.video,
         video_url: section.settings.video_url,
         video_poster: section.settings.video_poster,
-        sizes: poster_sizes
+        sizes: poster_sizes,
+        autoplay: section.settings.autoplay,
+        loop: section.settings.loop,
+        muted: section.settings.mute
       %}
     </div>
   </div>
@@ -76,6 +79,25 @@
       "type": "image_picker",
       "id": "video_poster",
       "label": "t:sections.video.settings.video_poster.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay",
+      "info": "Videos will be muted by default",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "loop",
+      "label": "Loop video",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "mute",
+      "label": "Mute video",
+      "default": false
     },
     {
       "type": "select",

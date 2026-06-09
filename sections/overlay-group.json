@@ -14,15 +14,17 @@
     "cart-modal": {
       "type": "cart-modal",
       "settings": {
-        "show_tax_and_shipping_message": true,
+        "show_tax_and_shipping_message": false,
         "show_cart_note": true,
-        "show_shipping_estimator": true,
-        "show_view_cart_button": true,
+        "show_shipping_estimator": false,
+        "show_view_cart_button": false,
         "show_checkout_button": true,
         "product_recommendations_heading": "You may also like",
-        "product_recommendations": [
-
-        ]
+        "product_recommendations": [],
+        "view_cart_background_color": "",
+        "view_cart_text_color": "",
+        "checkout_background_color": "",
+        "checkout_text_color": ""
       }
     },
     "search-modal": {

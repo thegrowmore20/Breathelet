@@ -1,0 +1,479 @@
+{%- liquid
+  assign addon_items = product.metafields.custom.addons.value
+-%}
+
+{% if addon_items %}
+
+{% comment %} Inject styles only once per page {% endcomment %}
+{% unless addon_styles_rendered %}
+  {%- assign addon_styles_rendered = true -%}
+<style id="addon-widget-styles">
+  .addon-title {
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .addon-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 20px;
+  }
+  .addon-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: .25rem 6px;
+    border-radius: 6px;
+  }
+  .addon-thumb {
+    width: 54px;
+    height: 54px;
+    flex-shrink: 0;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    background: #f7f7f7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .addon-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .addon-thumb svg,
+  .addon-selector__placeholder-svg {
+    width: 2rem;
+    opacity: 0.28;
+  }
+  .addon-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .addon-toggle {
+    position: relative;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+  .addon-toggle input[type="checkbox"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    margin: 0;
+  }
+  .btn-shell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 38px;
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+    pointer-events: none;
+    transition: background 0.18s, border-color 0.18s, box-shadow 0.18s;
+    background: #000;
+    border: 2px solid #000;
+  }
+  .btn-price,
+  .btn-tick {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    transition: opacity 0.15s, transform 0.15s;
+  }
+  .btn-price {
+    font-size: var(--size-text-sm);
+    color: #fff;
+    opacity: 1;
+    transform: scale(1);
+  }
+  .btn-tick {
+    font-size: 19px;
+    color: #000;
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  .addon-toggle input:checked ~ .btn-shell {
+    background: #fff;
+    border-color: #000;
+    animation: addonPop 0.35s ease-out;
+  }
+  .addon-toggle input:checked ~ .btn-shell .btn-price {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  .addon-toggle input:checked ~ .btn-shell .btn-tick {
+    opacity: 1;
+    transform: scale(1);
+  }
+  .addon-toggle:has(input:not(:checked)):hover .btn-shell {
+    background: #000;
+    border-color: #000;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.25);
+  }
+  .addon-toggle:has(input:checked):hover .btn-shell {
+    background: #f5f5f5;
+  }
+  @keyframes addonPop {
+    0%   { transform: scale(1);    }
+    50%  { transform: scale(1.06); }
+    100% { transform: scale(1);    }
+  }
+  .summary-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 20px;
+    margin-bottom: 12px;  
+    color: #888;
+  }
+  .summary-total {
+    font-weight: 700;
+    color: #000;
+  }
+
+  /* ── Mobile slider ── */
+  @media (max-width: 768px) {
+    .addon-slider-wrapper {
+      position: relative;
+    }
+    .addon-list {
+      display: flex;
+      flex-direction: row;
+      gap: 0;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      scroll-behavior: smooth;
+      margin-bottom: 5px;
+    }
+    .addon-list::-webkit-scrollbar {
+      display: none;
+    }
+    .addon-item {
+      min-width: 100%;
+      width: 100%;
+      flex-shrink: 0;
+      scroll-snap-align: start;
+      box-sizing: border-box;
+      padding: .5rem 8px;
+    }
+    .addon-slider-arrows {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .addon-arrow-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid #E6E6E6;
+      background-color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: border-color 0.15s, background-color 0.15s;
+      flex-shrink: 0;
+      padding: 0;
+    }
+    .addon-arrow-btn:active {
+      background: #f0f0f0;
+    }
+    .addon-arrow-btn:disabled {
+      opacity: 0.3;
+      cursor: default;
+    }
+    .addon-arrow-btn svg {
+      width: 16px;
+      height: 16px;
+      display: block;
+      stroke: #fff;
+    }
+    .addon-dots {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .addon-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #CCCCCC;
+      transition: background 0.2s, transform 0.2s;
+      cursor: pointer;
+    }
+    .addon-dot.active {
+      background: #000;
+    }
+  }
+  @media (min-width: 769px) {
+    .addon-slider-arrows { display: none !important; }
+    .addon-dots { display: none !important; }
+  }
+</style>
+{% endunless %}
+
+<div class="my-4 addon-widget" id="addon-widget-{{ product.id }}">
+
+  {%- if addon_items != blank -%}
+  <div class="addon-title text-sm md:text-base">Choose add-ons:</div>
+
+  <div class="addon-slider-wrapper" id="addon-slider-wrapper-{{ product.id }}">
+    <div class="addon-list" id="addon-list-{{ product.id }}">
+
+      {%- for item in addon_items -%}
+        {%- liquid
+          if forloop.first
+            assign img_loading = 'eager'
+            assign img_fetchpriority = 'high'
+          else
+            assign img_loading = 'lazy'
+            assign img_fetchpriority = 'auto'
+          endif
+        -%}
+        <div class="addon-item">
+
+          <lqip-element class="image-loader addon-thumb">
+            {%- if item.featured_image -%}
+              {{
+                item.featured_image
+                | image_url: width: 80
+                | image_tag:
+                    widths: '40, 80, 120, 160',
+                    sizes: '80px',
+                    width: 80,
+                    height: 80,
+                    alt: item.featured_image.alt | default: item.title,
+                    loading: img_loading,
+                    fetchpriority: img_fetchpriority
+              }}
+            {%- else -%}
+              {{- 'product-1' | placeholder_svg_tag: 'addon-selector__placeholder-svg' -}}
+            {%- endif -%}
+          </lqip-element>
+
+          <div class="addon-info">
+            <a href="{{ item.url }}" class="addon-name text-sm">{{ item.title | escape }}</a>
+          </div>
+
+          <label
+            class="addon-toggle"
+            aria-label="Add {{ item.title | escape }} for {{ item.price | money }}"
+          >
+            <input
+              type="checkbox"
+              class="addon-selector__checkbox"
+              name="addon_variant"
+              value="{{ item.selected_or_first_available_variant.id }}"
+              data-price="{{ item.price | divided_by: 100.0 }}"
+              data-title="{{ item.title | escape }}"
+            >
+            <div class="btn-shell">
+              <span class="btn-price">+{{ item.price | money }}</span>
+              <span class="btn-tick">✓</span>
+            </div>
+          </label>
+
+        </div>
+      {%- endfor -%}
+
+    </div>
+
+    <!-- Arrows + dots injected by JS on mobile only -->
+    <div class="addon-slider-arrows" id="addon-slider-arrows-{{ product.id }}" style="display:none;"></div>
+  </div>
+  {%- endif -%}
+
+  <div class="summary-bar">
+    <span class="summary-text" id="addonSummaryText-{{ product.id }}">No add-ons selected</span>
+    <span class="summary-total" id="addonSummaryTotal-{{ product.id }}"></span>
+  </div>
+</div>
+
+<script>
+(function () {
+  var productId = '{{ product.id }}';
+  var widget    = document.getElementById('addon-widget-' + productId);
+  if (!widget) return;
+
+  var textEl  = document.getElementById('addonSummaryText-'  + productId);
+  var totalEl = document.getElementById('addonSummaryTotal-' + productId);
+
+  /* ── Existing summary logic (unchanged) ── */
+  widget.addEventListener('change', function (e) {
+    if (e.target.classList.contains('addon-selector__checkbox')) {
+      updateSummary();
+    }
+  }, { passive: true });
+
+  function updateSummary() {
+    var checkboxes = widget.querySelectorAll('input[name="addon_variant"]:checked');
+    var count      = 0;
+    var totalPrice = 0;
+    var variants   = [];
+
+    checkboxes.forEach(function (cb) {
+      var price = parseFloat(cb.dataset.price);
+      totalPrice += price;
+      count++;
+      variants.push({
+        variantId : cb.value,
+        title     : cb.dataset.title,
+        price     : Math.round(price * 100)
+      });
+    });
+
+    window.addonSelectedVariants            = window.addonSelectedVariants || {};
+    window.addonSelectedVariants[productId] = variants;
+
+    if (!textEl || !totalEl) return;
+
+    if (count === 0) {
+      textEl.textContent  = 'No add-ons selected';
+      totalEl.textContent = '';
+      return;
+    }
+
+    textEl.textContent  = count + ' add-on' + (count > 1 ? 's' : '') + ' selected';
+    totalEl.textContent = '+' + formatMoney(Math.round(totalPrice * 100));
+  }
+
+  function formatMoney(cents) {
+    if (typeof Shopify !== 'undefined' && Shopify.formatMoney) {
+      return Shopify.formatMoney(cents, '{{ shop.money_format }}');
+    }
+    return '$' + (cents / 100).toFixed(2).replace(/\.00$/, '');
+  }
+
+  window.addonUpdateSummary = updateSummary;
+  window.addonFormatMoney   = formatMoney;
+
+  window.addEventListener('unload', function () {
+    if (window.addonSelectedVariants) {
+      delete window.addonSelectedVariants[productId];
+    }
+  }, { once: true });
+
+  /* ── Mobile slider ── */
+  function initSlider() {
+    var isMobile = window.matchMedia('(max-width: 768px)').matches;
+    var list     = document.getElementById('addon-list-' + productId);
+    var arrowBar = document.getElementById('addon-slider-arrows-' + productId);
+    if (!list || !arrowBar) return;
+
+    var items = list.querySelectorAll('.addon-item');
+    var total = items.length;
+    if (!isMobile || total <= 1) {
+      arrowBar.style.display = 'none';
+      return;
+    }
+
+    arrowBar.style.display = '';
+    arrowBar.innerHTML = '';
+
+    /* Prev button */
+    var prevBtn = document.createElement('button');
+    prevBtn.className = 'addon-arrow-btn';
+    prevBtn.setAttribute('aria-label', 'Previous add-on');
+    prevBtn.innerHTML = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="10 12 6 8 10 4"/></svg>';
+
+    /* Dots container */
+    var dotsEl = document.createElement('div');
+    dotsEl.className = 'addon-dots';
+
+    /* Next button */
+    var nextBtn = document.createElement('button');
+    nextBtn.className = 'addon-arrow-btn';
+    nextBtn.setAttribute('aria-label', 'Next add-on');
+    nextBtn.innerHTML = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 4 10 8 6 12"/></svg>';
+
+    arrowBar.appendChild(prevBtn);
+    arrowBar.appendChild(dotsEl);
+    arrowBar.appendChild(nextBtn);
+
+    /* Build dots */
+    var dots = [];
+    for (var i = 0; i < total; i++) {
+      var dot = document.createElement('button');
+      dot.className = 'addon-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Go to add-on ' + (i + 1));
+      dot.dataset.index = i;
+      dotsEl.appendChild(dot);
+      dots.push(dot);
+    }
+
+    var current = 0;
+
+    function goTo(index) {
+      index = Math.max(0, Math.min(total - 1, index));
+      current = index;
+      var itemWidth = list.offsetWidth;
+      list.scrollTo({ left: itemWidth * index, behavior: 'smooth' });
+      dots.forEach(function (d, i) {
+        d.classList.toggle('active', i === index);
+      });
+      prevBtn.disabled = index === 0;
+      nextBtn.disabled = index === total - 1;
+    }
+
+    prevBtn.addEventListener('click', function () { goTo(current - 1); });
+    nextBtn.addEventListener('click', function () { goTo(current + 1); });
+    dots.forEach(function (dot) {
+      dot.addEventListener('click', function () { goTo(parseInt(dot.dataset.index, 10)); });
+    });
+
+    /* Sync dots when user swipes */
+    var scrollTimer;
+    list.addEventListener('scroll', function () {
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(function () {
+        var itemWidth = list.offsetWidth;
+        if (!itemWidth) return;
+        var idx = Math.round(list.scrollLeft / itemWidth);
+        if (idx !== current) goTo(idx);
+      }, 80);
+    }, { passive: true });
+
+    goTo(0);
+  }
+
+  /* Init after DOM ready */
+  function boot() {
+    updateSummary();
+    initSlider();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot, { once: true });
+  } else {
+    boot();
+  }
+
+  /* Re-init on resize (desktop <-> mobile transitions) */
+  var resizeTimer;
+  window.addEventListener('resize', function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(initSlider, 200);
+  }, { passive: true });
+
+})();
+</script>
+
+{% endif %}
