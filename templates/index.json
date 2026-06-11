@@ -481,7 +481,7 @@
           "settings": {
             "icon_html": "",
             "icon_image": "shopify://shop_images/image_ed37eafa-3d8c-4117-bb48-b1fddcefbffb.png",
-            "title": "FAST HEAT-UP",
+            "title": "WATER-RESISTANT",
             "text": "Ready to go in seconds",
             "link_label": "More about this service",
             "link_url": ""
@@ -492,7 +492,7 @@
           "settings": {
             "icon_html": "",
             "icon_image": "shopify://shop_images/image_8f555a74-0c60-4674-b4be-d52df5dbdb2a.png",
-            "title": "PURE FLAVOUR",
+            "title": "ADJUSTABLE FIT",
             "text": "Crisp vapor with precision",
             "link_label": "More about this service",
             "link_url": ""
@@ -503,7 +503,7 @@
           "settings": {
             "icon_html": "",
             "icon_image": "shopify://shop_images/image_05ea5639-229e-4dd7-8768-b960e7bd858f.png",
-            "title": "EASY TO USE",
+            "title": "NO APP REQUIRED",
             "text": "Effortless enjoyment",
             "link_label": "More about this service",
             "link_url": ""
@@ -735,7 +735,7 @@
           "type": "button",
           "settings": {
             "button_text": "Buy Everlasting Love Duo",
-            "button_link": "shopify://products/eternal-love-pair",
+            "button_link": "https://breathelet.com/products/breathelet-onefit?variant=57888652656975",
             "button_style": "",
             "button_size": "text-sm md:text-base",
             "button_background_color": "#ffffff",
@@ -1092,11 +1092,11 @@
             "button_bg_hover": "",
             "button_text_hover": "",
             "video_url": "",
-            "image": "shopify://shop_images/12_db647da5-2060-4960-aff2-fa7f86042026.webp",
+            "image": "shopify://shop_images/Influencer_Comunity.webp",
             "col_bg_color": "",
             "overlay_enable": true,
             "overlay_color": "#000000",
-            "overlay_opacity": 35,
+            "overlay_opacity": 50,
             "animation": ""
           }
         },
@@ -1120,11 +1120,11 @@
             "button_bg_hover": "",
             "button_text_hover": "",
             "video_url": "",
-            "image": "shopify://shop_images/4_4ee0b5b0-f567-4e95-a8db-06ae4d3941a2.webp",
+            "image": "shopify://shop_images/Wholesale.webp",
             "col_bg_color": "",
             "overlay_enable": true,
             "overlay_color": "#000000",
-            "overlay_opacity": 35,
+            "overlay_opacity": 50,
             "animation": ""
           }
         }

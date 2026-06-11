@@ -45,14 +45,39 @@
         endif
       %}
 
-      <li>
-        {% case item.object_type %}
-          {% when 'article', 'page' %}
-            {% render 'article-card', card_article: item, excerpt: false, date: false, comments: false %}
+      {% if item.object_type == 'product' and request.page_type == 'collection' and section.settings.show_variants %}
+        {% if item.has_only_default_variant %}
+          <li>{% render 'product-card', card_product: item, sizes: image_sizes %}</li>
+        {% else %}
+          {%- assign has_opted_in = false -%}
+          {%- for variant in item.variants -%}
+            {%- if variant.metafields.custom.show_as_product_card.value -%}
+              {%- assign has_opted_in = true -%}
+              {%- break -%}
+            {%- endif -%}
+          {%- endfor -%}
+
+          {% if has_opted_in %}
+            {% for variant in item.variants %}
+              {% unless variant.metafields.custom.show_as_product_card.value %}{% continue %}{% endunless %}
+              <li>
+                {% render 'product-card', card_product: item, card_variant: variant, sizes: image_sizes %}
+              </li>
+            {% endfor %}
           {% else %}
-            {% render 'product-card', card_product: item, sizes: image_sizes %}
-        {% endcase %}
-      </li>
+            <li>{% render 'product-card', card_product: item, sizes: image_sizes %}</li>
+          {% endif %}
+        {% endif %}
+      {% else %}
+        <li>
+          {% case item.object_type %}
+            {% when 'article', 'page' %}
+              {% render 'article-card', card_article: item, excerpt: false, date: false, comments: false %}
+            {% else %}
+              {% render 'product-card', card_product: item, sizes: image_sizes %}
+          {% endcase %}
+        </li>
+      {% endif %}
     {% endfor %}
   </ul>
   {% render 'pagination',

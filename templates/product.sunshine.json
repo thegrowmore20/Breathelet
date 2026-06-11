@@ -209,53 +209,6 @@
       "disabled": true,
       "settings": {}
     },
-    "video_with_text_Mmdccn": {
-      "type": "video-with-text",
-      "blocks": {
-        "subheading_cq8WW7": {
-          "type": "subheading",
-          "settings": {
-            "text": "OneFit is"
-          }
-        },
-        "heading_JQtBy8": {
-          "type": "heading",
-          "settings": {
-            "heading": "One size fits all",
-            "heading_size": "h1",
-            "heading_html_tag": "p"
-          }
-        },
-        "text_nBeQBW": {
-          "type": "text",
-          "settings": {
-            "text": "<p>With the OneFit model, you can simply pull the strings to your desired fit, cut the slack and you're done. <br/>Once the size is set you can just open and close the bracelet with the hook.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "subheading_cq8WW7",
-        "heading_JQtBy8",
-        "text_nBeQBW"
-      ],
-      "name": "t:sections.video-with-text.presets__0.name",
-      "settings": {
-        "custom_class": "",
-        "full_width": false,
-        "remove_bottom_spacing": false,
-        "autoplay": true,
-        "loop": true,
-        "video": "shopify://files/videos/Breathelet_how-to_upd_v2.webm",
-        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "image_size": "media--ratio-16-9",
-        "image_position": "right",
-        "image_width": 50,
-        "text_alignment": "text-left",
-        "background_color": "",
-        "text_color": "",
-        "heading_color": ""
-      }
-    },
     "custom_section_MwQNrf": {
       "type": "custom-section",
       "blocks": {
@@ -373,6 +326,46 @@
         "text_color": ""
       }
     },
+    "video_with_text_Mmdccn": {
+      "type": "video-with-text",
+      "blocks": {
+        "heading_JQtBy8": {
+          "type": "heading",
+          "settings": {
+            "heading": "One size fits all",
+            "heading_size": "h2",
+            "heading_html_tag": "h2"
+          }
+        },
+        "text_nBeQBW": {
+          "type": "text",
+          "settings": {
+            "text": "<p>With the OneFit model, you can simply pull the strings to your desired fit, cut the slack and you're done. <br/>Once the size is set you can just open and close the bracelet with the hook.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_JQtBy8",
+        "text_nBeQBW"
+      ],
+      "name": "t:sections.video-with-text.presets__0.name",
+      "settings": {
+        "custom_class": "",
+        "full_width": false,
+        "remove_bottom_spacing": false,
+        "autoplay": true,
+        "loop": true,
+        "video": "shopify://files/videos/Breathelet_how-to_upd_v2.webm",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "image_size": "media--ratio-16-9",
+        "image_position": "right",
+        "image_width": 50,
+        "text_alignment": "text-left",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": ""
+      }
+    },
     "related-products": {
       "type": "related-products",
       "settings": {
@@ -396,9 +389,9 @@
   "order": [
     "main",
     "main-details",
-    "video_with_text_Mmdccn",
     "custom_section_MwQNrf",
     "176227481753d6d67f",
+    "video_with_text_Mmdccn",
     "related-products"
   ]
 }

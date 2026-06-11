@@ -76,6 +76,7 @@
         "products_per_row_mobile": "products-collection-grid--mobile-two-col",
         "space_between_products": "block-spacing-extra-large",
         "include_collection_url": false,
+        "show_variants": true,
         "products_per_page": 13,
         "pagination_type": "classic",
         "filter_type": "horizontal",

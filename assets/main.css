@@ -5025,7 +5025,7 @@ sticky-add-to-cart {
 }
 @media (min-width: 992px) {
   sticky-add-to-cart {
-    max-width: 36rem;
+    max-width: 34rem;
   }
 }
 sticky-add-to-cart {
@@ -5065,6 +5065,12 @@ sticky-add-to-cart.show {
   animation: showStickyAddToCart 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
   pointer-events: all;
 }
+sticky-add-to-cart .product-vendor {
+  display: none
+}
+sticky-add-to-cart button.button {
+  padding: 1em 1.5em
+}
 @media not all and (min-width: 768px) {
   sticky-add-to-cart.show {
     animation: showStickyAddToCartMobile 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
@@ -5072,20 +5078,20 @@ sticky-add-to-cart.show {
 }
 sticky-add-to-cart .product-thumbnail {
   margin-inline-end: 1rem;
-  height: 4rem;
+  height: 3.5rem;
   width: auto;
   border-radius: var(--block-sm-corner-radius);
 }
 @media (min-width: 768px) {
   sticky-add-to-cart .product-thumbnail {
     margin-inline-end: 1.25rem;
-    height: 5rem;
+    height: 4rem;
   }
 }
 @media (min-width: 992px) {
   sticky-add-to-cart .product-thumbnail {
     margin-inline-end: 1.5rem;
-    height: 5rem;
+    height: 4rem;
   }
 }
 @media not all and (min-width: 768px) {
@@ -6192,6 +6198,10 @@ smooth-collapse.collapsing > details.product-collapse > summary > .icon-chevron 
   font-size: 10px;
   line-height: 1.2;
 }
+.variant-radio-image label .variant-radio-price span:last-child {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
 .color-swatch-selector {
   position: relative;
 }
@@ -6468,8 +6478,32 @@ media-carousel[adaptive-height]:not(:defined) .product-gallery__slide:not(:first
   flex-basis: unset;
   flex-grow: unset
 }
+@media (min-width: 992px) {
+  .buy-buttons > .qty-wrap {
+    flex-basis: 112px;
+  }
+  .buy-buttons button.button.button-add-to-cart {
+    flex-basis: calc(100% - 128px);
+  }
+}
+.buy-btn-wrap {
+  width: 100%;
+}
 .buy-buttons > *:where(.button, .shopify-payment-button) {
   flex-basis: 210px;
+}
+
+@media (max-width: 992px) and (min-width: 576px) {
+  .buy-buttons > *:where(.button, .shopify-payment-button) {
+    /* flex-basis: 100%; */
+    flex-basis: unset
+  }
+  .buy-buttons > .button-add-to-cart {
+    flex-basis: calc(100% - 128px)
+  }
+  .buy-buttons > .qty-wrap {
+    flex-basis: 112px;
+  }
 }
 @media not all and (min-width: 576px) {
   .buy-buttons > *:where(.button, .shopify-payment-button) {

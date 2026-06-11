@@ -75,8 +75,8 @@
         "contact_WVqDwp"
       ],
       "settings": {
-        "background_image": "shopify://shop_images/4.webp",
-        "overlay_opacity": 50,
+        "background_image": "shopify://shop_images/Footer_Desktop.webp",
+        "overlay_opacity": 70,
         "overlay_color": "#000000",
         "full_width": true,
         "show_social": true,

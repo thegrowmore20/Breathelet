@@ -32,7 +32,13 @@
     gap: 1rem;
     flex-wrap: wrap;
     justify-content: space-between;
+  } 
+
+  .pxFormGenerator .formContainer #formGeneratorForm .form_generater_form_div .block_label {
+    color : #fff;
   }
+
+
 
   @media screen and (max-width: 480px){
     .contact-column{
@@ -132,175 +138,7 @@
         {% if section.settings.text_position == 'right' %} xl:col-start-1 xl:row-start-1 {% endif %}
       "
     >
-      {%- form 'contact', id: form_id, data-form-button-loading: true -%}
-        {%- if form.posted_successfully? -%}
-          <div class="alert alert-success mb-6">
-            <p class="message message-success text-success">{{ 'templates.contact.form.post_success' | t }}</p>
-          </div>
-        {%- elsif form.errors -%}
-          <div class="mb-6 md:mb-8">
-            {% render 'form-errors', errors: form.errors, form_id: form_id %}
-          </div>
-        {%- endif -%}
-
-        {% if product %}
-          <input
-            type="hidden"
-            name="contact[Product]"
-            value="{{ product.vendor | escape }} {{ product.title | escape }}"
-          >
-        {% endif %}
-
-        <div
-          class="grid gap-4"
-          data-animation="block"
-          data-animation-group="{{ section.id }}"
-        >
-          {% comment %}
-            Check if the form submitted successfully
-            If not it could only have come from the email field which is the only required field
-          {% endcomment %}
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {% comment %}
-              Name field
-              The inputs need to have an attribute of name="contact[information_id]", where information_id briefly
-              identifies the information that you're collecting. These titles appear in contact notifications, and
-              must be unique within the form. The emails sent to the buyer related to contact us form submissions
-              uses the name string for the label in the email and thus needs to be translated.
-            {% endcomment %}
-            <div class="form-floating">
-              <input
-                class="input"
-                autocomplete="name"
-                type="text"
-                id="{{ form_id }}-name"
-                name="contact[{{ 'templates.contact.form.name' | t }}]"
-                value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
-                placeholder="{{ 'templates.contact.form.name' | t }}"
-              >
-              <label for="{{ form_id }}-name">{{ 'templates.contact.form.name' | t }}</label>
-            </div>
-
-            {% comment %}
-              Email field, which is required
-              Aria is used for accessibility
-            {% endcomment %}
-            <div class="form-floating">
-              <input
-                class="input"
-                autocomplete="email"
-                type="email"
-                id="{{ form_id }}-email"
-                name="contact[email]"
-                spellcheck="false"
-                autocapitalize="off"
-                aria-required="true"
-                required
-                value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
-                placeholder="{{ 'templates.contact.form.email' | t }}"
-                {% if form.errors contains 'email' %}
-                  aria-invalid="true"
-                  aria-describedby="{{ form_id }}-email-error"
-                {% endif %}
-              >
-              <label for="{{ form_id }}-email">
-                {{- 'templates.contact.form.email' | t -}}
-                <span aria-hidden="true">*</span>
-              </label>
-            </div>
-          </div>
-
-          {% comment %} Custom fields {% endcomment %}
-          {% if section.blocks.size > 0 %}
-            <div class="grid gap-4 sm:grid-cols-2 items-start">
-              {% for block in section.blocks %}
-                <div
-                  class="
-                    form-floating
-                    {% if block.type == 'dropdown' %} form-select {% endif %}
-                    {% if block.settings.full_width %} sm:col-span-2 {% endif %}
-                  "
-                >
-                  {% if block.type == 'text' %}
-                    {% if block.settings.multiline %}
-                      <textarea
-                        class="input"
-                        id="{{ block.id }}"
-                        name="contact[{{ block.settings.label }}]"
-                        placeholder="{{ block.settings.label }}"
-                        rows="5"
-                        {% if block.settings.required %}
-                          required
-                        {% endif %}
-                      ></textarea>
-                    {% else %}
-                      <input
-                        class="input"
-                        type="text"
-                        id="{{ block.id }}"
-                        name="contact[{{ block.settings.label }}]"
-                        placeholder="{{ block.settings.label }}"
-                        {% if block.settings.required %}
-                          required
-                        {% endif %}
-                      >
-                    {% endif %}
-                    <label for="{{ block.id }}">
-                      {{- block.settings.label -}}
-                      {%- if block.settings.required -%}*{%- endif -%}
-                    </label>
-                  {% elsif block.type == 'dropdown' %}
-                    <select
-                      class="input select"
-                      id="{{ block.id }}"
-                      name="contact[{{ block.settings.label }}]"
-                    >
-                      {% assign options = block.settings.options | newline_to_br | strip_newlines | split: '<br />' %}
-                      {% for option in options %}
-                        <option value="{{ option }}">{{ option }}</option>
-                      {% endfor %}
-                    </select>
-                    <label for="{{ block.id }}">{{ block.settings.label }}</label>
-                  {% endif %}
-                </div>
-              {% endfor %}
-            </div>
-          {% endif %}
-
-          {% comment %} Comment field {% endcomment %}
-          <div class="form-floating">
-            <textarea
-              class="input"
-              id="{{ form_id }}-body"
-              name="contact[{{ 'templates.contact.form.comment' | t }}]"
-              placeholder="{{ 'templates.contact.form.comment' | t }}"
-              rows="5"
-              required
-            >
-                {{- form.body -}}
-              </textarea>
-            <label for="{{ form_id }}-body">
-              {{- 'templates.contact.form.comment' | t -}}
-              <span aria-hidden="true">*</span></label
-            >
-          </div>
-
-          <div class="mt-2 text-lg">
-            <button
-              type="submit"
-              class="button {{ section.settings.button_style }}"
-              style="{% render 'button-vars', background: section.settings.button_background_color, text: section.settings.button_text_color %}"
-            >
-              {% if section.settings.show_button_icon %}
-                <div class="w-4 mr-4">
-                  {% render 'icon-paper-plane' %}
-                </div>
-              {% endif %}
-              {{ 'templates.contact.form.send' | t }}
-            </button>
-          </div>
-        </div>
-      {%- endform -%}
+      <div style="margin:0 auto;" class="pxFormGenerator" id="qKqIjwBuW8RFtG3fvrs16w"></div>
     </div>
   </div>
 </div>

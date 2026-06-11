@@ -82,6 +82,7 @@
         },
         "0f473fb4-422c-40a7-8c15-2fd164440f80": {
           "type": "quantity_selector",
+          "disabled": true,
           "settings": {}
         },
         "a730fe0e-baa3-47bc-90c9-21c5a5d75f2d": {
@@ -89,8 +90,8 @@
           "settings": {
             "show_dynamic_checkout_buttons": true,
             "show_gift_card_recipient": true,
-            "add_to_cart_background_color": "rgba(0,0,0,0)",
-            "add_to_cart_text_color": "rgba(0,0,0,0)",
+            "add_to_cart_background_color": "#ffc60d",
+            "add_to_cart_text_color": "#000000",
             "buy_it_now_background_color": "rgba(0,0,0,0)",
             "buy_it_now_text_color": "rgba(0,0,0,0)"
           }
