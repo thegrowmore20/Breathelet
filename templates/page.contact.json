@@ -30,8 +30,8 @@
           "type": "heading",
           "settings": {
             "heading": "Contact us",
-            "heading_size": "h1",
-            "heading_html_tag": "p"
+            "heading_size": "h2",
+            "heading_html_tag": "h1"
           }
         }
       },
@@ -39,43 +39,91 @@
         "template--19974638960932__212a3c16-6c50-4d61-942b-fdadda48f9e7-heading-1"
       ],
       "settings": {
-        "full_width": false,
+        "full_width": true,
         "enable_transparent_header": false,
         "use_original_media_size": false,
         "image": "shopify://shop_images/nano-banana-no-bg-2025-08-30T10-58-29.jpg",
-        "content_alignment": "md:content-bottom-left",
-        "content_alignment_mobile": "content-bottom-left",
+        "content_alignment": "md:content-middle-left",
+        "content_alignment_mobile": "content-middle-left",
         "link": "",
-        "min_height": 440,
-        "text_color": "#363636",
+        "min_height": 300,
+        "text_color": "#ffffff",
         "overlay_color": "#000000",
-        "overlay_opacity": 20,
+        "overlay_opacity": 50,
         "overlay_type": "solid"
       }
     },
     "form": {
       "type": "contact-form",
+      "blocks": {
+        "text_nkbrxg": {
+          "type": "text",
+          "settings": {
+            "full_width": true,
+            "required": false,
+            "multiline": false,
+            "label": "Phone Number"
+          }
+        }
+      },
+      "block_order": [
+        "text_nkbrxg"
+      ],
       "settings": {
         "full_width": true,
-        "subheading": "",
-        "heading": "Contact form",
-        "content": "",
+        "subheading": "Got Any Questions?",
+        "heading": "GET IN TOUCH",
+        "content": "<p>Your feedback is important to us. Whatever your needs, please don't hestiate to reach out. Our customer support team will be happy to assist you!</p>",
+        "disclaimer": "",
         "heading_size": "h2",
         "text_position": "left",
         "button_style": "",
         "show_button_icon": true,
+        "column_icon_1": "<svg id=\"Icons\" class=\"contact-page-svg\" xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" viewBox=\"0 0 512 512\">\n  <!-- Generator: Adobe Illustrator 30.2.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 1)  -->\n  <defs>\n    <style>\n      .contact-page-svg .st0 {\n        fill: #000;\n      }\n    </style>\n  </defs>\n  <path class=\"st0\" d=\"M391.26,159.13c-10.65-53.99-50.27-99.01-104.16-111.68-44.21-10.39-88.86,7.04-119.24,39.19-34.7,36.72-49.92,92.79-31.3,141.14,4.49,11.67,9.55,22.34,16.08,33.03l33.08,54.12,35.35,57.8,31.96,51.76c1.84,2.98,5.81,4.43,8.4,4.34,2.18-.07,6.02-1.73,7.46-4.06l24.72-39.98,30.8-50.24,39.63-64.42c7.09-11.53,13.12-22.7,18.63-35.04,10.76-24.11,13.73-49.92,8.6-75.95ZM267.49,238.77c-33.6,3.48-63.46-20.88-67.09-53.95-3.69-33.67,20.6-64.36,55.12-67.56,34.16-3.17,63.16,22.2,66.35,55.08,3.23,33.33-21.52,63.03-54.39,66.43Z\"/>\n  <path class=\"st0\" d=\"M284.08,406.99l-10.54,17.02c-2.87,4.64-6.75,8.23-12.53,8.6-4.67-.41-8.94-3.13-11.43-7.13l-11.52-18.51c-11.17,1.4-26.25,4.78-34.3,12.58-3.82,3.7-3.53,9.18.48,12.7,4.44,3.9,9.93,6.66,16.06,8.35,26.82,7.41,55.36,7.42,82.11-.18,6.13-1.74,21.73-8.42,18.33-17.03-4.19-10.61-26.74-15.42-36.65-16.39Z\"/>\n</svg>",
+        "column_title_1": "Location",
+        "column_subtext_1": "16133 Ventura Blvd floor 7, Los Angeles California 91436, United States",
+        "contact_url_1": "https://maps.app.goo.gl/JKY7uAjifEKqhVXJ8",
+        "open_new_contact_1": true,
+        "column_icon_2": "",
+        "column_title_2": "",
+        "column_subtext_2": "",
+        "contact_url_2": "",
+        "open_new_contact_2": false,
+        "column_icon_3": "<svg id=\"Icons\"  class=\"contact-page-svg\"xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" viewBox=\"0 0 512 512\">\n  <!-- Generator: Adobe Illustrator 30.2.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 1)  -->\n  <defs>\n    <style>\n      .contact-page-svg .st0 {\n        fill: #000;\n      }\n    </style>\n  </defs>\n  <path class=\"st0\" d=\"M281.99,285.86c-16.95,15.15-35.56,15.72-52.06.91L58.24,132.69c-2.83-2.54,2.21-7.81,5.73-7.81l384.16.06c1.76,0,4.99,1.92,5.29,3.21.37,1.61-.96,5.34-2.59,6.79l-168.83,150.92Z\"/>\n  <path class=\"st0\" d=\"M449.31,389.81c2.32,2.09,4.11,4.8,3.97,6.35s-3.98,4.17-5.73,4.17l-379.68.23c-4,0-10.99-3.05-10.12-6.87l134.31-121.11,35.03,29.99c17.03,14.58,41.91,13.36,58.48-1.1l33.44-29.17,130.31,117.51Z\"/>\n  <polygon class=\"st0\" points=\"463.9 382.68 330.15 262.38 464.02 143.05 463.9 382.68\"/>\n  <polygon class=\"st0\" points=\"181.28 262.74 48.07 382.17 47.98 143.54 181.28 262.74\"/>\n</svg>",
+        "column_title_3": "Email",
+        "column_subtext_3": "hello@breathelet.com",
+        "contact_url_3": "mailto:hello@breathelet.com",
+        "open_new_contact_3": true,
+        "column_icon_4": "",
+        "column_title_4": "",
+        "column_subtext_4": "",
+        "contact_url_4": "",
+        "open_new_contact_4": false,
         "background_color": "rgba(0,0,0,0)",
         "text_color": "",
         "heading_color": "",
-        "button_background_color": "rgba(0,0,0,0)",
-        "button_text_color": "rgba(0,0,0,0)",
+        "button_background_color": "#ffffff",
+        "button_text_color": "#000000",
         "heading_html_tag": "p"
+      }
+    },
+    "custom_liquid_iNigTY": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "full_width": true,
+        "remove_horizontal_space": false,
+        "remove_vertical_space": false,
+        "custom_liquid": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3301.5933909436094!2d-118.48497839999999!3d34.156743399999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c29789ecb089d7%3A0x2a751daf9daf3265!2s16133%20Ventura%20Blvd%20Fl%207%2C%20Encino%2C%20CA%2091436%2C%20USA!5e0!3m2!1sen!2s!4v1781087668567!5m2!1sen!2s\" width=\"100%\" height=\"400\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>",
+        "background_color": "",
+        "text_color": ""
       }
     }
   },
   "order": [
     "main",
     "212a3c16-6c50-4d61-942b-fdadda48f9e7",
-    "form"
+    "form",
+    "custom_liquid_iNigTY"
   ]
 }

@@ -8,12 +8,30 @@
       assign product_card_info_class = 'text-center items-center'
   endcase
 
+  assign card_image = card_product.featured_media
+  assign card_available = card_product.available
+  assign card_title = card_product.title
   assign url = card_product.url
+
+  if card_variant
+    if card_variant.featured_media
+      assign card_image = card_variant.featured_media
+    endif
+    assign card_available = card_variant.available
+    assign url = card_variant.url
+
+    if card_variant.metafields.custom.product_card_title.value != blank
+      assign card_title = card_variant.metafields.custom.product_card_title.value
+    else
+      unless card_variant.title == 'Default Title'
+        assign card_title = card_product.title | append: ' - ' | append: card_variant.title
+      endunless
+    endif
+  endif
 
   if section.settings.include_collection_url and collection
     assign url = url | within: collection
   endif
-
 %}
 
 <div class="product-card group color rounded-block {{ class }}" {{ attrs }}>
@@ -23,10 +41,10 @@
         class="product-card-media media rounded-block [--aspect-ratio:--product-card-image-aspect] md:pb-6"
       >
         {% if card_product %}
-          {% if card_product.featured_media %}
+          {% if card_image %}
             <lqip-element class="image-loader h-full">
               {{
-                card_product.featured_media
+                card_image
                 | image_url: width: 900
                 | image_tag:
                   widths: '360, 450, 540, 630, 720, 900',
@@ -37,7 +55,7 @@
               }}
 
               {{
-                card_product.featured_media
+                card_image
                 | image_url: width: 20
                 | image_tag: class: 'media-lq-placeholder', fetchpriority: 'low'
               }}
@@ -65,7 +83,7 @@
           top-0 left-0 pointer-events-none z-10
         "
       >
-        {% if settings.product_card_sold_out_badge and card_product.available == false %}
+        {% if settings.product_card_sold_out_badge and card_available == false %}
           <div class="info-badge sold-out-badge">
             {{ 'products.product.sold_out' | t }}
           </div>
@@ -85,7 +103,7 @@
     {% endif %}
 
     <h2 class="product-name">
-      <a data-instant href="{{ url }}">{{ card_product.title | default: 'Product' }}</a>
+      <a data-instant href="{{ url }}">{{ card_title | default: 'Product' }}</a>
     </h2>
 
     <a href="/#looxReviews">

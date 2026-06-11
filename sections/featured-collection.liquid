@@ -54,20 +54,46 @@ data-animation-group="{{ section.id }}-product-cards"
         {% if section.settings.show_variants %}
           {% assign cards_rendered = 0 %}
           {% for product in products %}
-            {% for variant in product.variants %}
-              {% if cards_rendered >= section.settings.products_count %}{% break %}{% endif %}
+            {% if cards_rendered >= section.settings.products_count %}{% break %}{% endif %}
+
+            {% if product.has_only_default_variant %}
+              {% comment %} Single-variant product — no opt-in possible, render product card {% endcomment %}
               <div class="grid-carousel-item">
-                {% render 'product-card',
-                  card_product: product,
-                  card_variant: variant,
-                  attrs: card_attrs,
-                  class: "h-full",
-                  sizes: image_sizes
-                %}
+                {% render 'product-card', card_product: product, attrs: card_attrs, class: "h-full", sizes: image_sizes %}
               </div>
               {% assign cards_rendered = cards_rendered | plus: 1 %}
-            {% endfor %}
-            {% if cards_rendered >= section.settings.products_count %}{% break %}{% endif %}
+            {% else %}
+              {%- assign has_opted_in = false -%}
+              {%- for variant in product.variants -%}
+                {%- if variant.metafields.custom.show_as_product_card.value -%}
+                  {%- assign has_opted_in = true -%}
+                  {%- break -%}
+                {%- endif -%}
+              {%- endfor -%}
+
+              {% if has_opted_in %}
+                {% for variant in product.variants %}
+                  {% unless variant.metafields.custom.show_as_product_card.value %}{% continue %}{% endunless %}
+                  {% if cards_rendered >= section.settings.products_count %}{% break %}{% endif %}
+                  <div class="grid-carousel-item">
+                    {% render 'product-card',
+                      card_product: product,
+                      card_variant: variant,
+                      attrs: card_attrs,
+                      class: "h-full",
+                      sizes: image_sizes
+                    %}
+                  </div>
+                  {% assign cards_rendered = cards_rendered | plus: 1 %}
+                {% endfor %}
+              {% else %}
+                {% comment %} Multi-variant but none opted in — fall back to product card {% endcomment %}
+                <div class="grid-carousel-item">
+                  {% render 'product-card', card_product: product, attrs: card_attrs, class: "h-full", sizes: image_sizes %}
+                </div>
+                {% assign cards_rendered = cards_rendered | plus: 1 %}
+              {% endif %}
+            {% endif %}
           {% endfor %}
         {% else %}
           {% for product in products limit: section.settings.products_count %}

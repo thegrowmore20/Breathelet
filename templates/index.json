@@ -139,13 +139,13 @@
       "name": "t:sections.featured-collection.name",
       "settings": {
         "full_width": true,
-        "carousel": true,
+        "carousel": false,
         "show_variants": true,
         "products_count": 8,
         "grid_columns": 4,
         "grid_columns_mobile": "2",
         "products": [
-          "breathelet-onefit-copy"
+          "breathelet-onefit"
         ],
         "collection": "",
         "subheading": "",
@@ -162,6 +162,7 @@
     },
     "featured_collection_jdUFMc": {
       "type": "featured-collection",
+      "disabled": true,
       "name": "t:sections.featured-collection.name",
       "settings": {
         "full_width": true,
@@ -531,7 +532,7 @@
         "full_width": true,
         "bg_color": "#000000",
         "vertical_layout": true,
-        "show_divider": true,
+        "show_divider": false,
         "heading": "Buy with Confidence",
         "text_1": "Risk Free Shopping & Satisfacion Guaranteed",
         "intro_img_url_1": "https://airvapeusa.com/cdn/shop/files/icon_Warranty_3.svg?v=1774515664",
@@ -585,7 +586,7 @@
         "image_position": "left",
         "image_width": 50,
         "text_alignment": "text-left",
-        "background_color": "#0a0b0c",
+        "background_color": "#000000",
         "text_color": "#ffffff",
         "heading_color": "#ffffff"
       }
@@ -638,6 +639,7 @@
         "column_KfE8Dc",
         "column_DwbRUR"
       ],
+      "disabled": true,
       "name": "t:sections.multicolumn.presets__0.name",
       "settings": {
         "full_width": true,
@@ -704,7 +706,7 @@
         "remove_bottom_spacing": false,
         "image": "shopify://shop_images/d989e3f2-1a42-444b-97e3-2879e680b4ff-1.jpg",
         "image_size": "",
-        "image_position": "left",
+        "image_position": "right",
         "image_width": 50,
         "text_alignment": "text-left",
         "background_color": "#000000",
@@ -751,12 +753,52 @@
         "remove_bottom_spacing": false,
         "image": "shopify://shop_images/Bundle_Image_1.webp",
         "image_size": "",
-        "image_position": "right",
+        "image_position": "left",
         "image_width": 50,
         "text_alignment": "text-left",
         "background_color": "#000000",
         "text_color": "#ffffff",
         "heading_color": "#ffffff"
+      }
+    },
+    "video_with_text_dPhCKa": {
+      "type": "video-with-text",
+      "blocks": {
+        "heading_cQWDWQ": {
+          "type": "heading",
+          "settings": {
+            "heading": "One size fits all",
+            "heading_size": "h2",
+            "heading_html_tag": "h2"
+          }
+        },
+        "text_jKjBFg": {
+          "type": "text",
+          "settings": {
+            "text": "<p>With the OneFit model, you can simply pull the strings to your desired fit, cut the slack and you're done. <br/>Once the size is set you can just open and close the bracelet with the hook.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_cQWDWQ",
+        "text_jKjBFg"
+      ],
+      "name": "t:sections.video-with-text.presets__0.name",
+      "settings": {
+        "custom_class": "video-with-text-section",
+        "full_width": true,
+        "remove_bottom_spacing": false,
+        "autoplay": true,
+        "loop": true,
+        "video": "shopify://files/videos/Breathelet_how-to_upd_v2.webm",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "image_size": "",
+        "image_position": "right",
+        "image_width": 50,
+        "text_alignment": "text-left",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": ""
       }
     },
     "featured_product_9ybD34": {
@@ -866,6 +908,7 @@
         "text_h3gqdn",
         "text_eCDkXP"
       ],
+      "disabled": true,
       "name": "t:sections.rich-text.presets__0.name",
       "settings": {
         "full_width": true,
@@ -941,6 +984,7 @@
       "block_order": [
         "heading_7DAAYy"
       ],
+      "disabled": true,
       "name": "t:sections.rich-text.presets__0.name",
       "settings": {
         "full_width": true,
@@ -998,6 +1042,7 @@
       "block_order": [
         "ai_gen_block_634672e_C6V3eQ"
       ],
+      "disabled": true,
       "settings": {}
     },
     "featured_collection_MU6wJG": {
@@ -1022,6 +1067,85 @@
         "text_color": "",
         "heading_color": "",
         "heading_html_tag": "p"
+      }
+    },
+    "two_column_flex_new": {
+      "type": "two-column-flex",
+      "blocks": {
+        "tcf_col_1": {
+          "type": "column",
+          "settings": {
+            "subheading": "",
+            "heading": "Join Influencer Community",
+            "heading_size": "h2",
+            "heading_tag": "h2",
+            "paragraph": "",
+            "text_align": "text-center",
+            "content_valign": "center",
+            "text_color": "#ffffff",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "",
+            "button_size": "text-sm md:text-base",
+            "button_bg_color": "#ffffff",
+            "button_text_color": "#000000",
+            "button_bg_hover": "",
+            "button_text_hover": "",
+            "video_url": "",
+            "image": "shopify://shop_images/12_db647da5-2060-4960-aff2-fa7f86042026.webp",
+            "col_bg_color": "",
+            "overlay_enable": true,
+            "overlay_color": "#000000",
+            "overlay_opacity": 35,
+            "animation": ""
+          }
+        },
+        "tcf_col_2": {
+          "type": "column",
+          "settings": {
+            "subheading": "",
+            "heading": "Get Wholesale Quote",
+            "heading_size": "h2",
+            "heading_tag": "h2",
+            "paragraph": "",
+            "text_align": "text-center",
+            "content_valign": "center",
+            "text_color": "#ffffff",
+            "button_text": "",
+            "button_link": "",
+            "button_style": "",
+            "button_size": "text-sm md:text-base",
+            "button_bg_color": "#ffffff",
+            "button_text_color": "#000000",
+            "button_bg_hover": "",
+            "button_text_hover": "",
+            "video_url": "",
+            "image": "shopify://shop_images/4_4ee0b5b0-f567-4e95-a8db-06ae4d3941a2.webp",
+            "col_bg_color": "",
+            "overlay_enable": true,
+            "overlay_color": "#000000",
+            "overlay_opacity": 35,
+            "animation": ""
+          }
+        }
+      },
+      "block_order": [
+        "tcf_col_1",
+        "tcf_col_2"
+      ],
+      "name": "Two-column flex",
+      "settings": {
+        "full_width": true,
+        "col_ratio": "50-50",
+        "col_gap": 20,
+        "corner_radius": 0,
+        "mobile_stack_order": "col1-first",
+        "min_height_desktop": 580,
+        "min_height_tablet": 500,
+        "min_height_mobile": 440,
+        "background_color": "",
+        "text_color": "",
+        "heading_color": ""
       }
     },
     "47953464-d278-497d-be52-ea15912c52d9": {
@@ -1059,12 +1183,14 @@
     "multicolumn_Pxn6VQ",
     "fa63dde0-c7d9-4ac7-9f3d-90ef6a67184f",
     "image_with_text_WjQwNJ",
+    "video_with_text_dPhCKa",
     "featured_product_9ybD34",
     "rich_text_zPXUB9",
     "image_hotspots_MEWGdp",
     "rich_text_fq93c9",
     "177133889400aad7f9",
     "featured_collection_MU6wJG",
+    "two_column_flex_new",
     "47953464-d278-497d-be52-ea15912c52d9"
   ]
 }

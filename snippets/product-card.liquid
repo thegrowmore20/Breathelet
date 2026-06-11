@@ -54,9 +54,14 @@
     assign card_compare = card_variant.compare_at_price
     assign card_available = card_variant.available
     assign url = card_variant.url
-    unless card_variant.title == 'Default Title'
-      assign card_title = card_product.title | append: ' - ' | append: card_variant.title
-    endunless
+
+    if card_variant.metafields.custom.product_card_title.value != blank
+      assign card_title = card_variant.metafields.custom.product_card_title.value
+    else
+      unless card_variant.title == 'Default Title'
+        assign card_title = card_product.title | append: ' - ' | append: card_variant.title
+      endunless
+    endif
   endif
 
   if card_compare > card_price
@@ -164,31 +169,6 @@
         {% endif %}
       </div>
     {% endif %}
-
-    {% if settings.product_card_quick_add_to_cart and card_available and quick_add != false %}
-      <quick-add-button
-        class="no-js-hidden"
-        {% if card_variant %}
-          variant-id="{{ card_variant.id }}"
-        {% elsif card_product.has_only_default_variant or card_product.variants.size == 1 %}
-          variant-id="{{ card_product.first_available_variant.id }}"
-        {% endif %}
-        handle="{{ card_product.handle }}"
-      >
-        <button
-          aria-label="{{ 'accessibility.add_to_cart' | t }}"
-          class="
-            button button-primary p-0 w-9 h-9 absolute bottom-2 right-2 rounded-full z-10
-            lg:bottom-4 lg:right-4
-            lg:w-12 lg:h-12
-          "
-        >
-          <div class="icon-sm lg:icon-md">
-            {% render 'icon-cart' %}
-          </div>
-        </button>
-      </quick-add-button>
-    {% endif %}
   </div>
 
   <div class="product-card__info pt-5 md:pt-6 flex flex-col grow max-md:text-sm {{ product_card_info_class }}">
@@ -241,5 +221,28 @@
         {%- endfor -%}
       </div>
     {% endif %}
+
+    {% if settings.product_card_quick_add_to_cart and card_available and quick_add != false %}
+      <quick-add-button
+        class="no-js-hidden mt-1 w-full"
+        {% if card_variant %}
+          variant-id="{{ card_variant.id }}"
+        {% elsif card_product.has_only_default_variant or card_product.variants.size == 1 %}
+          variant-id="{{ card_product.first_available_variant.id }}"
+        {% endif %}
+        handle="{{ card_product.handle }}"
+      >
+        <button
+          aria-label="{{ 'accessibility.add_to_cart' | t }}"
+          class="button button-primary p-0 rounded-full z-10 w-full"
+        >
+          <div class="flex items-center gap-1.5">
+            <span class="icon-sm lg:icon-md">{% render 'icon-cart' %}</span>
+            <span>Add to cart</span>
+          </div>
+        </button>
+      </quick-add-button>
+    {% endif %}
+
   </div>
 </div>

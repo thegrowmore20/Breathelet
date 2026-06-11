@@ -1,5 +1,9 @@
 {% liquid
   assign variant_image = option_value.variant.featured_image
+  assign variant_price = option_value.variant.price | money
+  if option_value.variant.compare_at_price != blank
+    assign variant_compare_price = option_value.variant.compare_at_price | money
+  endif
 
   if option_value.product_url != blank and variant_image == blank
     assign variant_image = option_value.variant.product.featured_image
@@ -38,5 +42,8 @@
         | image_tag: sizes: '(min-width: 1400px) 80px, 64px', loading: 'lazy'
       -}}
     </lqip-element>
+    <div class="variant-radio-price">
+      <span>{{ variant_price }}</span>&nbsp;<span>{{ variant_compare_price }}</span>
+    </div>
   </label>
 </div>

@@ -11,6 +11,7 @@
   "sections": {
     "main-banner": {
       "type": "main-collection-banner",
+      "disabled": true,
       "settings": {
         "full_width": true,
         "enable_transparent_header": true,
@@ -29,6 +30,43 @@
         "overlay_opacity": 25,
         "overlay_type": "solid",
         "heading_html_tag": "h1"
+      }
+    },
+    "image_with_text_overlay_kEXVec": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "heading_AaBn89": {
+          "type": "heading",
+          "settings": {
+            "heading": "{{ collection.title }}",
+            "heading_size": "h2",
+            "heading_html_tag": "h1"
+          }
+        },
+        "text_ppUeT9": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_AaBn89",
+        "text_ppUeT9"
+      ],
+      "settings": {
+        "full_width": true,
+        "enable_transparent_header": false,
+        "use_original_media_size": false,
+        "image": "shopify://shop_images/nano-banana-no-bg-2025-08-30T10-58-29.jpg",
+        "content_alignment": "md:content-middle-left",
+        "content_alignment_mobile": "content-middle-left",
+        "link": "",
+        "min_height": 300,
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 50,
+        "overlay_type": "solid"
       }
     },
     "main-product-grid": {
@@ -56,6 +94,7 @@
   },
   "order": [
     "main-banner",
+    "image_with_text_overlay_kEXVec",
     "main-product-grid"
   ]
 }

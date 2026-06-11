@@ -35,10 +35,53 @@
           data-animation-group="{{ section.id }}-product-cards"
           {% endcapture %}
 
-          <div class="grow auto-rows-min grid grid-cols-mega-menu-horizontal-items mega-menu-width-adjust {{ block.settings.menu_max_width }} gap-x-3 gap-y-3 styled-links break-anywhere">
-            {% for product in block.settings.products %}
+          <div data-variants="{{ mega_menu_products_show_variants }}" class="grow auto-rows-min grid grid-cols-mega-menu-horizontal-items mega-menu-width-adjust {{ block.settings.menu_max_width }} gap-x-3 gap-y-3 styled-links break-anywhere">
+            {% if mega_menu_products_show_variants %}
+              {% for product in block.settings.products %}
+                {% if product.has_only_default_variant %}
+                  {% comment %} Single-variant product — no opt-in possible, render product card {% endcomment %}
+                  {% render 'mega-menu-product-cards',
+                    card_product: product,
+                    attrs: card_attrs,
+                    class: "h-full",
+                    sizes: image_sizes
+                  %}
+                {% else %}
+                  {%- assign has_opted_in = false -%}
+                  {%- for variant in product.variants -%}
+                    {%- if variant.metafields.custom.show_as_product_card.value -%}
+                      {%- assign has_opted_in = true -%}
+                      {%- break -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+
+                  {% if has_opted_in %}
+                    {% for variant in product.variants %}
+                      {% unless variant.metafields.custom.show_as_product_card.value %}{% continue %}{% endunless %}
+                      {% render 'mega-menu-product-cards',
+                        card_product: product,
+                        card_variant: variant,
+                        attrs: card_attrs,
+                        class: "h-full",
+                        sizes: image_sizes
+                      %}
+                    {% endfor %}
+                  {% else %}
+                    {% comment %} Multi-variant but none opted in — fall back to product card {% endcomment %}
+                    {% render 'mega-menu-product-cards',
+                      card_product: product,
+                      attrs: card_attrs,
+                      class: "h-full",
+                      sizes: image_sizes
+                    %}
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+            {% else %}
+              {% for product in block.settings.products %}
                 {% render 'mega-menu-product-cards', card_product: product, attrs: card_attrs, class: "h-full", sizes: image_sizes %}
-            {% endfor %}
+              {% endfor %}
+            {% endif %}
           </div>
 
         </div>

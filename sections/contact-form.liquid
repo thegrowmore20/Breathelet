@@ -1,7 +1,48 @@
 {% assign form_id = section.id | append: '-ContactForm' %}
 
 {% render 'section-bg-number-vars' %}
+<style>
+  .contact-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;    
+  }
+  .contact-column {
+    background: #fff;
+    color: #000;
+    padding: 1.25rem;
+    border-radius: .75rem;
+    transition: all 0.2s ease;
+  }
+  .contact-column * {
+    color: #000;
+  }
+  .contact-column svg {
+    color: #000;
+    width: 40px;
+  }
+  .contact-column:hover {
+    scale: 1.01;
+    transition: all 0.4s ease
+  }
 
+  .contact-social-media {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  @media screen and (max-width: 480px){
+    .contact-column{
+      padding: 1rem;
+    }
+    .contact-columns {    
+      grid-template-columns: 1fr;    
+    }
+  }
+</style>
 <div {% render 'section-attrs' %}>
   <div
     class="
@@ -15,6 +56,73 @@
   >
     <div class="section-content-spacing">
       {% render 'section-content' %}
+
+            <div class="contact-columns mt-4">
+        {% for i in (1..4) %}
+          {% capture icon %}column_icon_{{ i }}{% endcapture %}
+          {% capture title %}column_title_{{ i }}{% endcapture %}
+          {% capture subtext %}column_subtext_{{ i }}{% endcapture %}
+          {% capture url %}contact_url_{{ i }}{% endcapture %}
+          {% capture new_tab %}open_new_contact_{{ i }}{% endcapture %}
+          {% if section.settings[icon] != blank and section.settings[title] %}
+            {% if section.settings[url] != blank %}
+              <a href="{{ section.settings[url]}}" {% if section.settings[new_tab] %} target="_blank" {% endif %}
+                data-animation="paragraph"
+                data-animation-group="{{ section.id }}"
+                class="contact-column">
+                <div class="col-top d-flex flex gap-2 sm:gap:4 items-center mb-2">
+                  {% if section.settings[icon] != blank %}
+                  <div class="col-icon">
+                    {{ section.settings[icon] }}
+                  </div>
+                  {% endif %}
+                  {% if section.settings[title] != blank %}
+                    <h3 class="h4 m-0">{{ section.settings[title] }}</h3>
+                  {% endif %}
+                </div>
+                {% if section.settings[subtext] != blank %}
+                  <div class="col-text">{{ section.settings[subtext] }}</div>
+                {% endif %}
+              </a>
+            {% else %}
+            <div
+              data-animation="paragraph"
+              data-animation-group="{{ section.id }}"
+              class="contact-column">
+              <div class="col-top d-flex flex gap-2 sm:gap:4 items-center mb-2">
+                {% if section.settings[icon] != blank %}
+                <div class="col-icon">
+                  {{ section.settings[icon] }}
+                </div>
+                {% endif %}
+                {% if section.settings[title] != blank %}
+                  <h3 class="h4 m-0">{{ section.settings[title] }}</h3>
+                {% endif %}
+              </div>
+              {% if section.settings[subtext] != blank %}
+                <div class="col-text">{{ section.settings[subtext] }}</div>
+              {% endif %}
+            </div>
+          {% endif %}
+                      {% endif %}
+        {% endfor %}  
+      </div>
+
+      <div class="contact-social-media mt-6">
+        <div class="contact-social-media-heading">   
+          <h2 class="font-bold">OUR SOCIAL MEDIA </h2>
+        </div>
+        <div class="contactsocial-media-list">
+          {% render 'footer-social-icons' %}
+        </div>
+      </div>
+
+      <div class="mt-6 md:mt-8 contact-disclaimer"
+                    data-animation="paragraph"
+              data-animation-group="{{ section.id }}">
+        {{ section.settings.disclaimer }}
+      </div>
+
     </div>
 
     <div
@@ -226,6 +334,11 @@
       "label": "t:sections.all.content.label"
     },
     {
+      "type": "richtext",
+      "id": "disclaimer",
+      "label": "Disclaimer"
+    },
+    {
       "type": "select",
       "id": "heading_size",
       "label": "t:sections.all.heading_size.label",
@@ -302,6 +415,126 @@
       "id": "show_button_icon",
       "label": "t:sections.contact-form.settings.show_button_icon.label",
       "default": true
+    },
+    {
+      "type": "header",
+      "content": "Contact Column 1"
+    },
+    {
+      "id": "column_icon_1",
+      "type": "liquid",
+      "label": "Icon"
+    },
+    {
+      "id": "column_title_1",
+      "type": "text",
+      "label": "Title"
+    },
+    {
+      "id": "column_subtext_1",
+      "type": "inline_richtext",
+      "label": "Content"
+    },
+    {
+      "type": "url",
+      "id": "contact_url_1",
+      "label": "Contact URL"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_new_contact_1",
+      "label": "Open in New Tab",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Contact Column 2"
+    },
+    {
+      "id": "column_icon_2",
+      "type": "liquid",
+      "label": "Icon"
+    },
+    {
+      "id": "column_title_2",
+      "type": "text",
+      "label": "Title"
+    },
+    {
+      "id": "column_subtext_2",
+      "type": "inline_richtext",
+      "label": "Content"
+    },
+        {
+      "type": "url",
+      "id": "contact_url_2",
+      "label": "Contact URL"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_new_contact_2",
+      "label": "Open in New Tab",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Contact Column 3"
+    },
+    {
+      "id": "column_icon_3",
+      "type": "liquid",
+      "label": "Icon"
+    },
+    {
+      "id": "column_title_3",
+      "type": "text",
+      "label": "Title"
+    },
+    {
+      "id": "column_subtext_3",
+      "type": "inline_richtext",
+      "label": "Content"
+    },
+        {
+      "type": "url",
+      "id": "contact_url_3",
+      "label": "Contact URL"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_new_contact_3",
+      "label": "Open in New Tab",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Contact Column 4"
+    },
+    {
+      "id": "column_icon_4",
+      "type": "liquid",
+      "label": "Icon"
+    },
+    {
+      "id": "column_title_4",
+      "type": "text",
+      "label": "Title"
+    },
+    {
+      "id": "column_subtext_4",
+      "type": "inline_richtext",
+      "label": "Content"
+    },
+        {
+      "type": "url",
+      "id": "contact_url_4",
+      "label": "Contact URL"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_new_contact_4",
+      "label": "Open in New Tab",
+      "default": false
     },
     {
       "type": "header",

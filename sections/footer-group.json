@@ -14,28 +14,70 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "26d3e25a-ebab-4ae2-9e89-6630440b8500": {
-          "type": "links",
+        "text_HJ68Y9": {
+          "type": "text",
           "settings": {
-            "show_heading": false,
-            "heading": "",
-            "menu": "policies"
+            "heading": "Heading",
+            "content_max_width": 400,
+            "add_url": false,
+            "image_url": "",
+            "content": "<p>Share contact information, store details, and brand content with your customers.</p>",
+            "image": "shopify://shop_images/breathelet-logo-03_df31c2b7-7a2f-4010-bcfe-ddc961ec73e3.svg",
+            "image_width": 240
           }
         },
         "7cd5a846-89c3-4a12-86fc-5404723d55e0": {
           "type": "links",
           "settings": {
             "show_heading": true,
-            "heading": "",
-            "menu": "footer"
+            "heading": "QUICK LINKS",
+            "menu": "footer-menu",
+            "heading_1": "",
+            "menu_1": ""
+          }
+        },
+        "links_dN6x9p": {
+          "type": "links",
+          "settings": {
+            "show_heading": true,
+            "heading": "PARTNERSHIP",
+            "menu": "partnership",
+            "heading_1": "",
+            "menu_1": ""
+          }
+        },
+        "contact_WVqDwp": {
+          "type": "contact",
+          "settings": {
+            "heading": "Contact",
+            "contact_link_text": "Get In Touch",
+            "contact_url": "",
+            "open_new_contact": false,
+            "whatsapp_number": "",
+            "whatsapp_url": "",
+            "open_new_whatsapp": false,
+            "phone_number": "",
+            "call_url": "",
+            "open_new_call": false,
+            "email_address": "hello@breathelet.com",
+            "email_url": "mailto:hello@breathelet.com",
+            "open_new_email": true,
+            "location": "16133 Ventura Blvd floor 7, Los Angeles California 91436, United States",
+            "address_url": "https://maps.app.goo.gl/JKY7uAjifEKqhVXJ8",
+            "open_new_address": true
           }
         }
       },
       "block_order": [
-        "26d3e25a-ebab-4ae2-9e89-6630440b8500",
-        "7cd5a846-89c3-4a12-86fc-5404723d55e0"
+        "text_HJ68Y9",
+        "7cd5a846-89c3-4a12-86fc-5404723d55e0",
+        "links_dN6x9p",
+        "contact_WVqDwp"
       ],
       "settings": {
+        "background_image": "shopify://shop_images/4.webp",
+        "overlay_opacity": 50,
+        "overlay_color": "#000000",
         "full_width": true,
         "show_social": true,
         "show_payment": true,

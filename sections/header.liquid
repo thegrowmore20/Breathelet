@@ -175,6 +175,7 @@
 
                   if block.type == 'mega_menu_products' and block_menu_item == link_title
                     assign mega_menu_products = block
+                    assign mega_menu_products_show_variants = mega_menu_products.settings.show_variants
                   endif
                   
                   if block.type == 'mega_menu_categories' and block_menu_item == link_title
@@ -184,7 +185,7 @@
                 endfor
               %}
 
-              <li>
+              <li class="{{ mega_menu_products_show_variants }}">
                 {% if mega_menu %}
                   {% liquid
                       if mega_menu.settings.type == 'horizontal'
@@ -196,7 +197,7 @@
                   {% elsif mega_menu_products %}
                       {% liquid
                         if mega_menu_products.settings.type == 'horizontal'
-                          render 'mega-menu-products', link: link, interaction_handler: section.settings.open_dropdowns_on, block: mega_menu_products
+                          render 'mega-menu-products', link: link, interaction_handler: section.settings.open_dropdowns_on, block: mega_menu_products, mega_menu_products_show_variants: mega_menu_products_show_variants
                         elsif mega_menu_products.settings.type == 'drawer'
                           render 'mega-menu-drawer', link: link, interaction_handler: section.settings.open_dropdowns_on, block: mega_menu_products
                         endif
@@ -712,6 +713,13 @@
         {
           "type": "header",
           "content": "Products"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_variants",
+          "label": "Show product variations as separate cards",
+          "info": "When enabled, each opted-in variant renders its own card.",
+          "default": false
         },
         {
           "type" : "product_list",

@@ -1,0 +1,667 @@
+{% liquid
+  if section.settings.full_width
+    assign tcf_type = 'section--full-width !px-0'
+  else
+    assign tcf_type = 'section--block section--space-after'
+  endif
+
+  case section.settings.col_ratio
+    when '60-40'
+      assign col_template = '3fr 2fr'
+    when '40-60'
+      assign col_template = '2fr 3fr'
+    when '70-30'
+      assign col_template = '7fr 3fr'
+    when '30-70'
+      assign col_template = '3fr 7fr'
+    else
+      assign col_template = '1fr 1fr'
+  endcase
+%}
+
+{% render 'section-bg-number-vars' %}
+
+<style>
+  #shopify-section-{{ section.id }} .tcf-grid {
+    display: grid;
+    grid-template-columns: {{ col_template }};
+    gap: {{ section.settings.col_gap }}px;
+  }
+
+  #shopify-section-{{ section.id }} .tcf-col {
+    position: relative;
+    overflow: hidden;
+    min-height: {{ section.settings.min_height_desktop }}px;
+    border-radius: {{ section.settings.corner_radius }}px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #shopify-section-{{ section.id }} .tcf-col__media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  #shopify-section-{{ section.id }} .tcf-col__media img,
+  #shopify-section-{{ section.id }} .tcf-col__media video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .tcf-col__iframe-wrap {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  #shopify-section-{{ section.id }} .tcf-col__iframe-wrap iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    border: 0;
+  }
+
+  #shopify-section-{{ section.id }} .tcf-col__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .tcf-col__content {
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 40px;
+    /* Bug fix: set --subheading-opacity on the content wrapper (not on the <p>) */
+    --subheading-opacity: 1;
+  }
+
+  #shopify-section-{{ section.id }} .tcf-col__content .prose p { margin: 0; }
+
+  /* ── Per-block styles ── */
+  {% for block in section.blocks %}
+    {% assign blk = block.id %}
+    {% assign col_ov_opacity = block.settings.overlay_opacity | divided_by: 100.0 %}
+
+    {% comment %} Column background color {% endcomment %}
+    {% if block.settings.col_bg_color != blank and block.settings.col_bg_color.rgba != '0 0 0 / 0.0' %}
+    #shopify-section-{{ section.id }} [data-block-id="{{ blk }}"].tcf-col {
+      background-color: rgb({{ block.settings.col_bg_color.rgb }});
+    }
+    {% endif %}
+
+    {% comment %} Overlay {% endcomment %}
+    {% if block.settings.overlay_enable %}
+    #shopify-section-{{ section.id }} [data-block-id="{{ blk }}"] .tcf-col__overlay {
+      display: block;
+      {% if block.settings.overlay_color != blank and block.settings.overlay_color.rgba != '0 0 0 / 0.0' %}
+      background: rgb({{ block.settings.overlay_color.rgb }});
+      opacity: {{ col_ov_opacity }};
+      {% endif %}
+    }
+    {% endif %}
+
+    {% comment %}
+      Bug fix: consolidated both content rules (text-color + justify-content)
+      into one block to avoid duplicate selectors and order-sensitivity.
+    {% endcomment %}
+    #shopify-section-{{ section.id }} [data-block-id="{{ blk }}"] .tcf-col__content {
+      justify-content: {{ block.settings.content_valign }};
+      {% if block.settings.text_color != blank and block.settings.text_color.rgba != '0 0 0 / 0.0' %}
+      color: rgb({{ block.settings.text_color.rgb }});
+      --color-foreground: {{ block.settings.text_color.rgb }};
+      --color-headings: {{ block.settings.text_color.rgb }};
+      {% endif %}
+    }
+
+    {% if block.settings.text_color != blank and block.settings.text_color.rgba != '0 0 0 / 0.0' %}
+    #shopify-section-{{ section.id }} [data-block-id="{{ blk }}"] .tcf-col__content .heading {
+      color: rgb({{ block.settings.text_color.rgb }});
+    }
+    {% endif %}
+
+    {% comment %} Button hover overrides {% endcomment %}
+    {% if block.settings.button_bg_hover != blank and block.settings.button_bg_hover.rgba != '0 0 0 / 0.0' %}
+    #shopify-section-{{ section.id }} [data-block-id="{{ blk }}"] .button:hover,
+    #shopify-section-{{ section.id }} [data-block-id="{{ blk }}"] .button:focus {
+      background-color: rgb({{ block.settings.button_bg_hover.rgb }}) !important;
+    }
+    {% endif %}
+
+    {% if block.settings.button_text_hover != blank and block.settings.button_text_hover.rgba != '0 0 0 / 0.0' %}
+    #shopify-section-{{ section.id }} [data-block-id="{{ blk }}"] .button:hover,
+    #shopify-section-{{ section.id }} [data-block-id="{{ blk }}"] .button:focus {
+      color: rgb({{ block.settings.button_text_hover.rgb }}) !important;
+    }
+    {% endif %}
+  {% endfor %}
+
+  /* ── Tablet ── */
+  @media (min-width: 768px) and (max-width: 991px) {
+    #shopify-section-{{ section.id }} .tcf-col {
+      min-height: {{ section.settings.min_height_tablet }}px;
+    }
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 767px) {
+    #shopify-section-{{ section.id }} .tcf-grid {
+      grid-template-columns: 1fr;
+    }
+    #shopify-section-{{ section.id }} .tcf-col {
+      min-height: {{ section.settings.min_height_mobile }}px;
+    }
+    {% if section.settings.mobile_stack_order == 'col2-first' %}
+    #shopify-section-{{ section.id }} .tcf-col:first-child { order: 2; }
+    #shopify-section-{{ section.id }} .tcf-col:last-child  { order: 1; }
+    {% endif %}
+  }
+</style>
+
+<div {% render 'section-attrs', type: tcf_type %}>
+  <div class="tcf-grid">
+    {% for block in section.blocks %}
+      {% liquid
+        assign has_video     = false
+        assign has_video_url = false
+        assign has_image     = false
+        if block.settings.video != blank
+          assign has_video = true
+        elsif block.settings.video_url != blank
+          assign has_video_url = true
+        elsif block.settings.image != blank
+          assign has_image = true
+        endif
+
+        assign url_type = block.settings.video_url.type
+        assign url_id   = block.settings.video_url.id
+      %}
+
+      <div
+        class="tcf-col {{ block.settings.text_align }}"
+        data-block-id="{{ block.id }}"
+        {% if block.settings.animation != blank %}
+          data-animation="{{ block.settings.animation }}"
+          data-animation-group="{{ section.id }}"
+        {% endif %}
+        {{ block.shopify_attributes }}
+      >
+
+        {%- comment -%} Background media {%- endcomment -%}
+        {% if has_video %}
+          <div class="tcf-col__media" aria-hidden="true">
+            {{ block.settings.video | video_tag:
+              autoplay: true,
+              muted: true,
+              loop: true,
+              playsinline: true,
+              image_size: '1600x'
+            }}
+          </div>
+
+        {% elsif has_video_url %}
+          <div class="tcf-col__iframe-wrap" aria-hidden="true">
+            {% if url_type == 'youtube' %}
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/{{ url_id }}?autoplay=1&mute=1&loop=1&playlist={{ url_id }}&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1"
+                allow="autoplay; encrypted-media"
+                loading="lazy"
+                title=""
+                tabindex="-1"
+              ></iframe>
+            {% elsif url_type == 'vimeo' %}
+              <iframe
+                src="https://player.vimeo.com/video/{{ url_id }}?autoplay=1&muted=1&loop=1&background=1&controls=0"
+                allow="autoplay; encrypted-media"
+                loading="lazy"
+                title=""
+                tabindex="-1"
+              ></iframe>
+            {% endif %}
+          </div>
+
+        {% elsif has_image %}
+          <div class="tcf-col__media" aria-hidden="true">
+            {{
+              block.settings.image
+              | image_url: width: 1800
+              | image_tag:
+                loading: 'lazy',
+                widths: '400,600,800,1000,1200,1600,1800',
+                sizes: '(max-width: 767px) 100vw, 50vw'
+            }}
+          </div>
+        {% endif %}
+
+        {%- comment -%} Overlay {%- endcomment -%}
+        <div class="tcf-col__overlay"></div>
+
+        {%- comment -%}
+          Bug fix: [--subheading-opacity:1] belongs on the content WRAPPER (not
+          on the <p> tag). The theme sets this on parent containers so the
+          animation system can read it. Moved to .tcf-col__content via CSS above.
+        {%- endcomment -%}
+        <div class="tcf-col__content trim-margins">
+
+          {% if block.settings.subheading != blank %}
+            <p
+              class="subheading"
+              data-animation="subheading"
+              data-animation-group="{{ section.id }}"
+            >{{ block.settings.subheading | escape }}</p>
+          {% endif %}
+
+          {% if block.settings.heading != blank %}
+            <{{ block.settings.heading_tag }}
+              class="heading {{ block.settings.heading_size }}"
+              data-animation="heading"
+              data-animation-group="{{ section.id }}"
+            >{{ block.settings.heading | escape }}</{{ block.settings.heading_tag }}>
+          {% endif %}
+
+          {% if block.settings.paragraph != blank %}
+            <div
+              class="prose"
+              data-animation="paragraph"
+              data-animation-group="{{ section.id }}"
+            >{{ block.settings.paragraph }}</div>
+          {% endif %}
+
+          {% if block.settings.button_text != blank %}
+            <div data-animation="button" data-animation-group="{{ section.id }}">
+              {% render 'button',
+                text: block.settings.button_text,
+                link: block.settings.button_link,
+                style: block.settings.button_style,
+                size: block.settings.button_size,
+                background_color: block.settings.button_bg_color,
+                text_color: block.settings.button_text_color,
+                defaults: false
+              %}
+            </div>
+          {% endif %}
+
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Two-column flex",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "col_ratio",
+      "label": "Column ratio",
+      "options": [
+        { "value": "50-50", "label": "50 / 50" },
+        { "value": "60-40", "label": "60 / 40" },
+        { "value": "40-60", "label": "40 / 60" },
+        { "value": "70-30", "label": "70 / 30" },
+        { "value": "30-70", "label": "30 / 70" }
+      ],
+      "default": "50-50"
+    },
+    {
+      "type": "range",
+      "id": "col_gap",
+      "label": "Column gap",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "corner_radius",
+      "label": "Corner radius",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "select",
+      "id": "mobile_stack_order",
+      "label": "Mobile stack order",
+      "options": [
+        { "value": "col1-first", "label": "Column 1 first" },
+        { "value": "col2-first", "label": "Column 2 first" }
+      ],
+      "default": "col1-first"
+    },
+    {
+      "type": "header",
+      "content": "Section height"
+    },
+    {
+      "type": "range",
+      "id": "min_height_desktop",
+      "label": "Min height — Desktop",
+      "min": 0,
+      "max": 1000,
+      "step": 20,
+      "unit": "px",
+      "default": 500
+    },
+    {
+      "type": "range",
+      "id": "min_height_tablet",
+      "label": "Min height — Tablet",
+      "min": 0,
+      "max": 800,
+      "step": 20,
+      "unit": "px",
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "min_height_mobile",
+      "label": "Min height — Mobile",
+      "min": 0,
+      "max": 800,
+      "step": 20,
+      "unit": "px",
+      "default": 300
+    },
+    {
+      "type": "header",
+      "content": "Section background"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Column",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "header",
+          "content": "Content"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Column heading"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "label": "Heading size",
+          "options": [
+            { "value": "h0", "label": "3X-Large" },
+            { "value": "h1", "label": "2X-Large" },
+            { "value": "h2", "label": "X-Large" },
+            { "value": "h3", "label": "Large" },
+            { "value": "h4", "label": "Medium" },
+            { "value": "h5", "label": "Small" },
+            { "value": "h6", "label": "X-Small" }
+          ],
+          "default": "h2"
+        },
+        {
+          "type": "select",
+          "id": "heading_tag",
+          "label": "Heading HTML tag",
+          "options": [
+            { "value": "h1", "label": "h1" },
+            { "value": "h2", "label": "h2" },
+            { "value": "h3", "label": "h3" },
+            { "value": "h4", "label": "h4" },
+            { "value": "h5", "label": "h5" },
+            { "value": "h6", "label": "h6" },
+            { "value": "p",  "label": "p"  },
+            { "value": "div","label": "div"}
+          ],
+          "default": "h2"
+        },
+        {
+          "type": "richtext",
+          "id": "paragraph",
+          "label": "Paragraph"
+        },
+        {
+          "type": "select",
+          "id": "text_align",
+          "label": "Text alignment",
+          "options": [
+            { "value": "text-left",   "label": "Left"   },
+            { "value": "text-center", "label": "Center" },
+            { "value": "text-right",  "label": "Right"  }
+          ],
+          "default": "text-center"
+        },
+        {
+          "type": "select",
+          "id": "content_valign",
+          "label": "Vertical alignment",
+          "options": [
+            { "value": "flex-start", "label": "Top"    },
+            { "value": "center",     "label": "Center" },
+            { "value": "flex-end",   "label": "Bottom" }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color"
+        },
+        {
+          "type": "header",
+          "content": "Button"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button text"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "Button style",
+          "options": [
+            { "value": "",               "label": "Filled"  },
+            { "value": "button-outline", "label": "Outline" }
+          ],
+          "default": ""
+        },
+        {
+          "type": "select",
+          "id": "button_size",
+          "label": "Button size",
+          "options": [
+            { "value": "text-xs md:text-sm",  "label": "Small"  },
+            { "value": "text-sm md:text-base","label": "Medium" },
+            { "value": "text-base md:text-lg","label": "Large"  }
+          ],
+          "default": "text-sm md:text-base"
+        },
+        {
+          "type": "color",
+          "id": "button_bg_color",
+          "label": "Button background"
+        },
+        {
+          "type": "color",
+          "id": "button_text_color",
+          "label": "Button text"
+        },
+        {
+          "type": "color",
+          "id": "button_bg_hover",
+          "label": "Button background (hover)"
+        },
+        {
+          "type": "color",
+          "id": "button_text_hover",
+          "label": "Button text (hover)"
+        },
+        {
+          "type": "header",
+          "content": "Background media"
+        },
+        {
+          "type": "paragraph",
+          "content": "Priority: Shopify video → External URL → Image."
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Background video (Shopify hosted)"
+        },
+        {
+          "type": "video_url",
+          "id": "video_url",
+          "label": "External video URL (YouTube / Vimeo)",
+          "accept": ["youtube", "vimeo"]
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Background image"
+        },
+        {
+          "type": "color",
+          "id": "col_bg_color",
+          "label": "Column background color (when no media)"
+        },
+        {
+          "type": "header",
+          "content": "Overlay"
+        },
+        {
+          "type": "checkbox",
+          "id": "overlay_enable",
+          "label": "Enable overlay",
+          "default": false
+        },
+        {
+          "type": "color",
+          "id": "overlay_color",
+          "label": "Overlay color",
+          "default": "#000000"
+        },
+        {
+          "type": "range",
+          "id": "overlay_opacity",
+          "label": "Overlay opacity",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "unit": "%",
+          "default": 35
+        },
+        {
+          "type": "header",
+          "content": "Animation"
+        },
+        {
+          "type": "select",
+          "id": "animation",
+          "label": "Scroll animation",
+          "options": [
+            { "value": "",      "label": "None"    },
+            { "value": "block", "label": "Fade in" }
+          ],
+          "default": ""
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Two-column flex",
+      "blocks": [
+        {
+          "type": "column",
+          "settings": {
+            "heading": "Thin. Thinner. X.",
+            "paragraph": "<p>AirVape X is the most portable vaporizer with a pocket fit and vibration alerts.</p>",
+            "button_text": "Shop AirVape X",
+            "button_bg_color": "#ffffff",
+            "button_text_color": "#000000",
+            "content_valign": "center",
+            "text_color": "#ffffff",
+            "overlay_enable": true,
+            "overlay_color": "#000000",
+            "overlay_opacity": 35
+          }
+        },
+        {
+          "type": "column",
+          "settings": {
+            "heading": "X Marks the spot",
+            "paragraph": "<p>Oval ceramic chamber for smooth, even vapor and heating.</p>",
+            "button_text": "Shop X Royal",
+            "button_bg_color": "#ffffff",
+            "button_text_color": "#000000",
+            "content_valign": "center",
+            "text_color": "#ffffff",
+            "overlay_enable": true,
+            "overlay_color": "#000000",
+            "overlay_opacity": 35
+          }
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  }
+}
+{% endschema %}

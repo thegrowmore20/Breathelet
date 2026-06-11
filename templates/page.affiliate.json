@@ -30,8 +30,8 @@
           "type": "heading",
           "settings": {
             "heading": "Join the Movement. Inspire Presence",
-            "heading_size": "h1",
-            "heading_html_tag": "p"
+            "heading_size": "h2",
+            "heading_html_tag": "h1"
           }
         }
       },
@@ -43,13 +43,13 @@
         "enable_transparent_header": false,
         "use_original_media_size": false,
         "image": "shopify://shop_images/hands.png",
-        "content_alignment": "md:content-bottom-left",
-        "content_alignment_mobile": "content-bottom-left",
+        "content_alignment": "md:content-middle-left",
+        "content_alignment_mobile": "content-middle-left",
         "link": "",
-        "min_height": 600,
+        "min_height": 300,
         "text_color": "#ffffff",
         "overlay_color": "#000000",
-        "overlay_opacity": 35,
+        "overlay_opacity": 50,
         "overlay_type": "gradient"
       }
     },
@@ -60,8 +60,8 @@
           "type": "heading",
           "settings": {
             "heading": "Breathelet Affiliate Program",
-            "heading_size": "h1",
-            "heading_html_tag": "p"
+            "heading_size": "h2",
+            "heading_html_tag": "h2"
           }
         },
         "text_X9mLdA": {

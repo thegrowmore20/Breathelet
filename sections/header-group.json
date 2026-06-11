@@ -45,8 +45,8 @@
             "menu_item": "Shop Breathelet",
             "type": "horizontal",
             "menu_max_width": "max-w-[50%]",
+            "show_variants": true,
             "products": [
-              "eternal-love-pair",
               "breathelet-onefit"
             ]
           }
@@ -57,6 +57,7 @@
             "menu_item": "Shop Accessories",
             "type": "horizontal",
             "menu_max_width": "max-w-sm",
+            "show_variants": false,
             "products": [
               "charging-dock",
               "breathelet-onefit-replacement-strings"

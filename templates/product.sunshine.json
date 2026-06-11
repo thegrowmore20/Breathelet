@@ -55,7 +55,7 @@
           "settings": {
             "hide_sold_out_variants": false,
             "type": "radio",
-            "color_picker_type": "radio",
+            "color_picker_type": "radio-image",
             "block_style_rounded": true,
             "block_style": "filled",
             "size_chart_page": "",
@@ -65,10 +65,10 @@
         "qty_btn_selector_WyAQ8y": {
           "type": "qty_btn_selector",
           "settings": {
-            "show_dynamic_checkout_buttons": false,
+            "show_dynamic_checkout_buttons": true,
             "show_gift_card_recipient": false,
-            "add_to_cart_background_color": "",
-            "add_to_cart_text_color": "",
+            "add_to_cart_background_color": "#ffc60d",
+            "add_to_cart_text_color": "#000000",
             "buy_it_now_background_color": "",
             "buy_it_now_text_color": ""
           }
@@ -206,6 +206,7 @@
         "5bbfd876-e943-47d3-b984-06f967dfd314",
         "096eee3c-a9d6-48a0-b676-2f8ecf38fe75"
       ],
+      "disabled": true,
       "settings": {}
     },
     "video_with_text_Mmdccn": {

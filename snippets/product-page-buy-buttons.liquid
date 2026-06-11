@@ -46,7 +46,7 @@
     class: 'product-form',
     novalidate: 'novalidate',
     data-type: 'add-to-cart-form'
-  %}
+  %}  
     <input
       data-variant-info="variant_id"
       type="hidden"
@@ -62,6 +62,21 @@
     {% endif %}
 
     <div class="trim-margins buy-buttons">
+      {% if show_dynamic_checkout %}
+        <div class="qty-wrap">
+          <div class="qty-selector-wrapper">
+            {% capture qty_selector_id %}{{ section.id }}-qty-input{% endcapture %}
+
+            <label class="label label-product-info mb-3 hidden" for="{{ qty_selector_id }}">
+              {{ 'products.product.quantity.label' | t }}
+            </label>
+
+            <div>
+              {% render 'qty-selector', product: product, product_form_id: product_form_id, id: qty_selector_id %}
+            </div>
+          </div>
+        </div>
+      {% endif %}
       <button
         data-variant-info="add_to_cart"
         type="submit"

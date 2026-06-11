@@ -43,13 +43,13 @@
         "enable_transparent_header": false,
         "use_original_media_size": false,
         "image": "shopify://shop_images/IMG_6427_1.jpg",
-        "content_alignment": "md:content-bottom-left",
-        "content_alignment_mobile": "content-bottom-left",
+        "content_alignment": "md:content-middle-left",
+        "content_alignment_mobile": "content-middle-left",
         "link": "",
-        "min_height": 600,
+        "min_height": 300,
         "text_color": "#ffffff",
         "overlay_color": "#000000",
-        "overlay_opacity": 35,
+        "overlay_opacity": 50,
         "overlay_type": "gradient"
       }
     },
@@ -339,6 +339,7 @@
       "disabled": true,
       "name": "t:sections.video-with-text.presets__0.name",
       "settings": {
+        "custom_class": "",
         "full_width": false,
         "remove_bottom_spacing": true,
         "autoplay": false,
@@ -397,6 +398,7 @@
       ],
       "name": "t:sections.video-with-text.presets__0.name",
       "settings": {
+        "custom_class": "",
         "full_width": false,
         "remove_bottom_spacing": true,
         "autoplay": false,

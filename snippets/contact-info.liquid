@@ -1,0 +1,77 @@
+<style>
+  .list-contact_item a {
+    transition: color 0.2s ease;
+  }
+
+  .list-contact_item a:hover {
+    color: #FBBC05;
+  }
+
+  .list-contact_item a:hover svg {
+    transform: scale(1.1);
+    color: #FBBC05;
+  }
+</style>
+
+<ul class="footer__list-social justify-start contact-info-wrapper empty:hidden {{ class }} styled-links" role="list">
+  {%- if contact_link != blank -%}
+    <li class="list-contact_item contact-link-item">
+      <a
+        href="{{ contact_url | default: '/pages/contact' }}"
+        {% if open_new_contact %} target="_blank" {% endif %}
+        class="link contact-link flex gap-3"
+      >
+        {% render 'icon-external-link' %}
+        <div class="contact-info-item"> {{ contact_link }} </div>
+      </a>
+    </li>
+  {%- endif -%}  
+  {%- if whatsapp_number != blank -%}
+    <li class="list-contact_item">
+      <a
+        href="{% render 'external-url', url: whatsapp_url %}"
+       {% if open_new_whatsapp %} target="_blank" {% endif %}
+        class="link contact-link flex gap-3"
+      >
+        {% render 'icon-whatsapp' %}
+        <div class="contact-info-item"> {{ whatsapp_number }} </div>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if phone_number != blank -%}
+    <li class="list-contact_item">
+      <a
+        href="tel:{{ phone_number }}"
+       {% if open_new_call %} target="_blank" {% endif %}
+        class="link contact-link flex gap-3"
+      >
+        {% render 'icon-phone' %}        
+        <div class="contact-info-item"> {{ phone_number }} </div>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if email_address != blank -%}
+    <li class="list-contact_item">
+      <a
+        href="mailto:{{ email_address }}"
+        {% if open_new_email %} target="_blank" {% endif %}
+        class="link contact-link flex gap-3"
+      >
+       {% render 'icon-email-address' %}    
+        <div class="contact-info-item"> {{ email_address }} </div>
+      </a>
+    </li>
+  {%- endif -%}
+  {%- if location != blank -%}
+    <li class="list-contact_item">
+      <a
+        href="{% render 'external-url', url: address_url %}"
+        {% if open_new_address %} target="_blank" {% endif %}
+        class="link contact-link flex gap-3"
+      >
+        {% render 'icon-location' %}        
+        <div class="contact-info-item"> {{ location }} </div>
+      </a>
+    </li>
+  {%- endif -%}
+</ul>
