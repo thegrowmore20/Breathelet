@@ -181,7 +181,7 @@
             "collapse_open": false,
             "heading": "Warranty & Support",
             "variant_metafield": "",
-            "content": "<p>Try Breathelet with our <strong>30-Day Guarantee</strong> and enjoy long-term peace of mind with a <strong>Lifetime Warranty</strong>, including free replacement support whenever you need it.</p><p><strong>Click here to read our Warranty Policy.</strong></p>"
+            "content": "<p>Try Breathelet with our <strong>30-Day Guarantee</strong> and enjoy long-term peace of mind with a <strong>Lifetime Warranty</strong>, including free replacement support whenever you need it.</p><p><strong>Click </strong><a href=\"/pages/warranty-guarantee\" title=\"Warranty & Guarantee\"><strong>here</strong></a><strong> to read our Warranty Policy.</strong></p>"
           }
         }
       },

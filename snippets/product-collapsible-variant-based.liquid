@@ -23,6 +23,7 @@
   <smooth-collapse
     {{ block.shopify_attributes }}
     class="product-collapse-wrapper block"
+    group="product-collapsibles-{{ product.id }}"
     {% if block.settings.collapse_open %}default-open{% endif %}
   >
     <details class="product-collapse" {% if block.settings.collapse_open %}open{% endif %}>
