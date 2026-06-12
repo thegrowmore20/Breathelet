@@ -100,7 +100,7 @@
           "settings": {
             "collapse_open": false,
             "heading": "Description",
-            "variant_metafield": "",
+            "variant_metafield": "custom.description",
             "content": "{{ product.metafields.custom.description | metafield_tag }}"
           }
         },
@@ -109,7 +109,7 @@
           "settings": {
             "collapse_open": false,
             "heading": "Specifications",
-            "variant_metafield": "",
+            "variant_metafield": "custom.specifications",
             "content": "{{ product.metafields.custom.specifications | metafield_tag }}"
           }
         },
@@ -118,7 +118,7 @@
           "settings": {
             "collapse_open": false,
             "heading": "What’s in the Box",
-            "variant_metafield": "",
+            "variant_metafield": "custom.what_s_in_the_box",
             "content": "{{ product.metafields.custom.what_s_in_the_box | metafield_tag }}"
           }
         },
@@ -127,7 +127,7 @@
           "settings": {
             "collapse_open": false,
             "heading": "How to Use",
-            "variant_metafield": "",
+            "variant_metafield": "custom.how_to_use",
             "content": "{{ product.metafields.custom.how_to_use | metafield_tag }}"
           }
         },
@@ -136,7 +136,7 @@
           "settings": {
             "collapse_open": false,
             "heading": "Key Benefit",
-            "variant_metafield": "",
+            "variant_metafield": "custom.key_benefits",
             "content": "{{ product.metafields.custom.key_benefits | metafield_tag }}"
           }
         }

@@ -144,7 +144,7 @@
           "settings": {
             "collapse_open": false,
             "heading": "Specifications",
-            "variant_metafield": "custom.specifcations",
+            "variant_metafield": "custom.specifications",
             "content": "{{ product.metafields.custom.specifications | metafield_tag }}"
           }
         },

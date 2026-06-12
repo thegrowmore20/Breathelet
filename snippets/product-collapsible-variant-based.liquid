@@ -4,23 +4,22 @@
   assign key = parts | last
 
   assign selected = product.selected_or_first_available_variant
-  assign sel_vc = selected.metafields[ns][key] | metafield_tag
-  if sel_vc != blank
-    assign initial_content = sel_vc
+  assign variant_value = selected.metafields[ns][key] | metafield_tag
+  assign product_value = product.metafields[ns][key] | metafield_tag
+
+  # Resolution order: variant metafield → product metafield → static content.
+  # The product value covers products with no variants or with an empty
+  # variant value, mirroring the short-description behaviour.
+  if variant_value != blank
+    assign initial_content = variant_value
+  elsif product_value != blank
+    assign initial_content = product_value
   else
     assign initial_content = block.settings.content
   endif
-
-  assign has_variant_content = false
-  for variant in product.variants
-    if variant.metafields[ns][key] != blank
-      assign has_variant_content = true
-      break
-    endif
-  endfor
 -%}
 
-{% if block.settings.content != blank or has_variant_content %}
+{% if initial_content != blank %}
   <smooth-collapse
     {{ block.shopify_attributes }}
     class="product-collapse-wrapper block"
@@ -32,20 +31,9 @@
         {% render 'icon-chevron' %}
       </summary>
 
-      <div class="prose max-w-none" data-collapsible-target="{{ block.id }}">
+      <div class="prose max-w-none" data-variant-info="collapsible-{{ block.id }}">
         {{ initial_content }}
       </div>
     </details>
-
-    {%- comment -%} Storage: fallback resolved server-side {%- endcomment -%}
-    <div data-collapsible-data="{{ block.id }}" hidden>
-      <template data-default>{{ block.settings.content }}</template>
-      {%- for variant in product.variants -%}
-        {%- assign vc = variant.metafields[ns][key] | metafield_tag -%}
-        {%- if vc != blank -%}
-          <template data-variant-id="{{ variant.id }}">{{ vc }}</template>
-        {%- endif -%}
-      {%- endfor -%}
-    </div>
   </smooth-collapse>
 {% endif %}

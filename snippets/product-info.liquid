@@ -215,8 +215,29 @@
         {% when 'separator' %}
           <hr class="my-6" {{ block.shopify_attributes }}>
         {% when 'hook_text' -%}
-          <div class="my-4 md:my-6 prose max-w-none hooktext" id="hooktext">
-            {{ block.settings.content }}
+          {%- liquid
+            # Short description: variant metafield wins; fall back to the product
+            # metafield when the product has no variants or the variant value is empty.
+            assign variant_sd = product.selected_or_first_available_variant.metafields.custom.short_description | metafield_tag
+            assign product_sd = product.metafields.custom.short_description | metafield_tag
+            if variant_sd != blank
+              assign hook_short_description = variant_sd
+            elsif product_sd != blank
+              assign hook_short_description = product_sd
+            else
+              assign hook_short_description = blank
+            endif
+          -%}
+          <div
+            class="my-4 md:my-6 prose max-w-none hooktext"
+            id="hooktext"
+            data-variant-info="hook-text-{{ block.id }}"
+          >
+            {%- if hook_short_description != blank -%}
+              {{ hook_short_description }}
+            {%- else -%}
+              {{ block.settings.content }}
+            {%- endif -%}
           </div>
         {% when 'text' -%}
           <div class="my-4 md:my-6 prose max-w-none">
