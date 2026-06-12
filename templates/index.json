@@ -142,7 +142,7 @@
         "carousel": false,
         "show_variants": true,
         "products_count": 8,
-        "grid_columns": 4,
+        "grid_columns": 3,
         "grid_columns_mobile": "2",
         "products": [
           "breathelet-onefit"
@@ -480,9 +480,9 @@
           "type": "service",
           "settings": {
             "icon_html": "",
-            "icon_image": "shopify://shop_images/image_ed37eafa-3d8c-4117-bb48-b1fddcefbffb.png",
+            "icon_image": "shopify://shop_images/Water-Resistant.png",
             "title": "WATER-RESISTANT",
-            "text": "Ready to go in seconds",
+            "text": "Durable for everyday wear",
             "link_label": "More about this service",
             "link_url": ""
           }
@@ -491,9 +491,9 @@
           "type": "service",
           "settings": {
             "icon_html": "",
-            "icon_image": "shopify://shop_images/image_8f555a74-0c60-4674-b4be-d52df5dbdb2a.png",
-            "title": "ADJUSTABLE FIT",
-            "text": "Crisp vapor with precision",
+            "icon_image": "shopify://shop_images/Long_Battery.png",
+            "title": "LONG BATTERY",
+            "text": "Lasts up to 14 days",
             "link_label": "More about this service",
             "link_url": ""
           }
@@ -502,9 +502,9 @@
           "type": "service",
           "settings": {
             "icon_html": "",
-            "icon_image": "shopify://shop_images/image_05ea5639-229e-4dd7-8768-b960e7bd858f.png",
+            "icon_image": "shopify://shop_images/No_App_Required.png",
             "title": "NO APP REQUIRED",
-            "text": "Effortless enjoyment",
+            "text": "No screen, No setup",
             "link_label": "More about this service",
             "link_url": ""
           }
@@ -513,9 +513,9 @@
           "type": "service",
           "settings": {
             "icon_html": "",
-            "icon_image": "shopify://shop_images/image_99cc32fc-4f8c-4bb4-89fc-263f0438291e.png",
-            "title": "LONG BATTERY LIFE",
-            "text": "Enjoy more sessions",
+            "icon_image": "shopify://shop_images/Adjustable_fit.png",
+            "title": "ADJUSTABLE FIT",
+            "text": "Fits comfortably on any wrist",
             "link_label": "More about this service",
             "link_url": ""
           }
@@ -535,13 +535,17 @@
         "show_divider": false,
         "heading": "Buy with Confidence",
         "text_1": "Risk Free Shopping & Satisfacion Guaranteed",
+        "intro_img_1": "shopify://shop_images/Lifetime_Warranty_1.png",
+        "intro_text_1": "LIFETIME WARRANTY",
+        "intro_img_2": "shopify://shop_images/Money_Back_Guarantee_1.png",
+        "intro_text_2": "30 DAYS GUARANTEE",
         "intro_img_url_1": "https://airvapeusa.com/cdn/shop/files/icon_Warranty_3.svg?v=1774515664",
         "intro_img_url_2": "https://airvapeusa.com/cdn/shop/files/icon_MoneyBack_Gurantee_3.svg?v=1774515656",
         "link_color": "#ffd814",
         "background_color": "",
         "text_color": "",
         "heading_color": "",
-        "heading_html_tag": "p"
+        "heading_html_tag": "h2"
       }
     },
     "image_with_text_tHGRPd": {
@@ -550,15 +554,15 @@
         "heading_EGbNaG": {
           "type": "heading",
           "settings": {
-            "heading": "The perfect gift for someone who’s always “busy.”",
+            "heading": "Gift Love They’ll Remember",
             "heading_size": "h2",
-            "heading_html_tag": "p"
+            "heading_html_tag": "h2"
           }
         },
         "text_bHQAA3": {
           "type": "text",
           "settings": {
-            "text": "<p>Give them something that doesn’t add pressure — it gives relief.</p><p>Under $30. Looks premium. Actually useful.</p>"
+            "text": "<p>Give someone you love a meaningful daily reminder that keeps your care close, through every soft cue and quiet reset.</p>"
           }
         },
         "button_qJcVAf": {
@@ -734,8 +738,8 @@
         "button_wtdHzk": {
           "type": "button",
           "settings": {
-            "button_text": "Buy Everlasting Love Duo",
-            "button_link": "https://breathelet.com/products/breathelet-onefit?variant=57888652656975",
+            "button_text": "Buy Enternal Love Pair",
+            "button_link": "shopify://products/breathelet-onefit",
             "button_style": "",
             "button_size": "text-sm md:text-base",
             "button_background_color": "#ffffff",
@@ -767,7 +771,7 @@
         "heading_cQWDWQ": {
           "type": "heading",
           "settings": {
-            "heading": "One size fits all",
+            "heading": "OneFit Adjustable Design",
             "heading_size": "h2",
             "heading_html_tag": "h2"
           }
@@ -775,7 +779,7 @@
         "text_jKjBFg": {
           "type": "text",
           "settings": {
-            "text": "<p>With the OneFit model, you can simply pull the strings to your desired fit, cut the slack and you're done. <br/>Once the size is set you can just open and close the bracelet with the hook.</p>"
+            "text": "<p>One size fits all. Simply pull the strings to your perfect fit, trim the extra length, and use the hook to open and close it anytime.</p>"
           }
         }
       },
@@ -954,10 +958,10 @@
         "full_width": true,
         "image": "shopify://shop_images/877fd284-bb41-4b9b-bab2-eff3bfac6e8d-scaled.png",
         "image_max_width": 1920,
-        "subheading": "For a clean, classic bracelet look.Adjustable fit",
-        "heading": "Gunmetal — Rose Gold",
+        "subheading": "",
+        "heading": "Designed to Match Your Everyday Style",
         "heading_size": "h2",
-        "content": "",
+        "content": "<p>Choose between Gunmetal and Rose Gold finishes, both crafted for a clean, classic bracelet look. With an adjustable fit and minimal design, Breathelet feels natural on your wrist while giving you gentle mindful reminders throughout the day.</p>",
         "text_alignment": "text-center",
         "background_color": "#000000",
         "text_color": "",
@@ -1076,16 +1080,17 @@
           "type": "column",
           "settings": {
             "subheading": "",
-            "heading": "Join Influencer Community",
+            "heading": "Join Our Influencer Community",
             "heading_size": "h2",
             "heading_tag": "h2",
-            "paragraph": "",
+            "paragraph": "<p>Share mindful living, everyday calm, and meaningful wellness with your audience through authentic content.</p>",
             "text_align": "text-center",
+            "content_halign": "center",
             "content_valign": "center",
             "text_color": "#ffffff",
-            "button_text": "",
-            "button_link": "",
-            "button_style": "",
+            "button_text": "Become an Influencer",
+            "button_link": "https://api.collabs.shopify.com/creator/signup/community_application/5e6f391d2a834f1a?origin=THEME_EXTENSION",
+            "button_style": "button-outline",
             "button_size": "text-sm md:text-base",
             "button_bg_color": "#ffffff",
             "button_text_color": "#000000",
@@ -1104,16 +1109,17 @@
           "type": "column",
           "settings": {
             "subheading": "",
-            "heading": "Get Wholesale Quote",
+            "heading": "Partner With Breathelet",
             "heading_size": "h2",
             "heading_tag": "h2",
-            "paragraph": "",
+            "paragraph": "<p>Bring mindful wellness to your customers with wholesale pricing designed for retailers, distributors, and gift programs.</p>",
             "text_align": "text-center",
+            "content_halign": "center",
             "content_valign": "center",
             "text_color": "#ffffff",
-            "button_text": "",
-            "button_link": "",
-            "button_style": "",
+            "button_text": "Get Wholesale Quote",
+            "button_link": "shopify://pages/request-a-quote",
+            "button_style": "button-outline",
             "button_size": "text-sm md:text-base",
             "button_bg_color": "#ffffff",
             "button_text_color": "#000000",

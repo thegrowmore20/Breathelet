@@ -50,6 +50,12 @@
             "use_bold_font": true
           }
         },
+        "hook_text_C6WytT": {
+          "type": "hook_text",
+          "settings": {
+            "content": "{{ product.metafields.custom.short_description | metafield_tag }}"
+          }
+        },
         "5a84f252-bc58-4ca7-8b59-5a727a61c21f": {
           "type": "variant_picker",
           "settings": {
@@ -114,20 +120,41 @@
             "add_to_cart_text_color": ""
           }
         },
-        "collapsible_content_yYk4nx": {
+        "collapsible_content_UATrV4": {
           "type": "collapsible_content",
+          "disabled": true,
           "settings": {
             "collapse_open": false,
-            "heading": "How it works",
-            "content": "{{ product.metafields.custom.how_it_works | metafield_tag }}"
+            "heading": "Short Description",
+            "variant_metafield": "custom.short_description",
+            "content": "{{ product.metafields.custom.short_description | metafield_tag }}"
           }
         },
-        "collapsible_content_DdLzEb": {
+        "collapsible_content_RQNUWe": {
           "type": "collapsible_content",
           "settings": {
             "collapse_open": false,
-            "heading": "Whats included",
-            "content": "{{ product.metafields.custom.what_s_included | metafield_tag }}"
+            "heading": "Description",
+            "variant_metafield": "custom.description",
+            "content": "{{ product.metafields.custom.description | metafield_tag }}"
+          }
+        },
+        "collapsible_content_datxAb": {
+          "type": "collapsible_content",
+          "settings": {
+            "collapse_open": false,
+            "heading": "Specifications",
+            "variant_metafield": "custom.specifcations",
+            "content": "{{ product.metafields.custom.specifications | metafield_tag }}"
+          }
+        },
+        "collapsible_content_nj7fDP": {
+          "type": "collapsible_content",
+          "settings": {
+            "collapse_open": false,
+            "heading": "What's in the Box",
+            "variant_metafield": "custom.what_s_in_the_box",
+            "content": "{{ product.metafields.custom.what_s_in_the_box | metafield_tag }}"
           }
         },
         "collapsible_content_m7m6NL": {
@@ -135,15 +162,26 @@
           "settings": {
             "collapse_open": false,
             "heading": "How to use",
+            "variant_metafield": "custom.how_to_use",
             "content": "{{ product.metafields.custom.how_to_use | metafield_tag }}"
           }
         },
-        "collapsible_content_3rnLaJ": {
+        "collapsible_content_gHdwXR": {
           "type": "collapsible_content",
           "settings": {
             "collapse_open": false,
-            "heading": "Specs",
-            "content": "{{ product.metafields.custom.specs | metafield_tag }}"
+            "heading": "Accessories",
+            "variant_metafield": "custom.accessories",
+            "content": "{{ product.metafields.custom.accessories | metafield_tag }}"
+          }
+        },
+        "collapsible_content_gRyaKN": {
+          "type": "collapsible_content",
+          "settings": {
+            "collapse_open": false,
+            "heading": "Warranty & Support",
+            "variant_metafield": "",
+            "content": "<p>Try Breathelet with our <strong>30-Day Guarantee</strong> and enjoy long-term peace of mind with a <strong>Lifetime Warranty</strong>, including free replacement support whenever you need it.</p><p><strong>Click here to read our Warranty Policy.</strong></p>"
           }
         }
       },
@@ -152,6 +190,7 @@
         "loox_reviews_loox_rating_KiAJFf",
         "946375dc-aa95-407e-a9cd-35be355f8dc4",
         "c0b62d1f-e562-4b86-84cb-fc22c849e93e",
+        "hook_text_C6WytT",
         "5a84f252-bc58-4ca7-8b59-5a727a61c21f",
         "qty_btn_selector_WyAQ8y",
         "0f473fb4-422c-40a7-8c15-2fd164440f80",
@@ -159,10 +198,13 @@
         "delivery_C87KwU",
         "4923f5c8-62d3-42db-a835-6e0613c4a182",
         "complementary_products_K3fTUK",
-        "collapsible_content_yYk4nx",
-        "collapsible_content_DdLzEb",
+        "collapsible_content_UATrV4",
+        "collapsible_content_RQNUWe",
+        "collapsible_content_datxAb",
+        "collapsible_content_nj7fDP",
         "collapsible_content_m7m6NL",
-        "collapsible_content_3rnLaJ"
+        "collapsible_content_gHdwXR",
+        "collapsible_content_gRyaKN"
       ],
       "settings": {
         "show_breadcrumbs": false,
@@ -175,7 +217,7 @@
         "media_enable_video_looping": true,
         "media_fit_height": true,
         "show_sticky_add_to_cart": true,
-        "sticky_add_to_cart_position": "right",
+        "sticky_add_to_cart_position": "center",
         "background_color": "rgba(0,0,0,0)",
         "text_color": "",
         "heading_color": ""
@@ -326,38 +368,38 @@
         "text_color": ""
       }
     },
-    "video_with_text_Mmdccn": {
+    "video_with_text_VPmrnU": {
       "type": "video-with-text",
       "blocks": {
-        "heading_JQtBy8": {
+        "heading_37cNnz": {
           "type": "heading",
           "settings": {
-            "heading": "One size fits all",
+            "heading": "OneFit Adjustable Design",
             "heading_size": "h2",
             "heading_html_tag": "h2"
           }
         },
-        "text_nBeQBW": {
+        "text_Gd7yVE": {
           "type": "text",
           "settings": {
-            "text": "<p>With the OneFit model, you can simply pull the strings to your desired fit, cut the slack and you're done. <br/>Once the size is set you can just open and close the bracelet with the hook.</p>"
+            "text": "<p>One size fits all. Simply pull the strings to your perfect fit, trim the extra length, and use the hook to open and close it anytime.</p>"
           }
         }
       },
       "block_order": [
-        "heading_JQtBy8",
-        "text_nBeQBW"
+        "heading_37cNnz",
+        "text_Gd7yVE"
       ],
       "name": "t:sections.video-with-text.presets__0.name",
       "settings": {
-        "custom_class": "",
-        "full_width": false,
+        "custom_class": "video-with-text-section",
+        "full_width": true,
         "remove_bottom_spacing": false,
         "autoplay": true,
         "loop": true,
         "video": "shopify://files/videos/Breathelet_how-to_upd_v2.webm",
         "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "image_size": "media--ratio-16-9",
+        "image_size": "",
         "image_position": "right",
         "image_width": 50,
         "text_alignment": "text-left",
@@ -391,7 +433,7 @@
     "main-details",
     "custom_section_MwQNrf",
     "176227481753d6d67f",
-    "video_with_text_Mmdccn",
+    "video_with_text_VPmrnU",
     "related-products"
   ]
 }

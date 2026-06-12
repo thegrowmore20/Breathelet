@@ -121,6 +121,7 @@
     {% endcomment %}
     #shopify-section-{{ section.id }} [data-block-id="{{ blk }}"] .tcf-col__content {
       justify-content: {{ block.settings.content_valign }};
+      align-items: {{ block.settings.content_halign }};
       {% if block.settings.text_color != blank and block.settings.text_color.rgba != '0 0 0 / 0.0' %}
       color: rgb({{ block.settings.text_color.rgb }});
       --color-foreground: {{ block.settings.text_color.rgb }};
@@ -479,6 +480,17 @@
             { "value": "text-right",  "label": "Right"  }
           ],
           "default": "text-center"
+        },
+        {
+          "type": "select",
+          "id": "content_halign",
+          "label": "Horizontal alignment",
+          "options": [
+            { "value": "flex-start", "label": "Left"   },
+            { "value": "center",     "label": "Center" },
+            { "value": "flex-end",   "label": "Right"  }
+          ],
+          "default": "center"
         },
         {
           "type": "select",

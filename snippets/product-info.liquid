@@ -214,6 +214,10 @@
           </div>
         {% when 'separator' %}
           <hr class="my-6" {{ block.shopify_attributes }}>
+        {% when 'hook_text' -%}
+          <div class="my-4 md:my-6 prose max-w-none hooktext" id="hooktext">
+            {{ block.settings.content }}
+          </div>
         {% when 'text' -%}
           <div class="my-4 md:my-6 prose max-w-none">
             {{ block.settings.content }}
@@ -223,7 +227,7 @@
         {% when 'description' %}
           {% render 'product-description', block: block, product: product, class: 'my-6 md:my-8' %}
         {% when 'collapsible_content' %}
-          {% render 'product-collapsible-content', block: block %}
+          {% render 'product-collapsible-variant-based', block: block %}
         {% when 'custom_liquid' %}
           {% render 'product-custom-liquid', block: block %}
         {% when 'image' %}

@@ -25,11 +25,19 @@
             "text_color": "rgba(0,0,0,0)"
           }
         },
-        "946375dc-aa95-407e-a9cd-35be355f8dc4": {
-          "type": "rating",
+        "loox_reviews_loox_rating_GWmHR7": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-rating/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
           "settings": {
-            "show_empty_rating": false,
-            "star_size": 20
+            "contentSize": 16,
+            "pattern": "",
+            "hideText": false,
+            "alignment": "",
+            "layout": "",
+            "textColor": "",
+            "starColor": "",
+            "showAllReviews": false,
+            "looxOpenFloatingWidget": true,
+            "emptyRatingWidget": true
           }
         },
         "c0b62d1f-e562-4b86-84cb-fc22c849e93e": {
@@ -37,6 +45,12 @@
           "settings": {
             "show_taxes_notice": false,
             "use_bold_font": true
+          }
+        },
+        "hook_text_qVAntE": {
+          "type": "hook_text",
+          "settings": {
+            "content": "{{ product.metafields.custom.short_description | metafield_tag }}"
           }
         },
         "5a84f252-bc58-4ca7-8b59-5a727a61c21f": {
@@ -81,53 +95,68 @@
           "disabled": true,
           "settings": {}
         },
-        "collapsible_content_mAb4iV": {
+        "collapsible_content_NNaA9t": {
           "type": "collapsible_content",
           "settings": {
             "collapse_open": false,
-            "heading": "How it works",
-            "content": "{{ product.metafields.custom.how_it_works | metafield_tag }}"
+            "heading": "Description",
+            "variant_metafield": "",
+            "content": "{{ product.metafields.custom.description | metafield_tag }}"
           }
         },
-        "collapsible_content_zBae6i": {
+        "collapsible_content_gVFDrP": {
           "type": "collapsible_content",
           "settings": {
             "collapse_open": false,
-            "heading": "What's included",
-            "content": "{{ product.metafields.custom.what_s_included | metafield_tag }}"
+            "heading": "Specifications",
+            "variant_metafield": "",
+            "content": "{{ product.metafields.custom.specifications | metafield_tag }}"
           }
         },
-        "collapsible_content_nwQVbU": {
+        "collapsible_content_DMtKQN": {
           "type": "collapsible_content",
           "settings": {
             "collapse_open": false,
-            "heading": "How to use",
+            "heading": "What’s in the Box",
+            "variant_metafield": "",
+            "content": "{{ product.metafields.custom.what_s_in_the_box | metafield_tag }}"
+          }
+        },
+        "collapsible_content_eWMP9K": {
+          "type": "collapsible_content",
+          "settings": {
+            "collapse_open": false,
+            "heading": "How to Use",
+            "variant_metafield": "",
             "content": "{{ product.metafields.custom.how_to_use | metafield_tag }}"
           }
         },
-        "collapsible_content_MiJAiU": {
+        "collapsible_content_J9DchE": {
           "type": "collapsible_content",
           "settings": {
             "collapse_open": false,
-            "heading": "Specs",
-            "content": "{{ product.metafields.custom.specs | metafield_tag }}"
+            "heading": "Key Benefit",
+            "variant_metafield": "",
+            "content": "{{ product.metafields.custom.key_benefits | metafield_tag }}"
           }
         }
       },
       "block_order": [
         "70fc43fe-06b6-415f-b0c3-557197d434bb",
         "07b2f4eb-d5bd-46bf-8ef7-7c3a9dbff7b7",
-        "946375dc-aa95-407e-a9cd-35be355f8dc4",
+        "loox_reviews_loox_rating_GWmHR7",
         "c0b62d1f-e562-4b86-84cb-fc22c849e93e",
+        "hook_text_qVAntE",
         "5a84f252-bc58-4ca7-8b59-5a727a61c21f",
         "f4eea022-78fd-4497-ab68-10cbc86fe6b4",
         "0f473fb4-422c-40a7-8c15-2fd164440f80",
         "a730fe0e-baa3-47bc-90c9-21c5a5d75f2d",
         "4923f5c8-62d3-42db-a835-6e0613c4a182",
-        "collapsible_content_mAb4iV",
-        "collapsible_content_zBae6i",
-        "collapsible_content_nwQVbU",
-        "collapsible_content_MiJAiU"
+        "collapsible_content_NNaA9t",
+        "collapsible_content_gVFDrP",
+        "collapsible_content_DMtKQN",
+        "collapsible_content_eWMP9K",
+        "collapsible_content_J9DchE"
       ],
       "settings": {
         "show_breadcrumbs": false,

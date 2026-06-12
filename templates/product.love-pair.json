@@ -141,7 +141,7 @@
         "media_enable_video_looping": true,
         "media_fit_height": true,
         "show_sticky_add_to_cart": true,
-        "sticky_add_to_cart_position": "right",
+        "sticky_add_to_cart_position": "center",
         "background_color": "rgba(0,0,0,0)",
         "text_color": "",
         "heading_color": ""

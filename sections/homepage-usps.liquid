@@ -15,6 +15,7 @@
 				{% endif %}
 				<div class="intro-images">
 					{% if section.settings.intro_img_1 != blank %}
+						<div class="service-intro-main intro-main-image-1">
 						{{
 							section.settings.intro_img_1
 							| image_url: width: 280
@@ -26,10 +27,15 @@
 								alt: section.settings.intro_img_1.alt,
 								loading: 'lazy'
 						}}
+						{% if section.settings.intro_text_1 != blank %}
+							<h3 class="mt-3 font-bold"> {{ section.settings.intro_text_1 }}  </h3>
+						{% endif %}
+					</div>
 					{% elsif section.settings.intro_img_url_1 != blank %}
 						<img src="{{ section.settings.intro_img_url_1 }}" alt="Intro image" loading="lazy" width="280" height="auto">
 					{% endif %}
 					{% if section.settings.intro_img_2 != blank %}
+						<div class="service-intro-main intro-main-image-2">
 						{{
 							section.settings.intro_img_2
 							| image_url: width: 280
@@ -41,6 +47,10 @@
 								alt: section.settings.intro_img_2.alt,
 								loading: 'lazy'
 						}}
+						{% if section.settings.intro_text_2 != blank %}
+							<h3 class="mt-3 font-bold"> {{ section.settings.intro_text_2 }}  </h3>
+						{% endif %}
+					</div>
 					{% elsif section.settings.intro_img_url_2 != blank %}
 						<img src="{{ section.settings.intro_img_url_2 }}" alt="Intro image" loading="lazy" width="280" height="auto">
 					{% endif %}
@@ -150,7 +160,7 @@
 					object-fit: contain;
 				}
 				#shopify-section-{{ section.id }} .services-container.services-vertical-layout .intro-images img {
-					max-width: 275px;
+					max-width: 200px;
 				}
 				#shopify-section-{{ section.id }} .services-grid {
 					flex: 1;
@@ -188,14 +198,14 @@
 				}
 				#shopify-section-{{ section.id }} .service-icon > svg,
 				#shopify-section-{{ section.id }} .service-icon > img {
-					width: 60px;
-					height: 60px;
+					width: 50px;
+					height: 50px;
 					object-fit: contain;
 				}
 				#shopify-section-{{ section.id }} .services-container.services-vertical-layout .service-icon > svg,
 				#shopify-section-{{ section.id }} .services-container.services-vertical-layout .service-icon > img {
-					width: 80px;
-					height: 80px;
+					width: 60px;
+					height: 60px;
 					object-fit: contain;
 				}
 				#shopify-section-{{ section.id }} .service-card h3 {
@@ -304,8 +314,8 @@
 					}
 					#shopify-section-{{ section.id }} .services-container.services-vertical-layout .service-icon > svg,
 					#shopify-section-{{ section.id }} .services-container.services-vertical-layout .service-icon > img {
-						width: 50px;
-						height: 50px;
+						width: 40px;
+						height: 40px;
 					}
 				}
 				@media screen and (max-width: 520px) {
@@ -378,9 +388,21 @@
 						"label": "First Intro Image"
 					},
 					{
+						"type": "text",
+						"id": "intro_text_1",
+						"label": "First Image Text",
+						"default": "LIFETIME WARRANTY"
+					},
+					{
 						"type": "image_picker",
 						"id": "intro_img_2",
 						"label": "Second Intro Image"
+					},
+					{
+						"type": "text",
+						"id": "intro_text_2",
+						"label": "First Image Text",
+						"default": "30 DAYS GUARANTEE"
 					},
 					{
 						"type": "text",

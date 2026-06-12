@@ -22,6 +22,14 @@
       heading: section.settings.heading_color
     %}
   }
+
+  .hooktext .metafield-rich_text_field p:first-of-type {
+    margin-bottom: 0;
+}
+
+.hooktext .metafield-rich_text_field p:last-of-type {
+    margin-top: .5rem;
+}
 </style>
 
 <div style="display: none">media-size{{ section.settings.media_size }}</div>
@@ -33,6 +41,53 @@
   {% render 'product-sticky-add-to-cart' %}
 {% endif %}
 {% render 'product-rich-snippets' %}
+
+
+<script>
+  (function () {
+  function getVariantId() {
+    const p = new URLSearchParams(location.search).get('id');
+    if (p) return p;
+    const input = document.querySelector('[name="id"]');
+    return input ? input.value : null;
+  }
+
+  function swap(variantId) {
+    document.querySelectorAll('[data-collapsible-data]').forEach(function (store) {
+      const id = store.getAttribute('data-collapsible-data');
+      const target = document.querySelector('[data-collapsible-target="' + id + '"]');
+      if (!target) return;
+
+      let tpl = variantId && store.querySelector('template[data-variant-id="' + variantId + '"]');
+      if (!tpl) tpl = store.querySelector('template[data-default]');
+      if (tpl && target.innerHTML !== tpl.innerHTML) {
+        target.innerHTML = tpl.innerHTML;
+        // smooth-collapse caches height — nudge it to recalc if open
+        const wrapper = store.closest('smooth-collapse');
+        if (wrapper) wrapper.dispatchEvent(new Event('resize'));
+      }
+    });
+  }
+
+  // --- INTEGRATION POINT: your theme's variant change event ---
+  // Dawn-style pub/sub
+  if (window.subscribe && window.PUB_SUB_EVENTS) {
+    subscribe(PUB_SUB_EVENTS.variantChange, function (e) {
+      if (e.data && e.data.variant) swap(e.data.variant.id);
+    });
+  }
+  // Custom-event themes
+  document.addEventListener('variant:change', function (e) {
+    swap((e.detail && e.detail.variant && e.detail.variant.id) || getVariantId());
+  });
+  // Generic fallback: the hidden variant id input
+  document.addEventListener('change', function (e) {
+    if (e.target && e.target.name === 'id') swap(e.target.value);
+  });
+
+  document.addEventListener('DOMContentLoaded', function () { swap(getVariantId()); });
+})();
+</script>
 
 {% schema %}
 {
@@ -693,6 +748,18 @@
       ]
     },
     {
+      "type": "hook_text",
+      "name": "Hook Text",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "t:sections.main-product.blocks.text.settings.content.label",
+          "default": "<p>Enter your content here</p>"
+        }
+      ]
+    },
+    {
       "type": "rich_text_block",
       "name": "t:sections.main-product.blocks.rich_text_block.name",
       "settings": [
@@ -1051,6 +1118,12 @@
           "id": "heading",
           "label": "t:sections.all.heading.label",
           "default": "Collapsible content"
+        },
+        {
+          "type": "text",
+          "id": "variant_metafield",
+          "label": "Variant metafield (namespace.key)",
+          "info": "e.g. custom.collapsible_1 — falls back to the content above if a variant has none"
         },
         {
           "type": "richtext",
