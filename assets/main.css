@@ -2349,7 +2349,7 @@ button.select::after,
 .footer__blocks {
   display: flex;
   margin-bottom: min(1rem, calc(2rem + 4vw));
-  gap: 5rem;
+  gap: 1rem;
   flex-wrap: wrap;
 }
 @media not all and (min-width: 992px) {
@@ -10999,4 +10999,10 @@ quick-add-button.no-js-hidden button {
 }
 quick-add-button.no-js-hidden button:hover {
   background: #eba80b;
+}
+
+.footer-logo-heading{
+    font-style: italic ;
+    font-weight: 600;
+    font-size: 18px;
 }

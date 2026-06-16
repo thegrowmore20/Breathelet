@@ -1,0 +1,84 @@
+{% render 'affiliate-base' %}
+<div class="aff-root commission"><div class="wrap">
+  <div class="section-head reveal"><span class="eyebrow">{{ section.settings.eyebrow }}</span><h2>{{ section.settings.heading }}</h2></div>
+  <div class="pay-grid reveal">{% for block in section.blocks %}<div class="pay" {{ block.shopify_attributes }}><h3>{{ block.settings.heading }}</h3><div>{{ block.settings.text }}</div></div>{% endfor %}</div>
+  <div class="refund-note reveal">{{ section.settings.refund_note }}</div>
+</div></div>
+{% schema %}
+{
+  "name": "Affiliate · Commission",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Commission & payouts"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Earn it, get it."
+    },
+    {
+      "type": "richtext",
+      "id": "refund_note",
+      "label": "Refund note",
+      "default": "<p>Refunds & cancellations: commission is only paid on successfully completed sales. If an order is refunded, canceled, or returned, the related commission is canceled or deducted before payout.</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "pay",
+      "name": "Payout point",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Affiliate · Commission",
+      "blocks": [
+        {
+          "type": "pay",
+          "settings": {
+            "heading": "%",
+            "text": "<p>A competitive percentage on every valid sale through your link or code.</p>"
+          }
+        },
+        {
+          "type": "pay",
+          "settings": {
+            "heading": "Monthly",
+            "text": "<p>Commissions calculated and paid out every month for completed orders.</p>"
+          }
+        },
+        {
+          "type": "pay",
+          "settings": {
+            "heading": "Your way",
+            "text": "<p>Payouts via PayPal, Bank Transfer, or Shopify Payments — your choice in Shopify Collabs.</p>"
+          }
+        },
+        {
+          "type": "pay",
+          "settings": {
+            "heading": "No min.",
+            "text": "<p>No minimum payout threshold. There's no balance to reach before you're paid.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

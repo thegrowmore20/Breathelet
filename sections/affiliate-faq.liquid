@@ -1,0 +1,108 @@
+{% render 'affiliate-base' %}
+<div class="aff-root"><div class="wrap">
+  <div class="section-head reveal"><span class="eyebrow">{{ section.settings.eyebrow }}</span><h2>{{ section.settings.heading }}</h2></div>
+  <div class="faq-list">{% for block in section.blocks %}<details {{ block.shopify_attributes }}><summary>{{ block.settings.question }}<span class="pm"></span></summary><div class="faq-a">{{ block.settings.answer }}</div></details>{% endfor %}</div>
+</div></div>
+
+{% schema %}
+{
+  "name": "Affiliate · FAQ",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "FAQ"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Good to know."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Answer</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Affiliate · FAQ",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Who can join?",
+            "answer": "<p>Anyone with an active online presence — influencers, content creators, bloggers, wellness professionals, newsletter owners, website owners, and engaged social media pages.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is approval required?",
+            "answer": "<p>Yes. Every application is reviewed before approval to keep the program high-quality and brand-safe.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How are sales tracked?",
+            "answer": "<p>Through Shopify Collabs, using your unique referral link and discount code. Any sale made through your link or code is automatically recorded for commission.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "When are commissions paid?",
+            "answer": "<p>Commissions are paid monthly for valid, completed sales. There's no minimum payout threshold — you're paid for every valid sale.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What happens if an order is refunded or canceled?",
+            "answer": "<p>Commission is only paid on successfully completed sales. If an order is refunded, canceled, or returned, the related commission is canceled or deducted before payout.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are there promotion restrictions?",
+            "answer": "<p>Yes. No spam, misleading or medical claims, fake urgency, false discounts, unauthorized paid ads, or bidding on Breathelet brand keywords.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can an affiliate account be terminated?",
+            "answer": "<p>Yes. Accounts may be terminated for policy violations, fraudulent activity, misleading promotions, damaging the brand's reputation, inactivity, or not following the affiliate agreement.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I get help?",
+            "answer": "<p>Reach out to Breathelet support through our official email or social channels anytime.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

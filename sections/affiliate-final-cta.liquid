@@ -1,0 +1,49 @@
+{% render 'affiliate-base' %}
+<div class="aff-root final alt"><div class="wrap">
+  <span class="eyebrow" style="justify-content:center">{{ section.settings.eyebrow }}</span>
+  <h2 class="final-title">{{ section.settings.heading }}</h2>
+  <div class="lead">{{ section.settings.lead }}</div>
+  {% if section.settings.button_text != blank %}<a class="btn btn-primary" href="{{ section.settings.button_link }}" style="padding:1.1rem 2.2rem;font-size:1rem">{{ section.settings.button_text }}</a>{% endif %}
+</div></div>
+
+{% schema %}
+{
+  "name": "Affiliate · Final CTA",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Join the program"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Turn mindful moments into <em>monthly income.</em>"
+    },
+    {
+      "type": "richtext",
+      "id": "lead",
+      "label": "Lead",
+      "default": "<p>Join a brand that values calm, honesty, and intentional living. Share Breathelet with your audience and earn for every life you help slow down — just a little.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Join the Breathelet Affiliate Program"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Affiliate · Final CTA"
+    }
+  ]
+}
+{% endschema %}

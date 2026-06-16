@@ -103,6 +103,11 @@
     text-decoration: underline;
   }
 
+
+  .privacy-navs ul {
+    gap: 1rem;
+  }
+
   .privacy-navs a {
     transition: color 0.2s ease;
   }
@@ -186,6 +191,25 @@
   @media (max-width: 576px) {
     .privacy-navs a {
       font-size: 10px
+    }
+    .copyright-block {
+      flex-wrap: wrap;      
+    }
+    .footer__bottom-bar{
+      gap: .5rem;
+    }
+  }
+  @media (max-width: 360px) {
+    .privacy-navs a {
+      font-size: 12px
+    }
+    .privacy-navs ul {
+      flex-wrap: wrap;     
+      justify-content: center;
+      gap: 0.4rem; 
+    }
+    .footer__bottom-bar{
+      gap: 1rem;
     }
   }
 </style>
@@ -279,7 +303,7 @@
               {% endif %}
 
               {% if block.settings.heading != blank %}
-                <p class="mb-4">{{ block.settings.heading }}</p>
+                <p class="mb-2 footer-logo-heading">{{ block.settings.heading }}</p>
               {% endif %}
               <div class="prose max-md:text-sm">{{ block.settings.content }}</div>
             </div>
@@ -378,7 +402,7 @@
     <hr class="border-separator -mx-co mt-4 mb-4">
     <div class="text-foreground text-sm max-sm:text-xs text-opacity-50 mb-4 flex align-center justify-center gap-3 sm:flex-wrap footer__bottom-bar">
       <div class="styled-links copyright-block flex align-center justify-center gap-1">
-        <span>&copy; 2013 - {{ 'now' | date: '%Y' }} {{ shop.name | link_to: routes.root_url }}, Developed by</span>
+        <span>&copy; 2025 - {{ 'now' | date: '%Y' }} {{ shop.name | link_to: routes.root_url }}, Developed by</span>
         <a
           target="_blank"
           href="https://thegrowmore.com/"
@@ -391,7 +415,7 @@
         </a>
       </div>
       <nav class="privacy-navs styled-links">
-        <ul class="flex align-center gap-2">
+        <ul class="flex align-center">
           {% for link in linklists.policies.links %}
             <li><a class="text-sm max-sm:text-xs" href="{{ link.url }}">{{ link.title }}</a></li>
           {% endfor %}

@@ -1,0 +1,93 @@
+{% render 'affiliate-base' %}
+<div class="aff-root"><div class="wrap why">
+  <div class="section-head reveal"><span class="eyebrow">{{ section.settings.eyebrow }}</span><h2>{{ section.settings.heading }}</h2><div class="lead">{{ section.settings.lead }}</div></div>
+  <div class="why-list reveal">{% for block in section.blocks %}<div class="why-item" {{ block.shopify_attributes }}>{{ block.settings.icon }}<div><h3>{{ block.settings.heading }}</h3><div>{{ block.settings.text }}</div></div></div>{% endfor %}</div>
+</div></div>
+
+{% schema %}
+{
+  "name": "Affiliate · Why join",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Why join"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "A product people actually keep wearing."
+    },
+    {
+      "type": "richtext",
+      "id": "lead",
+      "label": "Lead",
+      "default": "<p>No hard sell required. Breathelet fits naturally into authentic content — and into the everyday lives of an audience that values calm.</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "why_item",
+      "name": "Why item",
+      "settings": [
+        {
+          "type": "html",
+          "id": "icon",
+          "label": "Icon (SVG)"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Affiliate · Why join",
+      "blocks": [
+        {
+          "type": "why_item",
+          "settings": {
+            "icon": "<svg class=\"mk\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\"><path d=\"M20 6L9 17l-5-5\"/></svg>",
+            "heading": "Built to be kept, not drawered",
+            "text": "<p>Minimal, premium, made for everyday calm — easy to recommend, easy to love.</p>"
+          }
+        },
+        {
+          "type": "why_item",
+          "settings": {
+            "icon": "<svg class=\"mk\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\"><path d=\"M3 17l6-6 4 4 8-8\"/><path d=\"M14 7h7v7\"/></svg>",
+            "heading": "A market that's only growing",
+            "text": "<p>Mindfulness, digital detox, and intentional living are everywhere. Breathelet is a simple, screen-free way in.</p>"
+          }
+        },
+        {
+          "type": "why_item",
+          "settings": {
+            "icon": "<svg class=\"mk\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 7v5l3 2\"/></svg>",
+            "heading": "Monthly payouts, no threshold",
+            "text": "<p>Get paid every month for valid sales. No minimum to hit before you earn.</p>"
+          }
+        },
+        {
+          "type": "why_item",
+          "settings": {
+            "icon": "<svg class=\"mk\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\"><path d=\"M12 3l7 4v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V7z\"/></svg>",
+            "heading": "A brand you can stand behind",
+            "text": "<p>Clean design, honest messaging, no inflated claims. Recommending Breathelet keeps your trust intact.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

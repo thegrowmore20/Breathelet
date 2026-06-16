@@ -1,0 +1,87 @@
+{% render 'affiliate-base' %}
+<div class="aff-root alt"><div class="wrap product">
+  <div class="product-visual reveal" role="img" aria-label="The Breathelet bracelet">{% if section.settings.image %}{{ section.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '400,600,800' }}{% else %}<svg viewBox="0 0 320 320" width="78%" fill="none"><circle cx="160" cy="160" r="96" stroke="#3A3B40" stroke-width="20" opacity="0.95"/><circle cx="160" cy="160" r="96" stroke="#C08A7B" stroke-width="4" opacity="0.75"/><rect x="138" y="48" width="44" height="34" rx="14" fill="#3A3B40"/><rect x="138" y="48" width="44" height="34" rx="14" fill="url(#aff-g)" opacity="0.4"/><circle cx="160" cy="65" r="6" fill="#C08A7B"/><defs><linearGradient id="aff-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".6"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs></svg>{% endif %}</div>
+  <div class="reveal"><span class="eyebrow">{{ section.settings.eyebrow }}</span><h2>{{ section.settings.heading }}</h2><div class="lead">{{ section.settings.lead }}</div>
+    <div class="specs">{% for block in section.blocks %}<div class="spec" {{ block.shopify_attributes }}><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6L9 17l-5-5"/></svg><span>{{ block.settings.text }}</span></div>{% endfor %}</div>
+  </div>
+</div></div>
+{% schema %}
+{
+  "name": "Affiliate · Product",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Product image"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "What you'll promote"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The mindful pause, <em>on your wrist.</em>"
+    },
+    {
+      "type": "richtext",
+      "id": "lead",
+      "label": "Lead",
+      "default": "<p>Gentle, random vibration reminders throughout the day. Each cue is a quiet invitation to pause and return to the present. The random timing is intentional — predictable reminders fade; surprising ones stay meaningful.</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "spec",
+      "name": "Spec",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Affiliate · Product",
+      "blocks": [
+        {
+          "type": "spec",
+          "settings": {
+            "text": "<p><b>Gentle random reminders</b> to pause and check in</p>"
+          }
+        },
+        {
+          "type": "spec",
+          "settings": {
+            "text": "<p><b>No app, no screen,</b> no distraction</p>"
+          }
+        },
+        {
+          "type": "spec",
+          "settings": {
+            "text": "<p><b>Minimal, premium design,</b> adjustable for any wrist</p>"
+          }
+        },
+        {
+          "type": "spec",
+          "settings": {
+            "text": "<p><b>Water-resistant</b> for all-day wear</p>"
+          }
+        },
+        {
+          "type": "spec",
+          "settings": {
+            "text": "<p><b>Up to 14 days</b> of battery life</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

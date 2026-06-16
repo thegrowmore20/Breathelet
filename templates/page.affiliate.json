@@ -23,20 +23,20 @@
         "heading_color": ""
       }
     },
-    "ee8f8c3b-ed9c-495b-a572-e66f48281fcc": {
+    "image_with_text_overlay_DDfnCM": {
       "type": "image-with-text-overlay",
       "blocks": {
-        "template--20599120724260__ee8f8c3b-ed9c-495b-a572-e66f48281fcc-heading-1": {
+        "heading_rb3mJq": {
           "type": "heading",
           "settings": {
             "heading": "Join the Movement. Inspire Presence",
-            "heading_size": "h2",
+            "heading_size": "h1",
             "heading_html_tag": "h1"
           }
         }
       },
       "block_order": [
-        "template--20599120724260__ee8f8c3b-ed9c-495b-a572-e66f48281fcc-heading-1"
+        "heading_rb3mJq"
       ],
       "settings": {
         "full_width": true,
@@ -54,39 +54,39 @@
         "overlay_type": "gradient"
       }
     },
-    "rich_text_bDzATx": {
+    "rich_text_xy7wak": {
       "type": "rich-text",
       "blocks": {
-        "heading_T3xndE": {
+        "heading_LWp86m": {
           "type": "heading",
           "settings": {
             "heading": "Breathelet Affiliate Program",
-            "heading_size": "h2",
+            "heading_size": "h1",
             "heading_html_tag": "h2"
           }
         },
-        "text_X9mLdA": {
+        "text_yJNrKP": {
           "type": "text",
           "settings": {
             "text": "<h1><strong>Share Mindfulness. Earn Rewards.</strong></h1><p>Join the Breathelet Affiliate Program and help others live calmer, more focused lives — while earning commissions for every sale.</p><h3>💫 About Breathelet</h3><p>At <strong>Breathelet</strong>, we believe mindfulness should feel effortless. Our minimalist, adjustable bracelet uses gentle, spontaneous vibrations to remind you to pause, breathe, and refocus — helping you build mindfulness and balance into your daily routine.When you become an affiliate, you’re not just promoting a product — you’re sharing a mindful lifestyle that truly makes a difference.</p><h3>🌸 Who Can Join</h3><p>If you believe in mindfulness, personal growth, and intentional living — you’re a perfect fit. Whether you’re a content creator, yoga instructor, wellness coach, or simply someone who loves inspiring others, you’re welcome in our community.</p><h3>✨ How It Works</h3><ol><li><strong>Apply</strong> to join the Breathelet Affiliate Program.</li><li><strong>Share</strong> your unique link with your audience through social media, blogs, or videos.</li><li><strong>Earn</strong> commissions on every sale made through your link.</li></ol><p>It’s that simple — share calm, earn income, and help others breathe a little easier.</p><h3>❤️ Let’s Grow Together</h3><p>Be part of a movement that spreads mindfulness and balance — one breath at a time.<a href=\"https://ui.awin.com/express-signup/en/awin/121054/b4de8bf0-d505-4bae-8110-16c33b47822b?t=zFuiyEuvWzRDom5d9UfMVLvZZ-c9AxpVaBcpvgEGjHU\" title=\"https://ui.awin.com/express-signup/en/awin/121054/b4de8bf0-d505-4bae-8110-16c33b47822b?t=zFuiyEuvWzRDom5d9UfMVLvZZ-c9AxpVaBcpvgEGjHU\">👉 <strong>Apply now to become a Breathelet Affiliate</strong></a> and start turning calm into commissions.<br/><br/></p>"
           }
         },
-        "button_H9gpaN": {
+        "button_rCH9bF": {
           "type": "button",
           "settings": {
             "button_text": "Join the Affiliate Program",
             "button_link": "https://ui.awin.com/express-signup/en/awin/121054/b4de8bf0-d505-4bae-8110-16c33b47822b?t=zFuiyEuvWzRDom5d9UfMVLvZZ-c9AxpVaBcpvgEGjHU",
             "button_style": "button-outline",
             "button_size": "text-sm md:text-base",
-            "button_background_color": "#ffffff",
+            "button_background_color": "#FFFFFF",
             "button_text_color": "#000000"
           }
         }
       },
       "block_order": [
-        "heading_T3xndE",
-        "text_X9mLdA",
-        "button_H9gpaN"
+        "heading_LWp86m",
+        "text_yJNrKP",
+        "button_rCH9bF"
       ],
       "name": "t:sections.rich-text.presets__0.name",
       "settings": {
@@ -97,11 +97,530 @@
         "text_color": "",
         "heading_color": ""
       }
+    },
+    "banner": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "banner-heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Breathelet Affiliate Program",
+            "heading_size": "h1",
+            "heading_html_tag": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "banner-heading"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "enable_transparent_header": false,
+        "use_original_media_size": false,
+        "image": "shopify://shop_images/Affiliate_Page_Banner_Desktop.webp",
+        "image_mobile": "shopify://shop_images/Affiliate_Page_Banner_Mobile.webp",
+        "content_alignment": "md:content-middle-left",
+        "content_alignment_mobile": "content-middle-left",
+        "link": "",
+        "min_height": 300,
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 50,
+        "overlay_type": "gradient"
+      }
+    },
+    "rich_text_xRNr3X": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_T9mKkD": {
+          "type": "heading",
+          "settings": {
+            "heading": "Share calm.",
+            "heading_size": "h1",
+            "heading_html_tag": "h2"
+          }
+        },
+        "heading_aYTFai": {
+          "type": "heading",
+          "settings": {
+            "heading": "Earn for it.",
+            "heading_size": "h1",
+            "heading_html_tag": "h2"
+          }
+        },
+        "text_cjXDgz": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Partner with Breathelet and earn commission for every mindful moment you inspire. The screen-free bracelet that nudges people to pause, check in, and reconnect — no app, no distraction.</p>"
+          }
+        },
+        "button_BrUhze": {
+          "type": "button",
+          "settings": {
+            "button_text": "Become an affiliate",
+            "button_link": "https://ui.awin.com/express-signup/en/awin/121054/b4de8bf0-d505-4bae-8110-16c33b47822b?t=zFuiyEuvWzRDom5d9UfMVLvZZ-c9AxpVaBcpvgEGjHU",
+            "button_style": "",
+            "button_size": "text-sm md:text-base",
+            "button_background_color": "#FFFFFF",
+            "button_text_color": "#000000"
+          }
+        },
+        "button_mF9Tfe": {
+          "type": "button",
+          "settings": {
+            "button_text": "See how it works",
+            "button_link": "",
+            "button_style": "button-outline",
+            "button_size": "text-sm md:text-base",
+            "button_background_color": "#FFFFFF",
+            "button_text_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "heading_T9mKkD",
+        "heading_aYTFai",
+        "text_cjXDgz",
+        "button_BrUhze",
+        "button_mF9Tfe"
+      ],
+      "disabled": true,
+      "name": "t:sections.rich-text.presets__0.name",
+      "settings": {
+        "full_width": true,
+        "text_alignment": "text-center mx-auto",
+        "content_width": "normal",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": ""
+      }
+    },
+    "why_join": {
+      "type": "affiliate-why-join",
+      "blocks": {
+        "why-1": {
+          "type": "why_item",
+          "settings": {
+            "icon": "<svg class=\"mk\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\"><path d=\"M20 6L9 17l-5-5\"></path></svg>",
+            "heading": "Built to be kept, not drawered",
+            "text": "<p>Minimal, premium, made for everyday calm — easy to recommend, easy to love.</p>"
+          }
+        },
+        "why-2": {
+          "type": "why_item",
+          "settings": {
+            "icon": "<svg class=\"mk\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\"><path d=\"M3 17l6-6 4 4 8-8\"></path><path d=\"M14 7h7v7\"></path></svg>",
+            "heading": "A market that's only growing",
+            "text": "<p>Mindfulness, digital detox, and intentional living are everywhere. Breathelet is a simple, screen-free way in.</p>"
+          }
+        },
+        "why-3": {
+          "type": "why_item",
+          "settings": {
+            "icon": "<svg class=\"mk\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\"><circle cx=\"12\" cy=\"12\" r=\"9\"></circle><path d=\"M12 7v5l3 2\"></path></svg>",
+            "heading": "Monthly payouts, no threshold",
+            "text": "<p>Get paid every month for valid sales. No minimum to hit before you earn.</p>"
+          }
+        },
+        "why-4": {
+          "type": "why_item",
+          "settings": {
+            "icon": "<svg class=\"mk\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\"><path d=\"M12 3l7 4v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V7z\"></path></svg>",
+            "heading": "A brand you can stand behind",
+            "text": "<p>Clean design, honest messaging, no inflated claims. Recommending Breathelet keeps your trust intact.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "why-1",
+        "why-2",
+        "why-3",
+        "why-4"
+      ],
+      "disabled": true,
+      "settings": {
+        "eyebrow": "Why join",
+        "heading": "A product people actually keep wearing.",
+        "lead": "<p>No hard sell required. Breathelet fits naturally into authentic content — and into the everyday lives of an audience that values calm.</p>"
+      }
+    },
+    "how_it_works": {
+      "type": "affiliate-how-it-works",
+      "blocks": {
+        "step-1": {
+          "type": "step",
+          "settings": {
+            "number": "01",
+            "heading": "Apply",
+            "text": "<p>Submit a quick application with your platform and audience. It takes just a few minutes.</p>"
+          }
+        },
+        "step-2": {
+          "type": "step",
+          "settings": {
+            "number": "02",
+            "heading": "Get approved",
+            "text": "<p>We review every application to keep quality high. Once you're in, you get your unique link and code.</p>"
+          }
+        },
+        "step-3": {
+          "type": "step",
+          "settings": {
+            "number": "03",
+            "heading": "Share your link",
+            "text": "<p>Promote across social, blog, newsletter, or website — using your link, your code, or both.</p>"
+          }
+        },
+        "step-4": {
+          "type": "step",
+          "settings": {
+            "number": "04",
+            "heading": "Earn monthly",
+            "text": "<p>Every valid sale is tracked automatically through Shopify Collabs. We pay out monthly.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "step-1",
+        "step-2",
+        "step-3",
+        "step-4"
+      ],
+      "disabled": true,
+      "settings": {
+        "eyebrow": "How it works",
+        "heading": "Four quiet steps to your first commission.",
+        "button_text": "Start your application",
+        "button_link": "https://ui.awin.com/express-signup/en/awin/121054/b4de8bf0-d505-4bae-8110-16c33b47822b?t=zFuiyEuvWzRDom5d9UfMVLvZZ-c9AxpVaBcpvgEGjHU"
+      }
+    },
+    "who_can_join": {
+      "type": "affiliate-who-can-join",
+      "blocks": {
+        "who-1": {
+          "type": "who_card",
+          "settings": {
+            "icon": "<svg class=\"ico\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\"><circle cx=\"12\" cy=\"8\" r=\"4\"></circle><path d=\"M4 21c0-4 4-6 8-6s8 2 8 6\"></path></svg>",
+            "heading": "Influencers & creators",
+            "text": "<p>Sharing wellness, lifestyle, and everyday moments.</p>",
+            "dark": false
+          }
+        },
+        "who-2": {
+          "type": "who_card",
+          "settings": {
+            "icon": "<svg class=\"ico\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\"><path d=\"M4 4h16v16H4z\"></path><path d=\"M8 9h8M8 13h6\"></path></svg>",
+            "heading": "Bloggers & website owners",
+            "text": "<p>In mindfulness, productivity, or healthy living.</p>",
+            "dark": false
+          }
+        },
+        "who-3": {
+          "type": "who_card",
+          "settings": {
+            "icon": "<svg class=\"ico\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\"><path d=\"M12 3v18M5 8l7-5 7 5\"></path><circle cx=\"12\" cy=\"14\" r=\"3\"></circle></svg>",
+            "heading": "Wellness professionals",
+            "text": "<p>Guiding communities toward calmer routines.</p>",
+            "dark": false
+          }
+        },
+        "who-4": {
+          "type": "who_card",
+          "settings": {
+            "icon": "<svg class=\"ico\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\"><path d=\"M3 6h18v12H3z\"></path><path d=\"M3 7l9 6 9-6\"></path></svg>",
+            "heading": "Newsletter & email creators",
+            "text": "<p>With an audience that trusts their recommendations.</p>",
+            "dark": false
+          }
+        },
+        "who-5": {
+          "type": "who_card",
+          "settings": {
+            "icon": "<svg class=\"ico\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\"><circle cx=\"12\" cy=\"12\" r=\"9\"></circle><path d=\"M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18\"></path></svg>",
+            "heading": "Social media pages",
+            "text": "<p>Built around mindfulness, minimalism, and intention.</p>",
+            "dark": false
+          }
+        },
+        "who-6": {
+          "type": "who_card",
+          "settings": {
+            "icon": "<svg class=\"ico\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"#D9A48F\" stroke-width=\"1.4\"><path d=\"M12 3l2.5 6 6.5.5-5 4.2 1.7 6.3L12 16.8 6.3 20 8 13.7 3 9.5 9.5 9z\"></path></svg>",
+            "heading": "New or established",
+            "text": "<p>What matters most is a genuine connection with your audience.</p>",
+            "dark": true
+          }
+        }
+      },
+      "block_order": [
+        "who-1",
+        "who-2",
+        "who-3",
+        "who-4",
+        "who-5",
+        "who-6"
+      ],
+      "disabled": true,
+      "settings": {
+        "eyebrow": "Who can join",
+        "heading": "If your audience trusts you, we'd love to work with you."
+      }
+    },
+    "product": {
+      "type": "affiliate-product",
+      "blocks": {
+        "spec-1": {
+          "type": "spec",
+          "settings": {
+            "text": "<p><b>Gentle random reminders</b> to pause and check in</p>"
+          }
+        },
+        "spec-2": {
+          "type": "spec",
+          "settings": {
+            "text": "<p><b>No app, no screen,</b> no distraction</p>"
+          }
+        },
+        "spec-3": {
+          "type": "spec",
+          "settings": {
+            "text": "<p><b>Minimal, premium design,</b> adjustable for any wrist</p>"
+          }
+        },
+        "spec-4": {
+          "type": "spec",
+          "settings": {
+            "text": "<p><b>Water-resistant</b> for all-day wear</p>"
+          }
+        },
+        "spec-5": {
+          "type": "spec",
+          "settings": {
+            "text": "<p><b>Up to 14 days</b> of battery life</p>"
+          }
+        }
+      },
+      "block_order": [
+        "spec-1",
+        "spec-2",
+        "spec-3",
+        "spec-4",
+        "spec-5"
+      ],
+      "disabled": true,
+      "settings": {
+        "eyebrow": "What you'll promote",
+        "heading": "The mindful pause, <em>on your wrist.</em>",
+        "lead": "<p>Gentle, random vibration reminders throughout the day. Each cue is a quiet invitation to pause and return to the present. The random timing is intentional — predictable reminders fade; surprising ones stay meaningful.</p>"
+      }
+    },
+    "commission": {
+      "type": "affiliate-commission",
+      "blocks": {
+        "pay-1": {
+          "type": "pay",
+          "settings": {
+            "heading": "%",
+            "text": "<p>A competitive percentage on every valid sale through your link or code.</p>"
+          }
+        },
+        "pay-2": {
+          "type": "pay",
+          "settings": {
+            "heading": "Monthly",
+            "text": "<p>Commissions calculated and paid out every month for completed orders.</p>"
+          }
+        },
+        "pay-3": {
+          "type": "pay",
+          "settings": {
+            "heading": "Your way",
+            "text": "<p>Payouts via PayPal, Bank Transfer, or Shopify Payments — your choice in Shopify Collabs.</p>"
+          }
+        },
+        "pay-4": {
+          "type": "pay",
+          "settings": {
+            "heading": "No min.",
+            "text": "<p>No minimum payout threshold. There's no balance to reach before you're paid.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "pay-1",
+        "pay-2",
+        "pay-3",
+        "pay-4"
+      ],
+      "disabled": true,
+      "settings": {
+        "eyebrow": "Commission & payouts",
+        "heading": "Earn it, get it.",
+        "refund_note": "<p>Refunds & cancellations: commission is only paid on successfully completed sales. If an order is refunded, canceled, or returned, the related commission is canceled or deducted before payout.</p>"
+      }
+    },
+    "guidelines": {
+      "type": "affiliate-guidelines",
+      "disabled": true,
+      "settings": {
+        "eyebrow": "Promotion guidelines",
+        "heading": "Honest and on-message — always.",
+        "lead": "<p>To protect both your credibility and the Breathelet brand.</p>",
+        "do_heading": "You're welcome to",
+        "do_list": "<ul><li>Promote on social media platforms</li><li>Share on your website or blog</li><li>Feature it in newsletters and email marketing</li><li>Create authentic content from your real experience</li></ul>",
+        "dont_heading": "Please don't",
+        "dont_list": "<ul><li>Make medical, health, or therapeutic claims</li><li>Use spam, misleading statements, or false claims</li><li>Create fake urgency or advertise discounts that don't exist</li><li>Run unauthorized paid ads or bid on Breathelet keywords</li></ul>",
+        "brand_safe": "<p><b>Brand-safe messaging.</b> You may use the Breathelet name in your content, as long as you follow our brand guidelines. Position Breathelet as a mindfulness and lifestyle accessory — never as a medical device.</p>"
+      }
+    },
+    "support": {
+      "type": "affiliate-support",
+      "blocks": {
+        "support-1": {
+          "type": "support_item",
+          "settings": {
+            "icon": "<svg class=\"ico\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\"><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"></rect><circle cx=\"8.5\" cy=\"8.5\" r=\"1.5\"></circle><path d=\"M21 15l-5-5L5 21\"></path></svg>",
+            "text": "<p>Ready-to-use creatives and banners</p>"
+          }
+        },
+        "support-2": {
+          "type": "support_item",
+          "settings": {
+            "icon": "<svg class=\"ico\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\"><path d=\"M9 18h6M10 22h4M12 2a7 7 0 00-4 12.7V17h8v-2.3A7 7 0 0012 2z\"></path></svg>",
+            "text": "<p>Content ideas and messaging guidance</p>"
+          }
+        },
+        "support-3": {
+          "type": "support_item",
+          "settings": {
+            "icon": "<svg class=\"ico\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\"><path d=\"M12 3l7 4v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V7z\"></path></svg>",
+            "text": "<p>Brand assets and approved talking points</p>"
+          }
+        },
+        "support-4": {
+          "type": "support_item",
+          "settings": {
+            "icon": "<svg class=\"ico\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\"><path d=\"M20 12v7a1 1 0 01-1 1H5a1 1 0 01-1-1v-7M2 7h20v5H2zM12 7v13M12 7L8.5 3.5M12 7l3.5-3.5\"></path></svg>",
+            "text": "<p>Product samples (subject to approval)</p>"
+          }
+        }
+      },
+      "block_order": [
+        "support-1",
+        "support-2",
+        "support-3",
+        "support-4"
+      ],
+      "disabled": true,
+      "settings": {
+        "eyebrow": "Marketing support",
+        "heading": "We want you to succeed.",
+        "lead": "<p>Once approved, just reach out and request:</p>"
+      }
+    },
+    "faq": {
+      "type": "affiliate-faq",
+      "blocks": {
+        "faq-1": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Who can join?",
+            "answer": "<p>Anyone with an active online presence — influencers, content creators, bloggers, wellness professionals, newsletter owners, website owners, and engaged social media pages.</p>"
+          }
+        },
+        "faq-2": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is approval required?",
+            "answer": "<p>Yes. Every application is reviewed before approval to keep the program high-quality and brand-safe.</p>"
+          }
+        },
+        "faq-3": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How are sales tracked?",
+            "answer": "<p>Through Shopify Collabs, using your unique referral link and discount code. Any sale made through your link or code is automatically recorded for commission.</p>"
+          }
+        },
+        "faq-4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "When are commissions paid?",
+            "answer": "<p>Commissions are paid monthly for valid, completed sales. There's no minimum payout threshold — you're paid for every valid sale.</p>"
+          }
+        },
+        "faq-5": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What happens if an order is refunded or canceled?",
+            "answer": "<p>Commission is only paid on successfully completed sales. If an order is refunded, canceled, or returned, the related commission is canceled or deducted before payout.</p>"
+          }
+        },
+        "faq-6": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are there promotion restrictions?",
+            "answer": "<p>Yes. No spam, misleading or medical claims, fake urgency, false discounts, unauthorized paid ads, or bidding on Breathelet brand keywords.</p>"
+          }
+        },
+        "faq-7": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can an affiliate account be terminated?",
+            "answer": "<p>Yes. Accounts may be terminated for policy violations, fraudulent activity, misleading promotions, damaging the brand's reputation, inactivity, or not following the affiliate agreement.</p>"
+          }
+        },
+        "faq-8": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I get help?",
+            "answer": "<p>Reach out to Breathelet support through our official email or social channels anytime.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq-1",
+        "faq-2",
+        "faq-3",
+        "faq-4",
+        "faq-5",
+        "faq-6",
+        "faq-7",
+        "faq-8"
+      ],
+      "disabled": true,
+      "settings": {
+        "eyebrow": "FAQ",
+        "heading": "Good to know."
+      }
+    },
+    "final_cta": {
+      "type": "affiliate-final-cta",
+      "disabled": true,
+      "settings": {
+        "eyebrow": "Join the program",
+        "heading": "Turn mindful moments into <em>monthly income.</em>",
+        "lead": "<p>Join a brand that values calm, honesty, and intentional living. Share Breathelet with your audience and earn for every life you help slow down — just a little.</p>",
+        "button_text": "Join the Breathelet Affiliate Program",
+        "button_link": "https://ui.awin.com/express-signup/en/awin/121054/b4de8bf0-d505-4bae-8110-16c33b47822b?t=zFuiyEuvWzRDom5d9UfMVLvZZ-c9AxpVaBcpvgEGjHU"
+      }
     }
   },
   "order": [
     "main",
-    "ee8f8c3b-ed9c-495b-a572-e66f48281fcc",
-    "rich_text_bDzATx"
+    "image_with_text_overlay_DDfnCM",
+    "rich_text_xy7wak",
+    "banner",
+    "rich_text_xRNr3X",
+    "why_join",
+    "how_it_works",
+    "who_can_join",
+    "product",
+    "commission",
+    "guidelines",
+    "support",
+    "faq",
+    "final_cta"
   ]
 }

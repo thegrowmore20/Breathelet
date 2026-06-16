@@ -1,0 +1,99 @@
+{% render 'affiliate-base' %}
+<div class="aff-root how"><div class="wrap">
+  <div class="section-head reveal"><span class="eyebrow">{{ section.settings.eyebrow }}</span><h2>{{ section.settings.heading }}</h2></div>
+  <div class="steps">{% for block in section.blocks %}<div class="step reveal" {{ block.shopify_attributes }}><span class="num">{{ block.settings.number }}</span><h3>{{ block.settings.heading }}</h3><div>{{ block.settings.text }}</div></div>{% endfor %}</div>
+  {% if section.settings.button_text != blank %}<div class="how-cta reveal"><a class="btn btn-light" href="{{ section.settings.button_link }}">{{ section.settings.button_text }}</a></div>{% endif %}
+</div></div>
+
+{% schema %}
+{
+  "name": "Affiliate · How it works",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "How it works"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Four quiet steps to your first commission."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Start your application"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Number"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Affiliate · How it works",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "number": "01",
+            "heading": "Apply",
+            "text": "<p>Submit a quick application with your platform and audience. It takes just a few minutes.</p>"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "number": "02",
+            "heading": "Get approved",
+            "text": "<p>We review every application to keep quality high. Once you're in, you get your unique link and code.</p>"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "number": "03",
+            "heading": "Share your link",
+            "text": "<p>Promote across social, blog, newsletter, or website — using your link, your code, or both.</p>"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "number": "04",
+            "heading": "Earn monthly",
+            "text": "<p>Every valid sale is tracked automatically through Shopify Collabs. We pay out monthly.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
