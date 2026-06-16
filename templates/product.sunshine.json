@@ -103,6 +103,26 @@
             "delivery_to": 5
           }
         },
+        "icon_text_block_WALj9i": {
+          "type": "icon_text_block",
+          "settings": {
+            "icon_text_class": "icon-text-pdp",
+            "layout": "inline",
+            "icon_1": "shopify://shop_images/30_Days_Return.png",
+            "text_1": "<p>30 Days<br/>Return</p>",
+            "icon_2": "shopify://shop_images/Lifetime_Warranty_2.png",
+            "text_2": "<p>Lifetime<br/>Warranty</p>",
+            "icon_3": "shopify://shop_images/Delivery.png",
+            "text_3": "<p>Free Delivery<br/>100+ USD</p>",
+            "icon_4": "shopify://shop_images/Delivery.png",
+            "text_4": "<p>Hassle-Free<br/>Shipping</p>",
+            "icon_5": "shopify://shop_images/Secure_Transaction.png",
+            "text_5": "<p>Secure<br/>Transaction</p>",
+            "icon_size": 50,
+            "text_size": 14,
+            "text_color": "#ffffff"
+          }
+        },
         "4923f5c8-62d3-42db-a835-6e0613c4a182": {
           "type": "payment_installments",
           "disabled": true,
@@ -196,6 +216,7 @@
         "0f473fb4-422c-40a7-8c15-2fd164440f80",
         "a730fe0e-baa3-47bc-90c9-21c5a5d75f2d",
         "delivery_C87KwU",
+        "icon_text_block_WALj9i",
         "4923f5c8-62d3-42db-a835-6e0613c4a182",
         "complementary_products_K3fTUK",
         "collapsible_content_UATrV4",

@@ -95,11 +95,16 @@
           disabled
         {% endif %}
       >
-        <span>
+        <span class="flex justify-center items-center gap-1.5">
           {%- if product.selected_or_first_available_variant == null -%}
             {{ 'products.product.unavailable' | t }}
           {%- elsif product.selected_or_first_available_variant.available -%}
-            {{ 'products.product.add_to_cart' | t }}
+            {% if show_dynamic_checkout %}
+             {% render 'icon-product-cart-black' %}
+            {% else %}
+              {% render 'icon-product-cart-black' %}
+            {% endif %}
+             <span class="add-to-cart-text-btn"> {{ 'products.product.add_to_cart' | t }} </span>
           {%- else -%}
             {{ 'products.product.sold_out' | t }}
           {%- endif -%}

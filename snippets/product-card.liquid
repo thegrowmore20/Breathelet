@@ -146,7 +146,7 @@
       <div
         class="
           product-badges-container flex flex-col gap-1 md:gap-2 items-start absolute
-          top-[--media-badge-offset] left-[--media-badge-offset] pointer-events-none z-10
+          top-0 left-0 md:top-[--media-badge-offset] md:left-[--media-badge-offset] pointer-events-none z-10
         "
       >
         {% if settings.product_card_sold_out_badge and card_product.available == false %}
@@ -164,14 +164,36 @@
           </div>
         {% endif %}
 
+        {% comment %} Mobile: custom badges stacked below save/sold-out, hidden on desktop {% endcomment %}
         {% if settings.product_card_custom_badges %}
-          {% render 'product-custom-badges', product: card_product %}
+          <div class="flex flex-col gap-1 md:hidden">
+            {% render 'product-custom-badges', product: card_product, variant: card_variant %}
+          </div>
         {% endif %}
+      </div>
+    {% endif %}
+
+    {% comment %} Desktop: custom badges bottom-right, hidden on mobile {% endcomment %}
+    {% if badges != false and settings.product_card_custom_badges %}
+      <div
+        class="
+          product-custom-badges-container max-md:hidden flex flex-col gap-2 items-end absolute
+          bottom-2 right-[--media-badge-offset] pointer-events-none z-10
+        "
+      >
+        {% render 'product-custom-badges', product: card_product, variant: card_variant %}
+      </div>
+    {% endif %}
+
+    {% comment %} Variant-as-card: variant thumbnails overlaid on the gallery, bottom-left {% endcomment %}
+    {% if card_variant %}
+      <div class="absolute bottom-2 left-[--media-badge-offset] right-[--media-badge-offset] z-10">
+        {%- render 'product-card-variant-swatches', card_product: card_product, card_variant: card_variant, sizes: sizes -%}
       </div>
     {% endif %}
   </div>
 
-  <div class="product-card__info pt-5 md:pt-6 flex flex-col grow max-md:text-sm {{ product_card_info_class }}">
+  <div class="product-card__info pt-2 flex flex-col grow max-md:text-sm {{ product_card_info_class }}">
     {% if settings.product_card_product_rating and rating != false %}
       {% if settings.product_card_show_empty_rating or card_product.metafields.reviews.rating.value != blank %}
         <div class="product-rating mb-2">
@@ -191,7 +213,7 @@
       <a data-instant href="{{ url }}">{{ card_title | default: 'Product' }}</a>
     </h2>
 
-    <div class="mt-2">
+    <div class="mt-2"{% if card_variant %} data-vcard-price{% endif %}>
       {% if card_product %}
         {% render 'price', product: card_product, use_variant: card_variant %}
       {% else %}
@@ -224,7 +246,7 @@
 
     {% if settings.product_card_quick_add_to_cart and card_available and quick_add != false %}
       <quick-add-button
-        class="no-js-hidden mt-1 w-full"
+        class="no-js-hidden mt-2 w-full"
         {% if card_variant %}
           variant-id="{{ card_variant.id }}"
         {% elsif card_product.has_only_default_variant or card_product.variants.size == 1 %}
@@ -234,10 +256,10 @@
       >
         <button
           aria-label="{{ 'accessibility.add_to_cart' | t }}"
-          class="button button-primary p-0 rounded-full z-10 w-full"
+          class="button button-primary p-0 rounded-full z-10 w-full whitespace-nowrap"
         >
-          <div class="flex items-center gap-1.5">
-            <span class="icon-sm lg:icon-md">{% render 'icon-cart' %}</span>
+          <div class="flex justify-center items-center add-to-cart-span">
+            <span class="icon icon-add-cart">{% render 'icon-product-cart-black' %}</span>
             <span>Add to cart</span>
           </div>
         </button>

@@ -1,0 +1,19 @@
+{%- comment %}
+  Registers the custom Montserrat Thin webfont (uploaded to Settings → Content → Files).
+
+  Lives in a Liquid-rendered <style> rather than a .css asset because:
+  - the `src` needs the Liquid `file_url` filter, and
+  - Shopify no longer processes `.liquid` asset files (they get stripped).
+
+  Apply it with: font-family: 'Montserrat Thin';
+{% endcomment -%}
+<style>
+  @font-face {
+    font-family: 'Montserrat Thin';
+    src: url('{{ 'Montserrat-Thin.woff2' | file_url }}') format('woff2'),
+         url('{{ 'Montserrat-Thin.woff' | file_url }}') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+  }
+</style>

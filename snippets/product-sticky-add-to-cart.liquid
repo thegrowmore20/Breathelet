@@ -27,6 +27,7 @@
         type="button"
         class="button whitespace-nowrap"
       >
+        {% render 'icon-product-cart-black' %}
         <span>
           {{ 'products.product.add_to_cart' | t }}
           &mdash; <span class="sticky-product-price"> {{ product.selected_or_first_available_variant.price | money }} </span>

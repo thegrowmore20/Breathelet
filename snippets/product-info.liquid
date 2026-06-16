@@ -119,6 +119,124 @@
           {% if product.selected_or_first_available_variant.available %}
             {% render 'product-delivery-dates', block: block, class: 'my-4', text_size_delivery_class: 'text-sm md:text-base' %}           
           {% endif %}
+        
+        {% when 'icon_text_block' %}
+          <style>
+            .icon-text-block {
+              width: 100%;
+            }
+
+            /* INLINE (all items in one row, icon top, text below) */
+            .icon-text-block--inline {
+              display: flex;
+              flex-wrap: wrap;
+              gap: 20px;
+            }
+
+            .icon-text-block--inline .icon-text-item {
+              flex: 1 1 0;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              text-align: center;
+              gap: 1rem;
+            }
+
+            /* VERTICAL (each item row, icon left, text right) */
+            .icon-text-block--vertical {
+              display: flex;
+              flex-direction: column;
+              gap: 15px;
+            }
+
+            .icon-text-block--vertical .icon-text-item {
+              display: flex;
+              align-items: center;
+              gap: 12px;
+            }
+
+            .icon-wrapper img {
+              display: block;
+              height: auto;
+            }
+
+            .icon-wrapper{
+              {% comment %} background-color: #f9f9f9; {% endcomment %}
+              padding: 10px;
+              border-radius: 50%;
+            }
+
+            .icon-text {
+              line-height: 1.4;
+            }
+
+            .icon-text-block--vertical.homepage-usps-info .icon-text-item {
+                  width: calc(50% - 12px);
+              }
+
+              .icon-text-block--vertical.homepage-usps-info {
+                  flex-direction: row;
+                  flex-wrap: wrap;
+              }
+
+            @media (max-width: 520px) {
+              .icon-text-block--inline {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+              }    
+              
+              .icon-text-block--vertical.homepage-usps-info .icon-text-item {
+                  align-items: flex-start;
+              }
+            }
+          </style>
+          {% assign country_handle = localization.country | handle %}
+          <div class="icon-text-block my-4 icon-text-block--{{ block.settings.layout }} {{ block.settings.icon_text_class }} {{ country_handle }} {% unless country_handle == 'united-states' %} not-usa {% endunless %}" {{ block.shopify_attributes }}>
+
+            {% for i in (1..5) %}
+              {% comment %} Logic to skip items based on country {% endcomment %}
+              {% if country_handle == 'united-states' and i == 4 %}
+                {% continue %}
+              {% elsif country_handle != 'united-states' and i == 3 %}
+                {% continue %}
+              {% endif %}
+
+              {% capture icon_key %}icon_{{ i }}{% endcapture %}
+              {% capture text_key %}text_{{ i }}{% endcapture %}
+              {% assign icon = block.settings[icon_key] %}
+              {% assign text = block.settings[text_key] %}
+
+              {%- liquid
+                assign lazyload = 'lazy'
+                if forloop.index == 1
+                  assign lazyload = 'eager'
+                endif
+              -%}
+
+              {% if icon != blank or text != blank %}
+                <div data-icon="icon_{{ i }}" class="icon-text-item">
+                  {% if icon %}
+                    <div class="icon-wrapper">
+                      <img 
+                        src="{{ icon | image_url: width: 100 }}"
+                        alt="{{ icon.alt | escape }}" 
+                        width="100" height=""
+                        style="width: {{ block.settings.icon_size }}px;"
+                        loading="{{ lazyload }}"
+                      >
+                    </div>
+                  {% endif %}
+
+                  {% if text != blank %}
+                    <div class="icon-text" style="font-size: {{ block.settings.text_size }}px; color: {{ block.settings.text_color }};">
+                      {{ text | replace: '<p>', '' | replace: '</p>', '' }}
+                    </div>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>  
+          
         {% when 'payment_installments' %}
           <div {{ block.shopify_attributes }}>
             {%- assign installment_id = 'Installment-' | append: section.id -%}
@@ -271,3 +389,40 @@
     {{ product.selected_or_first_available_variant | json }}
   </script>
 </sticky-sidebar>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const accordions = document.querySelectorAll('.product-collapse');
+
+    accordions.forEach((accordion) => {
+      accordion.addEventListener('toggle', function () {
+        // Run only when opening
+        if (!accordion.open) return;
+
+        // Delay to allow other accordion to collapse + DOM height settle
+        setTimeout(() => {
+          const summary = accordion.querySelector('summary');
+          if (!summary) return;
+
+          const rect = summary.getBoundingClientRect();
+
+          // Only scroll if header is out of view (prevents unnecessary jump)
+          if (rect.top < 0 || rect.top > window.innerHeight) {
+
+            // Adjust this if you have sticky header
+            const OFFSET = -100;
+
+            const targetY = rect.top + window.pageYOffset + OFFSET;
+
+            window.scrollTo({
+              top: targetY,
+              behavior: 'smooth'
+            });
+          }
+
+        }, 150); // adjust (150–300ms) based on collapse animation speed
+      });
+    });
+  });
+</script>

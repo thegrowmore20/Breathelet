@@ -1,4 +1,19 @@
-{%- for badge in product.metafields.custom.badges.value -%}
+{%- comment %}
+  Renders custom badges (product_badge metaobjects) from the custom.badges list metafield.
+
+  Accepts:
+  - product: {Object} product whose custom.badges are shown (default source)
+  - variant: {Object} optional variant — when passed, its custom.badges are shown
+    instead of the product's (used for variant-as-card display)
+{% endcomment -%}
+{%- liquid
+  if variant
+    assign badge_list = variant.metafields.custom.badges.value
+  else
+    assign badge_list = product.metafields.custom.badges.value
+  endif
+-%}
+{%- for badge in badge_list -%}
   {%- if badge.label.value -%}
     <div
       class="info-badge custom-badge"

@@ -1,0 +1,79 @@
+{%- comment %}
+  Selectable variant thumbnails for a "variant-as-card" product card.
+
+  Source: the card variant's `custom.additional_variants` metafield (list of variants).
+  The card's own variant is shown first and selected; the listed variants follow.
+  Nothing renders when the metafield is empty.
+
+  Selecting a thumbnail:
+  - swaps the card image and rewrites the card links to the variant URL
+    (handled by the existing <product-card-swatches> web component), and
+  - updates the displayed price ([data-vcard-price]) and the <quick-add-button>
+    `variant-id` so navigation and add-to-cart use the chosen variant
+    (handled by the guarded script below).
+
+  Accepts:
+  - card_product: {Object} the product
+  - card_variant: {Object} the variant this card represents
+  - sizes:        {String} responsive image `sizes` attribute
+{% endcomment -%}
+
+{%- liquid
+  assign extra_variants = card_variant.metafields.custom.additional_variants.value
+-%}
+
+{%- if extra_variants != blank -%}
+  {%- assign group_name = 'vcard-' | append: section.id | append: '-' | append: card_variant.id -%}
+
+  <product-card-swatches class="variant-card-swatches flex flex-wrap gap-2 md:gap-3 items-center">
+    {%- comment %} Current variant — first and selected {% endcomment -%}
+    {%- assign current_image = card_variant.featured_image | default: card_product.featured_image -%}
+    {%- render 'product-card-variant-swatch',
+      product: card_product,
+      variant: card_variant,
+      group_name: group_name,
+      sizes: sizes,
+      image: current_image,
+      selected: true
+    -%}
+
+    {%- comment %} Variants from the metafield (the card's own variant deduped out) {% endcomment -%}
+    {%- for variant in extra_variants -%}
+      {%- if variant.id == card_variant.id -%}{%- continue -%}{%- endif -%}
+      {%- assign variant_image = variant.featured_image | default: card_product.featured_image -%}
+      {%- render 'product-card-variant-swatch',
+        product: card_product,
+        variant: variant,
+        group_name: group_name,
+        sizes: sizes,
+        image: variant_image,
+        selected: false
+      -%}
+    {%- endfor -%}
+  </product-card-swatches>
+
+  <script>
+    /* One delegated listener keeps price + add-to-cart in sync with the selected
+       variant thumbnail. Image/URL swapping is handled by <product-card-swatches>. */
+    if (!window.__vcardSwatchInit) {
+      window.__vcardSwatchInit = true;
+      document.addEventListener('change', function (event) {
+        var radio = event.target;
+        if (!radio || radio.type !== 'radio' || !radio.hasAttribute('data-vcard-swatch')) return;
+
+        var card = radio.closest('.product-card');
+        if (!card) return;
+
+        var variantId = radio.getAttribute('data-variant-id');
+        if (variantId) {
+          var quickAdd = card.querySelector('quick-add-button');
+          if (quickAdd) quickAdd.setAttribute('variant-id', variantId);
+        }
+
+        var priceHost = card.querySelector('[data-vcard-price]');
+        var priceTemplate = radio.parentNode.querySelector('template[data-price]');
+        if (priceHost && priceTemplate) priceHost.innerHTML = priceTemplate.innerHTML;
+      });
+    }
+  </script>
+{%- endif -%}

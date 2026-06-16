@@ -1,0 +1,53 @@
+{%- comment %}
+  Renders a single selectable variant thumbnail for product-card-variant-swatches.
+
+  Accepts:
+  - product:    {Object} the product the variant belongs to (for price rendering)
+  - variant:    {Object} the variant this thumbnail represents
+  - group_name: {String} shared radio `name` so the swatches act as one group per card
+  - sizes:      {String} responsive image `sizes` attribute
+  - image:      {Object} image to show (variant image, falling back to product image)
+  - selected:   {Boolean} whether this thumbnail is checked by default
+{% endcomment -%}
+
+{%- assign radio_id = group_name | append: '-' | append: variant.id -%}
+
+<div class="variant-radio-image w-8 md:w-8">
+  <input
+    type="radio"
+    id="{{ radio_id }}"
+    name="{{ group_name }}"
+    value="{{ variant.title | escape }}"
+    class="peer visually-hidden{% unless variant.available %} option-unavailable{% endunless %}"
+    data-url="{{ variant.url }}"
+    data-variant-id="{{ variant.id }}"
+    data-vcard-swatch
+    {% if selected %}checked{% endif %}
+  >
+  <label class="media media--ratio-1-1 w-full" for="{{ radio_id }}" title="{{ variant.title | escape }}">
+    {%- if image -%}
+      {{ image | image_url: width: 128 | image_tag: loading: 'lazy', alt: variant.title | escape }}
+    {%- else -%}
+      {%- render 'placeholder', type: 'image' -%}
+    {%- endif -%}
+  </label>
+
+  {%- comment %} First template = full card image. Consumed by the <product-card-swatches> component to swap .product-card__image. {% endcomment -%}
+  {%- if image -%}
+    <template id="{{ radio_id }}-image-template">
+      {{
+        image
+        | image_url: width: 1440
+        | image_tag:
+          widths: '360, 450, 540, 630, 720, 900, 1050, 1200, 1320, 1440',
+          sizes: sizes,
+          class: 'product-card__image product-thumbnail-shade'
+      }}
+    </template>
+  {%- endif -%}
+
+  {%- comment %} Price template = consumed by the variant-card script to swap [data-vcard-price]. {% endcomment -%}
+  <template data-price>
+    {%- render 'price', product: product, use_variant: variant -%}
+  </template>
+</div>

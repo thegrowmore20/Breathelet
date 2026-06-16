@@ -30,6 +30,38 @@
 .hooktext .metafield-rich_text_field p:last-of-type {
     margin-top: .5rem;
 }
+@media (max-width: 520px) {
+    .section-main-product .icon-text-block--inline {
+      gap: 5px;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    
+    
+    .section-main-product .icon-text-block--inline .icon-wrapper img{
+      width: 50px !important;    
+    }
+    .icon-text-block--vertical.homepage-usps-info .icon-wrapper img{
+      width: 40px !important;        
+    }
+    .icon-text-block--vertical.homepage-usps-info .icon-wrapper{        
+      padding: 5px;
+    }
+    
+    .icon-text-block--vertical.homepage-usps-info .icon-text,
+    .section-main-product .icon-text-block--inline .icon-text {
+      font-size: 12px !important;
+      line-height: normal;
+    }
+    
+    .product-info-inner .product-rich-text .prose .metafield-rich_text_field :where(h4):not(:where([class~=not-prose],[class~=not-prose] *)){
+      font-size: 1rem;
+    }
+    .rez-stock-notification-button {   
+      margin-top: 0rem !important; 
+      padding: 8px 20px !important;
+    }
+    
+  }
 </style>
 
 <div style="display: none">media-size{{ section.settings.media_size }}</div>
@@ -667,6 +699,123 @@
           "step": 1,
           "default": 5,
           "info": "Write the number of days from today for ending delivery day"
+        }
+      ]
+    },
+        {
+      "name": "Icon Text Block",
+      "type": "icon_text_block",
+      "settings": [
+        {
+          "type": "text",
+          "id" : "icon_text_class",
+          "label": "Custom Class"
+        },
+        {
+          "type": "select",
+          "id": "layout",
+          "label": "Layout Style",
+          "options": [
+            { "value": "inline", "label": "Inline (Icon Top, Text Below)" },
+            { "value": "vertical", "label": "Vertical (Icon + Text Side by Side)" }
+          ],
+          "default": "inline"
+        },
+        {
+          "type": "header",
+          "content": "Item 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_1",
+          "label": "Icon 1"
+        },
+        {
+          "type": "richtext",
+          "id": "text_1",
+          "label": "Text 1",
+          "default": "<p>Text 1</p>"
+        },
+        {
+          "type": "header",
+          "content": "Item 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_2",
+          "label": "Icon 2"
+        },
+        {
+          "type": "richtext",
+          "id": "text_2",
+          "label": "Text 2"
+        },
+        {
+          "type": "header",
+          "content": "Item 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_3",
+          "label": "Icon 3"
+        },
+        {
+          "type": "richtext",
+          "id": "text_3",
+          "label": "Text 3"
+        },
+        {
+          "type": "header",
+          "content": "Item 4",
+          "info": "If the content is the same for other countries, please leave this block blank."
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_4",
+          "label": "Icon 4"
+        },
+        {
+          "type": "richtext",
+          "id": "text_4",
+          "label": "Text 4"
+        },
+        {
+          "type": "header",
+          "content": "Item 5"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_5",
+          "label": "Icon 5"
+        },
+        {
+          "type": "richtext",
+          "id": "text_5",
+          "label": "Text 5"
+        },
+        {
+          "type": "range",
+          "id": "icon_size",
+          "label": "Icon Size (px)",
+          "min": 20,
+          "max": 120,
+          "step": 2,
+          "default": 50
+        },
+        {
+          "type": "range",
+          "id": "text_size",
+          "label": "Text Size (px)",
+          "min": 10,
+          "max": 30,
+          "step": 1,
+          "default": 14
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color",
+          "default": "#000000"
         }
       ]
     },
