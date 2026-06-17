@@ -58,9 +58,7 @@
     if card_variant.metafields.custom.product_card_title.value != blank
       assign card_title = card_variant.metafields.custom.product_card_title.value
     else
-      unless card_variant.title == 'Default Title'
-        assign card_title = card_product.title | append: ' - ' | append: card_variant.title
-      endunless
+      assign card_title = card_product.title
     endif
   endif
 
@@ -210,8 +208,19 @@
     {% endif %}
 
     <h2 class="product-name">
-      <a data-instant href="{{ url }}">{{ card_title | default: 'Product' }}</a>
+      <a data-instant href="{{ url }}"{% if card_variant %} data-vcard-title{% endif %}>{{ card_title | default: 'Product' }}</a>
     </h2>
+
+    <a href="/#looxReviews">
+      <div class="loox-rating"
+        data-pattern="[rating] ([count])"
+          data-show-empty-stars="true"
+          data-id="{{ card_product.id }}"
+          data-rating="{{ card_product.metafields.loox.avg_rating }}"
+          data-raters="{{ card_product.metafields.loox.num_reviews }}"
+          data-floating-product-reviews-enabled="true">
+      </div>
+    </a>
 
     <div class="mt-2"{% if card_variant %} data-vcard-price{% endif %}>
       {% if card_product %}

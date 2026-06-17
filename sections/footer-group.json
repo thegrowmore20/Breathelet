@@ -36,16 +36,6 @@
             "menu_1": ""
           }
         },
-        "links_dN6x9p": {
-          "type": "links",
-          "settings": {
-            "show_heading": true,
-            "heading": "PARTNERSHIP",
-            "menu": "partnership",
-            "heading_1": "",
-            "menu_1": ""
-          }
-        },
         "contact_WVqDwp": {
           "type": "contact",
           "settings": {
@@ -71,7 +61,6 @@
       "block_order": [
         "text_HJ68Y9",
         "7cd5a846-89c3-4a12-86fc-5404723d55e0",
-        "links_dN6x9p",
         "contact_WVqDwp"
       ],
       "settings": {

@@ -267,6 +267,9 @@
           this.currentTranslate = 0;
           this.prevTranslate = 0;
           this.dragStartTime = 0;
+          this.autoChange = {{ block.settings.auto_change | json }};
+          this.autoChangeInterval = {{ block.settings.auto_change_interval | default: 4 }} * 1000;
+          this.autoplayTimer = null;
         }
 
         connectedCallback() {
@@ -295,10 +298,32 @@
           this.createDots();
           this.updateControls();
           this.loadVisibleSlides();
+          this.startAutoplay();
 
           window.addEventListener('resize', () => {
             this.handleResize();
           });
+        }
+
+        startAutoplay() {
+          if (!this.autoChange) return;
+          if (this.totalSlides <= this.slidesPerView) return;
+          this.stopAutoplay();
+          this.autoplayTimer = setInterval(() => {
+            if (this.currentIndex >= this.maxIndex) {
+              this.currentIndex = 0;
+            } else {
+              this.currentIndex++;
+            }
+            this.updateSlider();
+          }, this.autoChangeInterval);
+        }
+
+        stopAutoplay() {
+          if (this.autoplayTimer) {
+            clearInterval(this.autoplayTimer);
+            this.autoplayTimer = null;
+          }
         }
 
         loadVisibleSlides() {
@@ -382,6 +407,9 @@
               e.stopPropagation();
             }
           }, true);
+
+          this.wrapper.addEventListener('mouseenter', () => this.stopAutoplay());
+          this.wrapper.addEventListener('mouseleave', () => this.startAutoplay());
         }
 
         createDots() {
@@ -462,6 +490,7 @@
         }
 
         dragStart(event) {
+          this.stopAutoplay();
           this.isDragging = true;
           this.hasDragged = false;
           this.dragStartTime = Date.now();
@@ -509,6 +538,7 @@
           }
 
           this.updateSlider();
+          this.startAutoplay();
 
           setTimeout(() => {
             this.hasDragged = false;
@@ -641,6 +671,26 @@
       "step": 10,
       "unit": "px",
       "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Autoplay slides"
+    },
+    {
+      "type": "checkbox",
+      "id": "auto_change",
+      "label": "Change slides automatically",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "auto_change_interval",
+      "label": "Change slide every",
+      "min": 1,
+      "max": 15,
+      "step": 1,
+      "unit": "s",
+      "default": 4
     },
     {
       "type": "header",

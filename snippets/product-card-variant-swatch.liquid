@@ -12,6 +12,14 @@
 
 {%- assign radio_id = group_name | append: '-' | append: variant.id -%}
 
+{%- liquid
+  if variant.metafields.custom.product_card_title.value != blank
+    assign swatch_title = variant.metafields.custom.product_card_title.value
+  else
+    assign swatch_title = product.title
+  endif
+-%}
+
 <div class="variant-radio-image w-8 md:w-8">
   <input
     type="radio"
@@ -21,6 +29,7 @@
     class="peer visually-hidden{% unless variant.available %} option-unavailable{% endunless %}"
     data-url="{{ variant.url }}"
     data-variant-id="{{ variant.id }}"
+    data-vcard-title="{{ swatch_title | escape }}"
     data-vcard-swatch
     {% if selected %}checked{% endif %}
   >

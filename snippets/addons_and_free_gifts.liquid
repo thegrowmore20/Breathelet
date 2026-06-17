@@ -99,6 +99,10 @@
     opacity: 1;
     transform: scale(1);
   }
+  .btn-plus-icon {
+    font-size: 18px;
+    margin-right: 4px;
+  }
   .btn-tick {
     font-size: 19px;
     color: #000;
@@ -286,7 +290,7 @@
               data-title="{{ item.title | escape }}"
             >
             <div class="btn-shell">
-              <span class="btn-price">+{{ item.price | money }}</span>
+              <span class="btn-price"> <span class="btn-plus-icon">+</span> {{ item.price | money }}</span>
               <span class="btn-tick">✓</span>
             </div>
           </label>

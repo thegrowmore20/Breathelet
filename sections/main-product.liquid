@@ -23,6 +23,10 @@
     %}
   }
 
+  .product-name-wrapper h1 {
+    text-wrap: initial;
+}
+
   .hooktext .metafield-rich_text_field p:first-of-type {
     margin-bottom: 0;
 }
@@ -30,6 +34,23 @@
 .hooktext .metafield-rich_text_field p:last-of-type {
     margin-top: .5rem;
 }
+
+.variant-radio-price {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+@media (max-width: 480px) {
+.variant-radio-price {
+  flex-direction: column;
+  gap: 1px;
+}
+.variant-compare-price{
+  display: none;
+}
+  }
+
 @media (max-width: 520px) {
     .section-main-product .icon-text-block--inline {
       gap: 5px;
@@ -900,6 +921,11 @@
       "type": "hook_text",
       "name": "Hook Text",
       "settings": [
+        {
+          "type": "text",
+          "id" : "custom_class",
+          "label": "Custom Class"
+        },
         {
           "type": "richtext",
           "id": "content",

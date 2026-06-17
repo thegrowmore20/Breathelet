@@ -8,10 +8,25 @@
   if video != blank and video_poster == blank and background != true
     assign video_poster = video.preview_image
   endif
+
+  # Fallback poster shown *behind* the player so an autoplay video (which has no
+  # poster button) never leaves a blank box while the iframe loads — or if the
+  # external player API is slow/blocked.
+  assign poster_bg_url = ''
+  if video_poster != blank
+    assign poster_bg_url = video_poster | image_url: width: 1920
+  elsif video != blank and video.preview_image != blank
+    assign poster_bg_url = video.preview_image | image_url: width: 1920
+  elsif video == blank and video_url.type == 'youtube'
+    assign poster_bg_url = 'https://img.youtube.com/vi/' | append: video_url.id | append: '/hqdefault.jpg'
+  endif
 %}
 
 <video-player
   class="{{ video_player_class }}"
+  {% if autoplay and background != true and poster_bg_url != blank %}
+    style="background-image:url('{{ poster_bg_url }}');background-size:cover;background-position:center;background-repeat:no-repeat;"
+  {% endif %}
 
   {% if background == true %}
     background

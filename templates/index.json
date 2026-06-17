@@ -139,7 +139,7 @@
       "name": "t:sections.featured-collection.name",
       "settings": {
         "full_width": true,
-        "carousel": false,
+        "carousel": true,
         "show_variants": true,
         "products_count": 8,
         "grid_columns": 3,
@@ -188,6 +188,94 @@
         "heading_html_tag": "p"
       }
     },
+    "fa63dde0-c7d9-4ac7-9f3d-90ef6a67184f": {
+      "type": "image-with-text",
+      "blocks": {
+        "ec265dd3-f55f-46a2-9caf-3bf07ff3a06d": {
+          "type": "heading",
+          "settings": {
+            "heading": "You can't control your stress without controlling your breath",
+            "heading_size": "h2",
+            "heading_html_tag": "h2"
+          }
+        },
+        "heading_w8eNt4": {
+          "type": "heading",
+          "settings": {
+            "heading": "",
+            "heading_size": "h3",
+            "heading_html_tag": "p"
+          }
+        },
+        "bdb75fd8-0a89-4189-9614-b2d55f963058": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Breathelet sends a gentle random vibration every 60–150 minutes — a soft reminder to:</p><ul><li>Be present in the moment</li><li>Take a deep breath</li><li>Correct your posture</li><li>Hydrate</li><li>Mindful Habits</li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "ec265dd3-f55f-46a2-9caf-3bf07ff3a06d",
+        "heading_w8eNt4",
+        "bdb75fd8-0a89-4189-9614-b2d55f963058"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_bottom_spacing": false,
+        "image": "shopify://shop_images/Couple.webp",
+        "image_size": "",
+        "image_position": "right",
+        "image_width": 50,
+        "text_alignment": "text-left",
+        "background_color": "#000000",
+        "text_color": "#ffffff",
+        "heading_color": "#ffffff"
+      }
+    },
+    "image_with_text_bcbTad": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_GUUXHt": {
+          "type": "heading",
+          "settings": {
+            "heading": "Digital detox jewelry.",
+            "heading_size": "h2",
+            "heading_html_tag": "h2"
+          }
+        },
+        "heading_HnYWbb": {
+          "type": "heading",
+          "settings": {
+            "heading": "",
+            "heading_size": "h3",
+            "heading_html_tag": "p"
+          }
+        },
+        "text_G3yyBY": {
+          "type": "text",
+          "settings": {
+            "text": "<p>You check your phone 150 times a day. Breathelet reminds you to check yourself.<strong> A vibration only you can feel.</strong></p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_GUUXHt",
+        "heading_HnYWbb",
+        "text_G3yyBY"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_bottom_spacing": false,
+        "image": "shopify://shop_images/d989e3f2-1a42-444b-97e3-2879e680b4ff-1.jpg",
+        "image_size": "",
+        "image_position": "left",
+        "image_width": 50,
+        "text_alignment": "text-left",
+        "background_color": "#000000",
+        "text_color": "#ffffff",
+        "heading_color": "#ffffff"
+      }
+    },
     "video_with_text_6kqVVV": {
       "type": "video-with-text",
       "blocks": {
@@ -214,7 +302,7 @@
         "bio_xX9PmC": {
           "type": "bio",
           "settings": {
-            "author_image": "shopify://shop_images/James-Nestor.webp",
+            "author_image": "shopify://shop_images/610954032627835120-james-nestor-web-photo-by-julie-floersch-copy.0.436.1864.1065.two-thirds.webp",
             "author_name": "James Nestor",
             "author_designation": "famous researcher on breathing",
             "quotation_text": "<em>“A rhythm of 5.5-second inhales followed by 5.5-second exhales is the most efficient breathing pattern.”</em>"
@@ -229,14 +317,14 @@
       ],
       "name": "t:sections.video-with-text.presets__0.name",
       "settings": {
-        "custom_class": "video-with-text-section",
+        "custom_class": "",
         "full_width": true,
         "remove_bottom_spacing": false,
         "autoplay": true,
         "loop": true,
         "video": "shopify://files/videos/Breath_square.webm",
         "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "image_size": "media--ratio-4-3",
+        "image_size": "media--ratio-1-1",
         "image_position": "right",
         "image_width": 50,
         "text_alignment": "text-left",
@@ -346,8 +434,8 @@
           "type": "ai_gen_block_5f2401e",
           "settings": {
             "loading_eager": false,
-            "background_image_desktop": "shopify://shop_images/Banner_1_Desktop.webp",
-            "background_image_mobile": "shopify://shop_images/Banner_1_Mobile.webp",
+            "background_image_desktop": "shopify://shop_images/Banner_1_Desktop_181e1899-35e6-4ac0-b6ab-48947d810c7f.webp",
+            "background_image_mobile": "shopify://shop_images/Banner_1_Mobile_78d5d9ad-fbae-45ec-b702-8c781565c19d.webp",
             "overlay_color": "#000000",
             "overlay_opacity": 0.3,
             "border_radius": 4,
@@ -480,7 +568,7 @@
           "type": "service",
           "settings": {
             "icon_html": "",
-            "icon_image": "shopify://shop_images/Water-Resistant.png",
+            "icon_image": "shopify://shop_images/Water-Resistant_1.png",
             "title": "WATER-RESISTANT",
             "text": "Durable for everyday wear",
             "link_label": "More about this service",
@@ -491,7 +579,7 @@
           "type": "service",
           "settings": {
             "icon_html": "",
-            "icon_image": "shopify://shop_images/Long_Battery.png",
+            "icon_image": "shopify://shop_images/Long_Battery_1.png",
             "title": "LONG BATTERY",
             "text": "Lasts up to 14 days",
             "link_label": "More about this service",
@@ -502,7 +590,7 @@
           "type": "service",
           "settings": {
             "icon_html": "",
-            "icon_image": "shopify://shop_images/No_App_Required.png",
+            "icon_image": "shopify://shop_images/No_App_Required_1.png",
             "title": "NO APP REQUIRED",
             "text": "No screen, No setup",
             "link_label": "More about this service",
@@ -513,7 +601,7 @@
           "type": "service",
           "settings": {
             "icon_html": "",
-            "icon_image": "shopify://shop_images/Adjustable_fit.png",
+            "icon_image": "shopify://shop_images/Adjustable_fit_1.png",
             "title": "ADJUSTABLE FIT",
             "text": "Fits comfortably on any wrist",
             "link_label": "More about this service",
@@ -535,10 +623,10 @@
         "show_divider": false,
         "heading": "Buy with Confidence",
         "text_1": "Risk Free Shopping & Satisfacion Guaranteed",
-        "intro_img_1": "shopify://shop_images/Lifetime_Warranty_1.png",
-        "intro_text_1": "LIFETIME WARRANTY",
-        "intro_img_2": "shopify://shop_images/Money_Back_Guarantee_1.png",
-        "intro_text_2": "30 DAYS GUARANTEE",
+        "intro_img_1": "shopify://shop_images/Lifetime_Warranty_3.png",
+        "intro_text_1": "",
+        "intro_img_2": "shopify://shop_images/Money_Back_Guarantee_2.png",
+        "intro_text_2": "",
         "intro_img_url_1": "https://airvapeusa.com/cdn/shop/files/icon_Warranty_3.svg?v=1774515664",
         "intro_img_url_2": "https://airvapeusa.com/cdn/shop/files/icon_MoneyBack_Gurantee_3.svg?v=1774515656",
         "link_color": "#ffd814",
@@ -665,59 +753,6 @@
         "heading_html_tag": "p"
       }
     },
-    "fa63dde0-c7d9-4ac7-9f3d-90ef6a67184f": {
-      "type": "image-with-text",
-      "blocks": {
-        "ec265dd3-f55f-46a2-9caf-3bf07ff3a06d": {
-          "type": "heading",
-          "settings": {
-            "heading": "Digital detox jewelry.",
-            "heading_size": "h2",
-            "heading_html_tag": "h2"
-          }
-        },
-        "heading_tT4GPB": {
-          "type": "heading",
-          "settings": {
-            "heading": "",
-            "heading_size": "h4",
-            "heading_html_tag": "p"
-          }
-        },
-        "heading_w8eNt4": {
-          "type": "heading",
-          "settings": {
-            "heading": "",
-            "heading_size": "h3",
-            "heading_html_tag": "p"
-          }
-        },
-        "bdb75fd8-0a89-4189-9614-b2d55f963058": {
-          "type": "text",
-          "settings": {
-            "text": "<p>You check your phone 150 times a day. Breathelet reminds you to check yourself.<strong> A vibration only you can feel.</strong></p>"
-          }
-        }
-      },
-      "block_order": [
-        "ec265dd3-f55f-46a2-9caf-3bf07ff3a06d",
-        "heading_tT4GPB",
-        "heading_w8eNt4",
-        "bdb75fd8-0a89-4189-9614-b2d55f963058"
-      ],
-      "settings": {
-        "full_width": true,
-        "remove_bottom_spacing": false,
-        "image": "shopify://shop_images/d989e3f2-1a42-444b-97e3-2879e680b4ff-1.jpg",
-        "image_size": "",
-        "image_position": "right",
-        "image_width": 50,
-        "text_alignment": "text-left",
-        "background_color": "#000000",
-        "text_color": "#ffffff",
-        "heading_color": "#ffffff"
-      }
-    },
     "image_with_text_WjQwNJ": {
       "type": "image-with-text",
       "blocks": {
@@ -757,7 +792,7 @@
         "remove_bottom_spacing": false,
         "image": "shopify://shop_images/Bundle_Image_1.webp",
         "image_size": "",
-        "image_position": "left",
+        "image_position": "right",
         "image_width": 50,
         "text_alignment": "text-left",
         "background_color": "#000000",
@@ -789,7 +824,7 @@
       ],
       "name": "t:sections.video-with-text.presets__0.name",
       "settings": {
-        "custom_class": "video-with-text-section",
+        "custom_class": "",
         "full_width": true,
         "remove_bottom_spacing": false,
         "autoplay": true,
@@ -797,7 +832,7 @@
         "video": "shopify://files/videos/Breathelet_how-to_upd_v2.webm",
         "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "image_size": "",
-        "image_position": "right",
+        "image_position": "left",
         "image_width": 50,
         "text_alignment": "text-left",
         "background_color": "",
@@ -961,7 +996,7 @@
         "subheading": "",
         "heading": "Designed to Match Your Everyday Style",
         "heading_size": "h2",
-        "content": "<p>Choose between Gunmetal and Rose Gold finishes, both crafted for a clean, classic bracelet look. With an adjustable fit and minimal design, Breathelet feels natural on your wrist while giving you gentle mindful reminders throughout the day.</p>",
+        "content": "<p>Choose Gunmetal or Sunshine Gold — adjustable, water-resistant, minimal by design. A bracelet that feels natural on the wrist and delivers gentle mindful reminders all day.</p>",
         "text_alignment": "text-center",
         "background_color": "#000000",
         "text_color": "",
@@ -970,7 +1005,7 @@
         "dot_icon_color": "",
         "popover_background_color": "",
         "popover_text_color": "",
-        "heading_html_tag": "p"
+        "heading_html_tag": "h2"
       }
     },
     "rich_text_fq93c9": {
@@ -1178,6 +1213,8 @@
     "slideshow_7aaerb",
     "featured_collection_PHPzLB",
     "featured_collection_jdUFMc",
+    "fa63dde0-c7d9-4ac7-9f3d-90ef6a67184f",
+    "image_with_text_bcbTad",
     "video_with_text_6kqVVV",
     "apps_EWV9wq",
     "1779445986c7e74670",
@@ -1187,7 +1224,6 @@
     "homepage_usps_jQz9Ba",
     "image_with_text_tHGRPd",
     "multicolumn_Pxn6VQ",
-    "fa63dde0-c7d9-4ac7-9f3d-90ef6a67184f",
     "image_with_text_WjQwNJ",
     "video_with_text_dPhCKa",
     "featured_product_9ybD34",

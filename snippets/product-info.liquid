@@ -58,8 +58,17 @@
                 {{ 'products.product.view_full_details' | t }}
               </a>
             {% else %}
-              <h1 class="{{ block.settings.heading_size }}">
-                {{ block.settings.content | default: product.title }}
+              {%- liquid
+                # Variant metafield title wins; fall back to the block override or product title.
+                assign variant_card_title = product.selected_or_first_available_variant.metafields.custom.product_card_title.value
+                if variant_card_title != blank
+                  assign title_text = variant_card_title
+                else
+                  assign title_text = block.settings.content | default: product.title
+                endif
+              -%}
+              <h1 class="{{ block.settings.heading_size }}" data-variant-info="title-{{ block.id }}">
+                {{ title_text }}
               </h1>
             {% endif %}
           </div>
@@ -139,7 +148,7 @@
               flex-direction: column;
               align-items: center;
               text-align: center;
-              gap: 1rem;
+              gap: 0rem;
             }
 
             /* VERTICAL (each item row, icon left, text right) */
@@ -164,6 +173,10 @@
               {% comment %} background-color: #f9f9f9; {% endcomment %}
               padding: 10px;
               border-radius: 50%;
+
+              @media screen and (max-width: 480px) {
+                padding: 5px;
+              }
             }
 
             .icon-text {
@@ -347,7 +360,7 @@
             endif
           -%}
           <div
-            class="my-4 md:my-6 prose max-w-none hooktext"
+            class="my-4 md:my-6 prose max-w-none hooktext {{ block.settings.custom_class }}"
             id="hooktext"
             data-variant-info="hook-text-{{ block.id }}"
           >

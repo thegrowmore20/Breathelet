@@ -357,6 +357,7 @@ label,
   --size-text-sm: calc(var(--font-body-scale, 1) * 0.875rem);
   --size-text-xs: calc(var(--font-body-scale, 1) * 0.75rem);
   --size-text-2xs: calc(var(--font-body-scale, 1) * 0.625rem);
+  --size-text-3xs: calc(var(--font-body-scale, 1) * 0.5rem);
 
   --weight-normal: var(--font-body-weight);
   --weight-bold: var(--font-body-weight-bold);
@@ -1283,6 +1284,11 @@ details > summary {
 @media (min-width: 768px) {
   .info-badge {
     font-size: var(--size-text-xs);
+  }
+
+  .mega__menu_products .info-badge {
+    font-size: var(--size-text-2xs);
+    padding: .25rem;
   }
 }
 .info-badge.sale-badge {
@@ -2349,7 +2355,7 @@ button.select::after,
 .footer__blocks {
   display: flex;
   margin-bottom: min(1rem, calc(2rem + 4vw));
-  gap: 1rem;
+  gap: 5rem;
   flex-wrap: wrap;
 }
 @media not all and (min-width: 992px) {
@@ -3612,7 +3618,7 @@ body {
   overflow-wrap: anywhere;
 
    display: -webkit-box;
-  -webkit-line-clamp: 1;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -4055,9 +4061,10 @@ main > .shopify-section:first-child .section--full-width:not(.section--no-paddin
 }
 @media not all and (min-width: 768px) {
   .modal-mobile-menu--bottom .mobile-menu {
-    height: max(580px, 60vh);
-    max-height: 90vh;
-    max-height: 90svh;
+    height: 100vh;
+    height: 100dvh;
+    max-height: 100vh;
+    max-height: 100dvh;
   }
 }
 .modal-mobile-menu--left::part(panel) {
@@ -5077,7 +5084,7 @@ sticky-add-to-cart {
 }
 @media (min-width: 992px) {
   sticky-add-to-cart {
-    max-width: 23rem;
+    max-width: 21rem;
   }
 }
 sticky-add-to-cart {
@@ -5117,12 +5124,14 @@ sticky-add-to-cart.hide {
 sticky-add-to-cart.show {
   animation: showStickyAddToCart 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
   pointer-events: all;
+      background-color: rgba(255, 255, 255, .9);
 }
 sticky-add-to-cart .product-vendor {
   display: none
 }
 sticky-add-to-cart button.button {
-  padding: .75em 1.5em
+  padding: .75em 1.5em;
+  margin-inline-end: .5rem;
 }
 @media not all and (min-width: 768px) {
   sticky-add-to-cart.show {
@@ -5131,20 +5140,20 @@ sticky-add-to-cart button.button {
 }
 sticky-add-to-cart .product-thumbnail {
   margin-inline-end: 1rem;
-  height: 2.9rem;
+  height: 2.7rem;
   width: auto;
   border-radius: var(--block-sm-corner-radius);
 }
 @media (min-width: 768px) {
   sticky-add-to-cart .product-thumbnail {
     margin-inline-end: 1.25rem;
-    height: 3.5rem
+    height: 3rem
   }
 }
 @media (min-width: 992px) {
   sticky-add-to-cart .product-thumbnail {
-    margin-inline-end: 1rem;
-    height: 3.5rem;
+    margin-inline-end: 0rem;
+    height: 3rem;
   }
 }
 @media not all and (min-width: 768px) {
@@ -6079,8 +6088,8 @@ details.product-collapse {
   border-color: rgb(var(--color-foreground) / 6%);
 }
 details.product-collapse > summary {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   padding-right: 1rem;
 
   display: flex;
@@ -6092,8 +6101,8 @@ details.product-collapse > summary {
 }
 @media not all and (min-width: 768px) {
   details.product-collapse > summary {
-    padding-top: 1.25rem;
-    padding-bottom: 1.25rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
   }
 }
 details.product-collapse > summary > .icon-chevron {
@@ -6227,10 +6236,11 @@ smooth-collapse.collapsing > details.product-collapse > summary > .icon-chevron 
   transition-property: box-shadow;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
-  padding: 4px;
+  padding: 4px;  
 }
 product-card-swatches .variant-radio-image label {
-  padding: 0
+  padding: 0;
+  background-color: #fff;
 }
 .variant-radio-image input[type="radio"]:checked + label {
   --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width)
@@ -6242,14 +6252,14 @@ product-card-swatches .variant-radio-image label {
   --tw-ring-color: rgb(var(--color-foreground) / var(--tw-ring-opacity));
 }
 product-card-swatches .variant-radio-image input[type=radio]:checked+label {
-  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width))
-    var(--tw-ring-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width))
+    var(--color-rose_gold);
 }
 .variant-radio-image input[type="radio"]:focus-visible + label {
   outline: 2px solid rgb(var(--color-foreground));
 }
 .variant-radio-image input[type="radio"].option-unavailable:not(:checked) + label {
-  opacity: 0.4;
+  opacity: 1;
 }
 .variant-radio-image label img {
   border-radius: 4px;
@@ -8742,6 +8752,9 @@ shopify-accelerated-checkout-cart {
 .text-xs {
   font-size: var(--size-text-xs);
 }
+.text-2xs {
+  font-size: var(--size-text-2xs);
+}
 .font-600 {
   font-weight: 600;
 }
@@ -11005,4 +11018,21 @@ quick-add-button.no-js-hidden button:hover {
     font-style: italic ;
     font-weight: 600;
     font-size: 18px;
+}
+
+.hidden--mobile{
+  display: block;
+}
+
+.hidden--desktop{
+  display: none;
+}
+
+@media screen and (max-width: 767px){
+  .hidden--mobile{
+    display: none;
+  }
+  .hidden--desktop{
+    display: block;
+  }
 }

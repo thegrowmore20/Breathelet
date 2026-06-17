@@ -15,7 +15,7 @@
   endif
 %}
 
-<div class="variant-radio-image w-16 hd:w-20">
+<div class="variant-radio-image w-12 hd:w-20">
   <input
     type="radio"
     id="{{ section.id }}-{{ option.position }}-{{ index }}"
@@ -38,12 +38,12 @@
     <lqip-element class="image-loader">
       {{-
         variant_image
-        | image_url: width: 160
+        | image_url: width: 100
         | image_tag: sizes: '(min-width: 1400px) 80px, 64px', loading: 'lazy'
       -}}
     </lqip-element>
     <div class="variant-radio-price">
-      <span>{{ variant_price }}</span>&nbsp;<span>{{ variant_compare_price }}</span>
+      <span class="variant-reg-price">{{ variant_price }}</span><span class="variant-compare-price">{{ variant_compare_price }}</span>
     </div>
   </label>
 </div>

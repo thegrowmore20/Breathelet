@@ -11,6 +11,8 @@
   assign card_image = card_product.featured_media
   assign card_available = card_product.available
   assign card_title = card_product.title
+  assign card_price = card_product.price
+  assign card_compare = card_product.compare_at_price
   assign url = card_product.url
 
   if card_variant
@@ -18,6 +20,8 @@
       assign card_image = card_variant.featured_media
     endif
     assign card_available = card_variant.available
+    assign card_price = card_variant.price
+    assign card_compare = card_variant.compare_at_price
     assign url = card_variant.url
 
     if card_variant.metafields.custom.product_card_title.value != blank
@@ -31,6 +35,17 @@
 
   if section.settings.include_collection_url and collection
     assign url = url | within: collection
+  endif
+
+  if card_compare > card_price
+    assign discount_amount = card_compare | minus: card_price
+    assign percent_discount = discount_amount | times: 100 | divided_by: card_compare
+
+    if settings.product_card_show_discount_as == 'saving'
+      assign discount_badge_value = discount_amount | money | strip_html
+    else
+      assign discount_badge_value = percent_discount | append: '%'
+    endif
   endif
 %}
 
@@ -86,6 +101,15 @@
         {% if settings.product_card_sold_out_badge and card_available == false %}
           <div class="info-badge sold-out-badge">
             {{ 'products.product.sold_out' | t }}
+          </div>
+        {% endif %}
+
+        {% if settings.product_card_discount_badge
+          and card_compare > card_price
+          and sale_badge != false
+        %}
+          <div class="info-badge sale-badge">
+            {{ 'products.save_badge' | t: value: discount_badge_value }}
           </div>
         {% endif %}
       </div>

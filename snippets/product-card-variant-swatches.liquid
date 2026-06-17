@@ -73,6 +73,12 @@
         var priceHost = card.querySelector('[data-vcard-price]');
         var priceTemplate = radio.parentNode.querySelector('template[data-price]');
         if (priceHost && priceTemplate) priceHost.innerHTML = priceTemplate.innerHTML;
+
+        var title = radio.getAttribute('data-vcard-title');
+        if (title) {
+          var titleHost = card.querySelector('[data-vcard-title]');
+          if (titleHost) titleHost.textContent = title;
+        }
       });
     }
   </script>
