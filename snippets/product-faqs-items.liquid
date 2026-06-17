@@ -1,0 +1,21 @@
+{% comment %}
+  Renders the FAQ accordion items (question button + answer panel).
+
+  Accepts:
+  - faqs: {Array} list of `product_faqs` metaobjects (each with question + answer).
+
+  Usage:
+  {% render 'product-faqs-items', faqs: faqs_items %}
+{% endcomment %}
+
+{% for faq in faqs %}
+  <button type="button" class="metaobject-accordion" aria-expanded="false">
+    {{ faq.question.value }}
+    {% render 'icon-chevron' %}
+  </button>
+  <div class="metaobject-panel">
+    <div class="prose metaobject-paneel-inner">
+      {{ faq.answer | metafield_tag }}
+    </div>
+  </div>
+{% endfor %}

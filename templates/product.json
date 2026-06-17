@@ -219,6 +219,7 @@
     },
     "related-products": {
       "type": "related-products",
+      "disabled": true,
       "settings": {
         "full_width": true,
         "carousel": true,
@@ -233,13 +234,62 @@
         "background_color": "",
         "text_color": "",
         "heading_color": "",
+        "heading_html_tag": "h2"
+      }
+    },
+    "featured_collection_inen4n": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.name",
+      "settings": {
+        "full_width": true,
+        "carousel": true,
+        "show_variants": true,
+        "products_count": 8,
+        "grid_columns": 3,
+        "grid_columns_mobile": "2",
+        "products": [
+          "breathelet-onefit"
+        ],
+        "collection": "",
+        "subheading": "",
+        "heading": "YOU MAY ALSO LIKE",
+        "heading_size": "h2",
+        "text_alignment": "text-center",
+        "link_text": "View all",
+        "link_url": "",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": "",
         "heading_html_tag": "p"
+      }
+    },
+    "product_faqs_Kbe89i": {
+      "type": "product-faqs",
+      "name": "Product Faqs",
+      "settings": {
+        "full_width": true,
+        "remove_horizontal_space": false,
+        "remove_vertical_space": false,
+        "content_width": "normal",
+        "subheading": "",
+        "heading": "FAQs",
+        "heading_size": "h2",
+        "text_alignment": "text-center",
+        "link_text": "View all",
+        "link_url": "",
+        "new_tab": false,
+        "heading_html_tag": "p",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": ""
       }
     }
   },
   "order": [
     "main",
     "main-details",
-    "related-products"
+    "related-products",
+    "featured_collection_inen4n",
+    "product_faqs_Kbe89i"
   ]
 }

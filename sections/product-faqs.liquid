@@ -1,0 +1,491 @@
+{%- liquid
+  assign selected_variant = product.selected_or_first_available_variant
+  assign variant_faqs = selected_variant.metafields.custom.faqs.value
+  assign product_faqs = product.metafields.custom.faqs.value
+
+  # Resolution order for the initial render: selected variant metafield → product metafield.
+  if variant_faqs != blank
+    assign faqs_items = variant_faqs
+    assign initial_faqs_key = selected_variant.id
+  else
+    assign faqs_items = product_faqs
+    assign initial_faqs_key = 'default'
+  endif
+
+  # Detect whether any variant overrides the product-level FAQs. When none do, we
+  # skip the per-variant templates entirely so non-variant products stay lean.
+  assign has_variant_override = false
+  for variant in product.variants
+    if variant.metafields.custom.faqs.value != blank
+      assign has_variant_override = true
+      break
+    endif
+  endfor
+-%}
+{% if faqs_items != blank %}
+{% render 'section-bg-number-vars' %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --content-width: {% render 'get-content-width', type: section.settings.content_width %};
+  }
+</style>
+{% liquid
+
+  assign section_classes = ' app-section '
+
+  if section.settings.remove_horizontal_space
+    assign section_classes = section_classes | append: ' !px-0 '
+  endif
+
+  if section.settings.remove_vertical_space
+    assign section_classes = section_classes | append: ' !py-0 '
+  endif
+
+
+  if section.settings.link_url != blank
+    assign link_url = section.settings.link_url
+  else
+    assign link_url = null
+  endif
+%}
+ <section {% render 'section-attrs', class: section_classes %}>
+  <div class="section-body trim-margins faq-section-container {{ section.settings.text_alignment }}">
+    {% render 'section-header', link_text: section.settings.link_text, link_url: link_url, new_tab: section.settings.new_tab %}
+    <div class="section-body-wrapper">
+
+        <div class="product-faqs-wrapper" id="faqs">
+          <div class="product-faqs-items" data-faqs-current="{{ initial_faqs_key }}">
+            {% render 'product-faqs-items', faqs: faqs_items %}
+          </div>
+
+          {%- if has_variant_override -%}
+            {%- comment -%}
+              Pre-rendered FAQ sets for instant, network-free swapping on variant change.
+              Each distinct set is rendered ONCE: the initial set is already in the visible
+              container above (and gets cached by JS), so we only output the sets that are
+              not currently shown. <template> content is inert — no paint, layout or CLS.
+            {%- endcomment -%}
+            {%- if initial_faqs_key != 'default' -%}
+              <template data-faqs-default>
+                {% render 'product-faqs-items', faqs: product_faqs %}
+              </template>
+            {%- endif -%}
+
+            {%- for variant in product.variants -%}
+              {%- assign variant_faqs_loop = variant.metafields.custom.faqs.value -%}
+              {%- if variant_faqs_loop != blank and variant.id != initial_faqs_key -%}
+                <template data-faqs-variant="{{ variant.id }}">
+                  {% render 'product-faqs-items', faqs: variant_faqs_loop %}
+                </template>
+              {%- endif -%}
+            {%- endfor -%}
+
+            <script type="application/json" data-faqs-variant-ids>
+              {{ product.variants | map: 'id' | json }}
+            </script>
+          {%- endif -%}
+        </div>
+</div>
+
+
+<script>
+(function () {
+  const section = document.getElementById('shopify-section-{{ section.id }}');
+  if (!section) return;
+
+  const items = section.querySelector('.product-faqs-items');
+  if (!items) return;
+
+  // Event delegation so listeners survive a variant swap (innerHTML replacement).
+  items.addEventListener('click', function (event) {
+    const btn = event.target.closest('.metaobject-accordion');
+    if (!btn || !items.contains(btn)) return;
+
+    // Close all other panels first
+    items.querySelectorAll('.metaobject-accordion').forEach(function (other) {
+      if (other !== btn) {
+        other.classList.remove('metaobject-active');
+        other.setAttribute('aria-expanded', 'false');
+        if (other.nextElementSibling) other.nextElementSibling.style.maxHeight = null;
+      }
+    });
+
+    // Toggle current one
+    const isOpen = btn.classList.toggle('metaobject-active');
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    const panel = btn.nextElementSibling;
+    if (panel) panel.style.maxHeight = isOpen ? panel.scrollHeight + 'px' : null;
+  });
+
+  // Keep an open panel sized correctly when the viewport (and content height) changes
+  window.addEventListener('resize', function () {
+    items.querySelectorAll('.metaobject-accordion.metaobject-active').forEach(function (btn) {
+      const panel = btn.nextElementSibling;
+      if (panel) panel.style.maxHeight = panel.scrollHeight + 'px';
+    });
+  });
+
+  {%- if has_variant_override -%}
+  // Swap the FAQ set when the variant changes. All sets are pre-rendered (no network
+  // request); the initial set is cached straight from the DOM so it is never duplicated.
+  const cache = { };
+  cache[items.dataset.faqsCurrent] = items.innerHTML; // initial set, already visible
+
+  const defaultTpl = section.querySelector('[data-faqs-default]');
+  if (defaultTpl) cache['default'] = defaultTpl.innerHTML;
+
+  section.querySelectorAll('[data-faqs-variant]').forEach(function (tpl) {
+    cache[tpl.dataset.faqsVariant] = tpl.innerHTML;
+  });
+
+  let variantIds = [];
+  try {
+    variantIds = JSON.parse(section.querySelector('[data-faqs-variant-ids]').textContent);
+  } catch (e) {}
+
+  const has = Object.prototype.hasOwnProperty;
+
+  document.addEventListener('variant:change', function (event) {
+    const variant = event.detail && event.detail.variant;
+    if (!variant || variantIds.indexOf(variant.id) === -1) return; // ignore other products (e.g. quick-add)
+
+    const vkey = String(variant.id);
+    const key = has.call(cache, vkey) ? vkey : 'default';
+    if (key === items.dataset.faqsCurrent) return; // already showing this set — no DOM work, keeps open state
+    if (!has.call(cache, key)) return;
+
+    items.innerHTML = cache[key];
+    items.dataset.faqsCurrent = key;
+  });
+  {%- endif -%}
+})();
+</script>
+    </div>
+  </div>
+</section>
+<style>
+    .product-faqs-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.metaobject-accordion {
+  cursor: pointer;
+  font-size: calc(var(--size-text-base) + 2px);
+  padding: 10px 0;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  transition: 0.4s;
+  font-weight: 500;
+  background-color: transparent;
+  border-bottom: 1px solid rgb(var(--color-foreground) / 0.24);
+  color: rgb(var(--color-foreground));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.metaobject-accordion svg {
+    min-height: 30px;
+    min-width: 30px;
+    max-height: 30px;
+    max-width: 30px;
+    border-radius: 50%;
+    transform: rotate(90deg);
+    transition: transform .2s;
+    background-color: rgb(var(--color-foreground) / 0.12);
+    padding: 8px;
+}
+
+.metaobject-active svg {
+  transform: rotate(270deg);
+}
+
+.metaobject-panel {
+  padding: 0 18px;
+  background-color: rgb(var(--color-background));
+  max-height: 0;
+  overflow: hidden;
+  line-height: 22px;
+  transition: max-height 0.2s ease-out;
+  text-align: left;
+}
+
+.metaobject-panel .metaobject-paneel-inner {
+    margin: 16px 0;
+}
+
+@media (max-width: 769px) {
+  .product-faqs-wrapper {
+    margin-bottom: 0;
+  }
+  .product-faqs-items button.metaobject-accordion:first-child {
+    padding-top: 0;
+    }
+    .faq-section-container {
+        padding-top: 24px;
+    }
+}
+
+@media screen and (max-width: 480px){
+  .metaobject-accordion {
+    font-size: 14px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: relative;
+  }
+
+  .metaobject-panel{
+    padding: 0;
+  }
+
+  .metaobject-panel .metafield-rich_text_field p,
+  .metaobject-panel {
+    font-size: 14px;
+  }
+  
+  .metaobject-panel .metafield-rich_text_field p{
+    margin-bottom: 0px;
+  }
+  
+
+  .metaobject-accordion svg {
+    min-height: 25px;
+    min-width: 25px;
+    max-height: 25px;
+    max-width: 25px;
+    padding: 6px;
+}
+
+}
+</style>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {%- assign seo_faqs = product_faqs | default: faqs_items -%}
+      {%- for faq in seo_faqs -%}
+        {
+          "@type": "Question",
+          "name": "{{- faq.question.value | escape -}}",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "{{- faq.answer | metafield_text | escape -}}"
+          }
+        }{%- if forloop.last == false %},{% endif -%}
+      {%- endfor -%}
+    ]
+  }
+</script>
+{% endif %}
+
+{% schema %}
+{
+    "name": "Product Faqs",
+      "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "t:sections.all.full_width.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "remove_horizontal_space",
+      "label": "t:sections.apps.settings.remove_horizontal_space.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "remove_vertical_space",
+      "label": "t:sections.apps.settings.remove_vertical_space.label"
+    },
+    {
+      "type": "select",
+      "id": "content_width",
+      "label": "t:sections.rich-text.settings.content_width.label",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:sections.rich-text.settings.content_width.options__0.label"
+        },
+        {
+          "value": "normal",
+          "label": "t:sections.rich-text.settings.content_width.options__1.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.rich-text.settings.content_width.options__2.label"
+        },
+        {
+          "value": "extra-large",
+          "label": "t:sections.rich-text.settings.content_width.options__3.label"
+        },
+        {
+          "value": "full-width",
+          "label": "t:sections.rich-text.settings.content_width.options__4.label"
+        }
+      ],
+      "default": "normal"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.headers.heading"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "t:sections.all.subheading.label"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:sections.featured-collection.settings.heading.label",
+      "default": "Featured collection"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "t:sections.all.heading_size.label",
+      "options": [
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__0.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h3",
+          "label": "t:sections.all.heading_size.options__3.label"
+        },
+        {
+          "value": "h4",
+          "label": "t:sections.all.heading_size.options__4.label"
+        },
+        {
+          "value": "h5",
+          "label": "t:sections.all.heading_size.options__5.label"
+        },
+        {
+          "value": "h6",
+          "label": "t:sections.all.heading_size.options__6.label"
+        }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "t:sections.all.text_alignment.label",
+      "options": [
+        {
+          "value": "text-left",
+          "label": "t:sections.all.text_alignment.options.text_left.label"
+        },
+        {
+          "value": "text-center",
+          "label": "t:sections.all.text_alignment.options.text_center.label"
+        }
+      ],
+      "default": "text-center"
+    },
+    {
+      "type": "html",
+      "id": "link_text",
+      "label": "t:sections.featured-collection.settings.link_text.label",
+      "default": "View all"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "t:sections.featured-collection.settings.link_url.label",
+      "info": "t:sections.featured-collection.settings.link_url.info"
+    },
+    {
+      "type" : "checkbox",
+      "id" : "new_tab",
+      "label" : "Open in New Tab",
+      "default": false
+    },
+        {
+          "type": "select",
+          "id": "heading_html_tag",
+          "label": "t:sections.all.heading_html_tag.label",
+          "options": [
+            {
+              "value": "h1",
+              "label": "h1"
+            },
+            {
+              "value": "h2",
+              "label": "h2"
+            },
+            {
+              "value": "h3",
+              "label": "h3"
+            },
+            {
+              "value": "h4",
+              "label": "h4"
+            },
+            {
+              "value": "h5",
+              "label": "h5"
+            },
+            {
+              "value": "h6",
+              "label": "h6"
+            },
+            {
+              "value": "p",
+              "label": "p"
+            },
+            {
+              "value": "span",
+              "label": "span"
+            },
+            {
+              "value": "div",
+              "label": "div"
+            }
+          ],
+          "default": "p",
+          "info": "t:sections.all.heading_html_tag.info"
+        },
+    {
+      "type": "header",
+      "content": "t:sections.all.headers.colors"
+    },
+    {
+      "type": "color",
+      "label": "t:sections.all.background_color.label",
+      "id": "background_color"
+    },
+    {
+      "type": "color",
+      "label": "t:sections.all.text_color.label",
+      "id": "text_color"
+    },
+    {
+      "type": "color",
+      "label": "t:sections.all.heading_color.label",
+      "id": "heading_color"
+    }
+  ],
+    "presets": [
+        {
+            "name": "Product Faqs",
+            "category": "Main Product"
+        }
+    ]
+}
+{% endschema %}

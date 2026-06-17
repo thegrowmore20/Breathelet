@@ -7,7 +7,7 @@
 </style>
 
 <div {% render 'section-attrs' %}>
-  <div class="section-body trim-margins {{ section.settings.text_alignment }} max-w-[--content-width]">
+  <div class="section-body trim-margins {{ section.settings.text_alignment }} {{ section.settings.content_alignment }} max-w-[--content-width]">
     {% render 'rich-text-blocks' %}
   </div>
 </div>
@@ -24,6 +24,26 @@
     },
     {
       "type": "select",
+      "id": "content_alignment",
+      "label": "t:sections.all.content_alignment.label",
+      "options": [
+        {
+          "value": "",
+          "label": "t:sections.all.content_alignment.options.left.label"
+        },
+        {
+          "value": "mx-auto",
+          "label": "t:sections.all.content_alignment.options.center.label"
+        },
+        {
+          "value": "ml-auto",
+          "label": "t:sections.all.content_alignment.options.right.label"
+        }
+      ],
+      "default": ""
+    },
+    {
+      "type": "select",
       "id": "text_alignment",
       "label": "t:sections.all.text_alignment.label",
       "options": [
@@ -32,15 +52,15 @@
           "label": "t:sections.all.text_alignment.options.text_left.label"
         },
         {
-          "value": "text-center mx-auto",
+          "value": "text-center",
           "label": "t:sections.all.text_alignment.options.text_center.label"
         },
         {
-          "value": "text-right ml-auto",
+          "value": "text-right",
           "label": "t:sections.all.text_alignment.options.text_right.label"
         }
       ],
-      "default": "text-center mx-auto"
+      "default": "text-left"
     },
     {
       "type": "select",
@@ -280,6 +300,72 @@
           "type": "color",
           "label": "t:sections.all.text_color.label",
           "id": "button_text_color"
+        },
+        {
+          "type": "header",
+          "content": "Hover"
+        },
+        {
+          "type": "paragraph",
+          "content": "Leave a hover option on \"Same as default\" or empty to keep the default value on hover."
+        },
+        {
+          "type": "select",
+          "id": "button_hover_style",
+          "label": "Hover style",
+          "options": [
+            {
+              "value": "",
+              "label": "Same as default"
+            },
+            {
+              "value": "filled",
+              "label": "Filled"
+            },
+            {
+              "value": "outline",
+              "label": "Outline"
+            }
+          ],
+          "default": ""
+        },
+        {
+          "type": "select",
+          "id": "button_hover_size",
+          "label": "Hover size",
+          "options": [
+            {
+              "value": "",
+              "label": "Same as default"
+            },
+            {
+              "value": "xs",
+              "label": "Small"
+            },
+            {
+              "value": "sm",
+              "label": "Medium"
+            },
+            {
+              "value": "base",
+              "label": "Large"
+            },
+            {
+              "value": "lg",
+              "label": "Extra large"
+            }
+          ],
+          "default": ""
+        },
+        {
+          "type": "color",
+          "id": "button_hover_background_color",
+          "label": "Hover background"
+        },
+        {
+          "type": "color",
+          "id": "button_hover_text_color",
+          "label": "Hover text"
         }
       ]
     },

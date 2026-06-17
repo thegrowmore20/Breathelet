@@ -210,7 +210,7 @@
         "bdb75fd8-0a89-4189-9614-b2d55f963058": {
           "type": "text",
           "settings": {
-            "text": "<p>Breathelet sends a gentle random vibration every 60–150 minutes — a soft reminder to:</p><ul><li>Be present in the moment</li><li>Take a deep breath</li><li>Correct your posture</li><li>Hydrate</li><li>Mindful Habits</li></ul>"
+            "text": "<p>Breathelet sends a gentle random vibration every 60–150 minutes, a soft reminder to:</p><ul><li>Be present in the moment</li><li>Take a deep breath</li><li>Correct your posture</li><li>Hydrate</li><li>Mindful Habits</li></ul>"
           }
         }
       },
@@ -523,6 +523,8 @@
             "slide_gap": 15,
             "desktop_width_percent": 100,
             "section_padding": 0,
+            "auto_change": false,
+            "auto_change_interval": 4,
             "show_arrows": true,
             "show_dots": true,
             "controls_spacing": 25,
@@ -661,7 +663,11 @@
             "button_style": "button-outline",
             "button_size": "text-sm md:text-base",
             "button_background_color": "#ffffff",
-            "button_text_color": "#000000"
+            "button_text_color": "#000000",
+            "button_hover_style": "",
+            "button_hover_size": "",
+            "button_hover_background_color": "",
+            "button_hover_text_color": ""
           }
         }
       },
@@ -778,7 +784,11 @@
             "button_style": "",
             "button_size": "text-sm md:text-base",
             "button_background_color": "#ffffff",
-            "button_text_color": "#000000"
+            "button_text_color": "#000000",
+            "button_hover_style": "outline",
+            "button_hover_size": "",
+            "button_hover_background_color": "",
+            "button_hover_text_color": ""
           }
         }
       },
@@ -951,7 +961,8 @@
       "name": "t:sections.rich-text.presets__0.name",
       "settings": {
         "full_width": true,
-        "text_alignment": "text-center mx-auto",
+        "content_alignment": "mx-auto",
+        "text_alignment": "text-center",
         "content_width": "normal",
         "background_color": "",
         "text_color": "",
@@ -1027,7 +1038,8 @@
       "name": "t:sections.rich-text.presets__0.name",
       "settings": {
         "full_width": true,
-        "text_alignment": "text-center mx-auto",
+        "content_alignment": "mx-auto",
+        "text_alignment": "text-center",
         "content_width": "normal",
         "background_color": "",
         "text_color": "",

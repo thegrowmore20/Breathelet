@@ -1170,5 +1170,61 @@
         "label": "t:settings_schema.social_media.settings.social_vimeo_link.label"
       }
     ]
+  },
+  {
+    "name": "Sticky CTA",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "A fixed call-to-action button shown on the homepage. It appears once the visitor scrolls past the featured collection and hides when the footer comes into view (matching the product page sticky add to cart)."
+      },
+      {
+        "type": "checkbox",
+        "id": "sticky_cta_enable",
+        "label": "Enable sticky CTA",
+        "default": false
+      },
+      {
+        "type": "product",
+        "id": "sticky_cta_product",
+        "label": "Product",
+        "info": "The product the CTA links to."
+      },
+      {
+        "type": "checkbox",
+        "id": "sticky_cta_show_title",
+        "label": "Show title",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "sticky_cta_custom_name",
+        "label": "Custom product name",
+        "info": "Optional. Overrides the product title shown next to the button (only used when \"Show title\" is on)."
+      },
+      {
+        "type": "text",
+        "id": "sticky_cta_button_text",
+        "label": "Button text",
+        "default": "Shop Now"
+      },
+      {
+        "type": "checkbox",
+        "id": "sticky_cta_show_price",
+        "label": "Show price",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "sticky_cta_position",
+        "label": "Position",
+        "options": [
+          { "value": "left", "label": "Left" },
+          { "value": "center", "label": "Center" },
+          { "value": "right", "label": "Right" }
+        ],
+        "default": "center"
+      }
+    ]
   }
 ]

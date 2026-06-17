@@ -433,7 +433,6 @@
     },
     "related-products": {
       "type": "related-products",
-      "disabled": true,
       "settings": {
         "full_width": true,
         "carousel": true,
@@ -441,14 +440,35 @@
         "grid_columns": 4,
         "grid_columns_mobile": "2",
         "subheading": "",
-        "heading": "You may also like",
+        "heading": "YOU MAY ALSO LIKE",
         "heading_size": "h2",
         "content": "",
         "text_alignment": "text-center",
         "background_color": "",
         "text_color": "",
         "heading_color": "",
-        "heading_html_tag": "p"
+        "heading_html_tag": "h2"
+      }
+    },
+    "product_faqs_fJxpQi": {
+      "type": "product-faqs",
+      "name": "Product Faqs",
+      "settings": {
+        "full_width": true,
+        "remove_horizontal_space": false,
+        "remove_vertical_space": false,
+        "content_width": "normal",
+        "subheading": "",
+        "heading": "FAQs",
+        "heading_size": "h2",
+        "text_alignment": "text-center",
+        "link_text": "View all",
+        "link_url": "",
+        "new_tab": false,
+        "heading_html_tag": "h2",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": ""
       }
     }
   },
@@ -458,6 +478,7 @@
     "custom_section_MwQNrf",
     "176227481753d6d67f",
     "video_with_text_VPmrnU",
-    "related-products"
+    "related-products",
+    "product_faqs_fJxpQi"
   ]
 }

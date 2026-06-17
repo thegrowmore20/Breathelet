@@ -11,13 +11,6 @@
 %}
 
 <style>
-  #shopify-section-{{ section.id }} :where(.button-add-to-cart, sticky-add-to-cart .button) {
-    {% render 'button-vars',
-      background: block.settings.add_to_cart_background_color,
-      text: block.settings.add_to_cart_text_color
-    %}
-  }
-
   #shopify-section-{{ section.id }} .shopify-payment-button__button--unbranded {
     {% render 'button-vars',
       background: block.settings.buy_it_now_background_color,
@@ -30,7 +23,7 @@
   <div class="buy-buttons">
     <button
       type="button"
-      class="button button-add-to-cart w-full button primary min-w-fit"
+      class="button button-add-to-cart button-secondary w-full min-w-fit"
     >
       {{ 'products.product.add_to_cart' | t }}
     </button>
@@ -81,14 +74,7 @@
         data-variant-info="add_to_cart"
         type="submit"
         name="add"
-        class="
-          button button-add-to-cart w-full min-w-fit
-          {%- if show_dynamic_checkout %}
-            button-secondary
-          {% else %}
-            button-primary
-          {% endif -%}
-        "
+        class="button button-add-to-cart button-secondary w-full min-w-fit"
         {% if product.selected_or_first_available_variant == null
           or product.selected_or_first_available_variant.available == false
         %}

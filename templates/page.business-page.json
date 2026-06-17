@@ -35,23 +35,23 @@
         "heading_pmfx94": {
           "type": "heading",
           "settings": {
-            "heading": "The Present of Presence",
-            "heading_size": "h1",
-            "heading_html_tag": "p"
+            "heading": "A Mindful Gift for Every Workday",
+            "heading_size": "h2",
+            "heading_html_tag": "h1"
           }
         },
         "heading_zVFY73": {
           "type": "heading",
           "settings": {
-            "heading": "For your Employees",
+            "heading": "For Your Employees, Clients, and Teams",
             "heading_size": "h3",
-            "heading_html_tag": "p"
+            "heading_html_tag": "h2"
           }
         },
         "text_rUpbMP": {
           "type": "text",
           "settings": {
-            "text": "<p>Breathelet helps employees, clients, and communities find calm and balance through mindful breathing. Empower your organization with a simple, wearable solution for stress relief and focus. The Breathelets offer a gentle vibration as a reminder to practice healthy habits.</p>"
+            "text": "<p>Breathelet gives people gentle, screen-free reminders to pause, check in, and take a mindful moment throughout the day. Designed for workplaces, client gifting, wellness programs, and teams that value calm, focus, and better daily habits.</p>"
           }
         },
         "button_jY8wdB": {
@@ -62,7 +62,11 @@
             "button_style": "",
             "button_size": "text-xs md:text-sm",
             "button_background_color": "#ffffff",
-            "button_text_color": "#000000"
+            "button_text_color": "#000000",
+            "button_hover_style": "outline",
+            "button_hover_size": "",
+            "button_hover_background_color": "",
+            "button_hover_text_color": ""
           }
         },
         "button_bMywXt": {
@@ -73,7 +77,11 @@
             "button_style": "button-outline",
             "button_size": "text-xs md:text-sm",
             "button_background_color": "#ffffff",
-            "button_text_color": "#000000"
+            "button_text_color": "#000000",
+            "button_hover_style": "",
+            "button_hover_size": "",
+            "button_hover_background_color": "",
+            "button_hover_text_color": ""
           }
         }
       },
@@ -102,76 +110,21 @@
         "overlay_type": "solid"
       }
     },
-    "slideshow_3rPYax": {
-      "type": "slideshow",
-      "blocks": {
-        "slide_FUy3aw": {
-          "type": "slide",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/nano-banana-no-bg-2025-08-30T10-47-18.jpg",
-            "content_width_maximum": 780,
-            "desktop_content_position": "bottom-left",
-            "mobile_content_position": "bottom-left",
-            "desktop_text_alignment": "left",
-            "subheading": "Calm in Every Breath",
-            "heading": "Now for Your Team",
-            "heading_size": "h2",
-            "text": "",
-            "hide_text_on_mobile": false,
-            "button_size": "text-xs md:text-sm",
-            "custom_liquid": "",
-            "button_link": "",
-            "button_text": "Request a Quote",
-            "button_style": "",
-            "button_background_color": "#ffffff",
-            "button_text_color": "#000000",
-            "button2_link": "",
-            "button2_text": "Contact Us",
-            "button2_style": "button-outline",
-            "button2_background_color": "#ffffff",
-            "button2_text_color": "",
-            "background_color": "",
-            "color_text": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 40,
-            "overlay_type": "gradient",
-            "heading_html_tag": "p"
-          }
-        }
-      },
-      "block_order": [
-        "slide_FUy3aw"
-      ],
-      "name": "t:sections.slideshow.presets__0.name",
-      "settings": {
-        "full_width": true,
-        "enable_transparent_header": true,
-        "use_original_media_size": false,
-        "autoplay": true,
-        "speed": 5,
-        "height": 700,
-        "controls": "arrows",
-        "background_animation": "ZoomOut",
-        "content_animation": "AppearLineByLine",
-        "background_color": "#262626"
-      }
-    },
     "rich_text_REp4i3": {
       "type": "rich-text",
       "blocks": {
         "heading_YyBTF7": {
           "type": "heading",
           "settings": {
-            "heading": "Why Choose Breathelet for your Business?",
+            "heading": "Why Choose Breathelet for Your Business?",
             "heading_size": "h2",
-            "heading_html_tag": "p"
+            "heading_html_tag": "h2"
           }
         },
         "text_QGknre": {
           "type": "text",
           "settings": {
-            "text": "<p></p><p></p><p><strong>Support Employee Wellbeing</strong> – Promote healthier, calmer workplaces by giving teams a tool they can use anytime.<br/></p><p><strong>Boost Focus & Performance</strong> – Mindful breathing enhances clarity, focus, and productivity.<br/></p><p><strong>A Meaningful Gift</strong> – Show employees, clients, or patients that you value their well-being.<br/><br/></p>"
+            "text": "<p><strong>Support Employee Wellbeing</strong>: Give your team a simple wearable reminder to pause, reset their focus, and build healthier daily awareness.</p><p><strong>Encourage Focus & Presence:</strong> Random gentle vibrations help users step away from autopilot and reconnect with the present moment.</p><p><strong>A Meaningful Corporate Gift</strong>: Offer employees, clients, or event guests a premium-looking gift they can actually use every day.</p>"
           }
         },
         "button_AcwHXT": {
@@ -182,7 +135,11 @@
             "button_style": "button-outline",
             "button_size": "text-xs md:text-sm",
             "button_background_color": "#000000",
-            "button_text_color": ""
+            "button_text_color": "",
+            "button_hover_style": "",
+            "button_hover_size": "",
+            "button_hover_background_color": "",
+            "button_hover_text_color": ""
           }
         }
       },
@@ -194,6 +151,7 @@
       "name": "t:sections.rich-text.presets__0.name",
       "settings": {
         "full_width": true,
+        "content_alignment": "mx-auto",
         "text_alignment": "text-left",
         "content_width": "normal",
         "background_color": "#deddda",
@@ -208,14 +166,22 @@
           "type": "heading",
           "settings": {
             "heading": "Who We Work With",
-            "heading_size": "h1",
-            "heading_html_tag": "p"
+            "heading_size": "h5",
+            "heading_html_tag": "h5"
+          }
+        },
+        "heading_9ttUqx": {
+          "type": "heading",
+          "settings": {
+            "heading": "Mindful Solutions for Teams, Clients, and Communities",
+            "heading_size": "h2",
+            "heading_html_tag": "h2"
           }
         },
         "text_WXxi9G": {
           "type": "text",
           "settings": {
-            "text": "<p>Health Solutions for Every Industry</p><p>Breathelet is a trusted wellness partner for organizations across industries — from healthcare providers and schools to hospitality groups, corporate teams, and wellness retreats. </p><p>Wherever stress exists, Breathelet helps restore calm.</p><p></p>"
+            "text": "<p>Breathelet is designed for organizations that want to support wellbeing in a simple, thoughtful, and non-disruptive way. From corporate teams and healthcare offices to schools, retreats, hospitality groups, and wellness events, Breathelet helps people create small moments of calm throughout the day.</p>"
           }
         },
         "button_kFUwta": {
@@ -226,12 +192,17 @@
             "button_style": "button-outline",
             "button_size": "text-xs md:text-sm",
             "button_background_color": "#ffffff",
-            "button_text_color": "#000000"
+            "button_text_color": "#000000",
+            "button_hover_style": "",
+            "button_hover_size": "",
+            "button_hover_background_color": "",
+            "button_hover_text_color": ""
           }
         }
       },
       "block_order": [
         "heading_WnDBUB",
+        "heading_9ttUqx",
         "text_WXxi9G",
         "button_kFUwta"
       ],
@@ -243,7 +214,7 @@
         "image_size": "",
         "image_position": "right",
         "image_width": 50,
-        "text_alignment": "text-right",
+        "text_alignment": "text-left",
         "background_color": "#000000",
         "text_color": "",
         "heading_color": ""
@@ -271,15 +242,73 @@
         "heading_8HMJDm",
         "text_m88ghf"
       ],
+      "disabled": true,
       "name": "t:sections.rich-text.presets__0.name",
       "settings": {
         "full_width": true,
-        "text_alignment": "text-center mx-auto",
+        "content_alignment": "mx-auto",
+        "text_alignment": "text-center",
         "content_width": "normal",
         "background_color": "#deddda",
         "text_color": "#000000",
         "heading_color": "#000000"
       }
+    },
+    "blocks_NbfpBF": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_5f2401e_rRmrC7": {
+          "type": "ai_gen_block_5f2401e",
+          "settings": {
+            "loading_eager": false,
+            "background_image_desktop": "shopify://shop_images/Business_Page_Banner_Desktop_991302e7-1585-4ec0-9599-fd7b9b4a8064.webp",
+            "background_image_mobile": "shopify://shop_images/Business_Page_Banner_Mobile_8b4077f5-4190-4d31-98ba-80a1f99a5b6c.webp",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0.3,
+            "border_radius": 4,
+            "desktop_width_percent": 100,
+            "padding_vertical": 70,
+            "padding_horizontal": 20,
+            "padding_vertical_mobile": 40,
+            "padding_horizontal_mobile": 20,
+            "gap": 60,
+            "gap_mobile": 30,
+            "icon_background_style": "circle",
+            "icon_size": 36,
+            "icon_spacing": 10,
+            "icon_color": "#ffffff",
+            "icon_background_color": "#000000",
+            "title_size": 14,
+            "title_spacing": 15,
+            "title_color": "#e1e1e1",
+            "text_size": 13,
+            "text_color": "#ffffff",
+            "feature_1_icon": "shopify://shop_images/Employee_Wellness_Programs.png",
+            "feature_1_title": "Employee Wellness Programs",
+            "feature_1_text": "",
+            "feature_2_icon": "shopify://shop_images/Client_Corporate_Gifting.png",
+            "feature_2_title": "Client & Corporate Gifting",
+            "feature_2_text": "",
+            "feature_3_icon": "shopify://shop_images/Healthcare_Therapy_Practices.png",
+            "feature_3_title": "Healthcare & Therapy Practices",
+            "feature_3_text": "",
+            "feature_4_icon": "shopify://shop_images/School_Universities.png",
+            "feature_4_title": "Schools & Universities",
+            "feature_4_text": "",
+            "feature_5_icon": "shopify://shop_images/Customer_Service_Team.png",
+            "feature_5_title": "Hospitality & Customer Service Teams",
+            "feature_5_text": "",
+            "feature_6_icon": "shopify://shop_images/Conferences.png",
+            "feature_6_title": "Events, Conferences & Wellness Retreats",
+            "feature_6_text": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_5f2401e_rRmrC7"
+      ],
+      "settings": {}
     },
     "image_with_text_J9V7nB": {
       "type": "image-with-text",
@@ -288,14 +317,14 @@
           "type": "heading",
           "settings": {
             "heading": "Business Options",
-            "heading_size": "h1",
-            "heading_html_tag": "p"
+            "heading_size": "h2",
+            "heading_html_tag": "h2"
           }
         },
         "text_6wA37g": {
           "type": "text",
           "settings": {
-            "text": "<ul><li><strong>Bulk Orders</strong> – Volume discounts for organizations of all sizes.</li></ul><p></p><ul><li><strong>Partnerships</strong> – Perfect for wellness professionals, retreats, and healthcare providers.</li></ul><p></p><ul><li><strong>Events & Giveaways</strong> — Surprise attendees or clients with a gift that inspires mindfulness and calm.<br/><br/></li></ul>"
+            "text": "<ul><li><strong>Bulk Orders:</strong> Volume pricing for teams, organizations, events, and client gifting.</li><li><strong>Partnerships:</strong> Ideal for wellness professionals, retreats, healthcare providers, and mindfulness-focused communities.</li><li><strong>Events & Giveaways: </strong>A thoughtful gift for attendees, clients, or teams that encourages mindful moments beyond the event.</li></ul>"
           }
         },
         "button_9qmDxR": {
@@ -306,7 +335,11 @@
             "button_style": "button-outline",
             "button_size": "text-sm md:text-base",
             "button_background_color": "#ffffff",
-            "button_text_color": "#000000"
+            "button_text_color": "#000000",
+            "button_hover_style": "",
+            "button_hover_size": "",
+            "button_hover_background_color": "",
+            "button_hover_text_color": ""
           }
         }
       },
@@ -318,7 +351,7 @@
       "name": "t:sections.image-with-text.presets__0.name",
       "settings": {
         "full_width": true,
-        "remove_bottom_spacing": true,
+        "remove_bottom_spacing": false,
         "image": "shopify://shop_images/image-1.jpg",
         "image_size": "",
         "image_position": "left",
@@ -335,15 +368,15 @@
         "heading_eTatVa": {
           "type": "heading",
           "settings": {
-            "heading": "Empower your organization’s health and balance.",
-            "heading_size": "h1",
-            "heading_html_tag": "p"
+            "heading": "Empower Your Organization with Mindful Moments",
+            "heading_size": "h2",
+            "heading_html_tag": "h2"
           }
         },
         "text_H6mbbf": {
           "type": "text",
           "settings": {
-            "text": "<p></p><p>Give your employees, clients, or community the tools to manage stress, breathe mindfully, and find balance.</p><p>Breathelet brings calm and clarity into daily routines — at work, at home, and everywhere in between.</p>"
+            "text": "<p>Give your employees, clients, and community a simple tool to pause, check in, and reconnect throughout the day.</p><p>Breathelet supports small daily moments of calm at work, at home, and everywhere in between.<br/></p>"
           }
         }
       },
@@ -353,8 +386,9 @@
       ],
       "name": "t:sections.rich-text.presets__0.name",
       "settings": {
-        "full_width": false,
-        "text_alignment": "text-center mx-auto",
+        "full_width": true,
+        "content_alignment": "mx-auto",
+        "text_alignment": "text-center",
         "content_width": "normal",
         "background_color": "",
         "text_color": "",
@@ -381,7 +415,7 @@
         "text_BY4rBw": {
           "type": "text",
           "settings": {
-            "text": "<p><em>Breathelet is more than a product — it’s a step toward a healthier, calmer workplace.<br/><br/></em></p><p>Focus Line: <em>Invest in wellbeing today — and watch your organization thrive tomorrow.</em></p><p>Bring calm and focus to your organization. Whether you’re looking for bulk orders, corporate gifts, or ongoing partnerships, our team is here to help.</p><p>📩 Contact us today to get started.</p>"
+            "text": "<p><em>Breathelet is more than a bracelet. It is a simple reminder to pause, reconnect, and bring more awareness into daily life.</em></p><p>Invest in wellbeing today and give your organization a thoughtful way to support calm, focus, and presence.</p>"
           }
         },
         "button_ey8RbD": {
@@ -392,7 +426,11 @@
             "button_style": "",
             "button_size": "text-sm md:text-base",
             "button_background_color": "#ffffff",
-            "button_text_color": "#000000"
+            "button_text_color": "#000000",
+            "button_hover_style": "outline",
+            "button_hover_size": "",
+            "button_hover_background_color": "",
+            "button_hover_text_color": ""
           }
         },
         "button_X9HeVy": {
@@ -403,7 +441,11 @@
             "button_style": "button-outline",
             "button_size": "text-sm md:text-base",
             "button_background_color": "#ffffff",
-            "button_text_color": "#000000"
+            "button_text_color": "#000000",
+            "button_hover_style": "",
+            "button_hover_size": "",
+            "button_hover_background_color": "",
+            "button_hover_text_color": ""
           }
         }
       },
@@ -434,10 +476,10 @@
   "order": [
     "main",
     "image_with_text_overlay_HME93q",
-    "slideshow_3rPYax",
     "rich_text_REp4i3",
     "image_with_text_RjM6X6",
     "rich_text_DQUEbb",
+    "blocks_NbfpBF",
     "image_with_text_J9V7nB",
     "rich_text_zNmfQV",
     "image_with_text_overlay_NNPbtm"

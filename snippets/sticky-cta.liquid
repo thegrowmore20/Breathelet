@@ -1,0 +1,37 @@
+{%- liquid
+  assign cta_product = settings.sticky_cta_product
+  assign button_text = settings.sticky_cta_button_text | default: 'Shop Now'
+  assign position = settings.sticky_cta_position | default: 'center'
+  assign product_image = cta_product.featured_media
+
+  assign display_title = cta_product.title
+  if settings.sticky_cta_custom_name != blank
+    assign display_title = settings.sticky_cta_custom_name
+  endif
+-%}
+{%- if cta_product != blank -%}
+  <div class="sticky-add-to-cart-wrapper sticky-cta-wrapper --{{ position }}">
+    <sticky-cta trigger=".section-featured-collection" footer=".footer">
+      <a href="{{ cta_product.url }}" class="sticky-cta-link" aria-label="{{ display_title | escape }}">
+        {%- if product_image -%}
+          {{
+            product_image
+            | image_url: width: 192
+            | image_tag: class: 'sticky-cta-image', widths: '96, 192', alt: display_title
+          }}
+        {%- endif -%}
+        {%- if settings.sticky_cta_show_title -%}
+          <span class="sticky-cta-title">{{ display_title }}</span>
+        {%- endif -%}
+        <span class="button button-secondary sticky-cta-button whitespace-nowrap">
+          <span>
+            {{ button_text }}
+            {%- if settings.sticky_cta_show_price and cta_product.price > 0 %}
+              &mdash; <span class="sticky-cta-price">{{ cta_product.price | money }}</span>
+            {%- endif %}
+          </span>
+        </span>
+      </a>
+    </sticky-cta>
+  </div>
+{%- endif -%}

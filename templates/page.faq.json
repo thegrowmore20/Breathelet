@@ -289,7 +289,8 @@
       "name": "t:sections.rich-text.presets__0.name",
       "settings": {
         "full_width": true,
-        "text_alignment": "text-center mx-auto",
+        "text_alignment": "text-center",
+        "content_alignment": "mx-auto",
         "content_width": "full-width",
         "background_color": "",
         "text_color": "",
@@ -420,7 +421,8 @@
       "name": "t:sections.rich-text.presets__0.name",
       "settings": {
         "full_width": true,
-        "text_alignment": "text-center mx-auto",
+        "text_alignment": "text-center",
+        "content_alignment": "mx-auto",
         "content_width": "normal",
         "background_color": "",
         "text_color": "",
@@ -463,7 +465,8 @@
       ],
       "settings": {
         "full_width": true,
-        "text_alignment": "text-center mx-auto",
+        "text_alignment": "text-center",
+        "content_alignment": "mx-auto",
         "content_width": "normal",
         "background_color": "rgba(0,0,0,0)",
         "text_color": "",

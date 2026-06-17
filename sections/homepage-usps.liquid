@@ -1,5 +1,12 @@
 {% render 'section-bg-number-vars' %}
 
+{%- liquid
+  assign has_intro_image = false
+  if section.settings.intro_img_1 != blank or section.settings.intro_img_url_1 != blank or section.settings.intro_img_2 != blank or section.settings.intro_img_url_2 != blank
+    assign has_intro_image = true
+  endif
+-%}
+
 <style>
 	#shopify-section-{{ section.id }} {
 		--content-width: {% render 'get-content-width', type: section.settings.content_width %};
@@ -8,6 +15,7 @@
 <section {% render 'section-attrs' %}>
 	<div class="section-body trim-margins">
 		<div class="services-container {% if section.settings.vertical_layout %}services-vertical-layout text-center{% endif %}" style="background-color: {{ section.settings.bg_color }};">
+			{% if has_intro_image %}
 			<div class="services-intro {% if section.settings.show_divider %}has-divider{% endif %}">
 				<h2 class="uppercase">{{ section.settings.heading | escape }}</h2>
 				{% if section.settings.text_1 != blank %}
@@ -56,6 +64,7 @@
 					{% endif %}
 				</div>
 					</div>
+					{% endif %}
 					<div class="services-grid">
 						{% for block in section.blocks %}
 							<div class="service-card" {{ block.shopify_attributes }}>
@@ -107,6 +116,7 @@
 					gap: 50px;
 				}
 
+				{% if has_intro_image %}
 				#shopify-section-{{ section.id }} .services-intro {
 					flex: 0 0 35%;
 					display: flex;
@@ -164,6 +174,7 @@
 					margin-left: auto;
 					margin-right: auto;
 				}
+				{% endif %}
 				#shopify-section-{{ section.id }} .services-grid {
 					flex: 1;
 					display: grid;
@@ -196,7 +207,7 @@
 				#shopify-section-{{ section.id }} .services-container.services-vertical-layout .service-icon {
 					width: 80px;
 					height: 80px;
-					margin-bottom: 20px;
+					margin-bottom: 10px;
 				}
 				#shopify-section-{{ section.id }} .service-icon > svg,
 				#shopify-section-{{ section.id }} .service-icon > img {

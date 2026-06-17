@@ -895,6 +895,20 @@
           }
         }
       },
+      "content_alignment": {
+        "label": "Content alignment",
+        "options": {
+          "left": {
+            "label": "Left"
+          },
+          "center": {
+            "label": "Center"
+          },
+          "right": {
+            "label": "Right"
+          }
+        }
+      },
       "heading_alignment": {
         "label": "Heading alignment",
         "options": {

@@ -15,7 +15,7 @@
         "heading_acqzia": {
           "type": "heading",
           "settings": {
-            "heading": "Contact us",
+            "heading": "{{ page.title }}",
             "heading_size": "h2",
             "heading_html_tag": "h1"
           }
@@ -40,10 +40,134 @@
         "overlay_type": "solid"
       }
     },
+    "rich_text_36gaiT": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_rPAfxL": {
+          "type": "heading",
+          "settings": {
+            "heading": "Worn with confidence. Backed for life.",
+            "heading_size": "h1",
+            "heading_html_tag": "h2"
+          }
+        },
+        "text_thccUq": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Try Breathelet risk-free with our 30-Day Guarantee, and keep wearing it with the peace of mind of a Lifetime Warranty.</p><p>We believe in Breathelet, and we want you to feel the same. That's why every bracelet is protected from the moment it arrives, with free replacement support whenever you need it.</p>"
+          }
+        },
+        "button_rk6xdL": {
+          "type": "button",
+          "settings": {
+            "button_text": "Shop Breathelet",
+            "button_link": "shopify://products/breathelet-onefit",
+            "button_style": "",
+            "button_size": "text-sm md:text-base",
+            "button_background_color": "#ffffff",
+            "button_text_color": "#000000",
+            "button_hover_style": "outline",
+            "button_hover_size": "",
+            "button_hover_background_color": "",
+            "button_hover_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_rPAfxL",
+        "text_thccUq",
+        "button_rk6xdL"
+      ],
+      "name": "t:sections.rich-text.presets__0.name",
+      "settings": {
+        "full_width": true,
+        "content_alignment": "mx-auto",
+        "text_alignment": "text-center",
+        "content_width": "normal",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": ""
+      }
+    },
+    "homepage_usps_gzgrnc": {
+      "type": "homepage-usps",
+      "blocks": {
+        "service_D8BdFt": {
+          "type": "service",
+          "settings": {
+            "icon_html": "",
+            "icon_image": "shopify://shop_images/30_Days_Return.png",
+            "title": "30-DAY GUARANTEE",
+            "text": "Shop With Confidence",
+            "link_label": "More about this service",
+            "link_url": ""
+          }
+        },
+        "service_FED3i8": {
+          "type": "service",
+          "settings": {
+            "icon_html": "",
+            "icon_image": "shopify://shop_images/Lifetime_Warranty_2.png",
+            "title": "LIFETIME WARRANTY",
+            "text": "Manufacturing defects covered",
+            "link_label": "More about this service",
+            "link_url": ""
+          }
+        },
+        "service_Whqqqp": {
+          "type": "service",
+          "settings": {
+            "icon_html": "",
+            "icon_image": "shopify://shop_images/No_App_Required_1.png",
+            "title": "FREE REPLACEMENT",
+            "text": "One-time FREE replacement",
+            "link_label": "More about this service",
+            "link_url": ""
+          }
+        },
+        "service_CtgEDR": {
+          "type": "service",
+          "settings": {
+            "icon_html": "",
+            "icon_image": "shopify://shop_images/Adjustable_fit_1.png",
+            "title": "ZERO COST TO YOU",
+            "text": "All valid claims are free",
+            "link_label": "More about this service",
+            "link_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "service_D8BdFt",
+        "service_FED3i8",
+        "service_Whqqqp",
+        "service_CtgEDR"
+      ],
+      "disabled": true,
+      "name": "General USPs",
+      "settings": {
+        "full_width": true,
+        "bg_color": "#000000",
+        "vertical_layout": true,
+        "show_divider": false,
+        "heading": "",
+        "text_1": "",
+        "intro_text_1": "",
+        "intro_text_2": "",
+        "intro_img_url_1": "",
+        "intro_img_url_2": "",
+        "link_color": "#ffd814",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_html_tag": "h2"
+      }
+    },
     "main": {
       "type": "main-page",
       "settings": {
         "full_width": true,
+        "hide_title": true,
         "content_width": "normal",
         "content_text_size": "prose md:prose-lg",
         "heading_size": "h2",
@@ -56,6 +180,8 @@
   },
   "order": [
     "image_with_text_overlay_zpBaeU",
+    "rich_text_36gaiT",
+    "homepage_usps_gzgrnc",
     "main"
   ]
 }

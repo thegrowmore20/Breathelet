@@ -27,15 +27,9 @@
 
     <div class="mobile-menu-inner flex flex-col grow overflow-y-auto">
       {% for link in links %}
-        {% if link.links != blank %}
-          <div data-menu-anim-in>
-            {% render 'mobile-menu-page', link: link, level: 1 %}
-          </div>
-        {% else %}
-          <a href="{{ link.url }}" class="side-menu-item" data-menu-anim-in>
-            {{ link.title }}
-          </a>
-        {% endif %}
+        <div data-menu-anim-in>
+          {% render 'mobile-menu-accordion', link: link, level: 1 %}
+        </div>
       {% endfor %}
 
       {% if country_selector or language_selector or shop.customer_accounts_enabled %}

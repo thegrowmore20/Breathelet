@@ -16,7 +16,7 @@
 %}
 
 {% if link_url and link_text %}
-  {% render 'section-header-with-link', link_url: link_url, link_text: link_text, header_mb: header_mb %}
+  {% render 'section-header-with-link', link_url: link_url, link_text: link_text, header_mb: header_mb, new_tab: new_tab %}
 {% else %}
   {% unless section.settings.heading == blank
     and section.settings.subheading == blank
