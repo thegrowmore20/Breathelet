@@ -96,7 +96,7 @@
           "type": "service",
           "settings": {
             "icon_html": "",
-            "icon_image": "shopify://shop_images/30_Days_Return.png",
+            "icon_image": "shopify://shop_images/30_Days_Guarantee.png",
             "title": "30-DAY GUARANTEE",
             "text": "Shop With Confidence",
             "link_label": "More about this service",
@@ -118,7 +118,7 @@
           "type": "service",
           "settings": {
             "icon_html": "",
-            "icon_image": "shopify://shop_images/No_App_Required_1.png",
+            "icon_image": "shopify://shop_images/Free_Replacement.png",
             "title": "FREE REPLACEMENT",
             "text": "One-time FREE replacement",
             "link_label": "More about this service",
@@ -129,7 +129,7 @@
           "type": "service",
           "settings": {
             "icon_html": "",
-            "icon_image": "shopify://shop_images/Adjustable_fit_1.png",
+            "icon_image": "shopify://shop_images/Zero_Cost_to_you.png",
             "title": "ZERO COST TO YOU",
             "text": "All valid claims are free",
             "link_label": "More about this service",
@@ -143,7 +143,6 @@
         "service_Whqqqp",
         "service_CtgEDR"
       ],
-      "disabled": true,
       "name": "General USPs",
       "settings": {
         "full_width": true,
@@ -165,6 +164,7 @@
     },
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "full_width": true,
         "hide_title": true,
@@ -176,12 +176,195 @@
         "text_color": "",
         "heading_color": ""
       }
+    },
+    "warranty_pillars_dX3RC3": {
+      "type": "warranty-pillars",
+      "name": "Pillars",
+      "settings": {
+        "full_width": true,
+        "remove_horizontal_space": false,
+        "remove_vertical_space": false,
+        "content_width": "extra-large",
+        "subheading": "",
+        "heading": "",
+        "content": "",
+        "heading_size": "h3",
+        "text_alignment": "text-center",
+        "link_text": "",
+        "link_url": "",
+        "new_tab": false,
+        "heading_html_tag": "h2",
+        "pillar_1_badge": "30-Day Guarantee",
+        "pillar_1_heading": "Love it, or send it back.",
+        "pillar_1_description": "Give Breathelet 30 days to become part of your everyday rhythm. If it's not right for you, simply reach out within 30 days of delivery for a straightforward return.",
+        "pillar_1_feature_1": "30 days from the day your order arrives",
+        "pillar_1_feature_2": "Hassle-free, no-questions-asked process",
+        "pillar_1_feature_3": "Just contact our support team to begin",
+        "pillar_2_badge": "Lifetime Warranty",
+        "pillar_2_heading": "Long-term calm, long-term coverage.",
+        "pillar_2_description": "Your Breathelet is built to be part of daily life, so we stand behind it for the long run. Our Lifetime Warranty covers manufacturing defects with free replacement support.",
+        "pillar_2_feature_1": "Covers defects in materials or workmanship",
+        "pillar_2_feature_2": "Free replacement — no cost to you",
+        "pillar_2_feature_3": "Applies to original purchaser with proof of purchase",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": ""
+      }
+    },
+    "warranty_coverage_pCxTtF": {
+      "type": "warranty-coverage",
+      "name": "Coverage",
+      "settings": {
+        "full_width": true,
+        "remove_horizontal_space": false,
+        "remove_vertical_space": false,
+        "content_width": "extra-large",
+        "subheading": "",
+        "heading": "WHAT'S COVERED, WHAT'S NOT",
+        "content": "<p>Our warranty is designed to protect you from genuine defects, not misuse. Here's everything you need to know.</p>",
+        "heading_size": "h2",
+        "text_alignment": "text-center",
+        "link_text": "",
+        "link_url": "",
+        "new_tab": false,
+        "heading_html_tag": "h2",
+        "card_heading_size": "h6",
+        "card_heading_html_tag": "h3",
+        "covered_heading": "What's Covered",
+        "covered_item_1": "Manufacturing defects in materials or workmanship",
+        "covered_item_2": "Vibration motor faults under normal use",
+        "covered_item_3": "Battery issues caused by a defect (not normal long-term wear)",
+        "covered_item_4": "Free replacement for any valid defect claim",
+        "not_covered_heading": "What's Not Covered",
+        "not_covered_item_1": "Loss, theft, or misplacement",
+        "not_covered_item_2": "Accidental, intentional, or cosmetic damage (drops, crushing, scratches)",
+        "not_covered_item_3": "Damage from improper use or unauthorized repairs",
+        "not_covered_item_4": "Normal wear over time (minor finish wear, gradual battery aging)",
+        "not_covered_item_5": "Products not purchased from official Breathelet channels",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": ""
+      }
+    },
+    "warranty_claim_kw8Ndm": {
+      "type": "warranty-claim",
+      "name": "Breathelet Claim",
+      "settings": {
+        "full_width": true,
+        "remove_horizontal_space": false,
+        "remove_vertical_space": false,
+        "content_width": "extra-large",
+        "subheading": "",
+        "heading": "HOW TO MAKE A CLAIM",
+        "content": "<p>Three simple steps stand between you and a free replacement. We make it easy.</p>",
+        "heading_size": "h2",
+        "text_alignment": "text-center",
+        "link_text": "",
+        "link_url": "",
+        "new_tab": false,
+        "heading_html_tag": "h2",
+        "card_heading_size": "h6",
+        "card_heading_html_tag": "h3",
+        "step_1_title": "Reach Out",
+        "step_1_description": "Contact our support team through our official email or social channels. We're here to help.",
+        "step_2_title": "Share the Details",
+        "step_2_description": "Send your order number, a short description of the issue, and a photo or video if possible.",
+        "step_3_title": "Get Your Replacement",
+        "step_3_description": "Once approved, we'll arrange your free replacement and get you back to your daily pause.",
+        "button_text": "Start a Claim",
+        "button_link": "mailto:hello@breathelet.com",
+        "button_style": "",
+        "button_size": "text-sm md:text-base",
+        "button_background_color": "#ffffff",
+        "button_text_color": "#000000",
+        "button_hover_style": "outline",
+        "button_hover_size": "",
+        "button_hover_background_color": "",
+        "button_hover_text_color": "",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": ""
+      }
+    },
+    "page_faqs_3pbYaM": {
+      "type": "page-faqs",
+      "name": "Page Meta Faqs",
+      "settings": {
+        "full_width": true,
+        "remove_horizontal_space": false,
+        "remove_vertical_space": false,
+        "content_width": "normal",
+        "subheading": "",
+        "heading": "FAQs",
+        "heading_size": "h2",
+        "text_alignment": "text-center",
+        "link_text": "View all",
+        "link_url": "",
+        "new_tab": false,
+        "heading_html_tag": "p",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": ""
+      }
+    },
+    "rich_text_Dwki6E": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_Hd7YF9": {
+          "type": "heading",
+          "settings": {
+            "heading": "Peace of mind, included.",
+            "heading_size": "h3",
+            "heading_html_tag": "h2"
+          }
+        },
+        "text_BDqDxj": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Every Breathelet comes backed by our 30-Day Guarantee and Lifetime Warranty, so you can focus on what matters: the pause, not the worry.</p>"
+          }
+        },
+        "button_LL9qqF": {
+          "type": "button",
+          "settings": {
+            "button_text": "Shop Breathelet",
+            "button_link": "shopify://products/breathelet-onefit",
+            "button_style": "",
+            "button_size": "text-sm md:text-base",
+            "button_background_color": "#ffffff",
+            "button_text_color": "#000000",
+            "button_hover_style": "outline",
+            "button_hover_size": "",
+            "button_hover_background_color": "",
+            "button_hover_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_Hd7YF9",
+        "text_BDqDxj",
+        "button_LL9qqF"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_alignment": "mx-auto",
+        "text_alignment": "text-center",
+        "content_width": "normal",
+        "background_color": "rgba(0,0,0,0)",
+        "text_color": "",
+        "heading_color": ""
+      }
     }
   },
   "order": [
     "image_with_text_overlay_zpBaeU",
     "rich_text_36gaiT",
     "homepage_usps_gzgrnc",
-    "main"
+    "main",
+    "warranty_pillars_dX3RC3",
+    "warranty_coverage_pCxTtF",
+    "warranty_claim_kw8Ndm",
+    "page_faqs_3pbYaM",
+    "rich_text_Dwki6E"
   ]
 }

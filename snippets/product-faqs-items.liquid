@@ -9,7 +9,12 @@
 {% endcomment %}
 
 {% for faq in faqs %}
-  <button type="button" class="metaobject-accordion" aria-expanded="false">
+  <button
+    type="button"
+    class="metaobject-accordion"
+    aria-expanded="false"
+    {% if animation_group != blank %}data-animation="block" data-animation-group="{{ animation_group }}"{% endif %}
+  >
     {{ faq.question.value }}
     {% render 'icon-chevron' %}
   </button>

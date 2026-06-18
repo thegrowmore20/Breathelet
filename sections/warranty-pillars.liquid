@@ -1,0 +1,449 @@
+{% render 'section-bg-number-vars' %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --content-width: {% render 'get-content-width', type: section.settings.content_width %};
+  }
+</style>
+
+{% liquid
+  assign section_classes = ''
+
+  if section.settings.remove_horizontal_space
+    assign section_classes = section_classes | append: ' !px-0 '
+  endif
+
+  if section.settings.remove_vertical_space
+    assign section_classes = section_classes | append: ' !py-0 '
+  endif
+
+  if section.settings.link_url != blank
+    assign link_url = section.settings.link_url
+  else
+    assign link_url = null
+  endif
+%}
+
+<section {% render 'section-attrs', class: section_classes %}>
+  <div class="section-body">
+    <div class="max-w-[--content-width] mx-auto">
+      {% render 'section-header', link_text: section.settings.link_text, link_url: link_url, new_tab: section.settings.new_tab %}
+
+      <div class="bp-pillars-grid" data-animation-auto-order>
+
+        <!-- PILLAR 1 -->
+        <div class="bp-pillar-card" data-animation="block" data-animation-group="{{ section.id }}">
+          <div class="bp-pillar-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="2.5"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8"  y1="2" x2="8"  y2="6"/>
+              <line x1="3"  y1="10" x2="21" y2="10"/>
+            </svg>
+            {{ section.settings.pillar_1_badge }}
+          </div>
+
+          <h2 class="bp-pillar-heading">{{ section.settings.pillar_1_heading }}</h2>
+          <p class="bp-pillar-desc">{{ section.settings.pillar_1_description }}</p>
+
+          <ul class="bp-pillar-features">
+            {% if section.settings.pillar_1_feature_1 != blank %}
+              <li><span class="bp-check-icon">{%- render 'bp-check-icon' -%}</span>{{ section.settings.pillar_1_feature_1 }}</li>
+            {% endif %}
+            {% if section.settings.pillar_1_feature_2 != blank %}
+              <li><span class="bp-check-icon">{%- render 'bp-check-icon' -%}</span>{{ section.settings.pillar_1_feature_2 }}</li>
+            {% endif %}
+            {% if section.settings.pillar_1_feature_3 != blank %}
+              <li><span class="bp-check-icon">{%- render 'bp-check-icon' -%}</span>{{ section.settings.pillar_1_feature_3 }}</li>
+            {% endif %}
+          </ul>
+        </div>
+
+        <!-- PILLAR 2 -->
+        <div class="bp-pillar-card" data-animation="block" data-animation-group="{{ section.id }}">
+          <div class="bp-pillar-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="2.5"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+            {{ section.settings.pillar_2_badge }}
+          </div>
+
+          <h2 class="bp-pillar-heading">{{ section.settings.pillar_2_heading }}</h2>
+          <p class="bp-pillar-desc">{{ section.settings.pillar_2_description }}</p>
+
+          <ul class="bp-pillar-features">
+            {% if section.settings.pillar_2_feature_1 != blank %}
+              <li><span class="bp-check-icon">{%- render 'bp-check-icon' -%}</span>{{ section.settings.pillar_2_feature_1 }}</li>
+            {% endif %}
+            {% if section.settings.pillar_2_feature_2 != blank %}
+              <li><span class="bp-check-icon">{%- render 'bp-check-icon' -%}</span>{{ section.settings.pillar_2_feature_2 }}</li>
+            {% endif %}
+            {% if section.settings.pillar_2_feature_3 != blank %}
+              <li><span class="bp-check-icon">{%- render 'bp-check-icon' -%}</span>{{ section.settings.pillar_2_feature_3 }}</li>
+            {% endif %}
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ── BREATHELET PILLARS – scoped with bp- prefix ── */
+  .bp-pillars-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* ── CARD ── */
+  .bp-pillar-card {
+    background: rgb(var(--color-foreground) / 0.04);
+    border: 1px solid rgb(var(--color-foreground) / 0.08);
+    border-radius: 16px;
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.25s ease, transform 0.25s ease;
+  }
+
+  .bp-pillar-card:hover {
+    border-color: rgb(var(--color-foreground) / 0.35);
+    transform: translateY(-4px);
+  }
+
+  /* Accent shimmer line on hover */
+  .bp-pillar-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgb(var(--color-foreground)), transparent);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .bp-pillar-card:hover::after {
+    opacity: 1;
+  }
+
+  /* ── BADGE ── */
+  .bp-pillar-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgb(var(--color-foreground) / 0.10);
+    border: 1px solid rgb(var(--color-foreground) / 0.25);
+    border-radius: 50px;
+    padding: 6px 14px;
+    font-size: var(--size-text-xs);
+    font-weight: 600;
+    color: rgb(var(--color-foreground));
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  /* ── HEADING ── */
+  .bp-pillar-heading {
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+    color: rgb(var(--color-foreground));
+    margin-bottom: 12px;
+  }
+
+  /* ── DESCRIPTION ── */
+  .bp-pillar-desc {
+    color: rgb(var(--color-foreground) / 0.8);
+    font-size: var(--size-text-base);
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+
+  /* ── FEATURE LIST ── */
+  .bp-pillar-features {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .bp-pillar-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgb(var(--color-foreground) / 0.08);
+    font-size: var(--size-text-sm);
+    color: rgb(var(--color-foreground) / 0.8);
+    line-height: 1.6;
+  }
+
+  .bp-pillar-features li:last-child {
+    border-bottom: none;
+  }
+
+  /* ── CHECK ICON (page-faqs circular format, white) ── */
+  .bp-check-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    background: rgb(var(--color-foreground) / 0.12);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+
+  .bp-check-icon svg {
+    width: 10px;
+    height: 10px;
+    stroke: rgb(var(--color-foreground));
+    fill: none;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .bp-pillars-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .bp-pillar-card {
+      padding: 36px 28px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Warranty Pillars",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "t:sections.all.full_width.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "remove_horizontal_space",
+      "label": "t:sections.apps.settings.remove_horizontal_space.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "remove_vertical_space",
+      "label": "t:sections.apps.settings.remove_vertical_space.label"
+    },
+    {
+      "type": "select",
+      "id": "content_width",
+      "label": "t:sections.rich-text.settings.content_width.label",
+      "options": [
+        { "value": "small", "label": "t:sections.rich-text.settings.content_width.options__0.label" },
+        { "value": "normal", "label": "t:sections.rich-text.settings.content_width.options__1.label" },
+        { "value": "large", "label": "t:sections.rich-text.settings.content_width.options__2.label" },
+        { "value": "extra-large", "label": "t:sections.rich-text.settings.content_width.options__3.label" },
+        { "value": "full-width", "label": "t:sections.rich-text.settings.content_width.options__4.label" }
+      ],
+      "default": "normal"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.headers.heading"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "t:sections.all.subheading.label"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:sections.featured-collection.settings.heading.label"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "t:sections.all.content.label"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "t:sections.all.heading_size.label",
+      "options": [
+        { "value": "h0", "label": "t:sections.all.heading_size.options__0.label" },
+        { "value": "h1", "label": "t:sections.all.heading_size.options__1.label" },
+        { "value": "h2", "label": "t:sections.all.heading_size.options__2.label" },
+        { "value": "h3", "label": "t:sections.all.heading_size.options__3.label" },
+        { "value": "h4", "label": "t:sections.all.heading_size.options__4.label" },
+        { "value": "h5", "label": "t:sections.all.heading_size.options__5.label" },
+        { "value": "h6", "label": "t:sections.all.heading_size.options__6.label" }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "t:sections.all.text_alignment.label",
+      "options": [
+        { "value": "text-left", "label": "t:sections.all.text_alignment.options.text_left.label" },
+        { "value": "text-center", "label": "t:sections.all.text_alignment.options.text_center.label" }
+      ],
+      "default": "text-center"
+    },
+    {
+      "type": "html",
+      "id": "link_text",
+      "label": "t:sections.featured-collection.settings.link_text.label"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "t:sections.featured-collection.settings.link_url.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "new_tab",
+      "label": "Open in New Tab",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "heading_html_tag",
+      "label": "t:sections.all.heading_html_tag.label",
+      "options": [
+        { "value": "h1", "label": "h1" },
+        { "value": "h2", "label": "h2" },
+        { "value": "h3", "label": "h3" },
+        { "value": "h4", "label": "h4" },
+        { "value": "h5", "label": "h5" },
+        { "value": "h6", "label": "h6" },
+        { "value": "p", "label": "p" },
+        { "value": "span", "label": "span" },
+        { "value": "div", "label": "div" }
+      ],
+      "default": "h2",
+      "info": "t:sections.all.heading_html_tag.info"
+    },
+    {
+      "type": "header",
+      "content": "Pillar 1 – 30-Day Guarantee"
+    },
+    {
+      "type": "text",
+      "id": "pillar_1_badge",
+      "label": "Badge Label",
+      "default": "30-Day Guarantee"
+    },
+    {
+      "type": "text",
+      "id": "pillar_1_heading",
+      "label": "Heading",
+      "default": "Love it, or send it back."
+    },
+    {
+      "type": "textarea",
+      "id": "pillar_1_description",
+      "label": "Description",
+      "default": "Give Breathelet 30 days to become part of your everyday rhythm. If it's not right for you, simply reach out within 30 days of delivery for a straightforward return."
+    },
+    {
+      "type": "text",
+      "id": "pillar_1_feature_1",
+      "label": "Feature 1",
+      "default": "30 days from the day your order arrives"
+    },
+    {
+      "type": "text",
+      "id": "pillar_1_feature_2",
+      "label": "Feature 2",
+      "default": "Hassle-free, no-questions-asked process"
+    },
+    {
+      "type": "text",
+      "id": "pillar_1_feature_3",
+      "label": "Feature 3",
+      "default": "Just contact our support team to begin"
+    },
+    {
+      "type": "header",
+      "content": "Pillar 2 – Lifetime Warranty"
+    },
+    {
+      "type": "text",
+      "id": "pillar_2_badge",
+      "label": "Badge Label",
+      "default": "Lifetime Warranty"
+    },
+    {
+      "type": "text",
+      "id": "pillar_2_heading",
+      "label": "Heading",
+      "default": "Long-term calm, long-term coverage."
+    },
+    {
+      "type": "textarea",
+      "id": "pillar_2_description",
+      "label": "Description",
+      "default": "Your Breathelet is built to be part of daily life, so we stand behind it for the long run. Our Lifetime Warranty covers manufacturing defects with free replacement support."
+    },
+    {
+      "type": "text",
+      "id": "pillar_2_feature_1",
+      "label": "Feature 1",
+      "default": "Covers defects in materials or workmanship"
+    },
+    {
+      "type": "text",
+      "id": "pillar_2_feature_2",
+      "label": "Feature 2",
+      "default": "Free replacement — no cost to you"
+    },
+    {
+      "type": "text",
+      "id": "pillar_2_feature_3",
+      "label": "Feature 3",
+      "default": "Applies to original purchaser with proof of purchase"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.headers.colors"
+    },
+    {
+      "type": "color",
+      "label": "t:sections.all.background_color.label",
+      "id": "background_color"
+    },
+    {
+      "type": "color",
+      "label": "t:sections.all.text_color.label",
+      "id": "text_color"
+    },
+    {
+      "type": "color",
+      "label": "t:sections.all.heading_color.label",
+      "id": "heading_color"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Warranty Pillars",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

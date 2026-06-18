@@ -55,8 +55,8 @@
     <div class="section-body-wrapper">
 
         <div class="product-faqs-wrapper" id="faqs">
-          <div class="product-faqs-items" data-faqs-current="{{ initial_faqs_key }}">
-            {% render 'product-faqs-items', faqs: faqs_items %}
+          <div class="product-faqs-items" data-faqs-current="{{ initial_faqs_key }}" data-animation-auto-order>
+            {% render 'product-faqs-items', faqs: faqs_items, animation_group: section.id %}
           </div>
 
           {%- if has_variant_override -%}
@@ -68,7 +68,7 @@
             {%- endcomment -%}
             {%- if initial_faqs_key != 'default' -%}
               <template data-faqs-default>
-                {% render 'product-faqs-items', faqs: product_faqs %}
+                {% render 'product-faqs-items', faqs: product_faqs, animation_group: section.id %}
               </template>
             {%- endif -%}
 
@@ -76,7 +76,7 @@
               {%- assign variant_faqs_loop = variant.metafields.custom.faqs.value -%}
               {%- if variant_faqs_loop != blank and variant.id != initial_faqs_key -%}
                 <template data-faqs-variant="{{ variant.id }}">
-                  {% render 'product-faqs-items', faqs: variant_faqs_loop %}
+                  {% render 'product-faqs-items', faqs: variant_faqs_loop, animation_group: section.id %}
                 </template>
               {%- endif -%}
             {%- endfor -%}

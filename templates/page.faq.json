@@ -14,6 +14,7 @@
       "disabled": true,
       "settings": {
         "full_width": true,
+        "hide_title": false,
         "content_width": "normal",
         "content_text_size": "prose md:prose-lg",
         "heading_size": "h0",
@@ -289,69 +290,9 @@
       "name": "t:sections.rich-text.presets__0.name",
       "settings": {
         "full_width": true,
-        "text_alignment": "text-center",
         "content_alignment": "mx-auto",
+        "text_alignment": "text-center",
         "content_width": "full-width",
-        "background_color": "",
-        "text_color": "",
-        "heading_color": ""
-      }
-    },
-    "video_with_text_jmnQAA": {
-      "type": "video-with-text",
-      "blocks": {
-        "subheading_ycRRpd": {
-          "type": "subheading",
-          "settings": {
-            "text": ""
-          }
-        },
-        "heading_XdYgMB": {
-          "type": "heading",
-          "settings": {
-            "heading": "Breathelet Classic:",
-            "heading_size": "h2",
-            "heading_html_tag": "p"
-          }
-        },
-        "text_3TLXCz": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Adjustable design with multiple size options to comfortably fit most wrists.<br/></p>"
-          }
-        },
-        "button_qzGQrB": {
-          "type": "button",
-          "settings": {
-            "button_text": "SHOP Classic",
-            "button_link": "shopify://products/breathelet",
-            "button_style": "button-outline",
-            "button_size": "text-sm md:text-base",
-            "button_background_color": "#ffffff",
-            "button_text_color": ""
-          }
-        }
-      },
-      "block_order": [
-        "subheading_ycRRpd",
-        "heading_XdYgMB",
-        "text_3TLXCz",
-        "button_qzGQrB"
-      ],
-      "disabled": true,
-      "name": "t:sections.video-with-text.presets__0.name",
-      "settings": {
-        "custom_class": "",
-        "full_width": false,
-        "remove_bottom_spacing": true,
-        "autoplay": false,
-        "loop": false,
-        "video": "shopify://files/videos/Breathelet_oldstring_anim.webm",
-        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "image_size": "media--ratio-16-9",
-        "image_position": "right",
-        "image_width": 50,
-        "text_alignment": "text-left",
         "background_color": "",
         "text_color": "",
         "heading_color": ""
@@ -388,7 +329,11 @@
             "button_style": "button-outline",
             "button_size": "text-sm md:text-base",
             "button_background_color": "#ffffff",
-            "button_text_color": "#000000"
+            "button_text_color": "#000000",
+            "button_hover_style": "",
+            "button_hover_size": "",
+            "button_hover_background_color": "",
+            "button_hover_text_color": ""
           }
         }
       },
@@ -421,8 +366,8 @@
       "name": "t:sections.rich-text.presets__0.name",
       "settings": {
         "full_width": true,
-        "text_alignment": "text-center",
         "content_alignment": "mx-auto",
+        "text_alignment": "text-center",
         "content_width": "normal",
         "background_color": "",
         "text_color": "",
@@ -454,7 +399,11 @@
             "button_style": "button-outline",
             "button_size": "text-sm md:text-base",
             "button_background_color": "#ffffff",
-            "button_text_color": "#000000"
+            "button_text_color": "#000000",
+            "button_hover_style": "",
+            "button_hover_size": "",
+            "button_hover_background_color": "",
+            "button_hover_text_color": ""
           }
         }
       },
@@ -465,8 +414,8 @@
       ],
       "settings": {
         "full_width": true,
-        "text_alignment": "text-center",
         "content_alignment": "mx-auto",
+        "text_alignment": "text-center",
         "content_width": "normal",
         "background_color": "rgba(0,0,0,0)",
         "text_color": "",
@@ -482,7 +431,6 @@
     "collapsible_content_aEz7Aq",
     "custom_liquid_tmBGTh",
     "rich_text_9mqqhf",
-    "video_with_text_jmnQAA",
     "video_with_text_FYgkDL",
     "rich_text_ccgjnM",
     "f5839382-ef3f-4a18-84ac-194c93e9d7cf"

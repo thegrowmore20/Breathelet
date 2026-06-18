@@ -1,0 +1,481 @@
+{% render 'section-bg-number-vars' %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --content-width: {% render 'get-content-width', type: section.settings.content_width %};
+  }
+</style>
+
+{% liquid
+  assign section_classes = ''
+
+  if section.settings.remove_horizontal_space
+    assign section_classes = section_classes | append: ' !px-0 '
+  endif
+
+  if section.settings.remove_vertical_space
+    assign section_classes = section_classes | append: ' !py-0 '
+  endif
+
+  if section.settings.link_url != blank
+    assign link_url = section.settings.link_url
+  else
+    assign link_url = null
+  endif
+
+  assign card_tag = section.settings.card_heading_html_tag | default: 'h3'
+%}
+
+<section {% render 'section-attrs', class: section_classes %}>
+  <div class="section-body">
+    <div class="max-w-[--content-width] mx-auto">
+      {% render 'section-header', link_text: section.settings.link_text, link_url: link_url, new_tab: section.settings.new_tab, button: false %}
+
+      <div class="bcl-steps-grid" data-animation-auto-order>
+
+        <!-- STEP 1 -->
+        <div class="bcl-step-card" data-animation="block" data-animation-group="{{ section.id }}">
+          <div class="bcl-step-number">1</div>
+          <{{ card_tag }} class="heading {{ section.settings.card_heading_size }} bcl-step-title">{{ section.settings.step_1_title }}</{{ card_tag }}>
+          <p class="bcl-step-desc">{{ section.settings.step_1_description }}</p>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="bcl-step-card" data-animation="block" data-animation-group="{{ section.id }}">
+          <div class="bcl-step-number">2</div>
+          <{{ card_tag }} class="heading {{ section.settings.card_heading_size }} bcl-step-title">{{ section.settings.step_2_title }}</{{ card_tag }}>
+          <p class="bcl-step-desc">{{ section.settings.step_2_description }}</p>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="bcl-step-card" data-animation="block" data-animation-group="{{ section.id }}">
+          <div class="bcl-step-number">3</div>
+          <{{ card_tag }} class="heading {{ section.settings.card_heading_size }} bcl-step-title">{{ section.settings.step_3_title }}</{{ card_tag }}>
+          <p class="bcl-step-desc">{{ section.settings.step_3_description }}</p>
+        </div>
+
+      </div>
+
+      <!-- OPTIONAL CTA BUTTON -->
+      {% if section.settings.button_text != blank %}
+        <div class="bcl-cta-wrap">
+          {% render 'button' %}
+        </div>
+      {% endif %}
+
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ── BREATHELET CLAIM – scoped with bcl- prefix ── */
+  .bcl-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    position: relative;
+  }
+
+  /* Connector line between cards (desktop only) */
+  .bcl-steps-grid::before {
+    content: '';
+    position: absolute;
+    top: 36px;
+    left: calc(16.67% + 28px);
+    right: calc(16.67% + 28px);
+    height: 1px;
+    background: linear-gradient(90deg, rgb(var(--color-foreground)), rgb(var(--color-foreground) / 0.2), rgb(var(--color-foreground)));
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  /* ── STEP CARD ── */
+  .bcl-step-card {
+    /* opaque card (tint layered over the theme background) so the
+       connector line sits behind the cards and only shows in the gaps */
+    background: linear-gradient(rgb(var(--color-foreground) / 0.04), rgb(var(--color-foreground) / 0.04)), rgb(var(--color-background));
+    border: 1px solid rgb(var(--color-foreground) / 0.08);
+    border-radius: 16px;
+    padding: 36px 28px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    transition: border-color 0.25s ease, transform 0.25s ease;
+  }
+
+  .bcl-step-card:hover {
+    border-color: rgb(var(--color-foreground) / 0.3);
+    transform: translateY(-4px);
+  }
+
+  /* ── STEP NUMBER CIRCLE (white contrast, page-faqs format) ── */
+  .bcl-step-number {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgb(var(--color-foreground) / 0.12);
+    border: 1px solid rgb(var(--color-foreground) / 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 22px;
+    font-size: var(--size-text-lg);
+    font-weight: 700;
+    color: rgb(var(--color-foreground));
+    font-family: inherit;
+  }
+
+  /* ── STEP TITLE ── */
+  .bcl-step-title {
+    color: rgb(var(--color-foreground));
+    margin-bottom: 10px;
+  }
+
+  /* ── STEP DESCRIPTION ── */
+  .bcl-step-desc {
+    font-size: var(--size-text-sm);
+    color: rgb(var(--color-foreground) / 0.6);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* ── OPTIONAL CTA ── */
+  .bcl-cta-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 48px;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .bcl-steps-grid {
+      grid-template-columns: 1fr;
+    }
+
+    /* Hide connector line on mobile — doesn't make sense stacked */
+    .bcl-steps-grid::before {
+      display: none;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .bcl-step-card {
+      padding: 32px 24px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Warranty Claim",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "t:sections.all.full_width.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "remove_horizontal_space",
+      "label": "t:sections.apps.settings.remove_horizontal_space.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "remove_vertical_space",
+      "label": "t:sections.apps.settings.remove_vertical_space.label"
+    },
+    {
+      "type": "select",
+      "id": "content_width",
+      "label": "t:sections.rich-text.settings.content_width.label",
+      "options": [
+        { "value": "small", "label": "t:sections.rich-text.settings.content_width.options__0.label" },
+        { "value": "normal", "label": "t:sections.rich-text.settings.content_width.options__1.label" },
+        { "value": "large", "label": "t:sections.rich-text.settings.content_width.options__2.label" },
+        { "value": "extra-large", "label": "t:sections.rich-text.settings.content_width.options__3.label" },
+        { "value": "full-width", "label": "t:sections.rich-text.settings.content_width.options__4.label" }
+      ],
+      "default": "normal"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.headers.heading"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "t:sections.all.subheading.label"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:sections.featured-collection.settings.heading.label"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "t:sections.all.content.label"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "t:sections.all.heading_size.label",
+      "options": [
+        { "value": "h0", "label": "t:sections.all.heading_size.options__0.label" },
+        { "value": "h1", "label": "t:sections.all.heading_size.options__1.label" },
+        { "value": "h2", "label": "t:sections.all.heading_size.options__2.label" },
+        { "value": "h3", "label": "t:sections.all.heading_size.options__3.label" },
+        { "value": "h4", "label": "t:sections.all.heading_size.options__4.label" },
+        { "value": "h5", "label": "t:sections.all.heading_size.options__5.label" },
+        { "value": "h6", "label": "t:sections.all.heading_size.options__6.label" }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "t:sections.all.text_alignment.label",
+      "options": [
+        { "value": "text-left", "label": "t:sections.all.text_alignment.options.text_left.label" },
+        { "value": "text-center", "label": "t:sections.all.text_alignment.options.text_center.label" }
+      ],
+      "default": "text-center"
+    },
+    {
+      "type": "html",
+      "id": "link_text",
+      "label": "t:sections.featured-collection.settings.link_text.label"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "t:sections.featured-collection.settings.link_url.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "new_tab",
+      "label": "Open in New Tab",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "heading_html_tag",
+      "label": "t:sections.all.heading_html_tag.label",
+      "options": [
+        { "value": "h1", "label": "h1" },
+        { "value": "h2", "label": "h2" },
+        { "value": "h3", "label": "h3" },
+        { "value": "h4", "label": "h4" },
+        { "value": "h5", "label": "h5" },
+        { "value": "h6", "label": "h6" },
+        { "value": "p", "label": "p" },
+        { "value": "span", "label": "span" },
+        { "value": "div", "label": "div" }
+      ],
+      "default": "h2",
+      "info": "t:sections.all.heading_html_tag.info"
+    },
+    {
+      "type": "header",
+      "content": "Step Headings"
+    },
+    {
+      "type": "select",
+      "id": "card_heading_size",
+      "label": "t:sections.all.heading_size.label",
+      "options": [
+        { "value": "h0", "label": "t:sections.all.heading_size.options__0.label" },
+        { "value": "h1", "label": "t:sections.all.heading_size.options__1.label" },
+        { "value": "h2", "label": "t:sections.all.heading_size.options__2.label" },
+        { "value": "h3", "label": "t:sections.all.heading_size.options__3.label" },
+        { "value": "h4", "label": "t:sections.all.heading_size.options__4.label" },
+        { "value": "h5", "label": "t:sections.all.heading_size.options__5.label" },
+        { "value": "h6", "label": "t:sections.all.heading_size.options__6.label" }
+      ],
+      "default": "h6"
+    },
+    {
+      "type": "select",
+      "id": "card_heading_html_tag",
+      "label": "t:sections.all.heading_html_tag.label",
+      "options": [
+        { "value": "h1", "label": "h1" },
+        { "value": "h2", "label": "h2" },
+        { "value": "h3", "label": "h3" },
+        { "value": "h4", "label": "h4" },
+        { "value": "h5", "label": "h5" },
+        { "value": "h6", "label": "h6" },
+        { "value": "p", "label": "p" },
+        { "value": "span", "label": "span" },
+        { "value": "div", "label": "div" }
+      ],
+      "default": "h3",
+      "info": "t:sections.all.heading_html_tag.info"
+    },
+    {
+      "type": "header",
+      "content": "Step 1"
+    },
+    {
+      "type": "text",
+      "id": "step_1_title",
+      "label": "Title",
+      "default": "Reach Out"
+    },
+    {
+      "type": "textarea",
+      "id": "step_1_description",
+      "label": "Description",
+      "default": "Contact our support team through our official email or social channels. We're here to help."
+    },
+    {
+      "type": "header",
+      "content": "Step 2"
+    },
+    {
+      "type": "text",
+      "id": "step_2_title",
+      "label": "Title",
+      "default": "Share the Details"
+    },
+    {
+      "type": "textarea",
+      "id": "step_2_description",
+      "label": "Description",
+      "default": "Send your order number, a short description of the issue, and a photo or video if possible."
+    },
+    {
+      "type": "header",
+      "content": "Step 3"
+    },
+    {
+      "type": "text",
+      "id": "step_3_title",
+      "label": "Title",
+      "default": "Get Your Replacement"
+    },
+    {
+      "type": "textarea",
+      "id": "step_3_description",
+      "label": "Description",
+      "default": "Once approved, we'll arrange your free replacement and get you back to your daily pause."
+    },
+    {
+      "type": "header",
+      "content": "Optional CTA Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "t:sections.image-with-text.blocks.button.settings.button_text.label",
+      "default": "Start a Claim",
+      "info": "Leave blank to hide the button."
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:sections.image-with-text.blocks.button.settings.button_link.label"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "t:sections.all.button_style.label",
+      "options": [
+        { "value": "", "label": "t:sections.all.button_style.options.filled" },
+        { "value": "button-outline", "label": "t:sections.all.button_style.options.outline" }
+      ],
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "button_size",
+      "label": "t:sections.image-with-text.blocks.button.settings.button_size.label",
+      "options": [
+        { "value": "text-xs md:text-sm", "label": "t:sections.image-with-text.blocks.button.settings.button_size.options__0.label" },
+        { "value": "text-sm md:text-base", "label": "t:sections.image-with-text.blocks.button.settings.button_size.options__1.label" },
+        { "value": "text-base md:text-lg", "label": "t:sections.image-with-text.blocks.button.settings.button_size.options__2.label" },
+        { "value": "text-lg md:text-h5", "label": "t:sections.image-with-text.blocks.button.settings.button_size.options__3.label" }
+      ],
+      "default": "text-sm md:text-base"
+    },
+    {
+      "type": "color",
+      "id": "button_background_color",
+      "label": "t:sections.all.background_color.label"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "t:sections.all.text_color.label"
+    },
+    {
+      "type": "header",
+      "content": "Hover"
+    },
+    {
+      "type": "paragraph",
+      "content": "Leave a hover option on \"Same as default\" or empty to keep the default value on hover."
+    },
+    {
+      "type": "select",
+      "id": "button_hover_style",
+      "label": "Hover style",
+      "options": [
+        { "value": "", "label": "Same as default" },
+        { "value": "filled", "label": "Filled" },
+        { "value": "outline", "label": "Outline" }
+      ],
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "button_hover_size",
+      "label": "Hover size",
+      "options": [
+        { "value": "", "label": "Same as default" },
+        { "value": "xs", "label": "Small" },
+        { "value": "sm", "label": "Medium" },
+        { "value": "base", "label": "Large" },
+        { "value": "lg", "label": "Extra large" }
+      ],
+      "default": ""
+    },
+    {
+      "type": "color",
+      "id": "button_hover_background_color",
+      "label": "Hover background"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_text_color",
+      "label": "Hover text"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.headers.colors"
+    },
+    {
+      "type": "color",
+      "label": "t:sections.all.background_color.label",
+      "id": "background_color"
+    },
+    {
+      "type": "color",
+      "label": "t:sections.all.text_color.label",
+      "id": "text_color"
+    },
+    {
+      "type": "color",
+      "label": "t:sections.all.heading_color.label",
+      "id": "heading_color"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Warranty Claim",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

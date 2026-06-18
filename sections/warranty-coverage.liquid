@@ -1,0 +1,472 @@
+{% render 'section-bg-number-vars' %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --content-width: {% render 'get-content-width', type: section.settings.content_width %};
+  }
+</style>
+
+{% liquid
+  assign section_classes = ''
+
+  if section.settings.remove_horizontal_space
+    assign section_classes = section_classes | append: ' !px-0 '
+  endif
+
+  if section.settings.remove_vertical_space
+    assign section_classes = section_classes | append: ' !py-0 '
+  endif
+
+  if section.settings.link_url != blank
+    assign link_url = section.settings.link_url
+  else
+    assign link_url = null
+  endif
+
+  assign card_tag = section.settings.card_heading_html_tag | default: 'h3'
+%}
+
+<section {% render 'section-attrs', class: section_classes %}>
+  <div class="section-body">
+    <div class="max-w-[--content-width] mx-auto">
+      {% render 'section-header', link_text: section.settings.link_text, link_url: link_url, new_tab: section.settings.new_tab %}
+
+      <div class="bc-coverage-grid" data-animation-auto-order>
+
+        <!-- COVERED CARD -->
+        <div class="bc-coverage-card bc-covered" data-animation="block" data-animation-group="{{ section.id }}">
+          <div class="bc-card-title">
+            <div class="bc-icon-wrap">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </div>
+            <{{ card_tag }} class="heading {{ section.settings.card_heading_size }} bc-card-heading">{{ section.settings.covered_heading }}</{{ card_tag }}>
+          </div>
+
+          <ul class="bc-coverage-list">
+            {% if section.settings.covered_item_1 != blank %}
+              <li><span class="bc-dot"></span>{{ section.settings.covered_item_1 }}</li>
+            {% endif %}
+            {% if section.settings.covered_item_2 != blank %}
+              <li><span class="bc-dot"></span>{{ section.settings.covered_item_2 }}</li>
+            {% endif %}
+            {% if section.settings.covered_item_3 != blank %}
+              <li><span class="bc-dot"></span>{{ section.settings.covered_item_3 }}</li>
+            {% endif %}
+            {% if section.settings.covered_item_4 != blank %}
+              <li><span class="bc-dot"></span>{{ section.settings.covered_item_4 }}</li>
+            {% endif %}
+          </ul>
+        </div>
+
+        <!-- NOT COVERED CARD -->
+        <div class="bc-coverage-card bc-not-covered" data-animation="block" data-animation-group="{{ section.id }}">
+          <div class="bc-card-title">
+            <div class="bc-icon-wrap">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="15" y1="9" x2="9" y2="15"/>
+                <line x1="9"  y1="9" x2="15" y2="15"/>
+              </svg>
+            </div>
+            <{{ card_tag }} class="heading {{ section.settings.card_heading_size }} bc-card-heading">{{ section.settings.not_covered_heading }}</{{ card_tag }}>
+          </div>
+
+          <ul class="bc-coverage-list">
+            {% if section.settings.not_covered_item_1 != blank %}
+              <li><span class="bc-dot"></span>{{ section.settings.not_covered_item_1 }}</li>
+            {% endif %}
+            {% if section.settings.not_covered_item_2 != blank %}
+              <li><span class="bc-dot"></span>{{ section.settings.not_covered_item_2 }}</li>
+            {% endif %}
+            {% if section.settings.not_covered_item_3 != blank %}
+              <li><span class="bc-dot"></span>{{ section.settings.not_covered_item_3 }}</li>
+            {% endif %}
+            {% if section.settings.not_covered_item_4 != blank %}
+              <li><span class="bc-dot"></span>{{ section.settings.not_covered_item_4 }}</li>
+            {% endif %}
+            {% if section.settings.not_covered_item_5 != blank %}
+              <li><span class="bc-dot"></span>{{ section.settings.not_covered_item_5 }}</li>
+            {% endif %}
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ── BREATHELET COVERAGE – scoped with bc- prefix ── */
+  .bc-coverage-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* ── CARDS ── */
+  .bc-coverage-card {
+    background: rgb(var(--color-foreground) / 0.04);
+    border: 1px solid rgb(var(--color-foreground) / 0.08);
+    border-radius: 16px;
+    padding: 40px;
+    text-align: left;
+  }
+
+  /* ── CARD TITLE ROW ── */
+  .bc-card-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .bc-icon-wrap {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .bc-icon-wrap svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* Covered – white tones */
+  .bc-covered .bc-icon-wrap {
+    background: rgb(var(--color-foreground) / 0.12);
+  }
+
+  .bc-covered .bc-icon-wrap svg {
+    stroke: rgb(var(--color-foreground));
+  }
+
+  /* Not Covered – muted tones */
+  .bc-not-covered .bc-icon-wrap {
+    background: rgb(var(--color-foreground) / 0.06);
+  }
+
+  .bc-not-covered .bc-icon-wrap svg {
+    stroke: rgb(var(--color-foreground) / 0.45);
+  }
+
+  .bc-card-heading {
+    color: rgb(var(--color-foreground));
+    margin: 0;
+  }
+
+  /* ── LIST ── */
+  .bc-coverage-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .bc-coverage-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 11px 0;
+    font-size: var(--size-text-sm);
+    color: rgb(var(--color-foreground) / 0.8);
+    border-bottom: 1px solid rgb(var(--color-foreground) / 0.08);
+    line-height: 1.5;
+  }
+
+  .bc-coverage-list li:last-child {
+    border-bottom: none;
+  }
+
+  /* ── DOT ── */
+  .bc-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 5px;
+  }
+
+  .bc-covered .bc-dot {
+    background: rgb(var(--color-foreground));
+  }
+
+  .bc-not-covered .bc-dot {
+    background: rgb(var(--color-foreground) / 0.45);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .bc-coverage-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .bc-coverage-card {
+      padding: 32px 24px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Warranty Coverage",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "t:sections.all.full_width.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "remove_horizontal_space",
+      "label": "t:sections.apps.settings.remove_horizontal_space.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "remove_vertical_space",
+      "label": "t:sections.apps.settings.remove_vertical_space.label"
+    },
+    {
+      "type": "select",
+      "id": "content_width",
+      "label": "t:sections.rich-text.settings.content_width.label",
+      "options": [
+        { "value": "small", "label": "t:sections.rich-text.settings.content_width.options__0.label" },
+        { "value": "normal", "label": "t:sections.rich-text.settings.content_width.options__1.label" },
+        { "value": "large", "label": "t:sections.rich-text.settings.content_width.options__2.label" },
+        { "value": "extra-large", "label": "t:sections.rich-text.settings.content_width.options__3.label" },
+        { "value": "full-width", "label": "t:sections.rich-text.settings.content_width.options__4.label" }
+      ],
+      "default": "normal"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.headers.heading"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "t:sections.all.subheading.label"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:sections.featured-collection.settings.heading.label"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "t:sections.all.content.label"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "t:sections.all.heading_size.label",
+      "options": [
+        { "value": "h0", "label": "t:sections.all.heading_size.options__0.label" },
+        { "value": "h1", "label": "t:sections.all.heading_size.options__1.label" },
+        { "value": "h2", "label": "t:sections.all.heading_size.options__2.label" },
+        { "value": "h3", "label": "t:sections.all.heading_size.options__3.label" },
+        { "value": "h4", "label": "t:sections.all.heading_size.options__4.label" },
+        { "value": "h5", "label": "t:sections.all.heading_size.options__5.label" },
+        { "value": "h6", "label": "t:sections.all.heading_size.options__6.label" }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "t:sections.all.text_alignment.label",
+      "options": [
+        { "value": "text-left", "label": "t:sections.all.text_alignment.options.text_left.label" },
+        { "value": "text-center", "label": "t:sections.all.text_alignment.options.text_center.label" }
+      ],
+      "default": "text-center"
+    },
+    {
+      "type": "html",
+      "id": "link_text",
+      "label": "t:sections.featured-collection.settings.link_text.label"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "t:sections.featured-collection.settings.link_url.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "new_tab",
+      "label": "Open in New Tab",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "heading_html_tag",
+      "label": "t:sections.all.heading_html_tag.label",
+      "options": [
+        { "value": "h1", "label": "h1" },
+        { "value": "h2", "label": "h2" },
+        { "value": "h3", "label": "h3" },
+        { "value": "h4", "label": "h4" },
+        { "value": "h5", "label": "h5" },
+        { "value": "h6", "label": "h6" },
+        { "value": "p", "label": "p" },
+        { "value": "span", "label": "span" },
+        { "value": "div", "label": "div" }
+      ],
+      "default": "h2",
+      "info": "t:sections.all.heading_html_tag.info"
+    },
+    {
+      "type": "header",
+      "content": "Card Headings"
+    },
+    {
+      "type": "select",
+      "id": "card_heading_size",
+      "label": "t:sections.all.heading_size.label",
+      "options": [
+        { "value": "h0", "label": "t:sections.all.heading_size.options__0.label" },
+        { "value": "h1", "label": "t:sections.all.heading_size.options__1.label" },
+        { "value": "h2", "label": "t:sections.all.heading_size.options__2.label" },
+        { "value": "h3", "label": "t:sections.all.heading_size.options__3.label" },
+        { "value": "h4", "label": "t:sections.all.heading_size.options__4.label" },
+        { "value": "h5", "label": "t:sections.all.heading_size.options__5.label" },
+        { "value": "h6", "label": "t:sections.all.heading_size.options__6.label" }
+      ],
+      "default": "h6"
+    },
+    {
+      "type": "select",
+      "id": "card_heading_html_tag",
+      "label": "t:sections.all.heading_html_tag.label",
+      "options": [
+        { "value": "h1", "label": "h1" },
+        { "value": "h2", "label": "h2" },
+        { "value": "h3", "label": "h3" },
+        { "value": "h4", "label": "h4" },
+        { "value": "h5", "label": "h5" },
+        { "value": "h6", "label": "h6" },
+        { "value": "p", "label": "p" },
+        { "value": "span", "label": "span" },
+        { "value": "div", "label": "div" }
+      ],
+      "default": "h3",
+      "info": "t:sections.all.heading_html_tag.info"
+    },
+    {
+      "type": "header",
+      "content": "What's Covered Card"
+    },
+    {
+      "type": "text",
+      "id": "covered_heading",
+      "label": "Card Heading",
+      "default": "What's Covered"
+    },
+    {
+      "type": "text",
+      "id": "covered_item_1",
+      "label": "Item 1",
+      "default": "Manufacturing defects in materials or workmanship"
+    },
+    {
+      "type": "text",
+      "id": "covered_item_2",
+      "label": "Item 2",
+      "default": "Vibration motor faults under normal use"
+    },
+    {
+      "type": "text",
+      "id": "covered_item_3",
+      "label": "Item 3",
+      "default": "Battery issues caused by a defect (not normal long-term wear)"
+    },
+    {
+      "type": "text",
+      "id": "covered_item_4",
+      "label": "Item 4",
+      "default": "Free replacement for any valid defect claim"
+    },
+    {
+      "type": "header",
+      "content": "What's Not Covered Card"
+    },
+    {
+      "type": "text",
+      "id": "not_covered_heading",
+      "label": "Card Heading",
+      "default": "What's Not Covered"
+    },
+    {
+      "type": "text",
+      "id": "not_covered_item_1",
+      "label": "Item 1",
+      "default": "Loss, theft, or misplacement"
+    },
+    {
+      "type": "text",
+      "id": "not_covered_item_2",
+      "label": "Item 2",
+      "default": "Accidental, intentional, or cosmetic damage (drops, crushing, scratches)"
+    },
+    {
+      "type": "text",
+      "id": "not_covered_item_3",
+      "label": "Item 3",
+      "default": "Damage from improper use or unauthorized repairs"
+    },
+    {
+      "type": "text",
+      "id": "not_covered_item_4",
+      "label": "Item 4",
+      "default": "Normal wear over time (minor finish wear, gradual battery aging)"
+    },
+    {
+      "type": "text",
+      "id": "not_covered_item_5",
+      "label": "Item 5",
+      "default": "Products not purchased from official Breathelet channels"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.headers.colors"
+    },
+    {
+      "type": "color",
+      "label": "t:sections.all.background_color.label",
+      "id": "background_color"
+    },
+    {
+      "type": "color",
+      "label": "t:sections.all.text_color.label",
+      "id": "text_color"
+    },
+    {
+      "type": "color",
+      "label": "t:sections.all.heading_color.label",
+      "id": "heading_color"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Warranty Coverage",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
