@@ -1,12 +1,12 @@
 {% liquid
   assign gift_card_recipient_feature_active = false
   if block.settings.show_gift_card_recipient and product.gift_card?
-    assign gift_card_recipient_feature_active = true
+  assign gift_card_recipient_feature_active = true
   endif
-
+  
   assign show_dynamic_checkout = false
   if block.settings.show_dynamic_checkout_buttons and gift_card_recipient_feature_active == false
-    assign show_dynamic_checkout = true
+  assign show_dynamic_checkout = true
   endif
 %}
 
@@ -28,7 +28,7 @@
       {{ 'products.product.add_to_cart' | t }}
     </button>
   </div>
-
+  
   {% continue %}
 {% endif %}
 
@@ -40,31 +40,31 @@
     novalidate: 'novalidate',
     data-type: 'add-to-cart-form'
   %}  
-    <input
-      data-variant-info="variant_id"
-      type="hidden"
-      name="id"
-      value="{{ product.selected_or_first_available_variant.id }}"
-      disabled
-    >
-
+  <input
+    data-variant-info="variant_id"
+    type="hidden"
+    name="id"
+    value="{{ product.selected_or_first_available_variant.id }}"
+    disabled
+  >
+    
     {% if gift_card_recipient_feature_active %}
       <div class="mb-8">
         {% render 'gift-card-recipient-form', product: product, form: form, section: section %}
       </div>
     {% endif %}
-
+    
     <div class="trim-margins buy-buttons">
       {% if show_dynamic_checkout %}
         <div class="qty-wrap">
           <div class="qty-selector-wrapper">
             {% capture qty_selector_id %}{{ section.id }}-qty-input{% endcapture %}
-
+            
             <label class="label label-product-info mb-3 hidden" for="{{ qty_selector_id }}">
               {{ 'products.product.quantity.label' | t }}
             </label>
-
-            <div>
+            
+            <div class="pdp-main-product-qty">
               {% render 'qty-selector', product: product, product_form_id: product_form_id, id: qty_selector_id %}
             </div>
           </div>
@@ -78,30 +78,142 @@
         {% if product.selected_or_first_available_variant == null
           or product.selected_or_first_available_variant.available == false
         %}
-          disabled
-        {% endif %}
-      >
-        <span class="flex justify-center items-center gap-1.5">
-          {%- if product.selected_or_first_available_variant == null -%}
-            {{ 'products.product.unavailable' | t }}
-          {%- elsif product.selected_or_first_available_variant.available -%}
-            {% if show_dynamic_checkout %}
-             {% render 'icon-product-cart-black' %}
-            {% else %}
-              {% render 'icon-product-cart-black' %}
-            {% endif %}
-             <span class="add-to-cart-text-btn"> {{ 'products.product.add_to_cart' | t }} </span>
-          {%- else -%}
-            {{ 'products.product.sold_out' | t }}
-          {%- endif -%}
-        </span>
-      </button>
-
-      {% if show_dynamic_checkout %}
-        {{ form | payment_button }}
+        disabled
       {% endif %}
-    </div>
-  {% endform %}
+    >
+      <span class="flex justify-center items-center gap-1.5">
+        {%- if product.selected_or_first_available_variant == null -%}
+          {{ 'products.product.unavailable' | t }}
+        {%- elsif product.selected_or_first_available_variant.available -%}
+          {% if show_dynamic_checkout %}
+            {% render 'icon-product-cart-black' %}
+          {% else %}
+            {% render 'icon-product-cart-black' %}
+          {% endif %}
+          <span class="add-to-cart-text-btn"> {{ 'products.product.add_to_cart' | t }} </span>
+        {%- else -%}
+          {{ 'products.product.sold_out' | t }}
+        {%- endif -%}
+      </span>
+    </button>
+    
+    {% if show_dynamic_checkout %}
+      {{ form | payment_button }}
+    {% endif %}
+  </div>
+{% endform %}
 
-  <div class="message message-danger text-danger mt-6" role="alert"></div>
+<div class="message message-danger text-danger mt-6" role="alert"></div>
 </product-form>
+
+<script>
+  (function () {
+    // Guard against double-init (theme editor re-runs this inline script)
+    if (window.__pdpQtyDiscountInit) return;
+    window.__pdpQtyDiscountInit = true;
+
+    const ELIGIBLE_TITLES = ['Gunmetal', 'Sunshine Gold']; // exact match only
+    const DISCOUNT = 0.10; // mirrors the Shopify automatic 10% discount (visual only)
+    const MIN_QTY = 2;
+
+    // Swap the number inside a money string, preserving currency symbol/format.
+    function formatPrice(template, value) {
+      return template.replace(/[\d.,]+/, value.toFixed(2));
+    }
+
+    function getQty() {
+      const input = document.querySelector('.pdp-main-product-qty input[type="number"]');
+      return input ? (parseInt(input.value, 10) || 1) : 1;
+    }
+
+    // Only write when the value actually changes — keeps the MutationObserver
+    // below from re-triggering itself into an infinite loop.
+    function setText(el, val) {
+      if (el && el.textContent !== val) el.textContent = val;
+    }
+
+    function updatePrices() {
+      const apply = getQty() >= MIN_QTY;
+
+      // Re-query every time so freshly re-rendered swatches (variant change) are covered.
+      document.querySelectorAll('.variant-radio-price').forEach(function (block) {
+        if (!ELIGIBLE_TITLES.includes(block.dataset.variantTitle)) return;
+
+        const regEl = block.querySelector('.variant-reg-price');
+        const compareEl = block.querySelector('.variant-compare-price');
+        if (!regEl) return;
+
+        // Canonical values from Liquid — never derived from the (mutated) DOM,
+        // so the discount can't compound and the compare price can be restored.
+        const baseCents = parseInt(block.dataset.basePrice, 10); // e.g. 3999
+        const baseReg = block.dataset.baseReg || ''; // "$39.99" (also the format template)
+        const baseCompare = block.dataset.baseCompare || ''; // "$79.98"
+        if (isNaN(baseCents) || !baseReg) return;
+
+        if (apply) {
+          // Exact 10% off (matches Shopify's real discount, e.g. $39.99 -> $35.99)
+          const discounted = (baseCents / 100) * (1 - DISCOUNT);
+          setText(regEl, formatPrice(baseReg, discounted));
+          setText(compareEl, baseReg);
+        } else {
+          // Revert to the original server-rendered state
+          setText(regEl, baseReg);
+          setText(compareEl, baseCompare);
+        }
+        regEl.classList.toggle('price-discounted', apply);
+      });
+    }
+
+    // Debounce bursts (a variant change can fire several mutations at once).
+    let scheduled = false;
+    function scheduleUpdate() {
+      if (scheduled) return;
+      scheduled = true;
+      requestAnimationFrame(function () {
+        scheduled = false;
+        updatePrices();
+      });
+    }
+
+    // Delegated listeners on document survive the qty selector being re-rendered
+    // on variant change (which detaches any directly-bound handlers). Passive so
+    // they never block scrolling/input.
+    document.addEventListener('input', function (e) {
+      if (e.target.closest('.pdp-main-product-qty')) scheduleUpdate();
+    }, { passive: true });
+    document.addEventListener('change', function (e) {
+      if (e.target.closest('.pdp-main-product-qty')) scheduleUpdate();
+    }, { passive: true });
+    document.addEventListener('click', function (e) {
+      if (e.target.closest('.pdp-main-product-qty [data-inc], .pdp-main-product-qty [data-dec]')) scheduleUpdate();
+    }, { passive: true });
+
+    // Variant change re-renders the swatches back to their base prices. Watch the
+    // section, but only react when a .variant-radio-price is actually (re)inserted
+    // — ignoring our own text writes and every other unrelated mutation, so this
+    // stays cheap and can never loop.
+    const sectionEl = document.getElementById('shopify-section-{{ section.id }}') || document.body;
+    new MutationObserver(function (mutations) {
+      for (let i = 0; i < mutations.length; i++) {
+        const added = mutations[i].addedNodes;
+        for (let j = 0; j < added.length; j++) {
+          const node = added[j];
+          if (node.nodeType === 1 &&
+              (node.matches && node.matches('.variant-radio-price') ||
+               node.querySelector && node.querySelector('.variant-radio-price'))) {
+            scheduleUpdate();
+            return;
+          }
+        }
+      }
+    }).observe(sectionEl, { childList: true, subtree: true });
+
+    document.addEventListener('shopify:section:load', scheduleUpdate);
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', updatePrices);
+    } else {
+      updatePrices();
+    }
+  })();
+</script>

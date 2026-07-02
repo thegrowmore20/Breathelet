@@ -8,6 +8,7 @@
     assign loading = 'lazy'
   else
     assign loading = 'eager'
+    assign fetchpriority = 'high'
   endif
 %}
 
@@ -50,7 +51,8 @@
               class: image_class,
               sizes: sizes,
               loading: loading,
-              preload: preload
+              preload: preload,
+              fetchpriority: fetchpriority
           }}
         </lqip-element>
       </div>

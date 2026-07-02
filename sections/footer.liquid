@@ -217,6 +217,7 @@
 <div {% render 'section-attrs', class: 'footer overflow-hidden relative' %}>
 
   {%- if section.settings.background_image != blank -%}
+    {% assign bg_img_alt = section.settings.background_image.alt | default: 'footer background image' %}
     <div class="footer__bg-media">
       {{-
         section.settings.background_image
@@ -225,7 +226,7 @@
           loading: 'lazy',
           widths: '800, 1200, 1600, 2000, 2400',
           sizes: '100vw',
-          alt: section.settings.background_image.alt | default: 'Footer background'
+          alt: bg_img_alt
       -}}
     </div>
   {%- endif -%}

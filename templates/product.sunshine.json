@@ -282,7 +282,7 @@
             "metafield_namespace": "custom",
             "metafield_key": "",
             "max_items": 10,
-            "autoplay": true,
+            "autoplay": false,
             "muted": true,
             "video_border_radius": 12,
             "slides_desktop": 4,
@@ -291,7 +291,7 @@
             "slide_gap": 15,
             "desktop_width_percent": 100,
             "section_padding": 0,
-            "auto_change": true,
+            "auto_change": false,
             "auto_change_interval": 10,
             "show_arrows": true,
             "show_dots": true,
@@ -340,40 +340,15 @@
             "default_tab": "automatic",
             "only_photos": false,
             "aggregated": false,
-            "limit": 10,
+            "limit": 4,
             "hide_thumbnails": false,
             "maxwidth": 1080,
             "is_sample": true
           }
-        },
-        "loox_reviews_loox_card_carousel_section_q8t43T": {
-          "type": "shopify://apps/loox-reviews/blocks/loox-card-carousel-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
-          "disabled": true,
-          "settings": {
-            "maxWidth": 1100,
-            "borderRadius": 8,
-            "itemsPerView": 4,
-            "mobileItemsPerView": 1,
-            "maxNumberOfCharacters": 100,
-            "imageRatio": "0.72",
-            "reviewerNameColor": "#000000",
-            "textColor": "#000000",
-            "itemBackgroundColor": "#ffffff",
-            "starsColor": "",
-            "starsBackgroundColor": "#ffffff",
-            "arrows_backgroundColor": "#ffffff",
-            "arrows_iconColor": "#9a9a9a",
-            "shadow": "offset-dark",
-            "border_active": false,
-            "border_width": 2,
-            "border_color": "#000000",
-            "productIds": ""
-          }
         }
       },
       "block_order": [
-        "loox_reviews_loox_dynamic_section_DAkYTq",
-        "loox_reviews_loox_card_carousel_section_q8t43T"
+        "loox_reviews_loox_dynamic_section_DAkYTq"
       ],
       "settings": {
         "full_width": true,

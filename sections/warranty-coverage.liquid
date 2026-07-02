@@ -3,6 +3,8 @@
 <style>
   #shopify-section-{{ section.id }} {
     --content-width: {% render 'get-content-width', type: section.settings.content_width %};
+    --bc-accent: {{ section.settings.accent_color }};
+    --bc-accent-rgb: {{ section.settings.accent_color.red }} {{ section.settings.accent_color.green }} {{ section.settings.accent_color.blue }};
   }
 </style>
 
@@ -96,6 +98,12 @@
         </div>
 
       </div>
+
+      {% if section.settings.footer_text != blank %}
+        <div class="bc-footer" data-animation="block" data-animation-group="{{ section.id }}">
+          {{ section.settings.footer_text }}
+        </div>
+      {% endif %}
     </div>
   </div>
 </section>
@@ -106,6 +114,19 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 24px;
+  }
+
+  /* ── FOOTER CALLOUT ── */
+  .bc-footer {
+    margin-top: 24px;
+    padding: 24px 32px;
+    border-radius: 16px;
+    background: rgb(var(--color-foreground) / 0.04);
+    border: 1px solid rgb(var(--color-foreground) / 0.08);
+    font-size: var(--size-text-sm);
+    line-height: 1.75;
+    color: rgb(var(--color-foreground) / 0.65);
+    text-align: left;
   }
 
   /* ── CARDS ── */
@@ -252,6 +273,13 @@
         { "value": "full-width", "label": "t:sections.rich-text.settings.content_width.options__4.label" }
       ],
       "default": "normal"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "info": "Used for the highlighted (bold) text in the bottom callout.",
+      "default": "#c9a96e"
     },
     {
       "type": "header",
@@ -444,6 +472,16 @@
     },
     {
       "type": "header",
+      "content": "Bottom Callout"
+    },
+    {
+      "type": "richtext",
+      "id": "footer_text",
+      "label": "t:sections.all.content.label",
+      "info": "Callout box shown at the bottom of the section. Bold text uses the Accent color. Leave blank to hide."
+    },
+    {
+      "type": "header",
       "content": "t:sections.all.headers.colors"
     },
     {
@@ -470,3 +508,4 @@
   ]
 }
 {% endschema %}
+

@@ -24,6 +24,7 @@ html,
   font-feature-settings: normal;
   font-variation-settings: normal;
   -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -3640,7 +3641,7 @@ body {
 }
 .subheading {
   font-family: var(--label-font-family);
-  font-weight: var(--label-font-weight);
+  font-weight: 600;
   text-transform: var(--label-text-transform);
   color: rgb(var(--color-foreground) / var(--subheading-opacity, 0.75));
   overflow-wrap: anywhere;
@@ -6913,7 +6914,7 @@ shopify-accelerated-checkout-cart {
 }
 .prose {
   color: var(--tw-prose-body);
-  max-width: 65ch;
+  max-width: 70ch;
 }
 .prose :where(p):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
   margin-top: 1.25em;
@@ -8230,6 +8231,9 @@ shopify-accelerated-checkout-cart {
 .w-16 {
   width: 4rem;
 }
+.w-22 {
+  width: 5rem;
+}
 .w-24 {
   width: 6rem;
 }
@@ -8871,6 +8875,9 @@ shopify-accelerated-checkout-cart {
 }
 .font-600 {
   font-weight: 600;
+}
+.font-500 {
+  font-weight: 500;
 }
 .font-bold {
   font-weight: var(--font-body-weight-bold);
@@ -10293,6 +10300,9 @@ shopify-accelerated-checkout-cart {
   }
 
   .md\:mt-8 {
+    margin-top: 2rem;
+  }
+  .md\:mt-10 {
     margin-top: 2rem;
   }
 

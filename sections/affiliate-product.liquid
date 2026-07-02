@@ -1,47 +1,405 @@
-{% render 'affiliate-base' %}
-<div class="aff-root alt"><div class="wrap product">
-  <div class="product-visual reveal" role="img" aria-label="The Breathelet bracelet">{% if section.settings.image %}{{ section.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '400,600,800' }}{% else %}<svg viewBox="0 0 320 320" width="78%" fill="none"><circle cx="160" cy="160" r="96" stroke="#3A3B40" stroke-width="20" opacity="0.95"/><circle cx="160" cy="160" r="96" stroke="#C08A7B" stroke-width="4" opacity="0.75"/><rect x="138" y="48" width="44" height="34" rx="14" fill="#3A3B40"/><rect x="138" y="48" width="44" height="34" rx="14" fill="url(#aff-g)" opacity="0.4"/><circle cx="160" cy="65" r="6" fill="#C08A7B"/><defs><linearGradient id="aff-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".6"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs></svg>{% endif %}</div>
-  <div class="reveal"><span class="eyebrow">{{ section.settings.eyebrow }}</span><h2>{{ section.settings.heading }}</h2><div class="lead">{{ section.settings.lead }}</div>
-    <div class="specs">{% for block in section.blocks %}<div class="spec" {{ block.shopify_attributes }}><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6L9 17l-5-5"/></svg><span>{{ block.settings.text }}</span></div>{% endfor %}</div>
+{% render 'section-bg-number-vars' %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --content-width: {% render 'get-content-width', type: section.settings.content_width %};
+    --ap-accent: {{ section.settings.accent_color }};
+    --ap-accent-rgb: {{ section.settings.accent_color.red }} {{ section.settings.accent_color.green }} {{ section.settings.accent_color.blue }};
+  }
+</style>
+
+{% liquid
+  assign section_classes = ' ap-section '
+
+  if section.settings.remove_horizontal_space
+    assign section_classes = section_classes | append: ' !px-0 '
+  endif
+
+  if section.settings.remove_vertical_space
+    assign section_classes = section_classes | append: ' !py-0 '
+  endif
+
+  assign card_tag = section.settings.card_heading_html_tag | default: 'h3'
+%}
+
+<section {% render 'section-attrs', class: section_classes %}>
+  <div class="section-body max-w-[--content-width] mx-auto">
+    <div class="ap-grid">
+
+      <!-- LEFT: header + callout + optional CTA -->
+      <div class="ap-content">
+        {% render 'section-header', button: false, header_mb: 'rfs:mb-8' %}
+
+        {% if section.settings.note_text != blank %}
+          <div class="ap-note" data-animation="block" data-animation-group="{{ section.id }}">
+            {{ section.settings.note_text }}
+          </div>
+        {% endif %}
+      </div>
+
+      <!-- RIGHT: product card -->
+      <aside class="ap-card" data-animation="block" data-animation-group="{{ section.id }}">
+        {% if section.settings.card_icon_image != blank %}
+          {% assign icon_sizes = section.settings.card_icon_width | append: 'px' %}
+          <div class="ap-card__icon" style="width: {{ section.settings.card_icon_width }}px;">
+            {{
+              section.settings.card_icon_image
+              | image_url: width: 320
+              | image_tag:
+                widths: '80, 160, 240, 320',
+                sizes: icon_sizes,
+                alt: section.settings.card_icon_image.alt,
+                loading: 'lazy'
+            }}
+          </div>
+        {% endif %}
+
+        {% if section.settings.card_title != blank %}
+          <{{ card_tag }} class="heading {{ section.settings.card_heading_size }} ap-card__title">{{ section.settings.card_title }}</{{ card_tag }}>
+        {% endif %}
+
+        {% if section.settings.card_subtitle != blank %}
+          <p class="ap-card__subtitle">{{ section.settings.card_subtitle }}</p>
+        {% endif %}
+
+        {% if section.blocks.size > 0 %}
+          <div class="ap-card__features">
+            {% for block in section.blocks %}
+              {% if block.settings.text != blank %}
+                <span class="ap-feature" {{ block.shopify_attributes }}>{{ block.settings.text }}</span>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
+      </aside>
+
+    </div>
+
+    {% if section.settings.footer_text != blank %}
+      <p class="ap-footer ap-footer text-sm md-text-base mt-6 md:mt-10 mx-auto text-center" data-animation="block" data-animation-group="{{ section.id }}">{{ section.settings.footer_text }}</p>
+    {% endif %}
   </div>
-</div></div>
+</section>
+
+<style>
+  /* Vertical/horizontal spacing comes from the theme .section class. */
+  .ap-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  /* Product card on the left, text on the right (desktop) */
+  .ap-card { order: 1; }
+  .ap-content { order: 2; }
+
+  /* ── LEFT ── */
+  .ap-note {
+    padding: 20px 24px;
+    border-radius: 8px;
+    background: rgb(var(--color-foreground) / 0.04);
+    border-left: 2px solid rgb(var(--color-foreground) / 0.35);
+    font-size: var(--size-text-sm);
+    line-height: 1.7;
+    color: rgb(var(--color-foreground) / 0.7);
+  }
+
+  .ap-note strong,
+  .ap-note b {
+    color: rgb(var(--color-foreground));
+  }
+
+  /* ── RIGHT CARD ── */
+  .ap-card {
+    padding: 48px 30px;
+    border-radius: 24px;
+    background: rgb(var(--color-foreground) / 0.04);
+    border: 1px solid rgb(var(--color-foreground) / 0.08);
+    text-align: center;
+  }
+
+  .ap-card__icon {
+    margin: 0 auto 20px;
+    max-width: 100%;
+  }
+
+  .ap-card__icon img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .ap-card__title {
+    margin-bottom: 8px;
+    color: rgb(var(--color-foreground));
+  }
+
+  .ap-card__subtitle {
+    margin-bottom: 28px;
+    font-size: var(--size-text-base);
+    color: rgb(var(--color-foreground) / 0.6);
+  }
+
+  .ap-card__features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+
+  .ap-feature {
+    padding: 9px 18px;
+    border-radius: 999px;
+    border: 1px solid rgb(var(--ap-accent-rgb) / 0.4);
+    font-size: var(--size-text-xs);
+    color: var(--ap-accent);
+    white-space: nowrap;
+  }
+
+  .ap-footer {  
+    max-width: 750px;    
+    color: rgb(var(--color-foreground) / 0.55);
+  }
+
+  @media (max-width: 900px) {
+    .ap-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .ap-card {
+      padding: 30px 20px;
+    }
+    .ap-grid {     
+        gap: 30px;
+    }
+    .ap-feature {
+      padding: 9px;
+    }
+  }
+</style>
+
 {% schema %}
 {
   "name": "Affiliate · Product",
   "settings": [
     {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Product image"
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "t:sections.all.full_width.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "remove_horizontal_space",
+      "label": "t:sections.apps.settings.remove_horizontal_space.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "remove_vertical_space",
+      "label": "t:sections.apps.settings.remove_vertical_space.label"
+    },
+    {
+      "type": "select",
+      "id": "content_width",
+      "label": "t:sections.rich-text.settings.content_width.label",
+      "options": [
+        { "value": "small", "label": "t:sections.rich-text.settings.content_width.options__0.label" },
+        { "value": "normal", "label": "t:sections.rich-text.settings.content_width.options__1.label" },
+        { "value": "large", "label": "t:sections.rich-text.settings.content_width.options__2.label" },
+        { "value": "extra-large", "label": "t:sections.rich-text.settings.content_width.options__3.label" },
+        { "value": "full-width", "label": "t:sections.rich-text.settings.content_width.options__4.label" }
+      ],
+      "default": "extra-large"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "info": "Used for the feature pills in the product card.",
+      "default": "#c9a96e"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.headers.heading"
     },
     {
       "type": "text",
-      "id": "eyebrow",
-      "label": "Eyebrow",
-      "default": "What you'll promote"
+      "id": "subheading",
+      "label": "t:sections.all.subheading.label",
+      "default": "What You'll Promote"
     },
     {
-      "type": "inline_richtext",
+      "type": "text",
       "id": "heading",
-      "label": "Heading",
-      "default": "The mindful pause, <em>on your wrist.</em>"
+      "label": "t:sections.featured-collection.settings.heading.label",
+      "default": "Breathelet — the mindful pause, on your wrist."
     },
     {
       "type": "richtext",
-      "id": "lead",
-      "label": "Lead",
-      "default": "<p>Gentle, random vibration reminders throughout the day. Each cue is a quiet invitation to pause and return to the present. The random timing is intentional — predictable reminders fade; surprising ones stay meaningful.</p>"
+      "id": "content",
+      "label": "t:sections.all.content.label",
+      "default": "<p>Breathelet is a simple wearable that sends gentle, random vibration reminders throughout the day. Each cue is a quiet invitation to pause, check in with yourself, and return to the present moment.</p>"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "t:sections.all.text_alignment.label",
+      "options": [
+        { "value": "text-left", "label": "t:sections.all.text_alignment.options.text_left.label" },
+        { "value": "text-center", "label": "t:sections.all.text_alignment.options.text_center.label" }
+      ],
+      "default": "text-left"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "t:sections.all.heading_size.label",
+      "options": [
+        { "value": "h0", "label": "t:sections.all.heading_size.options__0.label" },
+        { "value": "h1", "label": "t:sections.all.heading_size.options__1.label" },
+        { "value": "h2", "label": "t:sections.all.heading_size.options__2.label" },
+        { "value": "h3", "label": "t:sections.all.heading_size.options__3.label" },
+        { "value": "h4", "label": "t:sections.all.heading_size.options__4.label" },
+        { "value": "h5", "label": "t:sections.all.heading_size.options__5.label" },
+        { "value": "h6", "label": "t:sections.all.heading_size.options__6.label" }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "select",
+      "id": "heading_html_tag",
+      "label": "t:sections.all.heading_html_tag.label",
+      "options": [
+        { "value": "h1", "label": "h1" },
+        { "value": "h2", "label": "h2" },
+        { "value": "h3", "label": "h3" },
+        { "value": "h4", "label": "h4" },
+        { "value": "h5", "label": "h5" },
+        { "value": "h6", "label": "h6" },
+        { "value": "p", "label": "p" },
+        { "value": "span", "label": "span" },
+        { "value": "div", "label": "div" }
+      ],
+      "default": "h2",
+      "info": "t:sections.all.heading_html_tag.info"
+    },
+    {
+      "type": "header",
+      "content": "Callout Note"
+    },
+    {
+      "type": "richtext",
+      "id": "note_text",
+      "label": "t:sections.all.content.label",
+      "info": "Leave blank to hide the callout.",
+      "default": "<p><strong>Why random timing?</strong> Predictable reminders fade into the background. Surprising ones stay meaningful — so every nudge actually lands.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Bottom Line"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "footer_text",
+      "label": "t:sections.all.content.label",
+      "info": "Centered line at the bottom of the section. Leave blank to hide.",
+      "default": "A clean, screen-free way to build small, mindful habits, one unexpected moment at a time."
+    },
+    {
+      "type": "header",
+      "content": "Product Card"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_icon_image",
+      "label": "Icon image"
+    },
+    {
+      "type": "range",
+      "id": "card_icon_width",
+      "label": "Icon width",
+      "min": 24,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "text",
+      "id": "card_title",
+      "label": "Product name",
+      "default": "Breathelet"
+    },
+    {
+      "type": "select",
+      "id": "card_heading_size",
+      "label": "t:sections.all.heading_size.label",
+      "options": [
+        { "value": "h0", "label": "t:sections.all.heading_size.options__0.label" },
+        { "value": "h1", "label": "t:sections.all.heading_size.options__1.label" },
+        { "value": "h2", "label": "t:sections.all.heading_size.options__2.label" },
+        { "value": "h3", "label": "t:sections.all.heading_size.options__3.label" },
+        { "value": "h4", "label": "t:sections.all.heading_size.options__4.label" },
+        { "value": "h5", "label": "t:sections.all.heading_size.options__5.label" },
+        { "value": "h6", "label": "t:sections.all.heading_size.options__6.label" }
+      ],
+      "default": "h4"
+    },
+    {
+      "type": "select",
+      "id": "card_heading_html_tag",
+      "label": "t:sections.all.heading_html_tag.label",
+      "options": [
+        { "value": "h1", "label": "h1" },
+        { "value": "h2", "label": "h2" },
+        { "value": "h3", "label": "h3" },
+        { "value": "h4", "label": "h4" },
+        { "value": "h5", "label": "h5" },
+        { "value": "h6", "label": "h6" },
+        { "value": "p", "label": "p" },
+        { "value": "span", "label": "span" },
+        { "value": "div", "label": "div" }
+      ],
+      "default": "h3",
+      "info": "t:sections.all.heading_html_tag.info"
+    },
+    {
+      "type": "text",
+      "id": "card_subtitle",
+      "label": "Product subtitle",
+      "default": "Screen-free mindfulness wearable"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.headers.colors"
+    },
+    {
+      "type": "color",
+      "label": "t:sections.all.text_color.label",
+      "id": "text_color"
+    },
+    {
+      "type": "color",
+      "label": "t:sections.all.heading_color.label",
+      "id": "heading_color"
     }
   ],
   "blocks": [
     {
-      "type": "spec",
-      "name": "Spec",
+      "type": "feature",
+      "name": "Feature",
+      "limit": 10,
       "settings": [
         {
-          "type": "richtext",
+          "type": "text",
           "id": "text",
-          "label": "Text"
+          "label": "Label",
+          "default": "Feature"
         }
       ]
     }
@@ -49,37 +407,15 @@
   "presets": [
     {
       "name": "Affiliate · Product",
+      "category": "Affiliate",
       "blocks": [
-        {
-          "type": "spec",
-          "settings": {
-            "text": "<p><b>Gentle random reminders</b> to pause and check in</p>"
-          }
-        },
-        {
-          "type": "spec",
-          "settings": {
-            "text": "<p><b>No app, no screen,</b> no distraction</p>"
-          }
-        },
-        {
-          "type": "spec",
-          "settings": {
-            "text": "<p><b>Minimal, premium design,</b> adjustable for any wrist</p>"
-          }
-        },
-        {
-          "type": "spec",
-          "settings": {
-            "text": "<p><b>Water-resistant</b> for all-day wear</p>"
-          }
-        },
-        {
-          "type": "spec",
-          "settings": {
-            "text": "<p><b>Up to 14 days</b> of battery life</p>"
-          }
-        }
+        { "type": "feature", "settings": { "text": "Gentle Vibrations" } },
+        { "type": "feature", "settings": { "text": "No App Required" } },
+        { "type": "feature", "settings": { "text": "14-Day Battery" } },
+        { "type": "feature", "settings": { "text": "Water-Resistant" } },
+        { "type": "feature", "settings": { "text": "Adjustable Fit" } },
+        { "type": "feature", "settings": { "text": "Minimal Design" } },
+        { "type": "feature", "settings": { "text": "Build Mindful Habits" } }
       ]
     }
   ]

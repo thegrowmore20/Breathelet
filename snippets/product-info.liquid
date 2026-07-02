@@ -229,11 +229,12 @@
               {% if icon != blank or text != blank %}
                 <div data-icon="icon_{{ i }}" class="icon-text-item">
                   {% if icon %}
+                    {% assign icon_alt =  icon.alt | default: 'trust badge icon' %}
                     <div class="icon-wrapper">
                       <img 
-                        src="{{ icon | image_url: width: 100 }}"
-                        alt="{{ icon.alt | escape }}" 
-                        width="100" height=""
+                        src="{{ icon | image_url: width: 100, format: 'webp' }}"
+                        alt="{{ icon_alt }}" 
+                        width="100" height="{{ icon.height }}"
                         style="width: {{ block.settings.icon_size }}px;"
                         loading="{{ lazyload }}"
                       >

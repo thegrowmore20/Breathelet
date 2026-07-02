@@ -8,12 +8,11 @@
     {% render 'icon-minus' %}
   </button>
 
+  <label for="{{ id }}" class="visually-hidden">Quantity</label>
   <input
     class="hide-input-arrows"
     type="number"
-    {% if id %}
-      id="{{ id }}"
-    {% endif %}
+    id="{{ id }}"
     {% if item %}
       {% if name != false %} name="updates[]" {% endif %}
       value="{{ item.quantity }}"

@@ -5,7 +5,9 @@
 <div class="sticky-add-to-cart-wrapper --{{ section.settings.sticky_add_to_cart_position }}">
   <sticky-add-to-cart>
     {% if product_image %}
-      {{ product_image | image_url: width: 192 | image_tag: class: 'product-thumbnail-shade product-thumbnail sticky-product-image' }}
+      {{ product_image | image_url: width: 192 | image_tag: class: 'product-thumbnail-shade product-thumbnail sticky-product-image',
+        loading: 'lazy'
+      }}
     {% else %}
       {% render 'placeholder', type: 'image', class: 'product-thumbnail placeholder' %}
     {% endif %}

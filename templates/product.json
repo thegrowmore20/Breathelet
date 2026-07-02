@@ -199,6 +199,42 @@
         "heading_color": ""
       }
     },
+    "apps_QGgz4C": {
+      "type": "apps",
+      "blocks": {
+        "loox_reviews_loox_dynamic_section_T6KBga": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-dynamic-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "reviews_to_display": "",
+            "default_tab": "automatic",
+            "only_photos": false,
+            "aggregated": false,
+            "limit": 4,
+            "hide_thumbnails": false,
+            "maxwidth": 1080,
+            "is_sample": true
+          }
+        }
+      },
+      "block_order": [
+        "loox_reviews_loox_dynamic_section_T6KBga"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_horizontal_space": false,
+        "remove_vertical_space": false,
+        "subheading": "",
+        "heading": "WHY DO PEOPLE LOVE BREATHELET?",
+        "content": "",
+        "heading_size": "h2",
+        "text_alignment": "text-center",
+        "link_text": "View all",
+        "link_url": "",
+        "new_tab": false,
+        "background_color": "",
+        "text_color": ""
+      }
+    },
     "main-details": {
       "type": "main-product-details",
       "blocks": {
@@ -287,6 +323,7 @@
   },
   "order": [
     "main",
+    "apps_QGgz4C",
     "main-details",
     "related-products",
     "featured_collection_inen4n",

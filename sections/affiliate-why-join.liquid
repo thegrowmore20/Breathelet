@@ -1,51 +1,274 @@
-{% render 'affiliate-base' %}
-<div class="aff-root"><div class="wrap why">
-  <div class="section-head reveal"><span class="eyebrow">{{ section.settings.eyebrow }}</span><h2>{{ section.settings.heading }}</h2><div class="lead">{{ section.settings.lead }}</div></div>
-  <div class="why-list reveal">{% for block in section.blocks %}<div class="why-item" {{ block.shopify_attributes }}>{{ block.settings.icon }}<div><h3>{{ block.settings.heading }}</h3><div>{{ block.settings.text }}</div></div></div>{% endfor %}</div>
-</div></div>
+{% render 'section-bg-number-vars' %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --content-width: {% render 'get-content-width', type: section.settings.content_width %};
+    --awj-accent: {{ section.settings.accent_color }};
+    --awj-accent-rgb: {{ section.settings.accent_color.red }} {{ section.settings.accent_color.green }} {{ section.settings.accent_color.blue }};
+  }
+</style>
+
+{% liquid
+  assign section_classes = ' awj-section '
+
+  if section.settings.remove_horizontal_space
+    assign section_classes = section_classes | append: ' !px-0 '
+  endif
+
+  if section.settings.remove_vertical_space
+    assign section_classes = section_classes | append: ' !py-0 '
+  endif
+%}
+
+<section {% render 'section-attrs', class: section_classes %}>
+  <div class="section-body max-w-[--content-width] mx-auto">
+
+    {% render 'section-header' %}
+
+    {% if section.blocks.size > 0 %}
+      <div class="awj-grid" data-animation-auto-order>
+        {% for block in section.blocks %}
+          <article
+            class="awj-card relative overflow-hidden"
+            data-animation="block"
+            data-animation-group="{{ section.id }}-cards"
+            {{ block.shopify_attributes }}
+          >
+            {% if block.settings.icon_image != blank %}
+              {% assign icon_sizes = block.settings.icon_width | append: 'px' %}
+              <div class="awj-card__icon" style="width: {{ block.settings.icon_width }}px;">
+                {{
+                  block.settings.icon_image
+                  | image_url: width: 240
+                  | image_tag:
+                    widths: '60, 120, 180, 240',
+                    sizes: icon_sizes,
+                    alt: block.settings.icon_image.alt,
+                    loading: 'lazy'
+                }}
+              </div>
+            {% endif %}
+            {% if block.settings.title != blank %}
+              <h3 class="awj-card__title">{{ block.settings.title }}</h3>
+            {% endif %}
+            {% if block.settings.text != blank %}
+              <div class="awj-card__desc">{{ block.settings.text }}</div>
+            {% endif %}
+          </article>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+<style>
+  /* Vertical/horizontal spacing comes from the theme .section class. */
+  .awj-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    text-align: left;
+  }
+
+  .awj-card {
+    padding: 32px 28px;
+    border-radius: 16px;
+    background: rgb(var(--color-foreground) / 0.07);
+    border: 1px solid rgb(var(--color-foreground) / 0.12);
+    transition: 0.25s ease;
+  }
+
+  .awj-card:hover {
+    background: rgb(var(--awj-accent-rgb) / 0.04);
+    border-color: rgb(var(--awj-accent-rgb) / 0.3);
+  }
+
+  .awj-card__icon {
+    margin-bottom: 16px;
+    max-width: 100%;
+  }
+
+  .awj-card__icon img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .awj-card__title {
+    margin-bottom: 10px;
+    font-size: var(--size-text-base);
+    font-weight: 600;
+    color: rgb(var(--color-foreground));
+  }
+
+  .awj-card__desc {
+    font-size: var(--size-text-sm);
+    line-height: 1.7;
+    color: rgb(var(--color-foreground) / 0.65);
+  }
+
+  @media (max-width: 900px) {
+    .awj-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    .awj-grid { grid-template-columns: 1fr; }
+  }
+</style>
 
 {% schema %}
 {
   "name": "Affiliate · Why join",
   "settings": [
     {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "t:sections.all.full_width.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "remove_horizontal_space",
+      "label": "t:sections.apps.settings.remove_horizontal_space.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "remove_vertical_space",
+      "label": "t:sections.apps.settings.remove_vertical_space.label"
+    },
+    {
+      "type": "select",
+      "id": "content_width",
+      "label": "t:sections.rich-text.settings.content_width.label",
+      "options": [
+        { "value": "small", "label": "t:sections.rich-text.settings.content_width.options__0.label" },
+        { "value": "normal", "label": "t:sections.rich-text.settings.content_width.options__1.label" },
+        { "value": "large", "label": "t:sections.rich-text.settings.content_width.options__2.label" },
+        { "value": "extra-large", "label": "t:sections.rich-text.settings.content_width.options__3.label" },
+        { "value": "full-width", "label": "t:sections.rich-text.settings.content_width.options__4.label" }
+      ],
+      "default": "large"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#c9a96e"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.headers.heading"
+    },
+    {
       "type": "text",
-      "id": "eyebrow",
-      "label": "Eyebrow",
-      "default": "Why join"
+      "id": "subheading",
+      "label": "t:sections.all.subheading.label",
+      "default": "Why Join"
     },
     {
       "type": "text",
       "id": "heading",
-      "label": "Heading",
-      "default": "A product people actually keep wearing."
+      "label": "t:sections.featured-collection.settings.heading.label",
+      "default": "A simple way to earn by sharing calm."
     },
     {
       "type": "richtext",
-      "id": "lead",
-      "label": "Lead",
-      "default": "<p>No hard sell required. Breathelet fits naturally into authentic content — and into the everyday lives of an audience that values calm.</p>"
+      "id": "content",
+      "label": "t:sections.all.content.label",
+      "default": "<p>Breathelet is made for creators, wellness voices, mindfulness communities, and everyday people who believe better habits should feel simple, beautiful, and screen-free.</p>"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "t:sections.all.text_alignment.label",
+      "options": [
+        { "value": "text-left", "label": "t:sections.all.text_alignment.options.text_left.label" },
+        { "value": "text-center", "label": "t:sections.all.text_alignment.options.text_center.label" }
+      ],
+      "default": "text-center"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "t:sections.all.heading_size.label",
+      "options": [
+        { "value": "h0", "label": "t:sections.all.heading_size.options__0.label" },
+        { "value": "h1", "label": "t:sections.all.heading_size.options__1.label" },
+        { "value": "h2", "label": "t:sections.all.heading_size.options__2.label" },
+        { "value": "h3", "label": "t:sections.all.heading_size.options__3.label" },
+        { "value": "h4", "label": "t:sections.all.heading_size.options__4.label" },
+        { "value": "h5", "label": "t:sections.all.heading_size.options__5.label" },
+        { "value": "h6", "label": "t:sections.all.heading_size.options__6.label" }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "select",
+      "id": "heading_html_tag",
+      "label": "t:sections.all.heading_html_tag.label",
+      "options": [
+        { "value": "h1", "label": "h1" },
+        { "value": "h2", "label": "h2" },
+        { "value": "h3", "label": "h3" },
+        { "value": "h4", "label": "h4" },
+        { "value": "h5", "label": "h5" },
+        { "value": "h6", "label": "h6" },
+        { "value": "p", "label": "p" },
+        { "value": "span", "label": "span" },
+        { "value": "div", "label": "div" }
+      ],
+      "default": "h2",
+      "info": "t:sections.all.heading_html_tag.info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.headers.colors"
+    },
+    {
+      "type": "color",
+      "label": "t:sections.all.text_color.label",
+      "id": "text_color"
+    },
+    {
+      "type": "color",
+      "label": "t:sections.all.heading_color.label",
+      "id": "heading_color"
     }
   ],
   "blocks": [
     {
-      "type": "why_item",
-      "name": "Why item",
+      "type": "benefit",
+      "name": "Benefit",
+      "limit": 9,
       "settings": [
         {
-          "type": "html",
-          "id": "icon",
-          "label": "Icon (SVG)"
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon image"
+        },
+        {
+          "type": "range",
+          "id": "icon_width",
+          "label": "Icon width",
+          "min": 24,
+          "max": 120,
+          "step": 4,
+          "unit": "px",
+          "default": 48
         },
         {
           "type": "text",
-          "id": "heading",
-          "label": "Heading"
+          "id": "title",
+          "label": "Title",
+          "default": "Benefit title"
         },
         {
           "type": "richtext",
           "id": "text",
-          "label": "Text"
+          "label": "Description",
+          "default": "<p>Describe this benefit in a sentence or two.</p>"
         }
       ]
     }
@@ -53,39 +276,14 @@
   "presets": [
     {
       "name": "Affiliate · Why join",
+      "category": "Affiliate",
       "blocks": [
-        {
-          "type": "why_item",
-          "settings": {
-            "icon": "<svg class=\"mk\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\"><path d=\"M20 6L9 17l-5-5\"/></svg>",
-            "heading": "Built to be kept, not drawered",
-            "text": "<p>Minimal, premium, made for everyday calm — easy to recommend, easy to love.</p>"
-          }
-        },
-        {
-          "type": "why_item",
-          "settings": {
-            "icon": "<svg class=\"mk\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\"><path d=\"M3 17l6-6 4 4 8-8\"/><path d=\"M14 7h7v7\"/></svg>",
-            "heading": "A market that's only growing",
-            "text": "<p>Mindfulness, digital detox, and intentional living are everywhere. Breathelet is a simple, screen-free way in.</p>"
-          }
-        },
-        {
-          "type": "why_item",
-          "settings": {
-            "icon": "<svg class=\"mk\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 7v5l3 2\"/></svg>",
-            "heading": "Monthly payouts, no threshold",
-            "text": "<p>Get paid every month for valid sales. No minimum to hit before you earn.</p>"
-          }
-        },
-        {
-          "type": "why_item",
-          "settings": {
-            "icon": "<svg class=\"mk\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\"><path d=\"M12 3l7 4v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V7z\"/></svg>",
-            "heading": "A brand you can stand behind",
-            "text": "<p>Clean design, honest messaging, no inflated claims. Recommending Breathelet keeps your trust intact.</p>"
-          }
-        }
+        { "type": "benefit", "settings": { "title": "Monthly Commissions", "text": "<p>Earn commission for every valid sale you generate through your affiliate link or discount code.</p>" } },
+        { "type": "benefit", "settings": { "title": "No Minimum Payout", "text": "<p>No waiting around for a payout threshold. Once you earn it, you can get paid monthly.</p>" } },
+        { "type": "benefit", "settings": { "title": "Easy To Promote", "text": "<p>Share a product built around mindfulness, stress relief, better breathing, and screen-free calm.</p>" } },
+        { "type": "benefit", "settings": { "title": "Auto-Tracked Sales", "text": "<p>Your referrals are tracked automatically through your link or code, because manual tracking is where joy goes to die.</p>" } },
+        { "type": "benefit", "settings": { "title": "Marketing Support", "text": "<p>Get access to product messaging and promotional support to help you share Breathelet with confidence.</p>" } },
+        { "type": "benefit", "settings": { "title": "Real Product Appeal", "text": "<p>Promote a wearable mindfulness product that looks premium, feels intentional, and fits modern wellness routines.</p>" } }
       ]
     }
   ]

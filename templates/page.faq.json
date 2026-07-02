@@ -55,107 +55,124 @@
         "overlay_type": "gradient"
       }
     },
-    "2ab75f39-7f55-452b-b9d7-e513d395c914": {
+    "collapsible_content_4xBrM4": {
       "type": "collapsible-content",
       "blocks": {
-        "template--20862860820772__2ab75f39-7f55-452b-b9d7-e513d395c914-block-1": {
+        "block_87tc79": {
           "type": "block",
           "settings": {
-            "title": "1. What is Breathelet?",
-            "content": "<p>Breathelet is a stylish bracelet that delivers <strong>random, gentle vibrations</strong> as subtle cues to <strong>take a pause and reconnect with yourself</strong>. It’s your wearable companion for mindfulness, calm, and intentional living.</p>",
+            "title": "What is Breathelet?",
+            "content": "<p>Breathelet is a wearable mindfulness bracelet that gives gentle vibration reminders at random moments throughout the day. Each reminder is designed to help you pause, check in with yourself, and return to the present moment.</p>",
             "content_from_page": "",
             "open": false,
             "heading_html_tag": "p"
           }
         },
-        "template--20862860820772__2ab75f39-7f55-452b-b9d7-e513d395c914-block-2": {
+        "block_DieqKi": {
           "type": "block",
           "settings": {
-            "title": "2. How does Breathelet work?",
-            "content": "<p>Breathelet sends tested, random vibrations designed to give the most beneficial reminders. Each vibration encourages you to slow down, reset your focus, and be present in the moment. Over time, these nudges encourage mindfulness and a calmer state of mind.</p>",
+            "title": "How does Breathelet work?",
+            "content": "<p>Breathelet gently vibrates at random intervals during the day typically every 60–150 minutes, making each reminder feel natural rather than scheduled. When you feel the vibration, use it as a simple prompt to pause, breathe naturally, notice how you feel, or take a mindful moment before continuing your day.</p>",
             "content_from_page": "",
             "open": false,
             "heading_html_tag": "p"
           }
         },
-        "template--20862860820772__2ab75f39-7f55-452b-b9d7-e513d395c914-block-3": {
+        "block_bxnqB4": {
           "type": "block",
           "settings": {
-            "title": "3. Who is Breathelet for?",
-            "content": "<p>Anyone looking to live more mindfully, reduce stress, or build positive daily habits. Whether at work, commuting, or at home, Breathelet is there to gently remind you to take a pause.</p>",
+            "title": "Why are the reminders random?",
+            "content": "<p>The random timing is intentional. When reminders happen on a fixed schedule, they can become predictable and easier to ignore. Random reminders feel more natural and help each vibration stay noticeable as a mindful pause prompt.</p>",
             "content_from_page": "",
             "open": false,
             "heading_html_tag": "p"
           }
         },
-        "block_bAmgKe": {
+        "block_Uf6iyX": {
           "type": "block",
           "settings": {
-            "title": "4. Can I use it for things other than breathing?",
-            "content": "<p> Absolutely! Breathelet can help you:</p><ul><li>Take a mindful breath</li><li>Practice gratitude</li><li>Hydrate</li><li>Share a smile</li><li>Check in with yourself and stay grounded in the moment</li></ul>",
+            "title": "Is Breathelet a breathing exercise timer?",
+            "content": "<p>No. Breathelet is not designed to make you follow breathing exercises on a fixed schedule. It is designed to gently remind you to pause, check in, and reconnect with yourself throughout the day.</p>",
             "content_from_page": "",
             "open": false,
             "heading_html_tag": "p"
           }
         },
-        "block_gF4iTE": {
+        "block_QVfyQ6": {
           "type": "block",
-          "disabled": true,
           "settings": {
-            "title": "5. How should I wear my Breathelet?",
-            "content": "<p>For the intended experience, Breathelet should be worn <strong>snug against your wrist — not loose</strong>.</p><p>A loose fit may reduce or completely limit your ability to feel these subtle reminders. A secure, close fit ensures you stay connected to every moment of calm.</p><p><strong>Important:</strong> A loose fit is the #1 reason users don’t feel the vibration properly.</p>",
+            "title": "Who is Breathelet for?",
+            "content": "<p>Breathelet is for anyone who wants a simple, screen-free reminder to slow down and be more present during daily life. It can be used at work, while studying, commuting, relaxing, or moving through a busy day.</p>",
             "content_from_page": "",
             "open": false,
             "heading_html_tag": "p"
           }
         },
-        "block_nk7TGJ": {
+        "block_fi7fkX": {
           "type": "block",
-          "disabled": true,
           "settings": {
-            "title": "6. What is the ideal fit?",
-            "content": "<p>Breathelet should feel:</p><ul><li><strong>Secure and stable</strong> on your wrist </li><li><strong>Comfortably snug</strong>, without restricting movement </li></ul><p>If the bracelet shifts, slides, or hangs away from your wrist, it is too loose.</p>",
+            "title": "What can I use each reminder for?",
+            "content": "<p>You can use each gentle vibration as a reminder to:</p><ul><li>Pause for a moment</li><li>Check in with yourself</li><li>Take a natural breath</li><li>Notice your thoughts or emotions</li><li>Practice gratitude</li><li>Drink water</li><li>Reset your focus</li><li>Return to the present moment</li></ul>",
             "content_from_page": "",
             "open": false,
             "heading_html_tag": "p"
           }
         },
-        "block_yPWnmA": {
+        "block_KXiXhW": {
           "type": "block",
-          "disabled": true,
           "settings": {
-            "title": "7. Why am I not feeling the vibration?",
-            "content": "<p>This is usually due to the fit. <br/>Make sure that:</p><ul><li> The Breathelet is worn snug on your wrist </li><li> The bracelet is not loose or dangling </li></ul><p>Once properly adjusted, you should feel the gentle vibration clearly.</p>",
+            "title": "Can Breathelet help with anxiety, stress, or medical conditions?",
+            "content": "<p>Breathelet is not a medical device and is not intended to diagnose, treat, cure, or prevent any health condition. It is designed as a simple mindfulness reminder to support mindful pauses and daily awareness.</p>",
             "content_from_page": "",
             "open": false,
             "heading_html_tag": "p"
           }
         },
-        "block_pLAmgT": {
+        "block_QUcWXm": {
           "type": "block",
           "settings": {
-            "title": "5. Is it waterproof?",
-            "content": "<p>Yes. Both Classic and OneFit- are water-resistant, so they handle everyday splashes, sweat, or rain.</p>",
+            "title": "Does Breathelet require an app?",
+            "content": "<p>No. Breathelet does not require an app, Bluetooth, or phone setup. It is made to work independently, so you can use it without adding another screen or notification to your day.</p>",
             "content_from_page": "",
             "open": false,
             "heading_html_tag": "p"
           }
         },
-        "block_PMRppU": {
+        "block_BBUGBc": {
           "type": "block",
           "settings": {
-            "title": "6. Are there any screens or apps?",
-            "content": "<p>No screens. No Bluetooth. No distractions. Breathelet is designed to be a simple, elegant wearable that helps you reconnect with your mind and body.</p>",
+            "title": "Does Breathelet have a screen?",
+            "content": "<p>No. Breathelet has no screen and no distracting display. It is designed to feel like a simple bracelet while giving gentle vibration reminders throughout the day.</p>",
             "content_from_page": "",
             "open": false,
             "heading_html_tag": "p"
           }
         },
-        "block_GJqnQJ": {
+        "block_A3hmAH": {
           "type": "block",
           "settings": {
-            "title": "7. How can I get support?",
-            "content": "<p>For questions, troubleshooting, or replacement strings, contact support@breathelet.com<br/><br/></p>",
+            "title": "Is Breathelet waterproof?",
+            "content": "<p>Breathelet is water-resistant, not fully waterproof. It can handle everyday splashes, light moisture, and daily wear, but it should not be worn while swimming, showering, or fully submerged in water.</p>",
+            "content_from_page": "",
+            "open": false,
+            "heading_html_tag": "p"
+          }
+        },
+        "block_Lc9fBL": {
+          "type": "block",
+          "settings": {
+            "title": "How long does the battery last?",
+            "content": "<p>Breathelet is designed with a long-lasting battery that can last up to 14 days, depending on usage and charging habits.</p>",
+            "content_from_page": "",
+            "open": false,
+            "heading_html_tag": "p"
+          }
+        },
+        "block_Dqcnwc": {
+          "type": "block",
+          "settings": {
+            "title": "How do I charge Breathelet?",
+            "content": "<p>Charge Breathelet using the provided charging accessory or compatible charging setup included with your order. For best performance, keep the charging area clean and dry before charging.</p>",
             "content_from_page": "",
             "open": false,
             "heading_html_tag": "p"
@@ -163,24 +180,204 @@
         }
       },
       "block_order": [
-        "template--20862860820772__2ab75f39-7f55-452b-b9d7-e513d395c914-block-1",
-        "template--20862860820772__2ab75f39-7f55-452b-b9d7-e513d395c914-block-2",
-        "template--20862860820772__2ab75f39-7f55-452b-b9d7-e513d395c914-block-3",
-        "block_bAmgKe",
-        "block_gF4iTE",
-        "block_nk7TGJ",
-        "block_yPWnmA",
-        "block_pLAmgT",
-        "block_PMRppU",
-        "block_GJqnQJ"
+        "block_87tc79",
+        "block_DieqKi",
+        "block_bxnqB4",
+        "block_Uf6iyX",
+        "block_QVfyQ6",
+        "block_fi7fkX",
+        "block_KXiXhW",
+        "block_QUcWXm",
+        "block_BBUGBc",
+        "block_A3hmAH",
+        "block_Lc9fBL",
+        "block_Dqcnwc"
       ],
       "settings": {
         "full_width": true,
         "subheading": "",
-        "heading": "Discover Breathelet — Your Wearable Calm Companion",
-        "content": "<p>Breathelet is a discreet, stylish wearable device designed to help you slow down, feel grounded, and reconnect with yourself anytime, anywhere. With gentle, randomized vibrations, Breathelet encourages mindful moments throughout your day—whether that’s taking a deep breath, practicing gratitude, hydrating, sharing a smile, or simply checking in with yourself.</p>",
+        "heading": "Discover Breathelet — Your Wearable Mindful Reminder",
+        "content": "<p>Breathelet is a simple, screen-free bracelet designed to help you pause, check in with yourself, and take mindful moments throughout the day. Its gentle random vibrations act as subtle reminders to slow down, reconnect, and build better daily awareness without using an app, screen, or fixed schedule.</p>",
         "heading_size": "h2",
-        "text_position": "left",
+        "text_position": "center",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": "",
+        "accordion_background_color": "",
+        "accordion_title_color": "",
+        "accordion_text_color": "",
+        "heading_html_tag": "h2"
+      }
+    },
+    "collapsible_content_QcB4Me": {
+      "type": "collapsible-content",
+      "blocks": {
+        "block_nwtCQx": {
+          "type": "block",
+          "settings": {
+            "title": "How should I wear my Breathelet?",
+            "content": "<p>Wear Breathelet snug against your wrist, not loose. The bracelet should stay close enough to your skin so you can feel the vibration, while still feeling comfortable for daily wear.</p>",
+            "content_from_page": "",
+            "open": false,
+            "heading_html_tag": "p"
+          }
+        },
+        "block_bmnBwi": {
+          "type": "block",
+          "settings": {
+            "title": "What is the ideal fit?",
+            "content": "<p>The ideal fit is: secure and stable on your wrist, comfortably snug without restricting movement, close enough to feel each vibration clearly, and not sliding, spinning, or hanging away from your wrist.</p>",
+            "content_from_page": "",
+            "open": false,
+            "heading_html_tag": "p"
+          }
+        },
+        "block_ebYcL7": {
+          "type": "block",
+          "settings": {
+            "title": "Why am I not feeling the vibration?",
+            "content": "<p>This is usually caused by a loose fit. Make sure Breathelet is worn snug against your wrist and positioned close to your skin. If it moves around too much, the vibration may feel weaker.</p>",
+            "content_from_page": "",
+            "open": false,
+            "heading_html_tag": "p"
+          }
+        },
+        "block_CWNcbt": {
+          "type": "block",
+          "settings": {
+            "title": "Can I adjust the size?",
+            "content": "<p>Yes. Breathelet features an adjustable string design so you can set it to your preferred fit. Pull the strings to adjust the size, trim extra length if needed, and use the hook closure for easy everyday wear.</p>",
+            "content_from_page": "",
+            "open": false,
+            "heading_html_tag": "p"
+          }
+        },
+        "block_WCEwpV": {
+          "type": "block",
+          "settings": {
+            "title": "Can I wear Breathelet all day?",
+            "content": "<p>Yes. Breathelet is designed for daily wear. For comfort and care, remove it before showering, swimming, or exposing it to extreme moisture.</p>",
+            "content_from_page": "",
+            "open": false,
+            "heading_html_tag": "p"
+          }
+        },
+        "block_AQXjwY": {
+          "type": "block",
+          "settings": {
+            "title": "Which wrist should I wear it on?",
+            "content": "<p>You can wear Breathelet on either wrist. Choose the side that feels most comfortable and makes it easy for you to notice the gentle vibration.</p>",
+            "content_from_page": "",
+            "open": false,
+            "heading_html_tag": "p"
+          }
+        }
+      },
+      "block_order": [
+        "block_nwtCQx",
+        "block_bmnBwi",
+        "block_ebYcL7",
+        "block_CWNcbt",
+        "block_WCEwpV",
+        "block_AQXjwY"
+      ],
+      "name": "t:sections.collapsible-content.presets__0.name",
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "heading": "Wear Breathelet — Find the Most Comfortable Fit",
+        "content": "<p>Breathelet works best when worn snug and stable against your wrist. A proper fit helps you feel the gentle vibration clearly without making the bracelet uncomfortable.</p>",
+        "heading_size": "h2",
+        "text_position": "center",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": "",
+        "accordion_background_color": "",
+        "accordion_title_color": "",
+        "accordion_text_color": "",
+        "heading_html_tag": "h2"
+      }
+    },
+    "collapsible_content_dENjJP": {
+      "type": "collapsible-content",
+      "blocks": {
+        "block_hGH8cQ": {
+          "type": "block",
+          "settings": {
+            "title": "What if my Breathelet stops working?",
+            "content": "<p>If your Breathelet is not working properly, contact our support team with your order details and a short explanation of the issue. Our team will guide you through troubleshooting or replacement support if eligible.</p>",
+            "content_from_page": "",
+            "open": false,
+            "heading_html_tag": "p"
+          }
+        },
+        "block_q84pxr": {
+          "type": "block",
+          "settings": {
+            "title": "Does Breathelet come with a warranty?",
+            "content": "<p>Yes. Breathelet comes with a 30-Day Guarantee and Lifetime Warranty support for eligible product issues. Warranty coverage applies to qualifying defects or functional issues under normal use.</p>",
+            "content_from_page": "",
+            "open": false,
+            "heading_html_tag": "p"
+          }
+        },
+        "block_V4GHaH": {
+          "type": "block",
+          "settings": {
+            "title": "What does the 30-Day Guarantee mean?",
+            "content": "<p>You can try Breathelet with confidence. If you are not satisfied within 30 days of receiving your order, contact our support team and they will guide you through the available return or replacement process.</p>",
+            "content_from_page": "",
+            "open": false,
+            "heading_html_tag": "p"
+          }
+        },
+        "block_nceRnR": {
+          "type": "block",
+          "settings": {
+            "title": "What is covered under the Lifetime Warranty?",
+            "content": "<p>The Lifetime Warranty may cover eligible product function or manufacturing issues under normal use, including vibration, battery, charging, or product defects. It does not cover misuse, accidental damage, loss, theft, or unauthorized modifications.</p>",
+            "content_from_page": "",
+            "open": false,
+            "heading_html_tag": "p"
+          }
+        },
+        "block_mj3L6A": {
+          "type": "block",
+          "settings": {
+            "title": "How can I contact support?",
+            "content": "<p>For product questions, troubleshooting, warranty support, or replacement strings, contact us through Breathelet's official email or social channels.</p>",
+            "content_from_page": "",
+            "open": false,
+            "heading_html_tag": "p"
+          }
+        },
+        "block_yjwLMJ": {
+          "type": "block",
+          "settings": {
+            "title": "Do you offer replacement strings?",
+            "content": "<p>Yes. Replacement strings may be available through Breathelet support or the official store. Contact our team if you need help finding the right option.</p>",
+            "content_from_page": "",
+            "open": false,
+            "heading_html_tag": "p"
+          }
+        }
+      },
+      "block_order": [
+        "block_hGH8cQ",
+        "block_q84pxr",
+        "block_V4GHaH",
+        "block_nceRnR",
+        "block_mj3L6A",
+        "block_yjwLMJ"
+      ],
+      "name": "t:sections.collapsible-content.presets__0.name",
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "heading": "Support, Warranty & Orders",
+        "content": "",
+        "heading_size": "h2",
+        "text_position": "center",
         "background_color": "",
         "text_color": "",
         "heading_color": "",
@@ -188,114 +385,6 @@
         "accordion_title_color": "",
         "accordion_text_color": "",
         "heading_html_tag": "p"
-      }
-    },
-    "custom_liquid_a93R39": {
-      "type": "custom-liquid",
-      "name": "t:sections.custom-liquid.presets.name",
-      "settings": {
-        "full_width": true,
-        "remove_horizontal_space": false,
-        "remove_vertical_space": true,
-        "custom_liquid": "",
-        "background_color": "#1c1c1c",
-        "text_color": ""
-      }
-    },
-    "collapsible_content_aEz7Aq": {
-      "type": "collapsible-content",
-      "blocks": {
-        "block_tP8RVh": {
-          "type": "block",
-          "settings": {
-            "title": "1. How should I wear my Breathelet?",
-            "content": "<p>For the intended experience, Breathelet should be worn <strong>snug against your wrist — not loose</strong>.</p><p>A loose fit may reduce or completely limit your ability to feel these subtle reminders. A secure, close fit ensures you stay connected to every moment of calm.</p><p><strong>Important:</strong> A loose fit is the #1 reason users don’t feel the vibration properly.</p>",
-            "content_from_page": "",
-            "open": false,
-            "heading_html_tag": "p"
-          }
-        },
-        "block_a8pErL": {
-          "type": "block",
-          "settings": {
-            "title": "2. What is the ideal fit?",
-            "content": "<p>Breathelet should feel:</p><ul><li><strong>Secure and stable</strong> on your wrist </li><li><strong>Comfortably snug</strong>, without restricting movement </li></ul><p>If the bracelet shifts, slides, or hangs away from your wrist, it is too loose.</p>",
-            "content_from_page": "",
-            "open": false,
-            "heading_html_tag": "p"
-          }
-        },
-        "block_kVFgKX": {
-          "type": "block",
-          "settings": {
-            "title": "3. Why am I not feeling the vibration?",
-            "content": "<p>This is usually due to the fit. <br/>Make sure that:</p><ul><li> The Breathelet is worn snug on your wrist </li><li> The bracelet is not loose or dangling </li></ul><p>Once properly adjusted, you should feel the gentle vibration clearly.</p>",
-            "content_from_page": "",
-            "open": false,
-            "heading_html_tag": "p"
-          }
-        }
-      },
-      "block_order": [
-        "block_tP8RVh",
-        "block_a8pErL",
-        "block_kVFgKX"
-      ],
-      "settings": {
-        "full_width": true,
-        "subheading": "",
-        "heading": "Wear Breathelet — find the most comfortable and stable way",
-        "content": "<p>Breathelet is intended to be used snug against your wrist for the best results.</p>",
-        "heading_size": "h2",
-        "text_position": "left",
-        "background_color": "rgba(0,0,0,0)",
-        "text_color": "",
-        "heading_color": "",
-        "accordion_background_color": "",
-        "accordion_title_color": "",
-        "accordion_text_color": "",
-        "heading_html_tag": "p"
-      }
-    },
-    "custom_liquid_tmBGTh": {
-      "type": "custom-liquid",
-      "custom_css": [
-        "section {padding-top: 10px;}"
-      ],
-      "name": "t:sections.custom-liquid.presets.name",
-      "settings": {
-        "full_width": true,
-        "remove_horizontal_space": false,
-        "remove_vertical_space": true,
-        "custom_liquid": "",
-        "background_color": "#434343",
-        "text_color": ""
-      }
-    },
-    "rich_text_9mqqhf": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_XhKfd7": {
-          "type": "heading",
-          "settings": {
-            "heading": "How to adjust the different Breathelet models?",
-            "heading_size": "h2",
-            "heading_html_tag": "p"
-          }
-        }
-      },
-      "block_order": [
-        "heading_XhKfd7"
-      ],
-      "name": "t:sections.rich-text.presets__0.name",
-      "settings": {
-        "full_width": true,
-        "content_alignment": "mx-auto",
-        "text_alignment": "text-center",
-        "content_width": "full-width",
-        "background_color": "",
-        "text_color": "",
-        "heading_color": ""
       }
     },
     "video_with_text_FYgkDL": {
@@ -310,9 +399,9 @@
         "heading_HaKYxN": {
           "type": "heading",
           "settings": {
-            "heading": "Breathelet OneFit:",
+            "heading": "How to Adjust Your Breathelet",
             "heading_size": "h2",
-            "heading_html_tag": "p"
+            "heading_html_tag": "h2"
           }
         },
         "text_DAzaPw": {
@@ -347,7 +436,7 @@
       "settings": {
         "custom_class": "",
         "full_width": false,
-        "remove_bottom_spacing": true,
+        "remove_bottom_spacing": false,
         "autoplay": false,
         "loop": false,
         "video": "shopify://files/videos/Breathelet_how-to_upd_v2.webm",
@@ -361,34 +450,21 @@
         "heading_color": ""
       }
     },
-    "rich_text_ccgjnM": {
-      "type": "rich-text",
-      "name": "t:sections.rich-text.presets__0.name",
-      "settings": {
-        "full_width": true,
-        "content_alignment": "mx-auto",
-        "text_alignment": "text-center",
-        "content_width": "normal",
-        "background_color": "",
-        "text_color": "",
-        "heading_color": ""
-      }
-    },
     "f5839382-ef3f-4a18-84ac-194c93e9d7cf": {
       "type": "rich-text",
       "blocks": {
         "template--20599120724260__f5839382-ef3f-4a18-84ac-194c93e9d7cf-heading-1": {
           "type": "heading",
           "settings": {
-            "heading": "Couldn't find your answer?",
-            "heading_size": "h3",
-            "heading_html_tag": "p"
+            "heading": "Couldn’t Find Your Answer?",
+            "heading_size": "h2",
+            "heading_html_tag": "h2"
           }
         },
         "template--20599120724260__f5839382-ef3f-4a18-84ac-194c93e9d7cf-text-1": {
           "type": "text",
           "settings": {
-            "text": "<p>We're here to help. If you couldn't find the information you were looking for, please reach out to us directly. Our team is eager to assist you.</p>"
+            "text": "<p>We’re here to help. If you couldn’t find the information you were looking for, contact our support team and we’ll guide you through the next step.</p>"
           }
         },
         "template--20599120724260__f5839382-ef3f-4a18-84ac-194c93e9d7cf-button-1": {
@@ -421,18 +497,29 @@
         "text_color": "",
         "heading_color": ""
       }
+    },
+    "custom_liquid_aeXAjH": {
+      "type": "custom-liquid",
+      "custom_css": [],
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "full_width": true,
+        "remove_horizontal_space": true,
+        "remove_vertical_space": true,
+        "custom_liquid": "{%- assign faqs_items = shop.metaobjects.general_faqs.values -%}\n{% if faqs_items != blank %}\n<script type=\"application/ld+json\">\n  {\n    \"@context\": \"https://schema.org\",\n    \"@type\": \"FAQPage\",\n    \"mainEntity\": [\n      \n      {%- for faq in faqs_items -%}\n        {\n          \"@type\": \"Question\",\n          \"name\": \"{{- faq.question.value | escape -}}\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"{{- faq.answer | metafield_text | escape -}}\"\n          }\n        }{%- if forloop.last == false %},{% endif -%}\n      {%- endfor -%}\n    ]\n  }\n</script>\n{% endif %}",
+        "background_color": "",
+        "text_color": ""
+      }
     }
   },
   "order": [
     "main",
     "ee8f8c3b-ed9c-495b-a572-e66f48281fcc",
-    "2ab75f39-7f55-452b-b9d7-e513d395c914",
-    "custom_liquid_a93R39",
-    "collapsible_content_aEz7Aq",
-    "custom_liquid_tmBGTh",
-    "rich_text_9mqqhf",
+    "collapsible_content_4xBrM4",
+    "collapsible_content_QcB4Me",
+    "collapsible_content_dENjJP",
     "video_with_text_FYgkDL",
-    "rich_text_ccgjnM",
-    "f5839382-ef3f-4a18-84ac-194c93e9d7cf"
+    "f5839382-ef3f-4a18-84ac-194c93e9d7cf",
+    "custom_liquid_aeXAjH"
   ]
 }

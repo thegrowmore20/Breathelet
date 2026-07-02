@@ -122,9 +122,14 @@
         "disabled": true,
         "settings": {}
       },
+      "10508887350528622030": {
+        "type": "shopify://apps/appstle-bundles/blocks/appstle-bundle/8909921b-2d24-4d68-9b12-9d045d3dcb0a",
+        "disabled": true,
+        "settings": {}
+      },
       "13305437469741356523": {
         "type": "shopify://apps/gsc-instagram-feed/blocks/embed/96970b1b-b770-454f-b16b-51f47e1aa4ed",
-        "disabled": false,
+        "disabled": true,
         "settings": {}
       }
     }

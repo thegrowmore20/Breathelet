@@ -60,9 +60,9 @@
             <lqip-element class="image-loader h-full">
               {{
                 card_image
-                | image_url: width: 900
+                | image_url: width: 720
                 | image_tag:
-                  widths: '360, 450, 540, 630, 720, 900',
+                  widths: '360, 450, 540, 630, 720',
                   sizes: sizes,
                   loading: 'lazy',
                   class: 'product-card__image product-thumbnail-shade'
@@ -85,8 +85,6 @@
         {% endif %}
 
         <div class="product-card__media-spinner">{% render 'spinner' %}</div>   
-        
-       
 
       </div>
     </a>

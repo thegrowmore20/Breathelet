@@ -4,17 +4,17 @@
       background: {{ section.settings.background_color }};
     }
   {% endif %}
-
+  
   .section-main-product + .section-main-product-details {
     {% if section.settings.text_color != blank and section.settings.text_color.rgba != '0 0 0 / 0.0' %}
       --color-foreground: {{ section.settings.text_color.rgb }};
     {% endif %}
   }
-
+  
   .section-main-product + .section-main-product-details + * {
     --previous-section-bg-number: {% render 'get-bg-number' %};
   }
-
+  
   #shopify-section-{{ section.id }} {
     {% render 'apply-color-vars',
       background: section.settings.background_color,
@@ -22,36 +22,36 @@
       heading: section.settings.heading_color
     %}
   }
-
+  
   .product-name-wrapper h1 {
     text-wrap: initial;
-}
-
+  }
+  
   .hooktext .metafield-rich_text_field p:first-of-type {
     margin-bottom: 0;
-}
-
-.hooktext .metafield-rich_text_field p:last-of-type {
+  }
+  
+  .hooktext .metafield-rich_text_field p:last-of-type {
     margin-top: .5rem;
-}
-
-.variant-radio-price {
+  }
+  
+  .variant-radio-price {
     display: flex;
     align-items: center;
     gap: 5px;
-}
-
-@media (max-width: 480px) {
-.variant-radio-price {
-  flex-direction: column;
-  gap: 1px;
-}
-.variant-compare-price{
-  display: none;
-}
   }
-
-@media (max-width: 520px) {
+  
+  @media (max-width: 480px) {
+    .variant-radio-price {
+      flex-direction: column;
+      gap: 1px;
+    }
+    .variant-compare-price{ 
+      {% comment %} display: none; {% endcomment %}
+    }
+  }
+  
+  @media (max-width: 520px) {
     .section-main-product .icon-text-block--inline {
       gap: 5px;
       grid-template-columns: repeat(4, 1fr);
@@ -98,48 +98,48 @@
 
 <script>
   (function () {
-  function getVariantId() {
-    const p = new URLSearchParams(location.search).get('id');
-    if (p) return p;
-    const input = document.querySelector('[name="id"]');
-    return input ? input.value : null;
-  }
-
-  function swap(variantId) {
-    document.querySelectorAll('[data-collapsible-data]').forEach(function (store) {
-      const id = store.getAttribute('data-collapsible-data');
-      const target = document.querySelector('[data-collapsible-target="' + id + '"]');
-      if (!target) return;
-
-      let tpl = variantId && store.querySelector('template[data-variant-id="' + variantId + '"]');
-      if (!tpl) tpl = store.querySelector('template[data-default]');
-      if (tpl && target.innerHTML !== tpl.innerHTML) {
-        target.innerHTML = tpl.innerHTML;
-        // smooth-collapse caches height — nudge it to recalc if open
-        const wrapper = store.closest('smooth-collapse');
-        if (wrapper) wrapper.dispatchEvent(new Event('resize'));
-      }
+    function getVariantId() {
+      const p = new URLSearchParams(location.search).get('id');
+      if (p) return p;
+      const input = document.querySelector('[name="id"]');
+      return input ? input.value : null;
+    }
+    
+    function swap(variantId) {
+      document.querySelectorAll('[data-collapsible-data]').forEach(function (store) {
+        const id = store.getAttribute('data-collapsible-data');
+        const target = document.querySelector('[data-collapsible-target="' + id + '"]');
+        if (!target) return;
+        
+        let tpl = variantId && store.querySelector('template[data-variant-id="' + variantId + '"]');
+        if (!tpl) tpl = store.querySelector('template[data-default]');
+        if (tpl && target.innerHTML !== tpl.innerHTML) {
+          target.innerHTML = tpl.innerHTML;
+          // smooth-collapse caches height — nudge it to recalc if open
+          const wrapper = store.closest('smooth-collapse');
+          if (wrapper) wrapper.dispatchEvent(new Event('resize'));
+        }
+      });
+    }
+    
+    // --- INTEGRATION POINT: your theme's variant change event ---
+    // Dawn-style pub/sub
+    if (window.subscribe && window.PUB_SUB_EVENTS) {
+      subscribe(PUB_SUB_EVENTS.variantChange, function (e) {
+        if (e.data && e.data.variant) swap(e.data.variant.id);
+      });
+    }
+    // Custom-event themes
+    document.addEventListener('variant:change', function (e) {
+      swap((e.detail && e.detail.variant && e.detail.variant.id) || getVariantId());
     });
-  }
-
-  // --- INTEGRATION POINT: your theme's variant change event ---
-  // Dawn-style pub/sub
-  if (window.subscribe && window.PUB_SUB_EVENTS) {
-    subscribe(PUB_SUB_EVENTS.variantChange, function (e) {
-      if (e.data && e.data.variant) swap(e.data.variant.id);
+    // Generic fallback: the hidden variant id input
+    document.addEventListener('change', function (e) {
+      if (e.target && e.target.name === 'id') swap(e.target.value);
     });
-  }
-  // Custom-event themes
-  document.addEventListener('variant:change', function (e) {
-    swap((e.detail && e.detail.variant && e.detail.variant.id) || getVariantId());
-  });
-  // Generic fallback: the hidden variant id input
-  document.addEventListener('change', function (e) {
-    if (e.target && e.target.name === 'id') swap(e.target.value);
-  });
-
-  document.addEventListener('DOMContentLoaded', function () { swap(getVariantId()); });
-})();
+    
+    document.addEventListener('DOMContentLoaded', function () { swap(getVariantId()); });
+  })();
 </script>
 
 {% schema %}
@@ -723,7 +723,7 @@
         }
       ]
     },
-        {
+    {
       "name": "Icon Text Block",
       "type": "icon_text_block",
       "settings": [

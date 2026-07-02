@@ -31,10 +31,16 @@
       </a>
 
       {% unless item.product.has_only_default_variant %}
-        <div class="text-xs md:text-sm mt-2 text-foreground/75">
+        <div class="text-xs md:text-sm mt-1 text-foreground/75">
           {{ item.variant.title }}
         </div>
       {% endunless %}
+
+        {% if item.line_level_discount_allocations.size > 0 %}
+          <div class="col-start-2 mt-1">
+            {% render 'line-level-discount-allocations', item: item %}
+          </div>
+        {% endif %}
 
       {% unless item.properties == empty %}
         <div class="styled-links text-xs md:text-sm mt-1 text-foreground/75">
@@ -82,21 +88,14 @@
     {% endcomment %}
   </div>
 
-  <div class="flex items-end styled-links mt-2 max-md:text-sm">
+  <div class="flex items-start styled-links mt-0 max-md:text-sm">
     {% render 'line-item-price', item: item %}
-
+ 
     <div class="ml-auto">
       {% render 'qty-selector', item: item %}
     </div>
   </div>
 
-  {% comment %}
-    {% if item.line_level_discount_allocations.size > 0 %}
-      <div class="col-start-2 -mt-2">
-        {% render 'line-level-discount-allocations', item: item %}
-      </div>
-    {% endif %}
-  {% endcomment %}
 
   <div class="message message-danger text-danger text-xs md:text-sm col-start-2"></div>
 </div>

@@ -1,98 +1,465 @@
-{% render 'affiliate-base' %}
-<div class="aff-root how"><div class="wrap">
-  <div class="section-head reveal"><span class="eyebrow">{{ section.settings.eyebrow }}</span><h2>{{ section.settings.heading }}</h2></div>
-  <div class="steps">{% for block in section.blocks %}<div class="step reveal" {{ block.shopify_attributes }}><span class="num">{{ block.settings.number }}</span><h3>{{ block.settings.heading }}</h3><div>{{ block.settings.text }}</div></div>{% endfor %}</div>
-  {% if section.settings.button_text != blank %}<div class="how-cta reveal"><a class="btn btn-light" href="{{ section.settings.button_link }}">{{ section.settings.button_text }}</a></div>{% endif %}
-</div></div>
+{% render 'section-bg-number-vars' %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --content-width: {% render 'get-content-width', type: section.settings.content_width %};
+  }
+</style>
+
+{% liquid
+  assign section_classes = ' awh-section '
+
+  if section.settings.remove_horizontal_space
+    assign section_classes = section_classes | append: ' !px-0 '
+  endif
+
+  if section.settings.remove_vertical_space
+    assign section_classes = section_classes | append: ' !py-0 '
+  endif
+
+  assign step_tag = section.settings.card_heading_html_tag | default: 'h3'
+%}
+
+<section id="affiliate-how-it-works" {% render 'section-attrs', class: section_classes %}>
+  <div class="section-body max-w-[--content-width] mx-auto">
+
+    {% render 'section-header', button: false %}
+
+    <div class="awh-steps relative" data-animation-auto-order>
+      {% for i in (1..4) %}
+        {% liquid
+          assign title_key = 'step_' | append: i | append: '_title'
+          assign desc_key = 'step_' | append: i | append: '_description'
+          assign step_title = section.settings[title_key]
+          assign step_desc = section.settings[desc_key]
+        %}
+        {% if step_title != blank or step_desc != blank %}
+          <div class="awh-step relative" data-animation="block" data-animation-group="{{ section.id }}">
+            <div class="awh-step__num">{{ i }}</div>
+            {% if step_title != blank %}
+              <{{ step_tag }} class="heading {{ section.settings.card_heading_size }} awh-step__title">{{ step_title }}</{{ step_tag }}>
+            {% endif %}
+            {% if step_desc != blank %}
+              <p class="awh-step__desc">{{ step_desc }}</p>
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {% if section.settings.button_text != blank %}
+      <div class="awh-cta">
+        {% render 'button' %}
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+<style>
+  /* Vertical/horizontal spacing comes from the theme .section class. */
+  .awh-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 56px;
+  }
+
+  /* Connector line running behind the number circles (desktop only) */
+  .awh-steps::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: calc(12.5% + 28px);
+    right: calc(12.5% + 28px);
+    height: 1px;
+    background: linear-gradient(90deg, rgb(var(--color-foreground)), rgb(var(--color-foreground) / 0.2), rgb(var(--color-foreground)));
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  .awh-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    z-index: 1;
+  }
+
+  .awh-step__num {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    /* Opaque (tint layered over the page background) so the connector line
+       sits behind the circle and only shows in the gaps between steps. */
+    background: linear-gradient(rgb(var(--color-foreground) / 0.12), rgb(var(--color-foreground) / 0.12)), rgb(var(--color-background));
+    border: 1px solid rgb(var(--color-foreground) / 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    flex-shrink: 0;
+    font-size: var(--size-text-base);
+    font-weight: 700;
+    color: rgb(var(--color-foreground));
+  }
+
+  .awh-step__title {
+    margin-bottom: 10px;
+    color: rgb(var(--color-foreground));
+  }
+
+  .awh-step__desc {
+    font-size: var(--size-text-sm);
+    line-height: 1.65;
+    color: rgb(var(--color-foreground) / 0.65);
+    margin: 0;
+  }
+
+  .awh-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 52px;
+  }
+
+  @media (max-width: 900px) {
+    .awh-steps {
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    /* Connector line doesn't make sense once the steps wrap */
+    .awh-steps::before { display: none; }
+  }
+
+  @media (max-width: 600px) {
+
+    .awh-steps { 
+      grid-template-columns: 1fr; 
+      gap: 30px;
+    }
+    awh-cta {   
+      margin-top: 30px;
+    }
+  }
+</style>
 
 {% schema %}
 {
   "name": "Affiliate · How it works",
   "settings": [
     {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "t:sections.all.full_width.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "remove_horizontal_space",
+      "label": "t:sections.apps.settings.remove_horizontal_space.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "remove_vertical_space",
+      "label": "t:sections.apps.settings.remove_vertical_space.label"
+    },
+    {
+      "type": "select",
+      "id": "content_width",
+      "label": "t:sections.rich-text.settings.content_width.label",
+      "options": [
+        { "value": "small", "label": "t:sections.rich-text.settings.content_width.options__0.label" },
+        { "value": "normal", "label": "t:sections.rich-text.settings.content_width.options__1.label" },
+        { "value": "large", "label": "t:sections.rich-text.settings.content_width.options__2.label" },
+        { "value": "extra-large", "label": "t:sections.rich-text.settings.content_width.options__3.label" },
+        { "value": "full-width", "label": "t:sections.rich-text.settings.content_width.options__4.label" }
+      ],
+      "default": "extra-large"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.headers.heading"
+    },
+    {
       "type": "text",
-      "id": "eyebrow",
-      "label": "Eyebrow",
-      "default": "How it works"
+      "id": "subheading",
+      "label": "t:sections.all.subheading.label",
+      "default": "How It Works"
     },
     {
       "type": "text",
       "id": "heading",
-      "label": "Heading",
-      "default": "Four quiet steps to your first commission."
+      "label": "t:sections.featured-collection.settings.heading.label",
+      "default": "Start earning in four simple steps."
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "t:sections.all.content.label",
+      "default": "<p>Join the Breathelet Affiliate Program, share your unique link or discount code, and earn commission for every valid sale you generate.</p>"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "t:sections.all.text_alignment.label",
+      "options": [
+        { "value": "text-left", "label": "t:sections.all.text_alignment.options.text_left.label" },
+        { "value": "text-center", "label": "t:sections.all.text_alignment.options.text_center.label" }
+      ],
+      "default": "text-center"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "t:sections.all.heading_size.label",
+      "options": [
+        { "value": "h0", "label": "t:sections.all.heading_size.options__0.label" },
+        { "value": "h1", "label": "t:sections.all.heading_size.options__1.label" },
+        { "value": "h2", "label": "t:sections.all.heading_size.options__2.label" },
+        { "value": "h3", "label": "t:sections.all.heading_size.options__3.label" },
+        { "value": "h4", "label": "t:sections.all.heading_size.options__4.label" },
+        { "value": "h5", "label": "t:sections.all.heading_size.options__5.label" },
+        { "value": "h6", "label": "t:sections.all.heading_size.options__6.label" }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "select",
+      "id": "heading_html_tag",
+      "label": "t:sections.all.heading_html_tag.label",
+      "options": [
+        { "value": "h1", "label": "h1" },
+        { "value": "h2", "label": "h2" },
+        { "value": "h3", "label": "h3" },
+        { "value": "h4", "label": "h4" },
+        { "value": "h5", "label": "h5" },
+        { "value": "h6", "label": "h6" },
+        { "value": "p", "label": "p" },
+        { "value": "span", "label": "span" },
+        { "value": "div", "label": "div" }
+      ],
+      "default": "h2",
+      "info": "t:sections.all.heading_html_tag.info"
+    },
+    {
+      "type": "header",
+      "content": "Step Titles"
+    },
+    {
+      "type": "select",
+      "id": "card_heading_size",
+      "label": "t:sections.all.heading_size.label",
+      "options": [
+        { "value": "h0", "label": "t:sections.all.heading_size.options__0.label" },
+        { "value": "h1", "label": "t:sections.all.heading_size.options__1.label" },
+        { "value": "h2", "label": "t:sections.all.heading_size.options__2.label" },
+        { "value": "h3", "label": "t:sections.all.heading_size.options__3.label" },
+        { "value": "h4", "label": "t:sections.all.heading_size.options__4.label" },
+        { "value": "h5", "label": "t:sections.all.heading_size.options__5.label" },
+        { "value": "h6", "label": "t:sections.all.heading_size.options__6.label" }
+      ],
+      "default": "h6"
+    },
+    {
+      "type": "select",
+      "id": "card_heading_html_tag",
+      "label": "t:sections.all.heading_html_tag.label",
+      "options": [
+        { "value": "h1", "label": "h1" },
+        { "value": "h2", "label": "h2" },
+        { "value": "h3", "label": "h3" },
+        { "value": "h4", "label": "h4" },
+        { "value": "h5", "label": "h5" },
+        { "value": "h6", "label": "h6" },
+        { "value": "p", "label": "p" },
+        { "value": "span", "label": "span" },
+        { "value": "div", "label": "div" }
+      ],
+      "default": "h3",
+      "info": "t:sections.all.heading_html_tag.info"
+    },
+    {
+      "type": "header",
+      "content": "Step 1"
+    },
+    {
+      "type": "text",
+      "id": "step_1_title",
+      "label": "Title",
+      "default": "Apply To Join"
+    },
+    {
+      "type": "textarea",
+      "id": "step_1_description",
+      "label": "Description",
+      "default": "Sign up through the affiliate program and submit your basic creator or partner details."
+    },
+    {
+      "type": "header",
+      "content": "Step 2"
+    },
+    {
+      "type": "text",
+      "id": "step_2_title",
+      "label": "Title",
+      "default": "Get Your Link"
+    },
+    {
+      "type": "textarea",
+      "id": "step_2_description",
+      "label": "Description",
+      "default": "Receive your unique affiliate link or discount code so your sales can be tracked automatically."
+    },
+    {
+      "type": "header",
+      "content": "Step 3"
+    },
+    {
+      "type": "text",
+      "id": "step_3_title",
+      "label": "Title",
+      "default": "Share Breathelet"
+    },
+    {
+      "type": "textarea",
+      "id": "step_3_description",
+      "label": "Description",
+      "default": "Promote Breathelet across your content, community, emails, social posts, or wellness recommendations."
+    },
+    {
+      "type": "header",
+      "content": "Step 4"
+    },
+    {
+      "type": "text",
+      "id": "step_4_title",
+      "label": "Title",
+      "default": "Earn Monthly"
+    },
+    {
+      "type": "textarea",
+      "id": "step_4_description",
+      "label": "Description",
+      "default": "Earn commission on every valid sale and receive monthly payouts with no minimum threshold."
+    },
+    {
+      "type": "header",
+      "content": "CTA Button"
     },
     {
       "type": "text",
       "id": "button_text",
-      "label": "Button text",
-      "default": "Start your application"
+      "default": "Join The Program",
+      "label": "t:sections.rich-text.blocks.button.settings.button_text.label",
+      "info": "Leave blank to hide the button."
     },
     {
       "type": "url",
       "id": "button_link",
-      "label": "Button link"
-    }
-  ],
-  "blocks": [
+      "label": "t:sections.rich-text.blocks.button.settings.button_link.label"
+    },
     {
-      "type": "step",
-      "name": "Step",
-      "settings": [
-        {
-          "type": "text",
-          "id": "number",
-          "label": "Number"
-        },
-        {
-          "type": "text",
-          "id": "heading",
-          "label": "Heading"
-        },
-        {
-          "type": "richtext",
-          "id": "text",
-          "label": "Text"
-        }
-      ]
+      "type": "select",
+      "id": "button_style",
+      "label": "t:sections.all.button_style.label",
+      "options": [
+        { "value": "", "label": "t:sections.all.button_style.options.filled" },
+        { "value": "button-outline", "label": "t:sections.all.button_style.options.outline" }
+      ],
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "button_size",
+      "label": "t:sections.rich-text.blocks.button.settings.button_size.label",
+      "options": [
+        { "value": "text-xs md:text-sm", "label": "t:sections.rich-text.blocks.button.settings.button_size.options__0.label" },
+        { "value": "text-sm md:text-base", "label": "t:sections.rich-text.blocks.button.settings.button_size.options__1.label" },
+        { "value": "text-base md:text-lg", "label": "t:sections.rich-text.blocks.button.settings.button_size.options__2.label" },
+        { "value": "text-lg md:text-h5", "label": "t:sections.rich-text.blocks.button.settings.button_size.options__3.label" }
+      ],
+      "default": "text-sm md:text-base"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.headers.colors"
+    },
+    {
+      "type": "color",
+      "label": "t:sections.all.background_color.label",
+      "id": "button_background_color"
+    },
+    {
+      "type": "color",
+      "label": "t:sections.all.text_color.label",
+      "id": "button_text_color"
+    },
+    {
+      "type": "header",
+      "content": "Hover"
+    },
+    {
+      "type": "paragraph",
+      "content": "Leave a hover option on \"Same as default\" or empty to keep the default value on hover."
+    },
+    {
+      "type": "select",
+      "id": "button_hover_style",
+      "label": "Hover style",
+      "options": [
+        { "value": "", "label": "Same as default" },
+        { "value": "filled", "label": "Filled" },
+        { "value": "outline", "label": "Outline" }
+      ],
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "button_hover_size",
+      "label": "Hover size",
+      "options": [
+        { "value": "", "label": "Same as default" },
+        { "value": "xs", "label": "Small" },
+        { "value": "sm", "label": "Medium" },
+        { "value": "base", "label": "Large" },
+        { "value": "lg", "label": "Extra large" }
+      ],
+      "default": ""
+    },
+    {
+      "type": "color",
+      "id": "button_hover_background_color",
+      "label": "Hover background"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_text_color",
+      "label": "Hover text"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.headers.colors"
+    },
+    {
+      "type": "color",
+      "label": "t:sections.all.background_color.label",
+      "id": "background_color"
+    },
+    {
+      "type": "color",
+      "label": "t:sections.all.text_color.label",
+      "id": "text_color"
+    },
+    {
+      "type": "color",
+      "label": "t:sections.all.heading_color.label",
+      "id": "heading_color"
     }
   ],
   "presets": [
     {
       "name": "Affiliate · How it works",
-      "blocks": [
-        {
-          "type": "step",
-          "settings": {
-            "number": "01",
-            "heading": "Apply",
-            "text": "<p>Submit a quick application with your platform and audience. It takes just a few minutes.</p>"
-          }
-        },
-        {
-          "type": "step",
-          "settings": {
-            "number": "02",
-            "heading": "Get approved",
-            "text": "<p>We review every application to keep quality high. Once you're in, you get your unique link and code.</p>"
-          }
-        },
-        {
-          "type": "step",
-          "settings": {
-            "number": "03",
-            "heading": "Share your link",
-            "text": "<p>Promote across social, blog, newsletter, or website — using your link, your code, or both.</p>"
-          }
-        },
-        {
-          "type": "step",
-          "settings": {
-            "number": "04",
-            "heading": "Earn monthly",
-            "text": "<p>Every valid sale is tracked automatically through Shopify Collabs. We pay out monthly.</p>"
-          }
-        }
-      ]
+      "category": "Affiliate"
     }
   ]
 }

@@ -345,7 +345,7 @@
             "hide_thumbnails": false,
             "product_handle": "breathelet-onefit",
             "aggregated": true,
-            "data-limit": 8,
+            "data-limit": 4,
             "maxwidth": 1080,
             "is_sample": true
           }
@@ -375,7 +375,6 @@
       "blocks": {
         "ot_instagram_feed_ot_easy_instagram_feed_zJxrXN": {
           "type": "shopify://apps/ot-instagram-feed/blocks/ot-easy-instagram-feed/75d29d92-c4c5-4091-87e8-4dde82e3828c",
-          "disabled": true,
           "settings": {
             "feed_id": "",
             "title": "",
@@ -402,6 +401,7 @@
         },
         "gsc_instagram_feed_instafeed_aEadQT": {
           "type": "shopify://apps/gsc-instagram-feed/blocks/instafeed/96970b1b-b770-454f-b16b-51f47e1aa4ed",
+          "disabled": true,
           "settings": {
             "widget_id": "GSC-sAHTOcJrWJWcwdi"
           }

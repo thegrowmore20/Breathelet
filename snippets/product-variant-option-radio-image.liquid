@@ -1,6 +1,7 @@
 {% liquid
   assign variant_image = option_value.variant.featured_image
   assign variant_price = option_value.variant.price | money
+  assign variant_title = option_value.variant.title
   if option_value.variant.compare_at_price != blank
     assign variant_compare_price = option_value.variant.compare_at_price | money
   endif
@@ -15,7 +16,7 @@
   endif
 %}
 
-<div class="variant-radio-image w-12 hd:w-20">
+<div class="variant-radio-image w-22 hd:w-20"> 
   <input
     type="radio"
     id="{{ section.id }}-{{ option.position }}-{{ index }}"
@@ -31,7 +32,7 @@
     data-option-value-id="{{ option_value.id }}"
   >
   <label
-    class="media w-full"
+    class="media w-full h-full"
     title="{{ option_value | escape }}"
     for="{{ section.id }}-{{ option.position }}-{{ index }}"
   >
@@ -42,7 +43,13 @@
         | image_tag: sizes: '(min-width: 1400px) 80px, 64px', loading: 'lazy'
       -}}
     </lqip-element>
-    <div class="variant-radio-price">
+    <div
+      class="variant-radio-price"
+      data-variant-title="{{ variant_title }}"
+      data-base-price="{{ option_value.variant.price }}"
+      data-base-reg="{{ variant_price }}"
+      data-base-compare="{{ variant_compare_price }}"
+    >
       <span class="variant-reg-price">{{ variant_price }}</span><span class="variant-compare-price">{{ variant_compare_price }}</span>
     </div>
   </label>

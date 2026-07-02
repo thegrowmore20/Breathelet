@@ -6,6 +6,12 @@
   data-media-type="{{ media.media_type }}"
   aria-label="{{ 'accessibility.go_to_item' | t: index: index }}"
 >
+  {% assign lazy_load = 'lazy' %}
+  {% if index == 1 %}
+    {% assign lazy_load = 'eager' %}
+  {% else %}
+    {% assign lazy_load = 'lazy' %}
+  {% endif %}    
   {% case media.media_type %}
     {% when 'image' %}
       <div
@@ -15,7 +21,10 @@
           {{
             media
             | image_url: width: 160
-            | image_tag: widths: '80, 160', sizes: image_sizes, class: 'product-thumbnail-shade', loading: 'eager'
+            | image_tag: widths: '80, 160',
+            sizes: image_sizes,
+            class: 'product-thumbnail-shade',
+            loading: lazy_load
           }}
         </lqip-element>
       </div>
@@ -23,7 +32,10 @@
       <div
         class="media media--ratio-16-9"
       >
-        {{ media | image_url: width: 160 | image_tag: widths: '80, 160', sizes: image_sizes, loading: 'eager' }}
+        {{ media | image_url: width: 160 | image_tag: widths: '80, 160',
+          sizes: image_sizes,
+          loading: lazy_load 
+        }}
       </div>
 
       <div class="play-icon">
@@ -33,7 +45,10 @@
       <div
         class="media media--ratio-16-9"
       >
-        {{ media | image_url: width: 160 | image_tag: widths: '80, 160', sizes: image_sizes, loading: 'eager' }}
+        {{ media | image_url: width: 160 | image_tag: widths: '80, 160',
+          sizes: image_sizes,
+          loading: lazy_load
+        }}
       </div>
 
       <div class="play-icon">
@@ -46,7 +61,9 @@
         {{
           media
           | image_url: width: 160
-          | image_tag: widths: '80, 160', sizes: image_sizes, class: 'product-thumbnail-shade', loading: 'eager'
+          | image_tag: widths: '80, 160', sizes: image_sizes,
+          class: 'product-thumbnail-shade',
+          loading: lazy_load
         }}
       </div>
 
