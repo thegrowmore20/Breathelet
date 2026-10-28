@@ -11178,3 +11178,17 @@ quick-add-button.no-js-hidden button:hover {
     display: block;
   }
 }
+
+/* ── Buy It Now (unbranded) button ── */
+.shopify-payment-button__button--unbranded {
+  background: transparent !important;
+  color: #ffffff !important;
+  border: 1.5px solid #ffffff !important;
+  transition: background-color 200ms, color 200ms, border-color 200ms !important;
+}
+
+.shopify-payment-button__button--unbranded:hover {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border-color: #ffffff !important;
+}
