@@ -31,7 +31,7 @@
         "transition": "slide-y",
         "autoplay": false,
         "change_message_every": 4,
-        "background_color": "#c62828",
+        "background_color": "#a57c72",
         "text_color": "#ffffff"
       }
     },
