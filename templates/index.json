@@ -210,7 +210,7 @@
         "bdb75fd8-0a89-4189-9614-b2d55f963058": {
           "type": "text",
           "settings": {
-            "text": "<p>Breathelet sends a gentle random vibration every 60–150 minutes, a soft reminder to:</p><ul><li>Be present in the moment</li><li>Take a deep breath</li><li>Correct your posture</li><li>Hydrate</li><li>Mindful Habits</li></ul>"
+            "text": "<p>Breathelet sends a gentle random vibration every 60–150 minutes, a soft reminder to:</p><ul><li>Be present in the moment</li><li>Take a deep breath</li><li>Correct your posture</li><li>Hydrate</li><li>Build Mindful Habits</li></ul>"
           }
         }
       },
@@ -222,9 +222,10 @@
       "settings": {
         "full_width": true,
         "remove_bottom_spacing": false,
-        "image": "shopify://shop_images/Couple.webp",
+        "image": "shopify://shop_images/WhatsApp_Image_2026-10-05_at_6.54.30_PM.jpg",
         "image_size": "",
         "image_position": "right",
+        "reverse_order": true,
         "image_width": 50,
         "text_alignment": "text-left",
         "background_color": "#000000",
@@ -269,6 +270,7 @@
         "image": "shopify://shop_images/d989e3f2-1a42-444b-97e3-2879e680b4ff-1.jpg",
         "image_size": "",
         "image_position": "left",
+        "reverse_order": true,
         "image_width": 50,
         "text_alignment": "text-left",
         "background_color": "#000000",
@@ -375,6 +377,7 @@
       "blocks": {
         "ot_instagram_feed_ot_easy_instagram_feed_zJxrXN": {
           "type": "shopify://apps/ot-instagram-feed/blocks/ot-easy-instagram-feed/75d29d92-c4c5-4091-87e8-4dde82e3828c",
+          "disabled": true,
           "settings": {
             "feed_id": "",
             "title": "",
@@ -401,7 +404,6 @@
         },
         "gsc_instagram_feed_instafeed_aEadQT": {
           "type": "shopify://apps/gsc-instagram-feed/blocks/instafeed/96970b1b-b770-454f-b16b-51f47e1aa4ed",
-          "disabled": true,
           "settings": {
             "widget_id": "GSC-sAHTOcJrWJWcwdi"
           }
@@ -627,7 +629,7 @@
         "text_1": "Risk Free Shopping & Satisfacion Guaranteed",
         "intro_img_1": "shopify://shop_images/Lifetime_Warranty_3.png",
         "intro_text_1": "",
-        "intro_img_2": "shopify://shop_images/Money_Back_Guarantee_2.png",
+        "intro_img_2": "shopify://shop_images/15_Days_Return.png",
         "intro_text_2": "",
         "intro_img_url_1": "https://airvapeusa.com/cdn/shop/files/icon_Warranty_3.svg?v=1774515664",
         "intro_img_url_2": "https://airvapeusa.com/cdn/shop/files/icon_MoneyBack_Gurantee_3.svg?v=1774515656",
@@ -682,6 +684,7 @@
         "image": "shopify://shop_images/image-1.jpg",
         "image_size": "",
         "image_position": "left",
+        "reverse_order": true,
         "image_width": 50,
         "text_alignment": "text-left",
         "background_color": "#000000",
@@ -803,6 +806,7 @@
         "image": "shopify://shop_images/Bundle_Image_1.webp",
         "image_size": "",
         "image_position": "right",
+        "reverse_order": true,
         "image_width": 50,
         "text_alignment": "text-left",
         "background_color": "#000000",
@@ -1144,7 +1148,7 @@
             "button_bg_hover": "",
             "button_text_hover": "",
             "video_url": "",
-            "image": "shopify://shop_images/Influencer_Comunity.webp",
+            "image": "shopify://shop_images/WhatsApp_Image_2026-10-12_at_12.26.45_PM.webp",
             "col_bg_color": "",
             "overlay_enable": true,
             "overlay_color": "#000000",

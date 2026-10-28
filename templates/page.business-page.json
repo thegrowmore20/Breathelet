@@ -14,6 +14,7 @@
       "disabled": true,
       "settings": {
         "full_width": true,
+        "hide_title": false,
         "content_width": "normal",
         "content_text_size": "prose md:prose-lg",
         "heading_size": "h2",
@@ -213,6 +214,7 @@
         "image": "shopify://shop_images/breathelet_white29_jpg.webp",
         "image_size": "",
         "image_position": "right",
+        "reverse_order": true,
         "image_width": 50,
         "text_alignment": "text-left",
         "background_color": "#000000",
@@ -355,6 +357,7 @@
         "image": "shopify://shop_images/image-1.jpg",
         "image_size": "",
         "image_position": "left",
+        "reverse_order": true,
         "image_width": 50,
         "text_alignment": "text-left",
         "background_color": "",
@@ -471,6 +474,32 @@
         "overlay_opacity": 55,
         "overlay_type": "solid"
       }
+    },
+    "featured_collection_fynGtY": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.name",
+      "settings": {
+        "full_width": true,
+        "carousel": true,
+        "show_variants": true,
+        "products_count": 8,
+        "grid_columns": 3,
+        "grid_columns_mobile": "2",
+        "products": [
+          "breathelet-onefit"
+        ],
+        "collection": "",
+        "subheading": "",
+        "heading": "",
+        "heading_size": "h2",
+        "text_alignment": "text-center",
+        "link_text": "View all",
+        "link_url": "",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_html_tag": "p"
+      }
     }
   },
   "order": [
@@ -482,6 +511,7 @@
     "blocks_NbfpBF",
     "image_with_text_J9V7nB",
     "rich_text_zNmfQV",
-    "image_with_text_overlay_NNPbtm"
+    "image_with_text_overlay_NNPbtm",
+    "featured_collection_fynGtY"
   ]
 }

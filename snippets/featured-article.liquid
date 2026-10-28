@@ -37,7 +37,7 @@
         {{
           featured_article
           | image_url: width: 1920
-          | image_tag: sizes: image_sizes, class: 'image-hover-zoom', loading: 'lazy'
+          | image_tag: sizes: image_sizes, class: 'image-hover-zoom featured-article', loading: 'lazy'
         }}
         {{ featured_article | image_url: width: 20 | image_tag: class: 'media-lq-placeholder', fetchpriority: 'low' }}
       {% endif %}
@@ -46,7 +46,7 @@
 
   <div
     class="
-      featured-article__info color p-8 md:p-12 lg:px-12 lg:py-16
+      featured-article__info color p-8
       {% if background_color == blank or background_color.rgba == '0 0 0 / 0.0' %}
         !bg-foreground/2.5
       {% endif %}
@@ -64,7 +64,7 @@
     </div>
 
     {% if date != false or comments != false %}
-      <div class="inline-flex flex-wrap items-center gap-4 mt-4 md:mt-6">
+      <div class="inline-flex flex-wrap items-center gap-4 mt-4">
         {% if date != false %}
           <div class="text-foreground/75">
             {{ featured_article.published_at | default: 'now' | time_tag: format: 'date' }}
@@ -82,7 +82,7 @@
     {% endif %}
 
     {% if excerpt != false %}
-      <div class="text-foreground leading-relaxed mt-4 md:mt-8">
+      <div class="text-foreground leading-relaxed mt-4">
         {% if featured_article %}
           {{ featured_article.excerpt_or_content | strip_html | truncatewords: 30 }}
         {% else %}
@@ -93,7 +93,7 @@
 
     {% if button_style != 'hidden' %}
       <div
-        class="button {{ button_style }} mt-8 md:mt-12"
+        class="button {{ button_style }} mt-4"
         style="{% render 'button-vars', background: button_background_color, text: button_text_color %}"
       >
         {{ 'sections.featured_article.read_more' | t }}

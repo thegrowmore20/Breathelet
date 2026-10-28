@@ -146,7 +146,8 @@
             "
             sizes="100vw"
           >
-          {%- if block.settings.background_image_desktop -%}
+          {%- if block.settings.background_image_desktop -%}                     
+           {%- assign background_image_desktop_alt = block.settings.background_image_desktop.alt | default: 'icon-features-desktop-background' -%}
             {{-
               block.settings.background_image_desktop
               | image_url: width: 3840
@@ -155,9 +156,10 @@
                 sizes: '100vw',
                 loading: loading_val,
                 fetchpriority: fetchpriority_val,
-                alt: block.settings.background_image_desktop.alt
+                alt: background_image_desktop_alt
             -}}
           {%- else -%}
+           {%- assign background_image_mobile_alt = block.settings.background_image_mobile.alt | default: 'icon-features-mobile-background' -%}
             {{-
               block.settings.background_image_mobile
               | image_url: width: 1000
@@ -166,7 +168,7 @@
                 sizes: '100vw',
                 loading: loading_val,
                 fetchpriority: fetchpriority_val,
-                alt: block.settings.background_image_mobile.alt
+                alt: background_image_mobile_alt
             -}}
           {%- endif -%}
         </picture>

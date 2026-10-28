@@ -152,7 +152,7 @@
           "type": "block",
           "settings": {
             "title": "Is Breathelet waterproof?",
-            "content": "<p>Breathelet is water-resistant, not fully waterproof. It can handle everyday splashes, light moisture, and daily wear, but it should not be worn while swimming, showering, or fully submerged in water.</p>",
+            "content": "<p>Breathelet is water resistant and safe for everyday water exposure, including swimming. However, avoid hot tubs, saunas, steam rooms, and very hot showers, as heat and steam may affect the device.</p>",
             "content_from_page": "",
             "open": false,
             "heading_html_tag": "p"
@@ -162,7 +162,7 @@
           "type": "block",
           "settings": {
             "title": "How long does the battery last?",
-            "content": "<p>Breathelet is designed with a long-lasting battery that can last up to 14 days, depending on usage and charging habits.</p>",
+            "content": "<p>Breathelet is designed with a long-lasting battery for all-day wear. We recommend charging it overnight so it's always ready to use and you never have to think about the battery.</p>",
             "content_from_page": "",
             "open": false,
             "heading_html_tag": "p"
@@ -173,6 +173,16 @@
           "settings": {
             "title": "How do I charge Breathelet?",
             "content": "<p>Charge Breathelet using the provided charging accessory or compatible charging setup included with your order. For best performance, keep the charging area clean and dry before charging.</p>",
+            "content_from_page": "",
+            "open": false,
+            "heading_html_tag": "p"
+          }
+        },
+        "block_brA7iJ": {
+          "type": "block",
+          "settings": {
+            "title": "Why doesn’t the indicator light turn on immediately when I plug in my Breathelet to charge?",
+            "content": "<p>If the indicator light does not appear immediately after connecting your Breathelet to the charger, please leave it connected for at least 10 minutes before checking again. Due to the characteristics of the battery, the device may take a short time to respond to the charging connection, particularly when the battery is deeply discharged. Once charging begins, the indicator light should illuminate or pulse to indicate that the device is charging.</p><p>If the light still does not appear after more than 10 minutes, check that the magnetic charging connector is properly aligned with the contact points and that you are using a compatible 5V USB power adapter rated up to 1A.</p>",
             "content_from_page": "",
             "open": false,
             "heading_html_tag": "p"
@@ -191,7 +201,8 @@
         "block_BBUGBc",
         "block_A3hmAH",
         "block_Lc9fBL",
-        "block_Dqcnwc"
+        "block_Dqcnwc",
+        "block_brA7iJ"
       ],
       "settings": {
         "full_width": true,
@@ -315,17 +326,7 @@
           "type": "block",
           "settings": {
             "title": "Does Breathelet come with a warranty?",
-            "content": "<p>Yes. Breathelet comes with a 30-Day Guarantee and Lifetime Warranty support for eligible product issues. Warranty coverage applies to qualifying defects or functional issues under normal use.</p>",
-            "content_from_page": "",
-            "open": false,
-            "heading_html_tag": "p"
-          }
-        },
-        "block_V4GHaH": {
-          "type": "block",
-          "settings": {
-            "title": "What does the 30-Day Guarantee mean?",
-            "content": "<p>You can try Breathelet with confidence. If you are not satisfied within 30 days of receiving your order, contact our support team and they will guide you through the available return or replacement process.</p>",
+            "content": "<p>Yes. Breathelet comes with a <strong>15-Day Return Policy</strong> and <strong>Lifetime Warranty</strong> support for eligible manufacturing defects or functional issues under normal use. Returns are subject to the conditions outlined in our Refund Policy.</p>",
             "content_from_page": "",
             "open": false,
             "heading_html_tag": "p"
@@ -365,7 +366,6 @@
       "block_order": [
         "block_hGH8cQ",
         "block_q84pxr",
-        "block_V4GHaH",
         "block_nceRnR",
         "block_mj3L6A",
         "block_yjwLMJ"

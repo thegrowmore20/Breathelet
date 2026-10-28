@@ -28,7 +28,7 @@
 %}
  <section {% render 'section-attrs', class: section_classes %}>
   <div class="section-body trim-margins faq-section-container {{ section.settings.text_alignment }}">
-    {% render 'section-header', link_text: section.settings.link_text, link_url: link_url, new_tab, section.settings.new_tab %}
+    {% render 'section-header', link_text: section.settings.link_text, link_url: link_url %}
     <div class="section-body-wrapper">
 
         <div class="product-faqs-wrapper" id="faqs">
@@ -441,4 +441,15 @@ for (let i = 0; i < acc.length; i++) {
         }
     ]
 }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'section-header', link_text: section.settings.link_text, link_url:
+    link_url, new_tab, section.settings.new_tab %}"
+  to: "{% render 'section-header', link_text: section.settings.link_text, link_url:
+    link_url %}"
+  position: 907..995
+{%- endcomment -%}

@@ -23,6 +23,7 @@
 				{% endif %}
 				<div class="intro-images">
 					{% if section.settings.intro_img_1 != blank %}
+						{% assign alt_intro_img_1 = section.settings.intro_img_1.alt | default: 'Limited Warranty' %}
 						<div class="service-intro-main intro-main-image-1">
 						{{
 							section.settings.intro_img_1
@@ -32,7 +33,7 @@
 								sizes: '(max-width: 480px) 140px, (max-width: 768px) 280px, 280px',
 								width: 280,
 								height: 280,
-								alt: section.settings.intro_img_1.alt,
+								alt: alt_intro_img_1,
 								loading: 'lazy'
 						}}
 						{% if section.settings.intro_text_1 != blank %}
@@ -43,6 +44,7 @@
 						<img src="{{ section.settings.intro_img_url_1 }}" alt="Intro image" loading="lazy" width="280" height="auto">
 					{% endif %}
 					{% if section.settings.intro_img_2 != blank %}
+						{% assign alt_intro_img_2 = section.settings.intro_img_2.alt | default: '30 Days Guarantee' %}
 						<div class="service-intro-main intro-main-image-2">
 						{{
 							section.settings.intro_img_2
@@ -52,7 +54,7 @@
 								sizes: '(max-width: 480px) 140px, (max-width: 768px) 280px, 280px',
 								width: 280,
 								height: 280,
-								alt: section.settings.intro_img_2.alt,
+								alt: alt_intro_img_2,
 								loading: 'lazy'
 						}}
 						{% if section.settings.intro_text_2 != blank %}
@@ -74,6 +76,7 @@
 									</div>
 								{% elsif block.settings.icon_image != blank %}
 									<div class="service-icon">										
+										{% assign alt_image = block.settings.icon_image.alt | default: block.settings.title %}
 										{{
 											block.settings.icon_image
 											| image_url: width: 88
@@ -82,7 +85,7 @@
 												sizes: '88px',
 												width: 88,
 												height: 88,
-												alt: block.settings.icon_image.alt,
+												alt: alt_image,
 												loading: 'lazy'
 											}}
 

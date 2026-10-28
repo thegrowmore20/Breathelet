@@ -39,7 +39,6 @@
       "block_order": [
         "heading_rb3mJq"
       ],
-      "disabled": true,
       "settings": {
         "full_width": true,
         "enable_transparent_header": false,
@@ -94,7 +93,6 @@
         "text_yJNrKP",
         "button_rCH9bF"
       ],
-      "disabled": true,
       "name": "t:sections.rich-text.presets__0.name",
       "settings": {
         "full_width": true,
@@ -121,14 +119,15 @@
       "block_order": [
         "banner-heading"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "enable_transparent_header": false,
         "use_original_media_size": false,
         "image": "shopify://shop_images/Affiliate_Page_Banner_Desktop_30c59195-cc71-4a3c-a0c8-bd81cf680a55.webp",
-        "image_mobile": "shopify://shop_images/Affiliate_Page_Banner_Mobile_32dc9d0c-8a40-41b1-902c-6e18cbc1594e.webp",
+        "image_mobile": "shopify://shop_images/Affiliate_Page_Banner_Mobile_f1a0a30e-7390-4e63-bcc9-f3648eb4e689.webp",
         "content_alignment": "md:content-middle-left",
-        "content_alignment_mobile": "content-middle-left",
+        "content_alignment_mobile": "content-middle-center",
         "link": "",
         "min_height": 300,
         "text_color": "#ffffff",
@@ -266,13 +265,15 @@
         "button_Uhnyzc",
         "button_8mpcaP"
       ],
+      "disabled": true,
       "name": "t:sections.image-with-text.presets__0.name",
       "settings": {
         "full_width": false,
-        "remove_bottom_spacing": false,
-        "image": "shopify://shop_images/The_Physiology_Behind_Mindful_Breathing_80abf659-f09f-4602-92aa-3d889d9f9dc0.png",
+        "remove_bottom_spacing": true,
+        "image": "shopify://shop_images/Image_1_e14526d6-783e-47d4-9f26-10dffe90265e.webp",
         "image_size": "",
         "image_position": "right",
+        "reverse_order": false,
         "image_width": 50,
         "text_alignment": "text-left",
         "background_color": "",
@@ -286,7 +287,8 @@
         "benefit-1": {
           "type": "benefit",
           "settings": {
-            "icon_width": 48,
+            "icon_image": "shopify://shop_images/Icon_Keep_Wearing.svg",
+            "icon_width": 60,
             "title": "A product people actually keep wearing",
             "text": "<p>Breathelet isn't another gadget destined for a drawer. It's a minimal, premium bracelet built for everyday calm, easy to recommend, easy to love.</p>"
           }
@@ -294,7 +296,8 @@
         "benefit-2": {
           "type": "benefit",
           "settings": {
-            "icon_width": 48,
+            "icon_image": "shopify://shop_images/Icon_Gowth.svg",
+            "icon_width": 60,
             "title": "A market that's only growing",
             "text": "<p>Mindfulness, digital detox, and intentional living are everywhere. Breathelet gives your audience a simple, screen-free way to join in.</p>"
           }
@@ -302,7 +305,8 @@
         "benefit-3": {
           "type": "benefit",
           "settings": {
-            "icon_width": 48,
+            "icon_image": "shopify://shop_images/Icon_Narural_Promotion.svg",
+            "icon_width": 60,
             "title": "Promotion that feels natural",
             "text": "<p>No hard sell required. Show how you pause, check in, and slow down — the product fits effortlessly into authentic content.<br/><br/></p>"
           }
@@ -310,7 +314,8 @@
         "benefit-4": {
           "type": "benefit",
           "settings": {
-            "icon_width": 48,
+            "icon_image": "shopify://shop_images/Icon_Monthly_Payout-04.svg",
+            "icon_width": 60,
             "title": "Monthly payouts, no threshold",
             "text": "<p>Get paid every month for valid sales. No minimum to hit before you earn.</p>"
           }
@@ -318,7 +323,8 @@
         "benefit-5": {
           "type": "benefit",
           "settings": {
-            "icon_width": 48,
+            "icon_image": "shopify://shop_images/Icon_Brand_you_can_stand_behind.svg",
+            "icon_width": 60,
             "title": "A brand you can stand behind",
             "text": "<p>Clean design, honest messaging, no inflated claims. Recommending Breathelet keeps your trust, and your audience's, intact.</p>"
           }
@@ -326,7 +332,8 @@
         "benefit-6": {
           "type": "benefit",
           "settings": {
-            "icon_width": 48,
+            "icon_image": "shopify://shop_images/Icon_Marketing_Support.svg",
+            "icon_width": 60,
             "title": "Marketing support included",
             "text": "<p>Creatives, banners, content ideas, brand assets, and product samples available upon request once you're approved.</p>"
           }
@@ -340,6 +347,7 @@
         "benefit-5",
         "benefit-6"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "remove_horizontal_space": false,
@@ -358,6 +366,7 @@
     },
     "affiliate_how_it_works": {
       "type": "affiliate-how-it-works",
+      "disabled": true,
       "settings": {
         "full_width": true,
         "remove_horizontal_space": false,
@@ -400,7 +409,8 @@
         "criteria-1": {
           "type": "criteria",
           "settings": {
-            "icon_width": 32,
+            "icon_image": "shopify://shop_images/Icon_Content_Creator.svg",
+            "icon_width": 46,
             "title": "Influencers & content creators",
             "text": "<p>Sharing wellness, lifestyle, and everyday mindful moments.</p>"
           }
@@ -408,7 +418,8 @@
         "criteria-2": {
           "type": "criteria",
           "settings": {
-            "icon_width": 32,
+            "icon_image": "shopify://shop_images/Icon_Blogs_Websites.svg",
+            "icon_width": 46,
             "title": "Bloggers & Website Owners",
             "text": "<p>In mindfulness, productivity, or healthy living niches.</p>"
           }
@@ -416,7 +427,8 @@
         "criteria-3": {
           "type": "criteria",
           "settings": {
-            "icon_width": 32,
+            "icon_image": "shopify://shop_images/Icon_Wellnesss_Comunity.svg",
+            "icon_width": 46,
             "title": "Wellness Professionals & Communities",
             "text": "<p>Guiding people toward calmer, more intentional routines.</p>"
           }
@@ -424,7 +436,8 @@
         "criteria-4": {
           "type": "criteria",
           "settings": {
-            "icon_width": 32,
+            "icon_image": "shopify://shop_images/Icon_Email_Wrier.svg",
+            "icon_width": 44,
             "title": "Newsletter & Email Creators",
             "text": "<p>With an audience that trusts their recommendations.</p>"
           }
@@ -432,7 +445,8 @@
         "criteria_DYLdYX": {
           "type": "criteria",
           "settings": {
-            "icon_width": 32,
+            "icon_image": "shopify://shop_images/Icon_Mindfulness_Minimalism_Pages.svg",
+            "icon_width": 44,
             "title": "Mindfulness & Minimalism Pages",
             "text": "<p>Built around mindfulness, minimalism, and intentional living</p>"
           }
@@ -445,6 +459,7 @@
         "criteria-4",
         "criteria_DYLdYX"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "remove_horizontal_space": false,
@@ -532,6 +547,7 @@
         "feature-6",
         "feature-7"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "remove_horizontal_space": false,
@@ -562,7 +578,8 @@
         "card-1": {
           "type": "card",
           "settings": {
-            "icon_width": 40,
+            "icon_image": "shopify://shop_images/Icon_Commission_Based.svg",
+            "icon_width": 52,
             "title": "Percentage-based commission",
             "text": "<p>Earn a competitive percentage on every valid sale generated through your referral link or discount code.</p>",
             "highlight": false,
@@ -572,7 +589,8 @@
         "card-2": {
           "type": "card",
           "settings": {
-            "icon_width": 40,
+            "icon_image": "shopify://shop_images/Icon_Monthly_Payout-13.svg",
+            "icon_width": 52,
             "title": "Paid monthly",
             "text": "<p>Commissions are calculated and paid out every month for completed, valid orders.</p>",
             "highlight": false,
@@ -582,7 +600,8 @@
         "card-4": {
           "type": "card",
           "settings": {
-            "icon_width": 40,
+            "icon_image": "shopify://shop_images/Icon_Flexible_Payment_Method.svg",
+            "icon_width": 52,
             "title": "Flexible Payment Methods",
             "text": "<p>Receive your payouts through the available supported methods.</p>",
             "highlight": false,
@@ -592,7 +611,8 @@
         "card-3": {
           "type": "card",
           "settings": {
-            "icon_width": 40,
+            "icon_image": "shopify://shop_images/Icon_No_Threshold.svg",
+            "icon_width": 52,
             "title": "No Minimum Threshold",
             "text": "<p>Earn it, get it. There's no balance you need to reach before being paid.</p>",
             "highlight": false,
@@ -602,7 +622,8 @@
         "card-5": {
           "type": "card",
           "settings": {
-            "icon_width": 40,
+            "icon_image": "shopify://shop_images/Icon_Refund_Cancellation.svg",
+            "icon_width": 52,
             "title": "Refunds & Cancellations",
             "text": "<p>Commission is only paid on successfully completed sales. If an order is refunded, canceled, or returned, the related commission is canceled or deducted before payout.</p>",
             "highlight": false,
@@ -617,6 +638,7 @@
         "card-3",
         "card-5"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "remove_horizontal_space": false,
@@ -637,6 +659,7 @@
     },
     "warranty_coverage_REDbPx": {
       "type": "warranty-coverage",
+      "disabled": true,
       "name": "Warranty Coverage",
       "settings": {
         "full_width": true,
@@ -694,13 +717,15 @@
         "heading_c8iG83",
         "text_mx9zHN"
       ],
+      "disabled": true,
       "name": "t:sections.image-with-text.presets__0.name",
       "settings": {
         "full_width": false,
         "remove_bottom_spacing": false,
-        "image": "shopify://shop_images/Influencer_Comunity.webp",
+        "image": "shopify://shop_images/Image_2.webp",
         "image_size": "",
         "image_position": "right",
+        "reverse_order": true,
         "image_width": 50,
         "text_alignment": "text-left",
         "background_color": "",
@@ -710,6 +735,7 @@
     },
     "page_faqs_bBehXP": {
       "type": "page-faqs",
+      "disabled": true,
       "name": "Page Meta Faqs",
       "settings": {
         "full_width": true,
@@ -767,6 +793,7 @@
         "text_XMynBk",
         "button_bGNPyT"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "content_alignment": "mx-auto",
@@ -775,6 +802,32 @@
         "background_color": "rgba(0,0,0,0)",
         "text_color": "",
         "heading_color": ""
+      }
+    },
+    "featured_collection_fyt664": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.name",
+      "settings": {
+        "full_width": true,
+        "carousel": true,
+        "show_variants": true,
+        "products_count": 8,
+        "grid_columns": 3,
+        "grid_columns_mobile": "2",
+        "products": [
+          "breathelet-onefit"
+        ],
+        "collection": "",
+        "subheading": "",
+        "heading": "",
+        "heading_size": "h2",
+        "text_alignment": "text-center",
+        "link_text": "View all",
+        "link_url": "",
+        "background_color": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_html_tag": "p"
       }
     }
   },
@@ -793,6 +846,7 @@
     "warranty_coverage_REDbPx",
     "image_with_text_pgNfHK",
     "page_faqs_bBehXP",
-    "rich_text_49dXpN"
+    "rich_text_49dXpN",
+    "featured_collection_fyt664"
   ]
 }

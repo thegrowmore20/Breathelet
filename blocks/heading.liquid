@@ -1,5 +1,5 @@
 
-    {% render 'section-header', link_text: block.settings.link_text, link_url: link_url, new_tab, block.settings.new_tab %}
+    {% render 'section-header', link_text: block.settings.link_text, link_url: link_url %}
 
 
 {% schema %}
@@ -115,3 +115,15 @@
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'section-header', link_text: block.settings.link_text, link_url:
+    link_url, new_tab, block.settings.new_tab %}"
+  to: "{% render 'section-header', link_text: block.settings.link_text, link_url:
+    link_url %}"
+  position: 6..92
+{% endcomment %}

@@ -47,7 +47,7 @@
     "
     {% render 'data-diff-bg', item_color: section.settings.background_color, background: settings.colors_background %}
   >
-    <div class="color order-2 flex items-center">
+    <div class="color {% if section.settings.reverse_order %} order-2 {% endif %} flex items-center">
       <div
         class="
           w-full trim-margins {{ section.settings.text_alignment }}
@@ -94,7 +94,7 @@
 
     <lqip-element
       class="
-        image-loader media col-span-1 order-1 self-center w-full h-full
+        image-loader media col-span-1 {% if section.settings.reverse_order %} order-1 {% endif %} self-center w-full h-full
 
         {{ section.settings.image_size }}{{ media_class }}
 

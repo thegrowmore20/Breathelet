@@ -28,10 +28,10 @@
         "full_width": true,
         "enable_transparent_header": false,
         "use_original_media_size": false,
-        "image": "shopify://shop_images/Warranty_Page_Banner_Desktop.webp",
-        "image_mobile": "shopify://shop_images/Warranty_Page_Banner_Mobile.webp",
+        "image": "shopify://shop_images/Warranty_Page_Banner_Desktop_9380abba-71c2-416f-ba1d-045f8b0d5849.webp",
+        "image_mobile": "shopify://shop_images/Warranty_Page_Banner_Mobile_e08f98eb-79fd-4bb7-ae16-443ff9cf4c58.webp",
         "content_alignment": "md:content-middle-left",
-        "content_alignment_mobile": "content-middle-left",
+        "content_alignment_mobile": "content-middle-center",
         "link": "",
         "min_height": 300,
         "text_color": "#ffffff",
@@ -54,7 +54,7 @@
         "text_thccUq": {
           "type": "text",
           "settings": {
-            "text": "<p>Try Breathelet risk-free with our 30-Day Guarantee, and keep wearing it with the peace of mind of a Lifetime Warranty.</p><p>We believe in Breathelet, and we want you to feel the same. That's why every bracelet is protected from the moment it arrives, with free replacement support whenever you need it.</p>"
+            "text": "<p>Try Breathelet risk-free with our 15-Day Guarantee, and keep wearing it with the peace of mind of a Lifetime Warranty.</p><p>We believe in Breathelet, and we want you to feel the same. That's why every bracelet is protected from the moment it arrives, with free replacement support whenever you need it.</p>"
           }
         },
         "button_rk6xdL": {
@@ -96,8 +96,8 @@
           "type": "service",
           "settings": {
             "icon_html": "",
-            "icon_image": "shopify://shop_images/30_Days_Guarantee.png",
-            "title": "30-DAY GUARANTEE",
+            "icon_image": "shopify://shop_images/15_Days_Guarantee.png",
+            "title": "15-DAY GUARANTEE",
             "text": "Shop With Confidence",
             "link_label": "More about this service",
             "link_url": ""
@@ -194,10 +194,10 @@
         "link_url": "",
         "new_tab": false,
         "heading_html_tag": "h2",
-        "pillar_1_badge": "30-Day Guarantee",
+        "pillar_1_badge": "15-Day Guarantee",
         "pillar_1_heading": "Love it, or send it back.",
-        "pillar_1_description": "Give Breathelet 30 days to become part of your everyday rhythm. If it's not right for you, simply reach out within 30 days of delivery for a straightforward return.",
-        "pillar_1_feature_1": "30 days from the day your order arrives",
+        "pillar_1_description": "Give Breathelet 15 days to become part of your everyday rhythm. If it's not right for you, simply reach out within 15 days of delivery for a straight forward return.",
+        "pillar_1_feature_1": "15 days from the day your order arrives",
         "pillar_1_feature_2": "Hassle-free, no-questions-asked process",
         "pillar_1_feature_3": "Just contact our support team to begin",
         "pillar_2_badge": "Lifetime Warranty",
@@ -219,6 +219,7 @@
         "remove_horizontal_space": false,
         "remove_vertical_space": false,
         "content_width": "extra-large",
+        "accent_color": "#c9a96e",
         "subheading": "",
         "heading": "What's Covered, What's Not",
         "content": "<p>Our warranty is designed to protect you from genuine defects, not misuse. Here's everything you need to know.</p>",
@@ -241,6 +242,7 @@
         "not_covered_item_3": "Damage from improper use or unauthorized repairs",
         "not_covered_item_4": "Normal wear over time (minor finish wear, gradual battery aging)",
         "not_covered_item_5": "Products not purchased from official Breathelet channels",
+        "footer_text": "",
         "background_color": "",
         "text_color": "",
         "heading_color": ""
@@ -321,7 +323,7 @@
         "text_BDqDxj": {
           "type": "text",
           "settings": {
-            "text": "<p>Every Breathelet comes backed by our 30-Day Guarantee and Lifetime Warranty, so you can focus on what matters: the pause, not the worry.</p>"
+            "text": "<p>Every Breathelet comes backed by our 15-Day Guarantee and Lifetime Warranty, so you can focus on what matters: the pause, not the worry.</p>"
           }
         },
         "button_LL9qqF": {

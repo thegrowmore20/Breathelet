@@ -65,10 +65,6 @@
             "size_chart_option_name": "Size"
           }
         },
-        "0f473fb4-422c-40a7-8c15-2fd164440f80": {
-          "type": "quantity_selector",
-          "settings": {}
-        },
         "a730fe0e-baa3-47bc-90c9-21c5a5d75f2d": {
           "type": "buy_buttons",
           "settings": {
@@ -88,7 +84,6 @@
         "c0b62d1f-e562-4b86-84cb-fc22c849e93e",
         "4923f5c8-62d3-42db-a835-6e0613c4a182",
         "5a84f252-bc58-4ca7-8b59-5a727a61c21f",
-        "0f473fb4-422c-40a7-8c15-2fd164440f80",
         "a730fe0e-baa3-47bc-90c9-21c5a5d75f2d"
       ],
       "settings": {

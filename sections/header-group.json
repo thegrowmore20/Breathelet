@@ -17,7 +17,7 @@
         "88bc7a37-77b6-4afc-9071-f324b1ecedef": {
           "type": "announcement",
           "settings": {
-            "text": "Welcome to our store",
+            "text": "HALLOWEEN SALE IS LIVE | 25% OFF SITEWIDE",
             "url": ""
           }
         }
@@ -25,15 +25,14 @@
       "block_order": [
         "88bc7a37-77b6-4afc-9071-f324b1ecedef"
       ],
-      "disabled": true,
       "custom_css": [],
       "settings": {
         "text_size": "announcement-bar--text-sm",
         "transition": "slide-y",
-        "autoplay": true,
+        "autoplay": false,
         "change_message_every": 4,
-        "background_color": "#f9f9f9",
-        "text_color": "rgba(0,0,0,0)"
+        "background_color": "#c62828",
+        "text_color": "#ffffff"
       }
     },
     "header": {

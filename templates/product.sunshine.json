@@ -109,7 +109,7 @@
             "icon_text_class": "icon-text-pdp",
             "layout": "inline",
             "icon_1": "shopify://shop_images/30_Days_Return.png",
-            "text_1": "<p>30 Days<br/>Return</p>",
+            "text_1": "<p>15 Days<br/>Return</p>",
             "icon_2": "shopify://shop_images/Lifetime_Warranty_2.png",
             "text_2": "<p>Lifetime<br/>Warranty</p>",
             "icon_3": "shopify://shop_images/Delivery.png",
@@ -201,7 +201,7 @@
             "collapse_open": false,
             "heading": "Warranty & Support",
             "variant_metafield": "",
-            "content": "<p>Try Breathelet with our <strong>30-Day Guarantee</strong> and enjoy long-term peace of mind with a <strong>Lifetime Warranty</strong>, including free replacement support whenever you need it.</p><p><strong>Click </strong><a href=\"/pages/warranty-guarantee\" title=\"Warranty & Guarantee\"><strong>here</strong></a><strong> to read our Warranty Policy.</strong></p>"
+            "content": "<p>Try Breathelet with our <strong>15-Day Guarantee</strong> and enjoy long-term peace of mind with a <strong>Lifetime Warranty</strong>, including free replacement support whenever you need it.</p><p><strong>Click </strong><a href=\"/pages/warranty-guarantee\" title=\"Warranty & Guarantee\"><strong>here</strong></a><strong> to read our Warranty Policy.</strong></p>"
           }
         }
       },
