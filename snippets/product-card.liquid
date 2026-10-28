@@ -162,21 +162,15 @@
           </div>
         {% endif %}
 
-        {% comment %} Mobile: custom badges stacked below save/sold-out, hidden on desktop {% endcomment %}
-        {% if settings.product_card_custom_badges %}
-          <div class="flex flex-col gap-1 md:hidden">
-            {% render 'product-custom-badges', product: card_product, variant: card_variant %}
-          </div>
-        {% endif %}
       </div>
     {% endif %}
 
-    {% comment %} Desktop: custom badges bottom-right, hidden on mobile {% endcomment %}
+    {% comment %} Custom badges — top-right, all screen sizes {% endcomment %}
     {% if badges != false and settings.product_card_custom_badges %}
       <div
         class="
-          product-custom-badges-container max-md:hidden flex flex-col gap-2 items-end absolute
-          bottom-2 right-[--media-badge-offset] pointer-events-none z-10
+          product-custom-badges-container flex flex-col gap-1 md:gap-2 items-end absolute
+          top-0 right-0 md:top-[--media-badge-offset] md:right-[--media-badge-offset] pointer-events-none z-10
         "
       >
         {% render 'product-custom-badges', product: card_product, variant: card_variant %}

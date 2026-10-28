@@ -1312,8 +1312,17 @@ details > summary {
   color: rgb(var(--color-article-category-badge-text));
 }
 .info-badge.custom-badge {
-  background: rgb(var(--color-custom-badge));
-  color: rgb(var(--color-custom-badge-text));
+  background: transparent !important;
+  border: 1px solid #a57c72 !important;
+  color: #a57c72 !important;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  pointer-events: auto;
+  transition: border-color 200ms, color 200ms;
+}
+.info-badge.custom-badge:hover {
+  border-color: #b18d85 !important;
+  color: #b18d85 !important;
 }
 .product-carousel-wrapper {
   --carousel-button-y: 37.5%;
