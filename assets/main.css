@@ -4649,11 +4649,23 @@ body.no-scroll .mega-menu-horizontal_inner {
 }
 
 .header .loox-rating .loox-rating-content{
-  font-size: 11px;  
+  font-size: 11px;
 }
 
 .loox-rating[data-floating-product-reviews-enabled="true"] {
   text-align: left !important;
+}
+
+.loox-rating svg path,
+.loox-rating svg polygon,
+.loox-rating svg rect,
+.loox-rating [class*="star"] svg,
+.loox-rating [class*="star"] svg path {
+  fill: #a57c72 !important;
+}
+
+.rating-star {
+  --color-rating-star: 165 124 114;
 }
 
 
