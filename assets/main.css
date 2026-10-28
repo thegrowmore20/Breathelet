@@ -2443,7 +2443,7 @@ button.select::after,
   padding: 0.75rem;
 }
 .list-social__link:hover svg {
-  transform: scale(1.1);
+  transform: scale(1.12);
 }
 .list-social__link:active svg {
   transform: none;

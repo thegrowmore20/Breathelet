@@ -71,6 +71,7 @@
 
   .contact-info-wrapper .list-contact_item a:hover {
     color: #FBBC05;
+    font-weight: 500;
   }
 
   .contact-info-wrapper .list-contact_item a:hover svg {
@@ -87,6 +88,22 @@
     stroke: #FBBC05;
   }
 
+  /* ── Nav links – slide right ── */
+  .footer .footer-block--links a {
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+
+  .footer .footer-block--links a:hover {
+    color: #FBBC05;
+    font-weight: 500;
+    transform: translateX(5px);
+  }
+
+  .footer .footer-block--links a:not(:hover) {
+    transform: translateX(0);
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+
   /* ── Misc ── */
   .brand-short-brief {
     max-width: 30rem;
@@ -95,12 +112,17 @@
 
   /* ── Bottom bar hover effects ── */
   .copyright-block span a {
-    transition: color 0.2s ease;
+    background-image: linear-gradient(#FBBC05, #FBBC05);
+    background-size: 0% 1px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size 0.3s ease, color 0.3s ease;
   }
 
   .copyright-block span a:hover {
     color: #FBBC05;
-    text-decoration: underline;
+    background-size: 100% 1px;
+    text-decoration: none;
   }
 
 
@@ -109,12 +131,17 @@
   }
 
   .privacy-navs a {
-    transition: color 0.2s ease;
+    background-image: linear-gradient(#FBBC05, #FBBC05);
+    background-size: 0% 1px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size 0.3s ease, color 0.3s ease;
   }
 
   .privacy-navs a:hover {
     color: #FBBC05;
-    text-decoration: underline;
+    background-size: 100% 1px;
+    text-decoration: none;
   }
 
   .growmore-link {
@@ -125,12 +152,25 @@
     color: #FBBC05 !important;
   }
 
+  .growmore-link .underline {
+    background-image: linear-gradient(#FBBC05, #FBBC05);
+    background-size: 0% 1px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    text-decoration: none;
+    transition: background-size 0.3s ease;
+  }
+
+  .growmore-link:hover .underline {
+    background-size: 100% 1px;
+  }
+
   .growmore-link svg {
     transition: transform 0.2s ease;
   }
 
   .growmore-link:hover svg {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
 
   .growmore-link:hover svg path {
