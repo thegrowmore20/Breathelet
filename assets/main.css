@@ -11211,6 +11211,28 @@ quick-add-button.no-js-hidden button:hover {
   }
 }
 
+/* ── Hero slideshow star rating – white ── */
+.section-slideshow .loox-rating-hp svg,
+.section-slideshow .loox-rating-hp svg *,
+.section-slideshow .loox-rating-hp svg path,
+.section-slideshow .loox-rating-hp svg polygon,
+.section-slideshow .loox-rating-hp [class*="star"] svg,
+.section-slideshow .loox-rating-hp [class*="star"] svg * {
+  fill: #ffffff !important;
+  color: #ffffff !important;
+}
+
+.section-slideshow .loox-rating-hp [class*="empty"] svg,
+.section-slideshow .loox-rating-hp [class*="empty"] svg * {
+  fill: rgba(255, 255, 255, 0.35) !important;
+}
+
+.section-slideshow .loox-rating-hp .loox-rating-content,
+.section-slideshow .loox-rating-hp [class*="count"],
+.section-slideshow .loox-rating-hp [class*="label"] {
+  color: #ffffff !important;
+}
+
 /* ── Buy It Now (unbranded) button ── */
 .shopify-payment-button__button--unbranded {
   background: #222222 !important;
