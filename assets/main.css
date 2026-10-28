@@ -4656,14 +4656,36 @@ body.no-scroll .mega-menu-horizontal_inner {
   text-align: left !important;
 }
 
+/* Loox star color overrides - covers all widget versions */
+:root {
+  --loox-primary-color: #a57c72;
+  --loox-star-color: #a57c72;
+}
+
+.loox-rating svg,
+.loox-rating svg *,
 .loox-rating svg path,
 .loox-rating svg polygon,
 .loox-rating svg rect,
+.loox-rating svg circle,
+.loox-rating [class*="star"],
 .loox-rating [class*="star"] svg,
-.loox-rating [class*="star"] svg path {
+.loox-rating [class*="star"] svg *,
+[data-loox-rating] svg,
+[data-loox-rating] svg *,
+[class*="loox"] [class*="star"] svg,
+[class*="loox"] [class*="star"] svg path {
   fill: #a57c72 !important;
+  color: #a57c72 !important;
 }
 
+/* Empty/unfilled stars — keep them subtle */
+.loox-rating [class*="empty"] svg,
+.loox-rating [class*="empty"] svg * {
+  fill: rgba(165, 124, 114, 0.25) !important;
+}
+
+/* Theme-native star rating */
 .rating-star {
   --color-rating-star: 165 124 114;
 }
