@@ -11248,3 +11248,9 @@ quick-add-button.no-js-hidden button:hover {
   background: #111111 !important;
   color: #ffffff !important;
 }
+
+/* ── Cart badge ── */
+.cart-badge {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
