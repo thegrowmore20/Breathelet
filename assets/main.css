@@ -647,7 +647,7 @@ button {
 
   text-transform: var(--button-text-transform);
   font-family: var(--button-font-family);
-  font-weight: var(--button-font-weight);
+  font-weight: 500;
   line-height: 1;
 
   position: relative;
