@@ -11130,17 +11130,18 @@ ul.menu .menu-item{
 
 /* card product css */
 quick-add-button.no-js-hidden button {
-  background: #fbbc05;
+  background: #a57c72;
   padding: 10px 32px;
   color: #000;
-  
+
 }
 .product-card__info quick-add-button.no-js-hidden button {
   text-transform: capitalize;
   font-weight: 500;
 }
 quick-add-button.no-js-hidden button:hover {
-  background: #eba80b;
+  background: #a57c72;
+  filter: brightness(0.88);
 }
 
 .footer-logo-heading{
