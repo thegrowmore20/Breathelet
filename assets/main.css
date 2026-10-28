@@ -11212,24 +11212,27 @@ quick-add-button.no-js-hidden button:hover {
 }
 
 /* ── Hero slideshow star rating – white ── */
+.section-slideshow {
+  --loox-primary-color: #ffffff;
+  --loox-star-color: #ffffff;
+}
+
+.section-slideshow .loox-rating-hp .loox-icon,
+.section-slideshow .loox-rating-hp svg.loox-icon,
 .section-slideshow .loox-rating-hp svg,
-.section-slideshow .loox-rating-hp svg *,
-.section-slideshow .loox-rating-hp svg path,
-.section-slideshow .loox-rating-hp svg polygon,
-.section-slideshow .loox-rating-hp [class*="star"] svg,
-.section-slideshow .loox-rating-hp [class*="star"] svg * {
+.section-slideshow .loox-rating-hp svg * {
   fill: #ffffff !important;
   color: #ffffff !important;
 }
 
-.section-slideshow .loox-rating-hp [class*="empty"] svg,
-.section-slideshow .loox-rating-hp [class*="empty"] svg * {
+.section-slideshow .loox-rating-hp .loox-icon[data-lx-fill="half"],
+.section-slideshow .loox-rating-hp .loox-icon[data-lx-fill="empty"] {
   fill: rgba(255, 255, 255, 0.35) !important;
+  color: rgba(255, 255, 255, 0.35) !important;
 }
 
-.section-slideshow .loox-rating-hp .loox-rating-content,
-.section-slideshow .loox-rating-hp [class*="count"],
-.section-slideshow .loox-rating-hp [class*="label"] {
+.section-slideshow .loox-rating-hp .loox-rating-label,
+.section-slideshow .loox-rating-hp .loox-rating-content {
   color: #ffffff !important;
 }
 
