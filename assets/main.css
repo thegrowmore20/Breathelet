@@ -1313,8 +1313,8 @@ details > summary {
 }
 .info-badge.custom-badge {
   background: transparent !important;
-  border: 1px solid #e0a96d !important;
-  color: #e0a96d !important;
+  border: 1px solid #a57c72 !important;
+  color: #a57c72 !important;
   font-weight: 600;
   letter-spacing: 0.08em;
   pointer-events: auto;
@@ -4667,8 +4667,8 @@ body.no-scroll .mega-menu-horizontal_inner {
 
 /* Loox star color overrides - covers all widget versions */
 :root {
-  --loox-primary-color: #e0a96d;
-  --loox-star-color: #e0a96d;
+  --loox-primary-color: #a57c72;
+  --loox-star-color: #a57c72;
 }
 
 .loox-rating svg,
@@ -4684,8 +4684,8 @@ body.no-scroll .mega-menu-horizontal_inner {
 [data-loox-rating] svg *,
 [class*="loox"] [class*="star"] svg,
 [class*="loox"] [class*="star"] svg path {
-  fill: #e0a96d !important;
-  color: #e0a96d !important;
+  fill: #a57c72 !important;
+  color: #a57c72 !important;
 }
 
 /* Empty/unfilled stars — keep them subtle */
@@ -11174,7 +11174,7 @@ ul.menu .menu-item{
 
 /* card product css */
 quick-add-button.no-js-hidden button {
-  background: #e0a96d;
+  background: #a57c72;
   padding: 10px 32px;
   color: #000;
 
@@ -11184,7 +11184,7 @@ quick-add-button.no-js-hidden button {
   font-weight: 500;
 }
 quick-add-button.no-js-hidden button:hover {
-  background: #e0a96d;
+  background: #a57c72;
   filter: brightness(0.88);
 }
 
