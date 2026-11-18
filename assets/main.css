@@ -4723,7 +4723,7 @@ body.no-scroll .mega-menu-horizontal_inner {
 .header .product-name{
   font-size: 14px;
   min-height: 20px;
-  -webkit-line-clamp: 1;  
+  -webkit-line-clamp: 2;
 }
 
 .header .product-card .price{
