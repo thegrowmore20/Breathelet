@@ -11,28 +11,42 @@
   "type": "header",
   "name": "Header",
   "sections": {
-    "announcement-bar": {
+    "announcement_bar_MgPEdw": {
       "type": "announcement-bar",
       "blocks": {
-        "88bc7a37-77b6-4afc-9071-f324b1ecedef": {
+        "announcement_EmPFHj": {
           "type": "announcement",
           "settings": {
-            "text": "HALLOWEEN SALE IS LIVE | 25% OFF SITEWIDE",
-            "url": ""
+            "text": "Black Friday Sale is live! 20% OFF Everything | Shop Now",
+            "url": "shopify://collections/black-friday"
           }
         }
       },
       "block_order": [
-        "88bc7a37-77b6-4afc-9071-f324b1ecedef"
+        "announcement_EmPFHj"
       ],
-      "custom_css": [],
+      "name": "t:sections.announcement-bar.presets__0.name",
       "settings": {
         "text_size": "announcement-bar--text-sm",
-        "transition": "slide-y",
-        "autoplay": false,
+        "transition": "fade",
+        "autoplay": true,
         "change_message_every": 4,
         "background_color": "#a57c72",
         "text_color": "#000000"
+      }
+    },
+    "9e2ab7e9-ef20-4927-a77f-7d8d1f2e7b7d": {
+      "type": "promotion-bar",
+      "disabled": true,
+      "settings": {
+        "show_only_on_homepage": false,
+        "content": "<p>Black Friday Sale is live! 25% OFF Everything</p>",
+        "url": "shopify://collections/all",
+        "text_size": "text-sm md:text-base",
+        "section_height": "py-2",
+        "background_color": "#a57c72",
+        "text_color": "#000000",
+        "heading_color": ""
       }
     },
     "header": {
@@ -88,25 +102,11 @@
         "enable_search": true,
         "enable_h1_on_index": true
       }
-    },
-    "9e2ab7e9-ef20-4927-a77f-7d8d1f2e7b7d": {
-      "type": "promotion-bar",
-      "disabled": true,
-      "settings": {
-        "show_only_on_homepage": false,
-        "content": "<p><strong>SPECIAL OFFER</strong></p><p>Insert your text about your sale, discount code, or special offer here.</p>",
-        "url": "shopify://collections/all",
-        "text_size": "text-sm md:text-base",
-        "section_height": "py-2",
-        "background_color": "#ffc60d",
-        "text_color": "",
-        "heading_color": ""
-      }
     }
   },
   "order": [
-    "announcement-bar",
-    "header",
-    "9e2ab7e9-ef20-4927-a77f-7d8d1f2e7b7d"
+    "announcement_bar_MgPEdw",
+    "9e2ab7e9-ef20-4927-a77f-7d8d1f2e7b7d",
+    "header"
   ]
 }
