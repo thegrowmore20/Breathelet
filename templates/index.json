@@ -411,33 +411,6 @@
     "1779445986c7e74670": {
       "type": "apps",
       "blocks": {
-        "ot_instagram_feed_ot_easy_instagram_feed_zJxrXN": {
-          "type": "shopify://apps/ot-instagram-feed/blocks/ot-easy-instagram-feed/75d29d92-c4c5-4091-87e8-4dde82e3828c",
-          "disabled": true,
-          "settings": {
-            "feed_id": "",
-            "title": "",
-            "show_tagged_posts": false,
-            "titleColor": "#000000",
-            "titleSize": 40,
-            "title_tag": "span",
-            "profileTextColor": "#000000",
-            "description": "",
-            "desColor": "#000000",
-            "section_full_width_desktop": false,
-            "show_divider_desktop": false,
-            "top_padding_desktop": 0,
-            "bottom_padding_desktop": 0,
-            "section_full_width_mobile": false,
-            "show_divider_mobile": false,
-            "use_title_settings": false,
-            "titleSizeMobile": 24,
-            "top_padding_mobile": 0,
-            "bottom_padding_mobile": 0,
-            "bss_custom_code": "",
-            "bss_advanced_custom_code": ""
-          }
-        },
         "gsc_instagram_feed_instafeed_aEadQT": {
           "type": "shopify://apps/gsc-instagram-feed/blocks/instafeed/96970b1b-b770-454f-b16b-51f47e1aa4ed",
           "settings": {
@@ -446,7 +419,6 @@
         }
       },
       "block_order": [
-        "ot_instagram_feed_ot_easy_instagram_feed_zJxrXN",
         "gsc_instagram_feed_instafeed_aEadQT"
       ],
       "settings": {
@@ -698,7 +670,7 @@
           "settings": {
             "button_text": "Gift Breathelet",
             "button_link": "shopify://products/breathelet-onefit",
-            "button_style": "button-outline",
+            "button_style": "",
             "button_size": "text-sm md:text-base",
             "button_background_color": "#ffffff",
             "button_text_color": "#000000",
