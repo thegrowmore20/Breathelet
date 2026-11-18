@@ -11255,6 +11255,15 @@ quick-add-button.no-js-hidden button:hover {
   color: #000000 !important;
 }
 
+/* ── Slideshow filled button: fade on hover ── */
+.section-slideshow .slide-buttons .button:not(.button-outline) {
+  transition: opacity 220ms ease, background-color 200ms;
+}
+.section-slideshow .slide-buttons .button:not(.button-outline):hover {
+  opacity: 0.75;
+  background: rgb(var(--button-background) / var(--button-background-opacity, 1)) !important;
+}
+
 /* ── Product card info: force left align ── */
 .product-card__info {
   text-align: left !important;
