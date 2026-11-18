@@ -56,14 +56,7 @@
       render 'theme-css-icons'
     %}
 
-    {{ 'main.css' | asset_url | preload_tag: as: 'style' }}
-    <link rel="stylesheet"
-        href="{{ 'main.css' | asset_url }}"
-        media="print"
-        onload="this.onload=null;this.media='all'">
-    <noscript>
     {{ 'main.css' | asset_url | stylesheet_tag }}
-    </noscript>
         <link rel="preload" as="font" type="font/woff2" href="{{ 'Montserrat-Thin.woff2' | file_url }}" crossorigin>
     <style>
       @font-face {
