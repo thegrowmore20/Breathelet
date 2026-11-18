@@ -10,13 +10,18 @@
       heading: section.settings.summary_heading_color
     %}
   }
+
+  #shopify-section-{{ section.id }} .button-cart-empty {
+    {% render 'button-vars', background: settings.rose_gold %}
+    --button-foreground: 0 0 0;
+  }
 </style>
 
 <div {% render 'section-attrs' %}>
   {% if cart == empty %}
     <div class="text-center py-8">
       <p class="text-h4">{{ 'sections.cart.empty' | t }}</p>
-      <a class="button button-primary mt-8" href="{{ settings.cart_empty_button_link }}" style="background-color: #c9a882; color: #000000; border-color: #c9a882;">
+      <a class="button button-primary button-cart-empty mt-8" href="{{ settings.cart_empty_button_link }}">
         {{ 'general.continue_shopping' | t }}
       </a>
     </div>

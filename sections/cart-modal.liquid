@@ -12,6 +12,11 @@
       text: section.settings.checkout_text_color
     %}
   }
+  #shopify-section-{{ section.id }} .button-cart-empty {
+    {% render 'button-vars', background: settings.rose_gold %}
+    --button-foreground: 0 0 0;
+  }
+
   .confidence-text{
     line-height: normal;
     color: #34A853;
@@ -299,7 +304,7 @@
 
       <div class="text-center h-full flex flex-col items-center justify-center">
         <p class="text-h4">{{ 'sections.cart.empty' | t }}</p>
-        <a class="button button-primary mt-8" href="{{ settings.cart_empty_button_link }}">
+        <a class="button button-primary button-cart-empty mt-8" href="{{ settings.cart_empty_button_link }}">
           {{ 'general.continue_shopping' | t }}
         </a>
       </div>
