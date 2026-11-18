@@ -27,6 +27,16 @@
     --button-foreground: 255 255 255;
   }
 
+  /* heading row: mb-6 -> mb-4. mini-product-carousel is shared with the
+     product page, so this is scoped rather than edited in the snippet. */
+  #shopify-section-{{ section.id }} .cart-upsell > .flex.items-center {
+    margin-bottom: 1rem;
+  }
+
+  #shopify-section-{{ section.id }} .cart-upsell .heading {
+    text-transform: uppercase;
+  }
+
   #shopify-section-{{ section.id }} .cart-upsell .complementary-product .media {
     border: 1.25px solid rgb(var(--color-border));
   }

@@ -34,7 +34,7 @@
   {% endcapture %}
 
   {% if has_upsell > 0 %}
-    <div class="cart-upsell mt-auto px-[--cart-modal-px] border-t pt-6">
+    <div class="cart-upsell mt-auto px-[--cart-modal-px] border-t pt-4">
       {% render 'mini-product-carousel',
         heading: section.settings.product_recommendations_heading,
         count: has_upsell,
@@ -61,7 +61,7 @@
   {% endcapture %}
 
   {% if has_recommendations > 0 %}
-    <div class="cart-upsell mt-auto px-[--cart-modal-px] border-t pt-6">
+    <div class="cart-upsell mt-auto px-[--cart-modal-px] border-t pt-4">
       {% render 'mini-product-carousel',
         heading: section.settings.product_recommendations_heading,
         count: has_recommendations,
