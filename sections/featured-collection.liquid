@@ -29,6 +29,14 @@ data-animation="block"
 data-animation-group="{{ section.id }}-product-cards"
 {% endcapture %}
 
+{% if section.settings.card_min_height > 0 %}
+<style>
+  #shopify-section-{{ section.id }} .product-card {
+    min-height: {{ section.settings.card_min_height }}px;
+  }
+</style>
+{% endif %}
+
 <div {% render 'section-attrs' %}>
   {% render 'section-header', link_text: section.settings.link_text, link_url: link_url %}
 
@@ -175,6 +183,16 @@ data-animation-group="{{ section.id }}-product-cards"
         }
       ],
       "default": "2"
+    },
+    {
+      "type": "range",
+      "id": "card_min_height",
+      "label": "Product card min height (px)",
+      "info": "Minimum card height in pixels. 0 = no minimum.",
+      "min": 0,
+      "max": 600,
+      "step": 10,
+      "default": 0
     },
     {
       "type": "paragraph",
