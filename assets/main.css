@@ -11193,6 +11193,13 @@ quick-add-button.no-js-hidden button:hover {
   box-shadow: 0 3px 10px rgba(224, 169, 109, 0.35) !important;
   filter: none !important;
 }
+.button:not(.button-outline):not(.button-light) {
+  transition: background 0.18s, box-shadow 0.18s;
+}
+.button:not(.button-outline):not(.button-light):hover {
+  background: #8a6640 !important;
+  box-shadow: 0 3px 10px rgba(224, 169, 109, 0.35) !important;
+}
 .button-add-to-cart {
   transition: background 0.18s, box-shadow 0.18s;
 }
