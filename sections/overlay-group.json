@@ -24,7 +24,7 @@
         "view_cart_background_color": "",
         "view_cart_text_color": "",
         "checkout_background_color": "#a57c72",
-        "checkout_text_color": "#ffffff"
+        "checkout_text_color": "#000000"
       }
     },
     "search-modal": {
