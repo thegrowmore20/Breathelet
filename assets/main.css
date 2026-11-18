@@ -11339,8 +11339,9 @@ quick-add-button.no-js-hidden button .spinner .path {
 .mega__menu_products .price {
   text-align: left !important;
 }
-/* ── Add to Cart button: addon-style hover (darken + warm glow) ── */
-.button-add-to-cart:hover {
+/* ── Add to Cart / quick-add: addon-style hover (darken + warm glow) ── */
+.button-add-to-cart:hover,
+quick-add-button .button:hover {
   background: rgb(var(--button-background) / var(--button-background-opacity, 1)) !important;
   color: rgb(var(--button-foreground)) !important;
   filter: brightness(0.82);
