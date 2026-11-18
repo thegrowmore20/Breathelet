@@ -391,7 +391,7 @@
       "name": "t:sections.video-with-text.presets__0.name",
       "settings": {
         "custom_class": "",
-        "full_width": true,
+        "full_width": false,
         "remove_bottom_spacing": false,
         "autoplay": true,
         "loop": true,

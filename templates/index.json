@@ -679,7 +679,7 @@
         "button_qJcVAf"
       ],
       "settings": {
-        "full_width": true,
+        "full_width": false,
         "remove_bottom_spacing": false,
         "image": "shopify://shop_images/image-1.jpg",
         "image_size": "",
@@ -801,7 +801,7 @@
         "button_wtdHzk"
       ],
       "settings": {
-        "full_width": true,
+        "full_width": false,
         "remove_bottom_spacing": false,
         "image": "shopify://shop_images/Bundle_Image_1.webp",
         "image_size": "",
@@ -839,7 +839,7 @@
       "name": "t:sections.video-with-text.presets__0.name",
       "settings": {
         "custom_class": "",
-        "full_width": true,
+        "full_width": false,
         "remove_bottom_spacing": false,
         "autoplay": true,
         "loop": true,
