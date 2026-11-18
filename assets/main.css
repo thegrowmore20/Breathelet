@@ -668,6 +668,26 @@ button {
 .shopify-challenge__button:hover {
   background: rgb(var(--button-background-hover) / var(--button-background-hover-opacity, 1));
 }
+.button:not(.button-outline):not(.button-light):hover,
+.shopify-challenge__button:hover {
+  background: transparent !important;
+  color: rgb(var(--button-background)) !important;
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+  --tw-ring-inset: inset;
+  --tw-ring-color: rgb(var(--button-background));
+}
+.shopify-payment-button__button--unbranded:not([disabled]):hover,
+.shopify-payment-button__button--unbranded[disabled]:hover {
+  background: transparent !important;
+  color: rgb(var(--button-background)) !important;
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000) !important;
+  --tw-ring-inset: inset;
+  --tw-ring-color: rgb(var(--button-background));
+}
 .button:active,
 .shopify-payment-button__button--unbranded:not([disabled]):active,
 .shopify-payment-button__button--unbranded[disabled]:active,
