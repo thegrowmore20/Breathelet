@@ -33,6 +33,16 @@
       --slideshow-background: 45 45 45;
     {% endif %}
   }
+
+  /* Keep the slide CTA filled on hover. The global rule
+     .button:not(.button-outline):not(.button-light):hover swaps to a
+     transparent background and colours the text with --button-background,
+     which makes a white-on-black CTA invisible over the hero image. */
+  #shopify-section-{{ section.id }} .slide-buttons .button:not(.button-outline):not(.button-light):hover {
+    background: rgb(var(--button-background) / 0.85) !important;
+    color: rgb(var(--button-foreground)) !important;
+    box-shadow: none;
+  }
 </style>
 
 <div

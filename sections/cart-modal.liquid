@@ -17,6 +17,22 @@
     --button-foreground: 0 0 0;
   }
 
+  #shopify-section-{{ section.id }} .cart-upsell .button-light {
+    {% render 'button-vars', background: settings.rose_gold %}
+    --button-background-opacity: 100%;
+    --button-background-hover-opacity: 100%;
+    --button-background-active-opacity: 100%;
+    --button-foreground: 0 0 0;
+  }
+
+  #shopify-section-{{ section.id }} .cart-upsell .complementary-product .media {
+    border: 1.25px solid rgb(var(--color-border));
+  }
+
+  #shopify-section-{{ section.id }} .cart-upsell .sale-price {
+    color: rgb(var(--color-foreground));
+  }
+
   .confidence-text{
     line-height: normal;
     color: #34A853;
@@ -349,6 +365,13 @@
     {
       "type": "header",
       "content": "t:sections.cart-modal.headers.product_recommendations"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cart_upsell",
+      "label": "Show upsell / recommendations",
+      "info": "Turn the cart drawer upsell block on or off.",
+      "default": true
     },
     {
       "type": "text",

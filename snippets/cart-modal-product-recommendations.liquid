@@ -1,3 +1,4 @@
+{% unless section.settings.show_cart_upsell == false %}
 {% liquid
   assign product_ids = cart.items | map: 'product_id'
 
@@ -33,7 +34,7 @@
   {% endcapture %}
 
   {% if has_upsell > 0 %}
-    <div class="mt-auto px-[--cart-modal-px] border-t pt-6">
+    <div class="cart-upsell mt-auto px-[--cart-modal-px] border-t pt-6">
       {% render 'mini-product-carousel',
         heading: section.settings.product_recommendations_heading,
         count: has_upsell,
@@ -60,7 +61,7 @@
   {% endcapture %}
 
   {% if has_recommendations > 0 %}
-    <div class="mt-auto px-[--cart-modal-px] border-t pt-6">
+    <div class="cart-upsell mt-auto px-[--cart-modal-px] border-t pt-6">
       {% render 'mini-product-carousel',
         heading: section.settings.product_recommendations_heading,
         count: has_recommendations,
@@ -72,3 +73,4 @@
   {% endif %}
 
 {% endif %}
+{% endunless %}
