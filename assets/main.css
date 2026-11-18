@@ -11182,15 +11182,23 @@ quick-add-button.no-js-hidden button {
   background: #a57c72;
   padding: 10px 32px;
   color: #000;
-
+  transition: background 0.18s, box-shadow 0.18s;
 }
 .product-card__info quick-add-button.no-js-hidden button {
   text-transform: capitalize;
   font-weight: 500;
 }
 quick-add-button.no-js-hidden button:hover {
-  background: #a57c72;
-  filter: brightness(0.88);
+  background: #8a6640 !important;
+  box-shadow: 0 3px 10px rgba(224, 169, 109, 0.35) !important;
+  filter: none !important;
+}
+.button-add-to-cart {
+  transition: background 0.18s, box-shadow 0.18s;
+}
+.button-add-to-cart:hover {
+  background: #8a6640 !important;
+  box-shadow: 0 3px 10px rgba(224, 169, 109, 0.35) !important;
 }
 quick-add-button.no-js-hidden button .spinner .path {
   stroke: #000000;
