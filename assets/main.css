@@ -11133,7 +11133,7 @@ ul.menu .menu-item{
   &::before, &::after{
     content: "";
     position: absolute;
-    background-color: #ffffff;
+    background-color: var(--color-rose_gold);
     transition: transform .5s;
   }
 
@@ -11147,7 +11147,7 @@ ul.menu .menu-item{
   }
 
   &:hover{
-    color: #ffffff;
+    color: var(--color-rose_gold);
   }
 
   &:hover::after{
@@ -11253,24 +11253,4 @@ quick-add-button.no-js-hidden button:hover {
 .cart-badge {
   background: #a57c72 !important;
   color: #000000 !important;
-}
-
-/* ── Product card info: force left align ── */
-.product-card__info {
-  text-align: left !important;
-  align-items: flex-start !important;
-}
-
-/* ── Mega menu product cards: left align ── */
-.mega__menu_products .product-card__info {
-  text-align: left !important;
-  align-items: flex-start !important;
-}
-.mega__menu_products .loox-rating {
-  text-align: left !important;
-}
-.mega__menu_products .product-name,
-.mega__menu_products .loox-rating,
-.mega__menu_products .price {
-  text-align: left !important;
 }

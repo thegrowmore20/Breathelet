@@ -33,7 +33,10 @@
     assign card_product = null
   endif
 
-  assign product_card_info_class = 'text-left items-start'
+  case settings.product_card_text_alignment
+    when 'center'
+      assign product_card_info_class = 'text-center items-center'
+  endcase
 
   # variant-aware fields: default to product, override when a variant is passed
   assign card_image = card_product.featured_media
