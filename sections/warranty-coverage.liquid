@@ -136,6 +136,31 @@
     border-radius: 16px;
     padding: 40px;
     text-align: left;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.25s ease, transform 0.25s ease;
+  }
+
+  .bc-coverage-card:hover {
+    border-color: rgb(var(--color-foreground) / 0.35);
+    transform: translateY(-4px);
+  }
+
+  /* Accent shimmer line on hover */
+  .bc-coverage-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgb(var(--color-foreground)), transparent);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .bc-coverage-card:hover::after {
+    opacity: 1;
   }
 
   /* ── CARD TITLE ROW ── */
