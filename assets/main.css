@@ -11187,6 +11187,9 @@ quick-add-button.no-js-hidden button:hover {
   background: #a57c72;
   filter: brightness(0.88);
 }
+quick-add-button.no-js-hidden button .spinner .path {
+  stroke: #000000;
+}
 
 .footer-logo-heading{
     font-style: italic ;
