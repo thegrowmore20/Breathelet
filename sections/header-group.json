@@ -69,7 +69,7 @@
           "settings": {
             "menu_item": "Shop Accessories",
             "type": "horizontal",
-            "menu_max_width": "max-w-sm",
+            "menu_max_width": "max-w-[50%]",
             "show_variants": false,
             "products": [
               "charging-dock",
