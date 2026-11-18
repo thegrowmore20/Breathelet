@@ -23,8 +23,8 @@
         "product_recommendations": [],
         "view_cart_background_color": "",
         "view_cart_text_color": "",
-        "checkout_background_color": "",
-        "checkout_text_color": ""
+        "checkout_background_color": "#a57c72",
+        "checkout_text_color": "#ffffff"
       }
     },
     "search-modal": {
