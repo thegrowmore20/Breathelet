@@ -31,7 +31,7 @@ data-animation-group="{{ section.id }}-product-cards"
 
 {% if section.settings.card_min_height > 0 %}
 <style>
-  #shopify-section-{{ section.id }} .product-card {
+  #shopify-section-{{ section.id }} .product-name {
     min-height: {{ section.settings.card_min_height }}px;
   }
 </style>
@@ -187,11 +187,11 @@ data-animation-group="{{ section.id }}-product-cards"
     {
       "type": "range",
       "id": "card_min_height",
-      "label": "Product card min height (px)",
-      "info": "Minimum card height in pixels. 0 = no minimum.",
+      "label": "Product title min height (px)",
+      "info": "Minimum title height so buttons align across cards. 0 = no minimum. ~48 = 2 lines.",
       "min": 0,
-      "max": 600,
-      "step": 10,
+      "max": 200,
+      "step": 2,
       "default": 0
     },
     {
