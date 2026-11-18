@@ -1,4 +1,4 @@
-/* ! tailwindcss v3.4.3 | MIT License | https://tailwindcss.com */
+﻿/* ! tailwindcss v3.4.3 | MIT License | https://tailwindcss.com */
 
 *,
 ::before,
@@ -672,13 +672,21 @@ button {
 .shopify-challenge__button:hover {
   background: transparent !important;
   color: rgb(var(--button-background)) !important;
-  box-shadow: inset 0 0 0 2px rgb(var(--button-background));
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+  --tw-ring-inset: inset;
+  --tw-ring-color: rgb(var(--button-background));
 }
 .shopify-payment-button__button--unbranded:not([disabled]):hover,
 .shopify-payment-button__button--unbranded[disabled]:hover {
   background: transparent !important;
   color: rgb(var(--button-background)) !important;
-  box-shadow: inset 0 0 0 2px rgb(var(--button-background)) !important;
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000) !important;
+  --tw-ring-inset: inset;
+  --tw-ring-color: rgb(var(--button-background));
 }
 .button:active,
 .shopify-payment-button__button--unbranded:not([disabled]):active,
@@ -769,7 +777,13 @@ button {
 .button-secondary-outline .button-secondary:not(:hover):not(:active) {
   background: transparent !important;
   color: rgb(var(--button-background)) !important;
-  box-shadow: inset 0 0 0 2px rgb(var(--button-background));
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width)
+    var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width))
+    var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+  --tw-ring-inset: inset;
+  --tw-ring-color: rgb(var(--button-background));
 }
 .button-outline > .spinner .path,
 .button-primary-outline
@@ -4699,7 +4713,7 @@ body.no-scroll .mega-menu-horizontal_inner {
   color: #a57c72 !important;
 }
 
-/* Empty/unfilled stars — keep them subtle */
+/* Empty/unfilled stars â€” keep them subtle */
 .loox-rating [class*="empty"] svg,
 .loox-rating [class*="empty"] svg * {
   fill: rgba(165, 124, 114, 0.25) !important;
@@ -5365,8 +5379,10 @@ sticky-cta .sticky-cta-button {
   padding: 0.85em 1.5em;
 }
 sticky-cta .sticky-cta-button:hover {
-  filter: brightness(0.88);
-  box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.55);
+  background: rgb(var(--button-background) / var(--button-background-opacity, 1)) !important;
+  color: rgb(var(--button-foreground)) !important;
+  filter: brightness(0.82);
+  box-shadow: 0 3px 10px rgba(224, 169, 109, 0.35) !important;
 }
 @keyframes hideStickyAddToCart {
   from {
@@ -11203,7 +11219,7 @@ quick-add-button.no-js-hidden button .spinner .path {
   stroke: #000000;
 }
 
-/* ── Video-with-text: media on left when image_position = left ── */
+/* â”€â”€ Video-with-text: media on left when image_position = left â”€â”€ */
 @media screen and (min-width: 1024px) {
   .vwt--media-left .image-loader {
     order: -1;
@@ -11233,7 +11249,7 @@ quick-add-button.no-js-hidden button .spinner .path {
   }
 }
 
-/* ── Hero slideshow star rating – white ── */
+/* â”€â”€ Hero slideshow star rating â€“ white â”€â”€ */
 .section-slideshow {
   --loox-primary-color: #ffffff;
   --loox-star-color: #ffffff;
@@ -11258,7 +11274,7 @@ quick-add-button.no-js-hidden button .spinner .path {
   color: #ffffff !important;
 }
 
-/* ── Buy It Now (unbranded) button ── */
+/* â”€â”€ Buy It Now (unbranded) button â”€â”€ */
 .shopify-payment-button__button--unbranded {
   background: #222222 !important;
   color: #ffffff !important;
@@ -11271,13 +11287,13 @@ quick-add-button.no-js-hidden button .spinner .path {
   color: #ffffff !important;
 }
 
-/* ── Cart badge ── */
+/* â”€â”€ Cart badge â”€â”€ */
 .cart-badge {
   background: #a57c72 !important;
   color: #000000 !important;
 }
 
-/* ── Header logo + icons: lock color on hover ── */
+/* â”€â”€ Header logo + icons: lock color on hover â”€â”€ */
 .header__logo a:hover,
 .header__logo a:hover span {
   color: rgb(var(--color-header-foreground)) !important;
@@ -11289,13 +11305,13 @@ quick-add-button.no-js-hidden button .spinner .path {
   opacity: 1 !important;
 }
 
-/* ── Transparent header: reveal background when hovering logo or icons ── */
+/* â”€â”€ Transparent header: reveal background when hovering logo or icons â”€â”€ */
 .section-site-header:not(.section-site-header--sticky) .header--transparent:has(.header__logo:hover),
 .section-site-header:not(.section-site-header--sticky) .header--transparent:has(.header-icon-btn:hover) {
   --header-background-opacity: 100% !important;
 }
 
-/* ── Slideshow filled button: fade on hover ── */
+/* â”€â”€ Slideshow filled button: fade on hover â”€â”€ */
 .section-slideshow .slide-buttons .button:not(.button-outline) {
   transition: opacity 220ms ease, background-color 200ms;
 }
@@ -11304,13 +11320,13 @@ quick-add-button.no-js-hidden button .spinner .path {
   background: rgb(var(--button-background) / var(--button-background-opacity, 1)) !important;
 }
 
-/* ── Product card info: force left align ── */
+/* â”€â”€ Product card info: force left align â”€â”€ */
 .product-card__info {
   text-align: left !important;
   align-items: flex-start !important;
 }
 
-/* ── Mega menu product cards: left align ── */
+/* â”€â”€ Mega menu product cards: left align â”€â”€ */
 .mega__menu_products .product-card__info {
   text-align: left !important;
   align-items: flex-start !important;
@@ -11322,4 +11338,11 @@ quick-add-button.no-js-hidden button .spinner .path {
 .mega__menu_products .loox-rating,
 .mega__menu_products .price {
   text-align: left !important;
+}
+/* ── Add to Cart button: addon-style hover (darken + warm glow) ── */
+.button-add-to-cart:hover {
+  background: rgb(var(--button-background) / var(--button-background-opacity, 1)) !important;
+  color: rgb(var(--button-foreground)) !important;
+  filter: brightness(0.82);
+  box-shadow: 0 3px 10px rgba(224, 169, 109, 0.35) !important;
 }
