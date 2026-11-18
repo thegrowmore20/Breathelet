@@ -4666,8 +4666,8 @@ body.no-scroll .mega-menu-horizontal_inner {
 }
 
 .header .mega__menu_products .grid-cols-mega-menu-horizontal-items{
-  --mega-menu-horizontal-column-width: clamp(130px, 77.7778px + 8.8889vw, 130px);
-  
+  --mega-menu-horizontal-column-width: clamp(150px, 77.7778px + 8.8889vw, 150px);
+
   grid-template-columns: repeat(auto-fit, minmax(var(--mega-menu-horizontal-column-width), 1fr));
 }
 
