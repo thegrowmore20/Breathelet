@@ -3,8 +3,10 @@
     assign product = null
   endif
 
-  assign background_color = background_color | default: block.settings.background_color | default: settings.colors_product_card_background
-  assign text_color = text_color | default: block.settings.text_color | default: settings.colors_product_card_text
+  unless inherit_colors
+    assign background_color = background_color | default: block.settings.background_color | default: settings.colors_product_card_background
+    assign text_color = text_color | default: block.settings.text_color | default: settings.colors_product_card_text
+  endunless
 %}
 
 <div
@@ -14,8 +16,10 @@
     {% unless borderless == true %} border p-4 rounded-block mr-px {% endunless %}
   "
   style="
-    {%- render 'apply-color-var', var: '--color-background', color: background_color -%}
-    {%- render 'apply-color-var', var: '--color-foreground', color: text_color -%}
+    {%- unless inherit_colors -%}
+      {%- render 'apply-color-var', var: '--color-background', color: background_color -%}
+      {%- render 'apply-color-var', var: '--color-foreground', color: text_color -%}
+    {%- endunless -%}
   "
 >
   <a data-instant href="{{ product.url }}" class="block">
@@ -45,11 +49,9 @@
   </a>
 
   <div class="flex flex-col self-center">
-    <a data-instant href="{{ product.url }}">
-      <h2 class="product-name text-sm md:text-base">
-        {{ product.title | default: 'Product' }}
-      </h2>
-    </a>
+    <h2 class="product-name text-sm md:text-base">
+      <a data-instant href="{{ product.url }}">{{ product.title | default: 'Product' }}</a>
+    </h2>
 
     <div class="text-sm mt-3">
       {% if product %}
