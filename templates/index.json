@@ -220,7 +220,7 @@
         "bdb75fd8-0a89-4189-9614-b2d55f963058"
       ],
       "settings": {
-        "full_width": true,
+        "full_width": false,
         "remove_bottom_spacing": false,
         "image": "shopify://shop_images/WhatsApp_Image_2026-10-05_at_6.54.30_PM.jpg",
         "image_size": "",
@@ -265,7 +265,7 @@
         "text_G3yyBY"
       ],
       "settings": {
-        "full_width": true,
+        "full_width": false,
         "remove_bottom_spacing": false,
         "image": "shopify://shop_images/d989e3f2-1a42-444b-97e3-2879e680b4ff-1.jpg",
         "image_size": "",
