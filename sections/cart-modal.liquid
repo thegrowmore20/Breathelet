@@ -18,11 +18,13 @@
   }
 
   #shopify-section-{{ section.id }} .cart-upsell .button-light {
-    {% render 'button-vars', background: settings.rose_gold %}
+    --button-background: 0 0 0;
+    --button-background-hover: 38 38 38;
+    --button-background-active: 64 64 64;
     --button-background-opacity: 100%;
     --button-background-hover-opacity: 100%;
     --button-background-active-opacity: 100%;
-    --button-foreground: 0 0 0;
+    --button-foreground: 255 255 255;
   }
 
   #shopify-section-{{ section.id }} .cart-upsell .complementary-product .media {
