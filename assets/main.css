@@ -668,18 +668,6 @@ button {
 .shopify-challenge__button:hover {
   background: rgb(var(--button-background-hover) / var(--button-background-hover-opacity, 1));
 }
-.button:not(.button-outline):not(.button-light):hover,
-.shopify-challenge__button:hover {
-  background: transparent !important;
-  color: rgb(var(--button-background)) !important;
-  box-shadow: inset 0 0 0 2px rgb(var(--button-background)) !important;
-}
-.shopify-payment-button__button--unbranded:not([disabled]):hover,
-.shopify-payment-button__button--unbranded[disabled]:hover {
-  background: transparent !important;
-  color: rgb(var(--button-background)) !important;
-  box-shadow: inset 0 0 0 2px rgb(var(--button-background)) !important;
-}
 .button:active,
 .shopify-payment-button__button--unbranded:not([disabled]):active,
 .shopify-payment-button__button--unbranded[disabled]:active,
@@ -769,7 +757,13 @@ button {
 .button-secondary-outline .button-secondary:not(:hover):not(:active) {
   background: transparent !important;
   color: rgb(var(--button-background)) !important;
-  box-shadow: inset 0 0 0 2px rgb(var(--button-background)) !important;
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width)
+    var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width))
+    var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000));
+  --tw-ring-inset: inset;
+  --tw-ring-color: rgb(var(--button-background));
 }
 .button-outline > .spinner .path,
 .button-primary-outline
@@ -5365,10 +5359,7 @@ sticky-cta .sticky-cta-button {
   padding: 0.85em 1.5em;
 }
 sticky-cta .sticky-cta-button:hover {
-  background: rgb(var(--button-background) / var(--button-background-opacity, 1)) !important;
-  color: rgb(var(--button-foreground)) !important;
-  filter: brightness(0.82);
-  box-shadow: 0 3px 10px rgba(224, 169, 109, 0.35) !important;
+  background: #e0a800;
 }
 @keyframes hideStickyAddToCart {
   from {
@@ -11147,7 +11138,7 @@ ul.menu .menu-item{
   &::before, &::after{
     content: "";
     position: absolute;
-    background-color: #ffffff;
+    background-color: var(--color-rose_gold);
     transition: transform .5s;
   }
 
@@ -11161,7 +11152,7 @@ ul.menu .menu-item{
   }
 
   &:hover{
-    color: #ffffff;
+    color: var(--color-rose_gold);
   }
 
   &:hover::after{
@@ -11279,31 +11270,6 @@ quick-add-button.no-js-hidden button .spinner .path {
   color: #000000 !important;
 }
 
-/* â”€â”€ Header logo + icons: lock color on hover â”€â”€ */
-.header__logo a:hover,
-.header__logo a:hover span {
-  color: rgb(var(--color-header-foreground)) !important;
-  opacity: 1 !important;
-  text-decoration: none !important;
-}
-.header-icon-btn:hover {
-  color: rgb(var(--color-header-foreground)) !important;
-  opacity: 1 !important;
-}
-
-/* â”€â”€ Transparent header: reveal background when hovering logo or icons â”€â”€ */
-.section-site-header:not(.section-site-header--sticky) .header--transparent:has(.header__logo:hover),
-.section-site-header:not(.section-site-header--sticky) .header--transparent:has(.header-icon-btn:hover) {
-  --header-background-opacity: 100% !important;
-}
-
-/* â”€â”€ Slideshow filled button: fade on hover â”€â”€ */
-.section-slideshow .slide-buttons .button:not(.button-outline) {
-  transition: opacity 220ms ease, background-color 200ms;
-}
-.section-slideshow .slide-buttons .button:not(.button-outline):hover {
-  opacity: 1;
-}
 
 /* â”€â”€ Product card info: force left align â”€â”€ */
 .product-card__info {
