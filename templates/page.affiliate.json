@@ -77,7 +77,7 @@
           "settings": {
             "button_text": "Join the Affiliate Program",
             "button_link": "https://ui.awin.com/express-signup/en/awin/121054/b4de8bf0-d505-4bae-8110-16c33b47822b?t=zFuiyEuvWzRDom5d9UfMVLvZZ-c9AxpVaBcpvgEGjHU",
-            "button_style": "button-outline",
+            "button_style": "",
             "button_size": "text-sm md:text-base",
             "button_background_color": "#ffffff",
             "button_text_color": "#000000",
