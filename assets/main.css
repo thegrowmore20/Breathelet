@@ -11298,3 +11298,21 @@ quick-add-button.no-js-hidden button .spinner .path {
 .mega__menu_products .price {
   text-align: left !important;
 }
+
+/* -- Header logo + icons: lock color on hover -- */
+.header__logo a:hover,
+.header__logo a:hover span {
+  color: rgb(var(--color-header-foreground)) !important;
+  opacity: 1 !important;
+  text-decoration: none !important;
+}
+.header-icon-btn:hover {
+  color: rgb(var(--color-header-foreground)) !important;
+  opacity: 1 !important;
+}
+
+/* -- Transparent header: reveal background when hovering logo or icons -- */
+.section-site-header:not(.section-site-header--sticky) .header--transparent:has(.header__logo:hover),
+.section-site-header:not(.section-site-header--sticky) .header--transparent:has(.header-icon-btn:hover) {
+  --header-background-opacity: 100% !important;
+}
