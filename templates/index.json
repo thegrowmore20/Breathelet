@@ -278,6 +278,42 @@
         "heading_color": "#ffffff"
       }
     },
+    "image_with_text_KkkWmD": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_Uf3Kni": {
+          "type": "heading",
+          "settings": {
+            "heading": "BREATHE",
+            "heading_size": "h2",
+            "heading_html_tag": "h2"
+          }
+        },
+        "text_r8kHw3": {
+          "type": "text",
+          "settings": {
+            "text": "<p>This archaic Sanskrit symbol gracefully inspires us to embrace our natural responses. It represents life’s first and final acts, portraying the elegant symmetry of our existence.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_Uf3Kni",
+        "text_r8kHw3"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_bottom_spacing": false,
+        "image": "shopify://shop_images/b5.png",
+        "image_size": "",
+        "image_position": "right",
+        "reverse_order": true,
+        "image_width": 50,
+        "text_alignment": "text-left",
+        "background_color": "#000000",
+        "text_color": "#ffffff",
+        "heading_color": "#ffffff"
+      }
+    },
     "video_with_text_6kqVVV": {
       "type": "video-with-text",
       "blocks": {
@@ -1228,27 +1264,28 @@
   "order": [
     "slideshow_7aaerb",
     "featured_collection_PHPzLB",
-    "featured_product_9ybD34",
     "featured_collection_jdUFMc",
-    "apps_EWV9wq",
     "fa63dde0-c7d9-4ac7-9f3d-90ef6a67184f",
     "image_with_text_bcbTad",
-    "1771334505e4d5ee02",
+    "image_with_text_KkkWmD",
     "video_with_text_6kqVVV",
+    "apps_EWV9wq",
+    "1779445986c7e74670",
+    "1771334505e4d5ee02",
     "video_RLKz98",
-    "rich_text_zPXUB9",
-    "video_with_text_dPhCKa",
-    "image_hotspots_MEWGdp",
+    "custom_section_HgdMYY",
     "homepage_usps_jQz9Ba",
-    "rich_text_fq93c9",
+    "image_with_text_tHGRPd",
     "multicolumn_Pxn6VQ",
     "image_with_text_WjQwNJ",
-    "image_with_text_tHGRPd",
-    "featured_collection_MU6wJG",
-    "1779445986c7e74670",
-    "custom_section_HgdMYY",
-    "two_column_flex_new",
+    "video_with_text_dPhCKa",
+    "featured_product_9ybD34",
+    "rich_text_zPXUB9",
+    "image_hotspots_MEWGdp",
+    "rich_text_fq93c9",
     "177133889400aad7f9",
+    "featured_collection_MU6wJG",
+    "two_column_flex_new",
     "47953464-d278-497d-be52-ea15912c52d9"
   ]
 }

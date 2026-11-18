@@ -35,10 +35,16 @@
     "image_with_text_overlay_kEXVec": {
       "type": "image-with-text-overlay",
       "blocks": {
+        "custom_liquid_8MTxEk": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% if collection.handle contains 'black-friday' %}\n  <h6 class=\"h6\"> BLACK FRIDAY </h6>\n{% endif %}"
+          }
+        },
         "heading_AaBn89": {
           "type": "heading",
           "settings": {
-            "heading": "{{ collection.title }}",
+            "heading": "{{ collection.metafields.custom.custom_title.value }}",
             "heading_size": "h2",
             "heading_html_tag": "h1"
           }
@@ -51,6 +57,7 @@
         }
       },
       "block_order": [
+        "custom_liquid_8MTxEk",
         "heading_AaBn89",
         "text_ppUeT9"
       ],

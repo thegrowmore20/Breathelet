@@ -187,6 +187,26 @@
             "open": false,
             "heading_html_tag": "p"
           }
+        },
+        "block_MT8mdB": {
+          "type": "block",
+          "settings": {
+            "title": "Material & Skin Sensitivity Notice",
+            "content": "<p>Breathelet is made from metal components including zinc alloy, stainless steel, copper, and aluminum. Trace amounts of nickel may also be present in certain metal components. While these materials are commonly used in jewelry and wearable accessories, some individuals may experience skin irritation, discoloration, allergic reactions, or sensitivity when wearing metal products. Skin chemistry varies from person to person and may be affected by factors such as perspiration, skincare products, moisture, and individual sensitivities. If irritation occurs, discontinue use immediately and consult a healthcare professional if symptoms persist.</p>",
+            "content_from_page": "",
+            "open": false,
+            "heading_html_tag": "p"
+          }
+        },
+        "block_fV9kW7": {
+          "type": "block",
+          "settings": {
+            "title": "What charger should I use to charge my Breathelet?",
+            "content": "<p>For best performance, charge your Breathelet using a standard USB phone charger with a 5V output. Using chargers with different voltage specifications may affect charging performance and could potentially damage the battery.</p>",
+            "content_from_page": "",
+            "open": false,
+            "heading_html_tag": "p"
+          }
         }
       },
       "block_order": [
@@ -202,7 +222,9 @@
         "block_A3hmAH",
         "block_Lc9fBL",
         "block_Dqcnwc",
-        "block_brA7iJ"
+        "block_brA7iJ",
+        "block_MT8mdB",
+        "block_fV9kW7"
       ],
       "settings": {
         "full_width": true,
