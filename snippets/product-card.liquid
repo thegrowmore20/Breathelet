@@ -252,7 +252,7 @@
 
     {% if settings.product_card_quick_add_to_cart and card_available and quick_add != false %}
       <quick-add-button
-        class="no-js-hidden mt-2 w-full"
+        class="no-js-hidden mt-auto pt-2 w-full"
         {% if card_variant %}
           variant-id="{{ card_variant.id }}"
         {% elsif card_product.has_only_default_variant or card_product.variants.size == 1 %}
