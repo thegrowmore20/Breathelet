@@ -5374,7 +5374,8 @@ sticky-cta .sticky-cta-button {
   padding: 0.85em 1.5em;
 }
 sticky-cta .sticky-cta-button:hover {
-  background: #e0a800;
+  filter: brightness(0.88);
+  box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.55);
 }
 @keyframes hideStickyAddToCart {
   from {
