@@ -674,7 +674,7 @@
             "button_size": "text-sm md:text-base",
             "button_background_color": "#ffffff",
             "button_text_color": "#000000",
-            "button_hover_style": "",
+            "button_hover_style": "outline",
             "button_hover_size": "",
             "button_hover_background_color": "",
             "button_hover_text_color": ""
