@@ -4659,8 +4659,13 @@ body.no-scroll .mega-menu-horizontal_inner {
 
 .header .grid-cols-mega-menu-horizontal-items {
   --mega-menu-horizontal-column-width: clamp(130px, 77.7778px + 8.8889vw, 150px);
-  
+
   grid-template-columns: repeat(auto-fit, minmax(var(--mega-menu-horizontal-column-width), 1fr));
+}
+
+.header [data-block-id="mega_menu_products_WaidzF"] .grid-cols-mega-menu-horizontal-items,
+.header [data-block-id="mega_menu_products_3Bq3jm"] .grid-cols-mega-menu-horizontal-items {
+  --mega-menu-horizontal-column-width: clamp(180px, 77.7778px + 8.8889vw, 180px);
 }
 
 .header .loox-rating .loox-rating-content{
