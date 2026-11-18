@@ -49,7 +49,7 @@
             "card_show_date": true,
             "card_show_comment_count": true,
             "posts_per_page": 13,
-            "pagination_type": "classic",
+            "pagination_type": "load_more",
             "feature_first_post": true,
             "featured_post_show_excerpt": true,
             "featured_post_button_style": "hidden",
@@ -87,8 +87,8 @@
         "background_color": "",
         "text_color": "",
         "heading_color": "",
-        "button_background_color": "",
-        "button_text_color": "",
+        "button_background_color": "#c9a882",
+        "button_text_color": "#000000",
         "heading_html_tag": "p"
       }
     }
