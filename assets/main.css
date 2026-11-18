@@ -11138,7 +11138,7 @@ ul.menu .menu-item{
   &::before, &::after{
     content: "";
     position: absolute;
-    background-color: var(--color-rose_gold);
+    background-color: #ffffff;
     transition: transform .5s;
   }
 
@@ -11152,7 +11152,7 @@ ul.menu .menu-item{
   }
 
   &:hover{
-    color: var(--color-rose_gold);
+    color: #ffffff;
   }
 
   &:hover::after{
