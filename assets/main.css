@@ -11267,6 +11267,12 @@ quick-add-button.no-js-hidden button:hover {
   opacity: 1 !important;
 }
 
+/* ── Transparent header: reveal background when hovering logo or icons ── */
+.section-site-header:not(.section-site-header--sticky) .header--transparent:has(.header__logo:hover),
+.section-site-header:not(.section-site-header--sticky) .header--transparent:has(.header-icon-btn:hover) {
+  --header-background-opacity: 100% !important;
+}
+
 /* ── Slideshow filled button: fade on hover ── */
 .section-slideshow .slide-buttons .button:not(.button-outline) {
   transition: opacity 220ms ease, background-color 200ms;
