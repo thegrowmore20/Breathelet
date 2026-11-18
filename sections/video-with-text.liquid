@@ -41,7 +41,12 @@
   %}
 {% endcapture %}
 
-{% render 'media-with-text', media: media, media_class: media_class, media_style: media_style, section_class: section.settings.custom_class %}
+{% if section.settings.image_position == 'left' %}
+  {% assign vwt_class = section.settings.custom_class | append: ' vwt--media-left' %}
+{% else %}
+  {% assign vwt_class = section.settings.custom_class %}
+{% endif %}
+{% render 'media-with-text', media: media, media_class: media_class, media_style: media_style, section_class: vwt_class %}
 
 {% schema %}
 {

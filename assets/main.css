@@ -11211,6 +11211,13 @@ quick-add-button.no-js-hidden button .spinner .path {
   stroke: #000000;
 }
 
+/* ── Video-with-text: media on left when image_position = left ── */
+@media screen and (min-width: 1024px) {
+  .vwt--media-left .image-loader {
+    order: -1;
+  }
+}
+
 .footer-logo-heading{
     font-style: italic ;
     font-weight: 600;
