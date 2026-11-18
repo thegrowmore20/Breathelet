@@ -96,7 +96,7 @@
       "name": "t:sections.rich-text.presets__0.name",
       "settings": {
         "full_width": true,
-        "content_alignment": "",
+        "content_alignment": "mx-auto",
         "text_alignment": "text-left",
         "content_width": "normal",
         "background_color": "",
