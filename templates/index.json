@@ -487,58 +487,10 @@
             "feature_6_text": ""
           },
           "blocks": {}
-        },
-        "ai_gen_block_5f2401e_6V3A8K": {
-          "type": "ai_gen_block_5f2401e",
-          "settings": {
-            "loading_eager": false,
-            "background_image_desktop": "shopify://shop_images/Banner_1_Desktop_181e1899-35e6-4ac0-b6ab-48947d810c7f.webp",
-            "background_image_mobile": "shopify://shop_images/Banner_1_Mobile_78d5d9ad-fbae-45ec-b702-8c781565c19d.webp",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0.3,
-            "border_radius": 4,
-            "desktop_width_percent": 100,
-            "padding_vertical": 70,
-            "padding_horizontal": 20,
-            "padding_vertical_mobile": 40,
-            "padding_horizontal_mobile": 20,
-            "gap": 60,
-            "gap_mobile": 30,
-            "icon_background_style": "circle",
-            "icon_size": 36,
-            "icon_spacing": 10,
-            "icon_color": "#ffffff",
-            "icon_background_color": "#000000",
-            "title_size": 14,
-            "title_spacing": 15,
-            "title_color": "#e1e1e1",
-            "text_size": 13,
-            "text_color": "#ffffff",
-            "feature_1_icon": "shopify://shop_images/Feel_Present_Again.png",
-            "feature_1_title": "Feel Present Again",
-            "feature_1_text": "",
-            "feature_2_icon": "shopify://shop_images/Calm_That_Fits_Your_Day.png",
-            "feature_2_title": "Calm That Fits Your Day",
-            "feature_2_text": "",
-            "feature_3_icon": "shopify://shop_images/Reset_Anywhere_Anytime.png",
-            "feature_3_title": "Reset Anywhere, Anytime",
-            "feature_3_text": "",
-            "feature_4_icon": "shopify://shop_images/Mindful_Habits.png",
-            "feature_4_title": "Mindful Habits",
-            "feature_4_text": "",
-            "feature_5_icon": "shopify://shop_images/Screenless_Wellness.png",
-            "feature_5_title": "Screenless Wellness",
-            "feature_5_text": "",
-            "feature_6_icon": "shopify://shop_images/Meaningful_Gift.png",
-            "feature_6_title": "Meaningful Gift",
-            "feature_6_text": ""
-          },
-          "blocks": {}
         }
       },
       "block_order": [
-        "ai_gen_block_icon_features_v2_69n6nc",
-        "ai_gen_block_5f2401e_6V3A8K"
+        "ai_gen_block_icon_features_v2_69n6nc"
       ],
       "settings": {}
     },
