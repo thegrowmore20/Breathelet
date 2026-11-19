@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "slideshow_7aaerb": {
@@ -639,6 +648,48 @@
         "heading_html_tag": "h2"
       }
     },
+    "editorial_breathe_symbol": {
+      "type": "image-with-text-editorial",
+      "blocks": {
+        "heading_1": {
+          "type": "heading",
+          "settings": {
+            "heading": "BREATHE",
+            "heading_size": "h0",
+            "heading_html_tag": "h2"
+          }
+        },
+        "text_1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>This archaic Sanskrit symbol gracefully inspires us to embrace our natural responses. It represents life’s first and final acts, portraying the elegant symmetry of our existence.</p>"
+          }
+        },
+        "link_1": {
+          "type": "link",
+          "settings": {
+            "text": "Shop Breathelet",
+            "url": "shopify://products/breathelet-onefit",
+            "show_arrow": true
+          }
+        }
+      },
+      "block_order": [
+        "heading_1",
+        "text_1",
+        "link_1"
+      ],
+      "settings": {
+        "full_width": true,
+        "image": "shopify://shop_images/b5.png",
+        "image_position": "right",
+        "min_height_desktop": 560,
+        "min_height_mobile": 300,
+        "background_color": "#0a0a0a",
+        "text_color": "#ffffff",
+        "heading_color": "#ffffff"
+      }
+    },
     "image_with_text_tHGRPd": {
       "type": "image-with-text",
       "blocks": {
@@ -1145,55 +1196,6 @@
         "heading_color": "",
         "heading_html_tag": "p"
       }
-    },
-    "editorial_breathe_symbol": {
-      "type": "image-with-text-editorial",
-      "settings": {
-        "full_width": true,
-        "image_position": "right",
-        "min_height_desktop": 560,
-        "min_height_mobile": 300,
-        "background_color": "#0a0a0a",
-        "text_color": "#ffffff",
-        "heading_color": "#ffffff"
-      },
-      "blocks": {
-        "eyebrow_1": {
-          "type": "eyebrow",
-          "settings": {
-            "number": "01",
-            "label": "THE SYMBOL"
-          }
-        },
-        "heading_1": {
-          "type": "heading",
-          "settings": {
-            "heading": "BREATHE",
-            "heading_size": "h0",
-            "heading_html_tag": "h2"
-          }
-        },
-        "text_1": {
-          "type": "text",
-          "settings": {
-            "text": "<p>This archaic Sanskrit symbol gracefully inspires us to embrace our natural responses. It represents life’s first and final acts, portraying the elegant symmetry of our existence.</p>"
-          }
-        },
-        "link_1": {
-          "type": "link",
-          "settings": {
-            "text": "DISCOVER THE MEANING",
-            "url": "/pages/the-symbol",
-            "show_arrow": true
-          }
-        }
-      },
-      "block_order": [
-        "eyebrow_1",
-        "heading_1",
-        "text_1",
-        "link_1"
-      ]
     }
   },
   "order": [
