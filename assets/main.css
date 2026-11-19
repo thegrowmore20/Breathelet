@@ -11323,3 +11323,23 @@ quick-add-button.no-js-hidden button .spinner .path {
 .section-site-header:not(.section-site-header--sticky) .header--transparent:has(.header-icon-btn:hover) {
   --header-background-opacity: 100% !important;
 }
+
+/* ── Global scrollbar: thin rose gold ── */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #c9a882 transparent;
+}
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #c9a882;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b8956e;
+}
