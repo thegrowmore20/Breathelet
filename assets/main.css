@@ -4345,12 +4345,12 @@ main > .shopify-section:first-child .section--full-width:not(.section--no-paddin
 }
 .cart-modal-item .qty-selector {
   background: #f2f2f2;
-  border-radius: 4px;
+  border-radius: 20px;
 }
 .cart-modal-item .qty-selector__button {
   height: 2rem;
   width: 2rem;
-  border-radius: 4px;
+  border-radius: 20px;
 }
 @media screen and (max-width: 520px){
   .cart-page .qty-selector__button,
