@@ -459,31 +459,8 @@
     goTo(0);
   }
 
-  /* ── Persist checkbox state across re-renders ── */
-  var storageKey = 'addon-checked-' + productId;
-
-  function saveState() {
-    var checked = [];
-    widget.querySelectorAll('input[name="addon_variant"]:checked').forEach(function(cb) {
-      checked.push(cb.value);
-    });
-    try { sessionStorage.setItem(storageKey, JSON.stringify(checked)); } catch(e) {}
-  }
-
-  function restoreState() {
-    var saved;
-    try { saved = JSON.parse(sessionStorage.getItem(storageKey) || '[]'); } catch(e) { saved = []; }
-    if (!saved.length) return;
-    widget.querySelectorAll('input[name="addon_variant"]').forEach(function(cb) {
-      if (saved.indexOf(cb.value) !== -1) cb.checked = true;
-    });
-  }
-
-  widget.addEventListener('change', saveState, { passive: true });
-
   /* Init after DOM ready */
   function boot() {
-    restoreState();
     updateSummary();
     initSlider();
   }
