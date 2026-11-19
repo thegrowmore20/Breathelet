@@ -4341,17 +4341,23 @@ main > .shopify-section:first-child .section--full-width:not(.section--no-paddin
   padding: 0px;
 }
 .cart-modal-item .qty-selector__button {
-  height: 2rem;
-  width: 2rem;
+  height: 2.25rem;
+  width: 2.25rem;
+  background: #c9a882;
+  color: #000;
+  border-radius: 50%;
 }
 .buy-btn-wrap .qty-selector__button {
   background: #222;
 }
+.cart-modal-item .qty-selector__button:hover {
+  background: #b8956e;
+}
 @media screen and (max-width: 520px){
   .cart-page .qty-selector__button,
   .cart-modal-item .qty-selector__button {
-    height: 1.5rem;
-    width: 1.5rem;
+    height: 2rem;
+    width: 2rem;
   } 
   .cart-page .grow.image-trash-content{
     width: calc(100% - 1.5rem);
@@ -4363,8 +4369,8 @@ main > .shopify-section:first-child .section--full-width:not(.section--no-paddin
     width: 3rem;
   }
   .cart-modal-item .qty-selector__button {
-    height: 1.5rem;
-    width: 1.5rem;
+    height: 2.25rem;
+    width: 2.25rem;
   }
 }
 .qty-selector__button > svg {
