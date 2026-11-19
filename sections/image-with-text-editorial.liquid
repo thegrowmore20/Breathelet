@@ -49,8 +49,8 @@
       flex flex-col justify-center
       {% if img_right %}order-2 lg:order-1{% else %}order-2 lg:order-2{% endif %}
       rfs:py-20
-      px-[--container-padding]
-      {% if img_right %}lg:pl-[--container-padding] lg:pr-16{% else %}lg:pr-[--container-padding] lg:pl-16{% endif %}
+      rfs:px-co
+      {% if img_right %}lg:pl-co lg:rfs:pr-12{% else %}lg:pr-co lg:rfs:pl-12{% endif %}
     ">
       <div class="trim-margins w-full max-w-xl {% if img_right %}lg:ml-auto{% endif %}">
 
