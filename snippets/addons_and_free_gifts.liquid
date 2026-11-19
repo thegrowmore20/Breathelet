@@ -110,8 +110,8 @@
     transform: scale(0.6);
   }
   .addon-toggle input:checked ~ .btn-shell {
-    background: #fff;
-    border-color: #000;
+    background: #c9a882;
+    border-color: #c9a882;
     animation: addonPop 0.35s ease-out;
   }
   .addon-toggle input:checked ~ .btn-shell .btn-price {
@@ -128,7 +128,8 @@
     box-shadow: 0 3px 10px rgba(224,169,109,0.35);
   }
   .addon-toggle:has(input:checked):hover .btn-shell {
-    background: #f5f5f5;
+    background: #b8956e;
+    border-color: #b8956e;
   }
   @keyframes addonPop {
     0%   { transform: scale(1);    }
@@ -458,8 +459,31 @@
     goTo(0);
   }
 
+  /* ── Persist checkbox state across re-renders ── */
+  var storageKey = 'addon-checked-' + productId;
+
+  function saveState() {
+    var checked = [];
+    widget.querySelectorAll('input[name="addon_variant"]:checked').forEach(function(cb) {
+      checked.push(cb.value);
+    });
+    try { sessionStorage.setItem(storageKey, JSON.stringify(checked)); } catch(e) {}
+  }
+
+  function restoreState() {
+    var saved;
+    try { saved = JSON.parse(sessionStorage.getItem(storageKey) || '[]'); } catch(e) { saved = []; }
+    if (!saved.length) return;
+    widget.querySelectorAll('input[name="addon_variant"]').forEach(function(cb) {
+      if (saved.indexOf(cb.value) !== -1) cb.checked = true;
+    });
+  }
+
+  widget.addEventListener('change', saveState, { passive: true });
+
   /* Init after DOM ready */
   function boot() {
+    restoreState();
     updateSummary();
     initSlider();
   }
