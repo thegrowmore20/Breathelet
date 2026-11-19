@@ -19,10 +19,18 @@
     background: var(--color-background);
   }
 
+  #shopify-section-{{ section.id }} .editorial__inner {
+    inset: 0;
+  }
+
   @media (min-width: 1024px) {
     #shopify-section-{{ section.id }} .editorial__text,
     #shopify-section-{{ section.id }} .editorial__image {
       min-height: {{ section.settings.min_height_desktop }}px;
+    }
+
+    #shopify-section-{{ section.id }} .editorial__inner {
+      inset: {{ section.settings.image_inset | default: 24 }}px;
     }
   }
 </style>
@@ -122,10 +130,7 @@
       {% if img_right %}order-1 lg:order-2{% else %}order-1 lg:order-1{% endif %}
     ">
       {%- if section.settings.image -%}
-        <div
-          class="absolute overflow-hidden"
-          style="inset: {{ img_inset }}px;"
-        >
+        <div class="editorial__inner absolute overflow-hidden">
           {{
             section.settings.image
             | image_url: width: 2400
