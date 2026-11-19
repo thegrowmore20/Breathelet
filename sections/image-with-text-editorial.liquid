@@ -21,9 +21,13 @@
   }
 </style>
 
-<div class="editorial-section overflow-hidden
-  {% unless section.settings.full_width %}section section--block{% endunless %}
-">
+{% render 'section-bg-number-vars', full_width: section.settings.full_width %}
+<div
+  class="editorial-section overflow-hidden
+    {% if section.settings.full_width %}section section--full-width{% else %}section section--block{% endif %}
+  "
+  style="{% render 'section-style' %}; {% if section.settings.remove_bottom_spacing %}padding-bottom: 0 !important;{% endif %}"
+>
   <div class="
     grid
     {% if img_right %}
@@ -101,8 +105,12 @@
 
     {%- comment -%} ── IMAGE COLUMN ─────────────────────────────── {%- endcomment -%}
     <div class="
-      editorial__image relative
-      min-h-[300px] md:min-h-[480px]
+      editorial__image overflow-hidden
+      {% if section.settings.image_size != blank %}
+        media {{ section.settings.image_size }}
+      {% else %}
+        relative min-h-[300px] md:min-h-[480px]
+      {% endif %}
       {% if img_right %}order-1 lg:order-2{% else %}order-1 lg:order-1{% endif %}
     ">
       {%- if section.settings.image -%}
@@ -135,6 +143,12 @@
       "default": true
     },
     {
+      "type": "checkbox",
+      "id": "remove_bottom_spacing",
+      "label": "Remove bottom spacing",
+      "default": false
+    },
+    {
       "type": "header",
       "content": "Image"
     },
@@ -142,6 +156,20 @@
       "type": "image_picker",
       "id": "image",
       "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "image_size",
+      "label": "Image size",
+      "options": [
+        { "value": "media--ratio-4-3",  "label": "Landscape (4:3)"   },
+        { "value": "media--ratio-16-9", "label": "Wide (16:9)"        },
+        { "value": "media--ratio-3-4",  "label": "Portrait (3:4)"     },
+        { "value": "media--ratio-2-3",  "label": "Tall (2:3)"         },
+        { "value": "media--ratio-1-1",  "label": "Square (1:1)"       },
+        { "value": "",                  "label": "Original (fill)"    }
+      ],
+      "default": ""
     },
     {
       "type": "select",
