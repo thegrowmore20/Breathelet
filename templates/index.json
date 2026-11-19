@@ -440,6 +440,46 @@
     "1771334505e4d5ee02": {
       "type": "_blocks",
       "blocks": {
+        "ai_gen_block_icon_features_v2_69n6nc": {
+          "type": "ai_gen_block_icon_features_v2",
+          "name": "Icon features V2",
+          "settings": {
+            "loading_eager": false,
+            "overlay_color": "#000000",
+            "overlay_opacity": 0.5,
+            "border_radius": 4,
+            "desktop_width_percent": 100,
+            "padding_vertical": 60,
+            "padding_horizontal": 40,
+            "padding_vertical_mobile": 40,
+            "padding_horizontal_mobile": 20,
+            "gap": 30,
+            "gap_mobile": 30,
+            "icon_background_style": "circle",
+            "icon_size": 80,
+            "icon_spacing": 20,
+            "icon_color": "#ffffff",
+            "icon_background_color": "#0086d6",
+            "title_size": 18,
+            "title_spacing": 10,
+            "title_color": "#ffffff",
+            "text_size": 14,
+            "text_color": "#ffffff",
+            "feature_1_title": "Premium quality",
+            "feature_1_text": "Crafted with the finest materials",
+            "feature_2_title": "Free shipping",
+            "feature_2_text": "On all orders over $50",
+            "feature_3_title": "Secure payment",
+            "feature_3_text": "100% secure transactions",
+            "feature_4_title": "Customer support",
+            "feature_4_text": "24/7 dedicated support team",
+            "feature_5_title": "Feature title 5",
+            "feature_5_text": "Describe feature 5 here",
+            "feature_6_title": "Feature title 6",
+            "feature_6_text": "Describe feature 6 here"
+          },
+          "blocks": {}
+        },
         "ai_gen_block_5f2401e_6V3A8K": {
           "type": "ai_gen_block_5f2401e",
           "settings": {
@@ -489,6 +529,7 @@
         }
       },
       "block_order": [
+        "ai_gen_block_icon_features_v2_69n6nc",
         "ai_gen_block_5f2401e_6V3A8K"
       ],
       "settings": {}
@@ -1205,6 +1246,7 @@
     "fa63dde0-c7d9-4ac7-9f3d-90ef6a67184f",
     "image_with_text_bcbTad",
     "image_with_text_KkkWmD",
+    "editorial_breathe_symbol",
     "video_with_text_6kqVVV",
     "apps_EWV9wq",
     "1779445986c7e74670",
@@ -1212,7 +1254,6 @@
     "video_RLKz98",
     "custom_section_HgdMYY",
     "homepage_usps_jQz9Ba",
-    "editorial_breathe_symbol",
     "image_with_text_tHGRPd",
     "multicolumn_Pxn6VQ",
     "image_with_text_WjQwNJ",
