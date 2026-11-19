@@ -26,16 +26,69 @@
             </div>
           {%- endif -%}
 
+          {%- liquid
+            assign compare_at_total = 0
+            assign total_compare_at_savings = 0
+            assign c_savings_percent = 0
+            assign regular_price_total = 0
+            assign discount_total = cart.total_discount
+            for item in cart.items
+              assign item_total_compare_price = 0
+              assign quantity = item.quantity
+              assign regular_price = item.variant.price
+              assign compare_price = item.variant.compare_at_price
+              assign item_total_regular_price = regular_price | times: quantity
+              if compare_price and compare_price > regular_price
+                assign item_total_compare_price = compare_price | times: quantity
+              else
+                assign item_total_compare_price = regular_price | times: quantity
+              endif
+              assign compare_at_total = compare_at_total | plus: item_total_compare_price
+              assign regular_price_total = regular_price_total | plus: item_total_regular_price
+              if compare_price and compare_price > regular_price
+                assign single_item_save = compare_price | minus: regular_price
+                assign line_item_save = single_item_save | times: quantity
+                assign total_compare_at_savings = total_compare_at_savings | plus: line_item_save
+              endif
+              assign item_level_discount_percentage = 0
+              if item.line_level_discount_allocations.size > 0
+                for discount in item.line_level_discount_allocations
+                  assign item_level_discount_percentage = item_level_discount_percentage | plus: discount.discount_application.value | round
+                endfor
+              endif
+            endfor
+            if compare_at_total > 0 and total_compare_at_savings > 0
+              assign c_savings_percent = total_compare_at_savings | times: 100.0 | divided_by: compare_at_total | round
+            endif
+            assign cart_level_discount_percentage = 0
+            for discount in cart.cart_level_discount_applications
+              assign cart_level_discount_percentage = cart_level_discount_percentage | plus: discount.value | round
+            endfor
+            assign grand_saving = c_savings_percent | plus: item_level_discount_percentage | plus: cart_level_discount_percentage
+            assign total_line_price = compare_at_total | minus: regular_price_total
+            assign total_saved_amount = total_line_price | plus: discount_total
+          -%}
+
           <div class="flex justify-between">
-            <div>{{ 'sections.cart.subtotal' | t }}</div>
-            <div class="cart-subtotal">{{ cart.items_subtotal_price | money }}</div>
+            <div>Total Price</div>
+            <div class="cart-subtotal">{{ compare_at_total | money }}</div>
           </div>
 
+          {%- if total_saved_amount > 0 -%}
+            <div class="flex justify-between font-bold mt-2" style="color: #34A853;">
+              <div class="flex items-center gap-1">
+                You Save
+                <span class="flex items-center gap-1">
+                  <span class="icon-xs" style="--icon-stroke-width: 1.75">{% render 'icon-discount' %}</span>
+                  {{ grand_saving | append: '%' }}
+                </span>
+              </div>
+              <div>-{{ total_saved_amount | money }}</div>
+            </div>
+          {%- endif -%}
+
           {%- if cart.cart_level_discount_applications.size > 0 -%}
-            <div class="mt-4">
-              {%- comment -%}
-                Cart level discounts can be applied by merchants, and must be shown to the buyer
-              {%- endcomment -%}
+            <div class="mt-2">
               <ul class="list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
                 {%- for discount in cart.cart_level_discount_applications -%}
                   <li class="flex items-center">
