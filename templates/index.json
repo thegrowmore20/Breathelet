@@ -790,7 +790,7 @@
         "button_wtdHzk": {
           "type": "button",
           "settings": {
-            "button_text": "Buy Enternal Love Pair",
+            "button_text": "Shop Eternal Love Pair",
             "button_link": "shopify://products/breathelet-onefit",
             "button_style": "",
             "button_size": "text-sm md:text-base",
