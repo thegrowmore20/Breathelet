@@ -981,83 +981,6 @@
         "heading_color": ""
       }
     },
-    "image_hotspots_MEWGdp": {
-      "type": "image-hotspots",
-      "blocks": {
-        "hotspot_AMxJ37": {
-          "type": "hotspot",
-          "settings": {
-            "x": 37,
-            "y": 39,
-            "x_mobile": 76,
-            "y_mobile": 50,
-            "heading": "Gun Metal",
-            "content": ""
-          }
-        },
-        "hotspot_9XmhJ8": {
-          "type": "hotspot",
-          "settings": {
-            "x": 60,
-            "y": 60,
-            "x_mobile": 50,
-            "y_mobile": 50,
-            "heading": "Rose Gold",
-            "content": ""
-          }
-        }
-      },
-      "block_order": [
-        "hotspot_AMxJ37",
-        "hotspot_9XmhJ8"
-      ],
-      "name": "t:sections.image-hotspots.presets__0.name",
-      "settings": {
-        "full_width": true,
-        "image": "shopify://shop_images/877fd284-bb41-4b9b-bab2-eff3bfac6e8d-scaled.png",
-        "image_max_width": 1920,
-        "subheading": "",
-        "heading": "Designed to Match Your Everyday Style",
-        "heading_size": "h2",
-        "content": "<p>Choose Gunmetal or Sunshine Gold — adjustable, water-resistant, minimal by design. A bracelet that feels natural on the wrist and delivers gentle mindful reminders all day.</p>",
-        "text_alignment": "text-center",
-        "background_color": "#000000",
-        "text_color": "",
-        "heading_color": "",
-        "dot_background_color": "",
-        "dot_icon_color": "",
-        "popover_background_color": "",
-        "popover_text_color": "",
-        "heading_html_tag": "h2"
-      }
-    },
-    "rich_text_fq93c9": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_7DAAYy": {
-          "type": "heading",
-          "settings": {
-            "heading": "Features",
-            "heading_size": "h1",
-            "heading_html_tag": "p"
-          }
-        }
-      },
-      "block_order": [
-        "heading_7DAAYy"
-      ],
-      "disabled": true,
-      "name": "t:sections.rich-text.presets__0.name",
-      "settings": {
-        "full_width": true,
-        "content_alignment": "mx-auto",
-        "text_alignment": "text-center",
-        "content_width": "normal",
-        "background_color": "",
-        "text_color": "",
-        "heading_color": ""
-      }
-    },
     "177133889400aad7f9": {
       "type": "_blocks",
       "blocks": {
@@ -1253,8 +1176,6 @@
     "video_with_text_dPhCKa",
     "featured_product_9ybD34",
     "rich_text_zPXUB9",
-    "image_hotspots_MEWGdp",
-    "rich_text_fq93c9",
     "177133889400aad7f9",
     "featured_collection_MU6wJG",
     "two_column_flex_new",
