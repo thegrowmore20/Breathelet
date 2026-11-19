@@ -244,6 +244,7 @@
     <div class="addon-list" id="addon-list-{{ product.id }}">
 
       {%- for item in addon_items -%}
+        {%- unless item.available -%}{%- continue -%}{%- endunless -%}
         {%- liquid
           if forloop.first
             assign img_loading = 'eager'
@@ -369,6 +370,14 @@
 
   window.addonUpdateSummary = updateSummary;
   window.addonFormatMoney   = formatMoney;
+
+  /* ── Reset checkboxes after add to cart ── */
+  document.addEventListener('product:added-to-cart', function () {
+    widget.querySelectorAll('input[name="addon_variant"]').forEach(function (cb) {
+      cb.checked = false;
+    });
+    updateSummary();
+  });
 
   window.addEventListener('unload', function () {
     if (window.addonSelectedVariants) {
