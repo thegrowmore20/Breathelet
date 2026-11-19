@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "slideshow_7aaerb": {
@@ -1154,6 +1145,55 @@
         "heading_color": "",
         "heading_html_tag": "p"
       }
+    },
+    "editorial_breathe_symbol": {
+      "type": "image-with-text-editorial",
+      "settings": {
+        "full_width": true,
+        "image_position": "right",
+        "min_height_desktop": 560,
+        "min_height_mobile": 300,
+        "background_color": "#0a0a0a",
+        "text_color": "#ffffff",
+        "heading_color": "#ffffff"
+      },
+      "blocks": {
+        "eyebrow_1": {
+          "type": "eyebrow",
+          "settings": {
+            "number": "01",
+            "label": "THE SYMBOL"
+          }
+        },
+        "heading_1": {
+          "type": "heading",
+          "settings": {
+            "heading": "BREATHE",
+            "heading_size": "h0",
+            "heading_html_tag": "h2"
+          }
+        },
+        "text_1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>This archaic Sanskrit symbol gracefully inspires us to embrace our natural responses. It represents life’s first and final acts, portraying the elegant symmetry of our existence.</p>"
+          }
+        },
+        "link_1": {
+          "type": "link",
+          "settings": {
+            "text": "DISCOVER THE MEANING",
+            "url": "/pages/the-symbol",
+            "show_arrow": true
+          }
+        }
+      },
+      "block_order": [
+        "eyebrow_1",
+        "heading_1",
+        "text_1",
+        "link_1"
+      ]
     }
   },
   "order": [
@@ -1170,6 +1210,7 @@
     "video_RLKz98",
     "custom_section_HgdMYY",
     "homepage_usps_jQz9Ba",
+    "editorial_breathe_symbol",
     "image_with_text_tHGRPd",
     "multicolumn_Pxn6VQ",
     "image_with_text_WjQwNJ",
