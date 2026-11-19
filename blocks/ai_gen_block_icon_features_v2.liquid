@@ -111,8 +111,8 @@
 
   /* ── Icon (uploaded image, no circle) ── */
   .ai-icon-feature-icon-wrapper-{{ ai_gen_id }} {
-    width: 28px;
-    height: 28px;
+    width: 40px;
+    height: 40px;
     margin-bottom: 16px;
     transition: transform 0.3s ease;
     display: flex;
@@ -125,8 +125,8 @@
   }
 
   .ai-icon-feature-icon-wrapper-{{ ai_gen_id }} img {
-    width: 28px;
-    height: 28px;
+    width: 40px;
+    height: 40px;
     object-fit: contain;
     display: block;
     filter: brightness(0) invert(1);
@@ -264,7 +264,7 @@
 
             <div class="ai-icon-feature-icon-wrapper-{{ ai_gen_id }}" aria-hidden="true">
               {%- if icon != blank -%}
-                {{ icon | image_url: width: 56 | image_tag: width: 28, height: 28, alt: '' }}
+                {{ icon | image_url: width: 80 | image_tag: width: 40, height: 40, alt: '' }}
               {%- endif -%}
             </div>
 
