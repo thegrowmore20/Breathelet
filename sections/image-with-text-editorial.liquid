@@ -14,8 +14,14 @@
     min-height: {{ section.settings.min_height_mobile }}px;
   }
 
+  #shopify-section-{{ section.id }} .editorial__image {
+    {% render 'apply-color-var', var: '--color-background', color: section.settings.background_color %}
+    background: var(--color-background);
+  }
+
   @media (min-width: 1024px) {
-    #shopify-section-{{ section.id }} .editorial__text {
+    #shopify-section-{{ section.id }} .editorial__text,
+    #shopify-section-{{ section.id }} .editorial__image {
       min-height: {{ section.settings.min_height_desktop }}px;
     }
   }
@@ -236,7 +242,7 @@
     {
       "type": "color",
       "id": "background_color",
-      "label": "Text panel background"
+      "label": "Section background"
     },
     {
       "type": "color",
