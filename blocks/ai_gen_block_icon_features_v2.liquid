@@ -20,6 +20,9 @@
     position: relative;
     width: 100%;
     display: block;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    overflow: hidden;
   }
 
   .ai-icon-features-container-{{ ai_gen_id }} {
@@ -27,17 +30,16 @@
     width: {{ block.settings.desktop_width_percent }}%;
     max-width: 100%;
     margin: 0 auto;
-    border-radius: {{ block.settings.border_radius }}px;
-    overflow: hidden;
   }
 
+  /* ── Background image (grayscale) ── */
   .ai-icon-features-background-{{ ai_gen_id }} {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
+    inset: 0;
+    z-index: 0;
+    filter: grayscale(100%) contrast(1.05);
+    opacity: {{ block.settings.overlay_opacity }};
+    pointer-events: none;
   }
 
   .ai-icon-features-background-{{ ai_gen_id }} picture,
@@ -48,114 +50,149 @@
     display: block;
   }
 
-  .ai-icon-features-background-placeholder-{{ ai_gen_id }} {
-    width: 100%;
-    height: 100%;
-    background-color: #f4f4f4;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .ai-icon-features-background-placeholder-{{ ai_gen_id }} svg {
-    width: 100%;
-    height: 100%;
-    max-width: 500px;
-    max-height: 500px;
-  }
-
+  /* ── Gradient overlay (fades from sides) ── */
   .ai-icon-features-overlay-{{ ai_gen_id }} {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: {{ block.settings.overlay_color }};
-    opacity: {{ block.settings.overlay_opacity }};
-    z-index: 2;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+      90deg,
+      {{ block.settings.overlay_color }} 0%,
+      rgba(17, 17, 17, 0.55) 28%,
+      rgba(17, 17, 17, 0.2) 50%,
+      rgba(17, 17, 17, 0.55) 72%,
+      {{ block.settings.overlay_color }} 100%
+    );
+    pointer-events: none;
   }
 
+  /* ── Grid ── */
   .ai-icon-features-content-{{ ai_gen_id }} {
     position: relative;
-    z-index: 3;
-    padding: {{ block.settings.padding_vertical }}px {{ block.settings.padding_horizontal }}px;
+    z-index: 2;
   }
 
   .ai-icon-features-grid-{{ ai_gen_id }} {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    gap: 0;
+    max-width: 1600px;
+    margin: 0 auto;
   }
 
+  /* ── Item ── */
   .ai-icon-feature-item-{{ ai_gen_id }} {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     text-align: center;
-    padding: 0 {{ block.settings.gap | divided_by: 2 }}px;
-    border-right: 1px solid rgba(255, 255, 255, 0.15);
+    padding: {{ block.settings.padding_vertical }}px 20px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s ease;
   }
 
   .ai-icon-feature-item-{{ ai_gen_id }}:last-child {
     border-right: none;
   }
 
+  .ai-icon-feature-item-{{ ai_gen_id }}:hover {
+    background-color: rgba(255, 255, 255, 0.025);
+  }
+
+  /* ── Counter number ── */
   .ai-icon-feature-counter-{{ ai_gen_id }} {
     font-size: 11px;
     font-weight: 400;
-    color: rgba(255, 255, 255, 0.45);
-    letter-spacing: 0.05em;
-    margin-bottom: 10px;
-    width: 100%;
-    text-align: left;
-    padding-bottom: 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    letter-spacing: 0.14em;
+    color: #7c7874;
+    margin-bottom: 16px;
+    line-height: 1;
   }
 
+  /* ── Icon (uploaded image, no circle) ── */
   .ai-icon-feature-icon-wrapper-{{ ai_gen_id }} {
-    margin-top: 14px;
-    margin-bottom: {{ block.settings.icon_spacing }}px;
+    width: 28px;
+    height: 28px;
+    margin-bottom: 16px;
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
+  .ai-icon-feature-item-{{ ai_gen_id }}:hover .ai-icon-feature-icon-wrapper-{{ ai_gen_id }} {
+    transform: translateY(-2px);
+  }
+
+  .ai-icon-feature-icon-wrapper-{{ ai_gen_id }} img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    display: block;
+    filter: brightness(0) invert(1);
+  }
+
+  /* ── Title ── */
   .ai-icon-feature-title-{{ ai_gen_id }} {
     font-size: {{ block.settings.title_size }}px;
-    font-weight: 600;
+    font-weight: 500;
+    line-height: 1.35;
+    letter-spacing: 0.01em;
     color: {{ block.settings.title_color }};
-    margin: 0 0 {{ block.settings.title_spacing }}px;
+    margin: 0 0 14px;
   }
 
-  .ai-icon-feature-text-{{ ai_gen_id }} {
-    font-size: {{ block.settings.text_size }}px;
-    color: {{ block.settings.text_color }};
-    margin: 0;
-    line-height: 1.5;
+  /* ── Dash ── */
+  .ai-icon-feature-dash-{{ ai_gen_id }} {
+    display: block;
+    width: 20px;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.25);
+    transition: width 0.3s ease, background-color 0.3s ease;
   }
 
-  @media screen and (max-width: 749px) {
+  .ai-icon-feature-item-{{ ai_gen_id }}:hover .ai-icon-feature-dash-{{ ai_gen_id }} {
+    width: 32px;
+    background-color: rgba(255, 255, 255, 0.55);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 1024px) {
     .ai-icon-features-grid-{{ ai_gen_id }} {
       grid-template-columns: repeat(3, 1fr);
     }
-
-    .ai-icon-feature-item-{{ ai_gen_id }}:nth-child(3) {
+    .ai-icon-feature-item-{{ ai_gen_id }} {
+      padding: 36px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .ai-icon-feature-item-{{ ai_gen_id }}:nth-child(3n) {
       border-right: none;
     }
-
-    .ai-icon-features-content-{{ ai_gen_id }} {
-      padding: {{ block.settings.padding_vertical_mobile }}px {{ block.settings.padding_horizontal_mobile }}px;
+    .ai-icon-feature-item-{{ ai_gen_id }}:nth-child(n+4) {
+      border-bottom: none;
     }
   }
 
-  @media screen and (max-width: 480px) {
+  @media (max-width: 600px) {
     .ai-icon-features-grid-{{ ai_gen_id }} {
       grid-template-columns: repeat(2, 1fr);
     }
-
+    .ai-icon-feature-item-{{ ai_gen_id }} {
+      padding: 30px 14px;
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .ai-icon-feature-item-{{ ai_gen_id }}:nth-child(3n) {
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
     .ai-icon-feature-item-{{ ai_gen_id }}:nth-child(2n) {
       border-right: none;
     }
-
-    .ai-icon-feature-item-{{ ai_gen_id }}:nth-child(3) {
-      border-right: 1px solid rgba(255, 255, 255, 0.15);
+    .ai-icon-feature-item-{{ ai_gen_id }}:nth-child(n+4) {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .ai-icon-feature-item-{{ ai_gen_id }}:nth-child(n+5) {
+      border-bottom: none;
     }
   }
 {% endstyle %}
@@ -163,8 +200,8 @@
 <div class="ai-icon-features-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
   <div class="ai-icon-features-container-{{ ai_gen_id }}">
 
-    <div class="ai-icon-features-background-{{ ai_gen_id }}">
-      {%- if block.settings.background_image_desktop or block.settings.background_image_mobile -%}
+    {%- if block.settings.background_image_desktop or block.settings.background_image_mobile -%}
+      <div class="ai-icon-features-background-{{ ai_gen_id }}" aria-hidden="true">
         {%- assign mobile_bg = block.settings.background_image_mobile | default: block.settings.background_image_desktop -%}
         <picture>
           <source
@@ -176,20 +213,20 @@
             "
             sizes="100vw"
           >
-          {%- if block.settings.background_image_desktop -%}                     
-           {%- assign background_image_desktop_alt = block.settings.background_image_desktop.alt | default: 'icon-features-desktop-background' -%}
+          {%- if block.settings.background_image_desktop -%}
+            {%- assign bg_alt = block.settings.background_image_desktop.alt | default: 'background' -%}
             {{-
               block.settings.background_image_desktop
-              | image_url: width: 3840
+              | image_url: width: 2000
               | image_tag:
-                widths: '1100, 1500, 1780, 2000, 3000, 3840',
+                widths: '1100, 1500, 2000',
                 sizes: '100vw',
                 loading: loading_val,
                 fetchpriority: fetchpriority_val,
-                alt: background_image_desktop_alt
+                alt: bg_alt
             -}}
           {%- else -%}
-           {%- assign background_image_mobile_alt = block.settings.background_image_mobile.alt | default: 'icon-features-mobile-background' -%}
+            {%- assign bg_alt = block.settings.background_image_mobile.alt | default: 'background' -%}
             {{-
               block.settings.background_image_mobile
               | image_url: width: 1000
@@ -198,55 +235,44 @@
                 sizes: '100vw',
                 loading: loading_val,
                 fetchpriority: fetchpriority_val,
-                alt: background_image_mobile_alt
+                alt: bg_alt
             -}}
           {%- endif -%}
         </picture>
-      {%- else -%}
-        <div class="ai-icon-features-background-placeholder-{{ ai_gen_id }}">
-          {{ 'hero-apparel-1' | placeholder_svg_tag }}
-        </div>
-      {%- endif -%}
-    </div>
+      </div>
+    {%- endif -%}
 
-    <div class="ai-icon-features-overlay-{{ ai_gen_id }}"></div>
+    <div class="ai-icon-features-overlay-{{ ai_gen_id }}" aria-hidden="true"></div>
 
     <div class="ai-icon-features-content-{{ ai_gen_id }}">
       <div class="ai-icon-features-grid-{{ ai_gen_id }}">
         {%- for i in (1..6) -%}
           {%- liquid
             assign title_key = 'feature_' | append: i | append: '_title'
-            assign text_key  = 'feature_' | append: i | append: '_text'
             assign icon_key  = 'feature_' | append: i | append: '_icon'
-
             assign title = block.settings[title_key]
-            assign text  = block.settings[text_key]
             assign icon  = block.settings[icon_key]
+            if i < 10
+              assign counter_num = '0' | append: i
+            else
+              assign counter_num = i
+            endif
           -%}
 
-          <div class="ai-icon-feature-item-{{ ai_gen_id }}" data-animation="block" data-animation-group="{{ block.id }}">
-            {%- assign counter_num = forloop.index -%}
-            {%- if forloop.index < 10 -%}
-              {%- assign counter_num = '0' | append: forloop.index -%}
-            {%- endif -%}
-            <span class="ai-icon-feature-counter-{{ ai_gen_id }}">{{ counter_num }}</span>
-            <div class="ai-icon-feature-icon-wrapper-{{ ai_gen_id }}">
-              {%- render 'section-full-icon',
-                custom_icon: icon,
-                icon_background: block.settings.icon_background_style,
-                icon_background_color: block.settings.icon_background_color,
-                icon_color: block.settings.icon_color,
-                icon_width: block.settings.icon_size
-              -%}
+          <div class="ai-icon-feature-item-{{ ai_gen_id }}">
+            <span class="ai-icon-feature-counter-{{ ai_gen_id }}" aria-hidden="true">{{ counter_num }}</span>
+
+            <div class="ai-icon-feature-icon-wrapper-{{ ai_gen_id }}" aria-hidden="true">
+              {%- if icon != blank -%}
+                {{ icon | image_url: width: 56 | image_tag: width: 28, height: 28, alt: '' }}
+              {%- endif -%}
             </div>
 
             {%- if title != blank -%}
               <h3 class="ai-icon-feature-title-{{ ai_gen_id }}">{{ title }}</h3>
             {%- endif -%}
 
-            {%- if text != blank -%}
-              <p class="ai-icon-feature-text-{{ ai_gen_id }}">{{ text }}</p>
-            {%- endif -%}
+            <span class="ai-icon-feature-dash-{{ ai_gen_id }}" aria-hidden="true"></span>
           </div>
         {%- endfor -%}
       </div>
@@ -284,27 +310,17 @@
     {
       "type": "color",
       "id": "overlay_color",
-      "label": "Overlay color",
-      "default": "#000000"
+      "label": "Background color",
+      "default": "#111111"
     },
     {
       "type": "range",
       "id": "overlay_opacity",
-      "label": "Overlay opacity",
+      "label": "Background image opacity",
       "min": 0,
       "max": 1,
       "step": 0.1,
-      "default": 0.5
-    },
-    {
-      "type": "range",
-      "id": "border_radius",
-      "label": "Border radius",
-      "min": 0,
-      "max": 40,
-      "step": 4,
-      "unit": "px",
-      "default": 4
+      "default": 0.3
     },
     {
       "type": "range",
@@ -324,154 +340,31 @@
       "type": "range",
       "id": "padding_vertical",
       "label": "Vertical padding",
-      "min": 20,
-      "max": 100,
-      "step": 10,
-      "unit": "px",
-      "default": 60
-    },
-    {
-      "type": "range",
-      "id": "padding_horizontal",
-      "label": "Horizontal padding",
-      "min": 20,
-      "max": 100,
-      "step": 10,
-      "unit": "px",
-      "default": 40
-    },
-    {
-      "type": "range",
-      "id": "padding_vertical_mobile",
-      "label": "Vertical padding mobile",
-      "min": 20,
+      "min": 24,
       "max": 80,
-      "step": 10,
+      "step": 2,
       "unit": "px",
-      "default": 40
-    },
-    {
-      "type": "range",
-      "id": "padding_horizontal_mobile",
-      "label": "Horizontal padding mobile",
-      "min": 10,
-      "max": 60,
-      "step": 10,
-      "unit": "px",
-      "default": 20
-    },
-    {
-      "type": "range",
-      "id": "gap",
-      "label": "Gap between items",
-      "min": 10,
-      "max": 60,
-      "step": 5,
-      "unit": "px",
-      "default": 30
-    },
-    {
-      "type": "range",
-      "id": "gap_mobile",
-      "label": "Gap mobile",
-      "min": 10,
-      "max": 60,
-      "step": 5,
-      "unit": "px",
-      "default": 30
-    },
-    {
-      "type": "header",
-      "content": "Icons"
-    },
-    {
-      "type": "select",
-      "id": "icon_background_style",
-      "label": "Icon background shape",
-      "options": [
-        { "value": "",       "label": "None"   },
-        { "value": "square", "label": "Square" },
-        { "value": "circle", "label": "Circle" }
-      ],
-      "default": "circle"
-    },
-    {
-      "type": "range",
-      "id": "icon_size",
-      "label": "Icon size",
-      "min": 36,
-      "max": 120,
-      "step": 4,
-      "unit": "px",
-      "default": 80
-    },
-    {
-      "type": "range",
-      "id": "icon_spacing",
-      "label": "Spacing below icon",
-      "min": 10,
-      "max": 40,
-      "step": 5,
-      "unit": "px",
-      "default": 20
-    },
-    {
-      "type": "color",
-      "id": "icon_color",
-      "label": "Icon color",
-      "default": "#ffffff"
-    },
-    {
-      "type": "color",
-      "id": "icon_background_color",
-      "label": "Icon background",
-      "default": "#0086d6"
+      "default": 46
     },
     {
       "type": "header",
       "content": "Text"
     },
     {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#f3f1ed"
+    },
+    {
       "type": "range",
       "id": "title_size",
       "label": "Title size",
       "min": 12,
-      "max": 32,
-      "step": 2,
-      "unit": "px",
-      "default": 18
-    },
-    {
-      "type": "range",
-      "id": "title_spacing",
-      "label": "Title spacing",
-      "min": 5,
-      "max": 20,
-      "step": 1,
-      "unit": "px",
-      "default": 10
-    },
-    {
-      "type": "color",
-      "id": "title_color",
-      "label": "Title color",
-      "default": "#ffffff"
-    },
-    {
-      "type": "range",
-      "id": "text_size",
-      "label": "Text size",
-      "min": 12,
-      "max": 20,
+      "max": 24,
       "step": 1,
       "unit": "px",
       "default": 14
-    },
-    {
-      "type": "color",
-      "id": "text_color",
-      "label": "Text color",
-      "default": "#ffffff"
     },
     {
       "type": "header",
@@ -486,13 +379,7 @@
       "type": "text",
       "id": "feature_1_title",
       "label": "Title",
-      "default": "Premium quality"
-    },
-    {
-      "type": "textarea",
-      "id": "feature_1_text",
-      "label": "Text",
-      "default": "Crafted with the finest materials"
+      "default": "Feel Present Again"
     },
     {
       "type": "header",
@@ -507,13 +394,7 @@
       "type": "text",
       "id": "feature_2_title",
       "label": "Title",
-      "default": "Free shipping"
-    },
-    {
-      "type": "textarea",
-      "id": "feature_2_text",
-      "label": "Text",
-      "default": "On all orders over $50"
+      "default": "Calm That Fits Your Day"
     },
     {
       "type": "header",
@@ -528,13 +409,7 @@
       "type": "text",
       "id": "feature_3_title",
       "label": "Title",
-      "default": "Secure payment"
-    },
-    {
-      "type": "textarea",
-      "id": "feature_3_text",
-      "label": "Text",
-      "default": "100% secure transactions"
+      "default": "Reset Anywhere, Anytime"
     },
     {
       "type": "header",
@@ -549,13 +424,7 @@
       "type": "text",
       "id": "feature_4_title",
       "label": "Title",
-      "default": "Customer support"
-    },
-    {
-      "type": "textarea",
-      "id": "feature_4_text",
-      "label": "Text",
-      "default": "24/7 dedicated support team"
+      "default": "Mindful Habits"
     },
     {
       "type": "header",
@@ -570,13 +439,7 @@
       "type": "text",
       "id": "feature_5_title",
       "label": "Title",
-      "default": "Feature title 5"
-    },
-    {
-      "type": "textarea",
-      "id": "feature_5_text",
-      "label": "Text",
-      "default": "Describe feature 5 here"
+      "default": "Screenless Wellness"
     },
     {
       "type": "header",
@@ -591,13 +454,7 @@
       "type": "text",
       "id": "feature_6_title",
       "label": "Title",
-      "default": "Feature title 6"
-    },
-    {
-      "type": "textarea",
-      "id": "feature_6_text",
-      "label": "Text",
-      "default": "Describe feature 6 here"
+      "default": "Meaningful Gift"
     }
   ],
   "presets": [
