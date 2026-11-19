@@ -42,7 +42,7 @@
                     <div class="icon-xs md:icon-sm mr-3 shrink-0" style="--icon-stroke-width: 1.75">
                       {% render 'icon-discount' %}
                     </div>
-                    <div class="font-bold pr-3">You Save</div>
+                    <div class="font-bold pr-3">{{ discount.title | replace: 'Discount', 'You Save' }}</div>
                     <div class="ml-auto whitespace-nowrap">-{{ discount.total_allocated_amount | money }}</div>
                   </li>
                 {%- endfor -%}
@@ -53,7 +53,7 @@
           <hr class="my-4">
 
           <div class="flex items-center justify-between heading font-bold text-lg md:text-h5">
-            <div>{{ 'sections.cart.total' | t }}</div>
+            <div>Subtotal</div>
             <div class="cart-total">{{ cart.total_price | money_with_currency }}</div>
           </div>
 
