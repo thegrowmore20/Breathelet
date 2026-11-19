@@ -111,6 +111,7 @@
       {% else %}
         relative min-h-[300px] md:min-h-[480px]
       {% endif %}
+      {% if section.settings.image_border %}ring-1 ring-inset ring-white/15{% endif %}
       {% if img_right %}order-1 lg:order-2{% else %}order-1 lg:order-1{% endif %}
     ">
       {%- if section.settings.image -%}
@@ -170,6 +171,12 @@
         { "value": "",                  "label": "Original (fill)"    }
       ],
       "default": ""
+    },
+    {
+      "type": "checkbox",
+      "id": "image_border",
+      "label": "Show image border",
+      "default": true
     },
     {
       "type": "select",
@@ -326,10 +333,15 @@
     {
       "name": "Editorial: Image + Text",
       "blocks": [
-        { "type": "eyebrow"  },
-        { "type": "heading"  },
-        { "type": "text"     },
-        { "type": "link"     }
+        { "type": "heading" },
+        { "type": "text"    },
+        {
+          "type": "link",
+          "settings": {
+            "text": "Shop Breathelet",
+            "show_arrow": true
+          }
+        }
       ]
     }
   ]
