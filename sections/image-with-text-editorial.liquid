@@ -4,15 +4,9 @@
   else
     assign img_right = false
   endif
-  assign img_inset = section.settings.image_inset | default: 24
 %}
 
 <style>
-  #shopify-section-{{ section.id }} {
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  }
-
   #shopify-section-{{ section.id }} .editorial__text {
     {% render 'apply-color-var', var: '--color-background', color: section.settings.background_color %}
     {% render 'apply-color-var', var: '--color-foreground', color: section.settings.text_color %}
@@ -25,29 +19,11 @@
     background: var(--color-background);
   }
 
-  #shopify-section-{{ section.id }} .editorial__img {
-    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  #shopify-section-{{ section.id }} .editorial__frame:hover .editorial__img {
-    transform: scale(1.03);
-  }
-
   @media (min-width: 1024px) {
     #shopify-section-{{ section.id }} .editorial__text,
     #shopify-section-{{ section.id }} .editorial__image {
       min-height: {{ section.settings.min_height_desktop }}px;
     }
-
-    {% if img_right %}
-    #shopify-section-{{ section.id }} .editorial__text {
-      border-right: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    {% else %}
-    #shopify-section-{{ section.id }} .editorial__text {
-      border-left: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    {% endif %}
   }
 </style>
 
@@ -60,8 +36,11 @@
 >
   <div class="
     grid
-    {% if img_right %}lg:grid-cols-image-with-text--image-right
-    {% else %}lg:grid-cols-image-with-text{% endif %}
+    {% if img_right %}
+      lg:grid-cols-image-with-text--image-right
+    {% else %}
+      lg:grid-cols-image-with-text
+    {% endif %}
   ">
 
     {%- comment -%} ── TEXT COLUMN ──────────────────────────────── {%- endcomment -%}
@@ -80,8 +59,7 @@
 
             {%- when 'eyebrow' -%}
               <p
-                class="text-xs tracking-[0.22em] uppercase mb-5 leading-none"
-                style="color: rgba(var(--color-foreground), 0.5);"
+                class="text-xs md:text-sm tracking-[0.2em] uppercase mb-6 opacity-75 leading-none"
                 {{ block.shopify_attributes }}
               >
                 {%- if block.settings.number != blank -%}
@@ -102,38 +80,29 @@
 
             {%- when 'text' -%}
               <div
-                class="prose text-current max-w-none mb-9 text-sm md:text-base"
-                style="opacity: 0.65;"
+                class="prose text-current max-w-none mb-8 opacity-90 text-sm md:text-base"
                 {{ block.shopify_attributes }}
               >
                 {{- block.settings.text -}}
               </div>
 
             {%- when 'link' -%}
-              <a
-                href="{{ block.settings.url | default: '#' }}"
-                class="group/cta inline-flex items-center gap-[10px]
-                  text-[11px] tracking-[0.2em] uppercase
-                  border-b border-transparent pb-[6px]
-                  transition-all duration-300
-                  hover:border-current/40"
-                style="color: rgba(var(--color-foreground), 0.75);"
-                {{ block.shopify_attributes }}
-              >
-                <span>{{- block.settings.text -}}</span>
-                {%- if block.settings.show_arrow -%}
-                  <svg
-                    class="shrink-0 transition-transform duration-300 group-hover/cta:translate-x-[5px]"
-                    width="14" height="14" viewBox="0 0 16 16" fill="none"
-                    stroke="currentColor" stroke-width="1.3"
-                    stroke-linecap="round" stroke-linejoin="round"
-                    aria-hidden="true"
-                  >
-                    <path d="M2.5 8h11"/>
-                    <path d="M9.5 4l4 4-4 4"/>
-                  </svg>
-                {%- endif -%}
-              </a>
+              <div class="mt-8 pt-6 border-t border-current/20" {{ block.shopify_attributes }}>
+                <a
+                  href="{{ block.settings.url | default: '#' }}"
+                  class="
+                    inline-flex items-center gap-3
+                    text-xs md:text-sm tracking-[0.18em] uppercase
+                    border-b border-current pb-px
+                    opacity-90 hover:opacity-60 transition-opacity duration-200
+                  "
+                >
+                  {{- block.settings.text -}}
+                  {%- if block.settings.show_arrow -%}
+                    <span aria-hidden="true" class="text-sm">→</span>
+                  {%- endif -%}
+                </a>
+              </div>
 
           {%- endcase -%}
         {%- endfor -%}
@@ -142,44 +111,38 @@
     </div>
 
     {%- comment -%} ── IMAGE COLUMN ─────────────────────────────── {%- endcomment -%}
+    {%- assign img_inset = section.settings.image_inset | default: 24 -%}
     <div class="
-      editorial__image flex items-center justify-center
+      editorial__image relative overflow-hidden
+      {% if section.settings.image_size != blank %}
+        media {{ section.settings.image_size }}
+      {% else %}
+        min-h-[300px] md:min-h-[480px]
+      {% endif %}
       {% if img_right %}order-1 lg:order-2{% else %}order-1 lg:order-1{% endif %}
-    " style="padding: {{ img_inset }}px;">
-      <div class="editorial__frame w-full">
-
-        <div class="
-          p-3
-          {% if section.settings.image_border %}
-            border border-white/[.09] bg-white/[.015]
-          {% endif %}
-        ">
-          <div class="
-            relative overflow-hidden
-            {% if section.settings.image_size != blank %}
-              media {{ section.settings.image_size }}
-            {% else %}
-              aspect-square
-            {% endif %}
-          ">
-            {%- if section.settings.image -%}
-              {{
-                section.settings.image
-                | image_url: width: 2400
-                | image_tag:
-                  class: 'editorial__img absolute inset-0 block w-full h-full object-cover',
-                  sizes: '(min-width: 1024px) 50vw, 100vw',
-                  loading: 'lazy'
-              }}
-            {%- else -%}
-              <div class="absolute inset-0 bg-neutral-200 flex items-center justify-center">
-                {%- render 'placeholder', type: 'image' -%}
-              </div>
-            {%- endif -%}
-          </div>
+    ">
+      {%- if section.settings.image -%}
+        <div
+          class="absolute overflow-hidden"
+          style="inset: {{ img_inset }}px;"
+        >
+          {{
+            section.settings.image
+            | image_url: width: 2400
+            | image_tag:
+              class: 'block w-full h-full object-cover',
+              sizes: '(min-width: 1024px) 50vw, 100vw',
+              loading: 'lazy'
+          }}
         </div>
-
-      </div>
+      {%- else -%}
+        <div
+          class="absolute flex items-center justify-center bg-neutral-200"
+          style="inset: {{ img_inset }}px;"
+        >
+          {%- render 'placeholder', type: 'image' -%}
+        </div>
+      {%- endif -%}
     </div>
 
   </div>
@@ -215,12 +178,12 @@
       "id": "image_size",
       "label": "Image size",
       "options": [
-        { "value": "media--ratio-4-3",  "label": "Landscape (4:3)"  },
-        { "value": "media--ratio-16-9", "label": "Wide (16:9)"       },
-        { "value": "media--ratio-3-4",  "label": "Portrait (3:4)"    },
-        { "value": "media--ratio-2-3",  "label": "Tall (2:3)"        },
-        { "value": "media--ratio-1-1",  "label": "Square (1:1)"      },
-        { "value": "",                  "label": "Auto (square)"     }
+        { "value": "media--ratio-4-3",  "label": "Landscape (4:3)"   },
+        { "value": "media--ratio-16-9", "label": "Wide (16:9)"        },
+        { "value": "media--ratio-3-4",  "label": "Portrait (3:4)"     },
+        { "value": "media--ratio-2-3",  "label": "Tall (2:3)"         },
+        { "value": "media--ratio-1-1",  "label": "Square (1:1)"       },
+        { "value": "",                  "label": "Original (fill)"    }
       ],
       "default": ""
     },
@@ -229,16 +192,10 @@
       "id": "image_inset",
       "label": "Image padding (px)",
       "min": 0,
-      "max": 80,
+      "max": 64,
       "step": 4,
-      "default": 32,
+      "default": 24,
       "unit": "px"
-    },
-    {
-      "type": "checkbox",
-      "id": "image_border",
-      "label": "Show image border",
-      "default": true
     },
     {
       "type": "select",
@@ -303,7 +260,7 @@
           "id": "number",
           "label": "Number / prefix",
           "default": "01",
-          "info": "e.g. 01 — leave blank to hide"
+          "info": "e.g. 01  — leave blank to hide"
         },
         {
           "type": "text",
@@ -382,7 +339,7 @@
         {
           "type": "checkbox",
           "id": "show_arrow",
-          "label": "Show arrow",
+          "label": "Show arrow (→)",
           "default": true
         }
       ]
