@@ -81,21 +81,22 @@
               </div>
 
             {%- when 'link' -%}
-              <a
-                href="{{ block.settings.url | default: '#' }}"
-                class="
-                  inline-flex items-center gap-3
-                  text-xs md:text-sm tracking-[0.18em] uppercase
-                  border-b border-current pb-px
-                  opacity-90 hover:opacity-60 transition-opacity duration-200
-                "
-                {{ block.shopify_attributes }}
-              >
-                {{- block.settings.text -}}
-                {%- if block.settings.show_arrow -%}
-                  <span aria-hidden="true" class="text-sm">→</span>
-                {%- endif -%}
-              </a>
+              <div class="mt-8 pt-6 border-t border-current/20" {{ block.shopify_attributes }}>
+                <a
+                  href="{{ block.settings.url | default: '#' }}"
+                  class="
+                    inline-flex items-center gap-3
+                    text-xs md:text-sm tracking-[0.18em] uppercase
+                    border-b border-current pb-px
+                    opacity-90 hover:opacity-60 transition-opacity duration-200
+                  "
+                >
+                  {{- block.settings.text -}}
+                  {%- if block.settings.show_arrow -%}
+                    <span aria-hidden="true" class="text-sm">→</span>
+                  {%- endif -%}
+                </a>
+              </div>
 
           {%- endcase -%}
         {%- endfor -%}
@@ -104,27 +105,35 @@
     </div>
 
     {%- comment -%} ── IMAGE COLUMN ─────────────────────────────── {%- endcomment -%}
+    {%- assign img_inset = section.settings.image_inset | default: 24 -%}
     <div class="
-      editorial__image overflow-hidden
+      editorial__image relative overflow-hidden
       {% if section.settings.image_size != blank %}
         media {{ section.settings.image_size }}
       {% else %}
-        relative min-h-[300px] md:min-h-[480px]
+        min-h-[300px] md:min-h-[480px]
       {% endif %}
-      {% if section.settings.image_border %}ring-1 ring-inset ring-white/15{% endif %}
       {% if img_right %}order-1 lg:order-2{% else %}order-1 lg:order-1{% endif %}
     ">
       {%- if section.settings.image -%}
-        {{
-          section.settings.image
-          | image_url: width: 2400
-          | image_tag:
-            class: 'absolute inset-0 w-full h-full object-cover',
-            sizes: '(min-width: 1024px) 50vw, 100vw',
-            loading: 'lazy'
-        }}
+        <div
+          class="absolute overflow-hidden {% if section.settings.image_border %}ring-1 ring-white/20{% endif %}"
+          style="inset: {{ img_inset }}px;"
+        >
+          {{
+            section.settings.image
+            | image_url: width: 2400
+            | image_tag:
+              class: 'block w-full h-full object-cover',
+              sizes: '(min-width: 1024px) 50vw, 100vw',
+              loading: 'lazy'
+          }}
+        </div>
       {%- else -%}
-        <div class="absolute inset-0 bg-neutral-200 flex items-center justify-center">
+        <div
+          class="absolute flex items-center justify-center bg-neutral-200"
+          style="inset: {{ img_inset }}px;"
+        >
           {%- render 'placeholder', type: 'image' -%}
         </div>
       {%- endif -%}
@@ -171,6 +180,16 @@
         { "value": "",                  "label": "Original (fill)"    }
       ],
       "default": ""
+    },
+    {
+      "type": "range",
+      "id": "image_inset",
+      "label": "Image padding (px)",
+      "min": 0,
+      "max": 64,
+      "step": 4,
+      "default": 24,
+      "unit": "px"
     },
     {
       "type": "checkbox",
