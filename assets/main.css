@@ -4343,8 +4343,13 @@ main > .shopify-section:first-child .section--full-width:not(.section--no-paddin
 .buy-btn-wrap .qty-selector__button {
   background: #222;
 }
+.cart-modal-item .qty-selector__button {
+  height: 2rem;
+  width: 2rem;
+}
 @media screen and (max-width: 520px){
-  .cart-page .qty-selector__button {
+  .cart-page .qty-selector__button,
+  .cart-modal-item .qty-selector__button {
     height: 1.5rem;
     width: 1.5rem;
   }
@@ -4356,6 +4361,10 @@ main > .shopify-section:first-child .section--full-width:not(.section--no-paddin
   .qty-selector__button {
     height: 3rem;
     width: 3rem;
+  }
+  .cart-modal-item .qty-selector__button {
+    height: 2rem;
+    width: 2rem;
   }
 }
 .qty-selector__button > svg {
