@@ -84,7 +84,7 @@
   .ai-icon-features-grid-{{ ai_gen_id }} {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    gap: {{ block.settings.gap }}px;
+    gap: 0;
   }
 
   .ai-icon-feature-item-{{ ai_gen_id }} {
@@ -92,9 +92,28 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+    padding: 0 {{ block.settings.gap | divided_by: 2 }}px;
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .ai-icon-feature-item-{{ ai_gen_id }}:last-child {
+    border-right: none;
+  }
+
+  .ai-icon-feature-counter-{{ ai_gen_id }} {
+    font-size: 11px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.45);
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: left;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
 
   .ai-icon-feature-icon-wrapper-{{ ai_gen_id }} {
+    margin-top: 14px;
     margin-bottom: {{ block.settings.icon_spacing }}px;
   }
 
@@ -115,7 +134,10 @@
   @media screen and (max-width: 749px) {
     .ai-icon-features-grid-{{ ai_gen_id }} {
       grid-template-columns: repeat(3, 1fr);
-      gap: {{ block.settings.gap_mobile }}px;
+    }
+
+    .ai-icon-feature-item-{{ ai_gen_id }}:nth-child(3) {
+      border-right: none;
     }
 
     .ai-icon-features-content-{{ ai_gen_id }} {
@@ -126,6 +148,14 @@
   @media screen and (max-width: 480px) {
     .ai-icon-features-grid-{{ ai_gen_id }} {
       grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ai-icon-feature-item-{{ ai_gen_id }}:nth-child(2n) {
+      border-right: none;
+    }
+
+    .ai-icon-feature-item-{{ ai_gen_id }}:nth-child(3) {
+      border-right: 1px solid rgba(255, 255, 255, 0.15);
     }
   }
 {% endstyle %}
@@ -195,6 +225,11 @@
           -%}
 
           <div class="ai-icon-feature-item-{{ ai_gen_id }}" data-animation="block" data-animation-group="{{ block.id }}">
+            {%- assign counter_num = forloop.index -%}
+            {%- if forloop.index < 10 -%}
+              {%- assign counter_num = '0' | append: forloop.index -%}
+            {%- endif -%}
+            <span class="ai-icon-feature-counter-{{ ai_gen_id }}">{{ counter_num }}</span>
             <div class="ai-icon-feature-icon-wrapper-{{ ai_gen_id }}">
               {%- render 'section-full-icon',
                 custom_icon: icon,
