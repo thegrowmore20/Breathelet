@@ -449,42 +449,22 @@
             "background_image_mobile": "shopify://shop_images/Banner_1_Mobile_78d5d9ad-fbae-45ec-b702-8c781565c19d.webp",
             "overlay_color": "#000000",
             "overlay_opacity": 0.3,
-            "border_radius": 4,
             "desktop_width_percent": 100,
             "padding_vertical": 70,
-            "padding_horizontal": 20,
-            "padding_vertical_mobile": 40,
-            "padding_horizontal_mobile": 20,
-            "gap": 60,
-            "gap_mobile": 30,
-            "icon_background_style": "circle",
-            "icon_size": 36,
-            "icon_spacing": 10,
-            "icon_color": "#ffffff",
-            "icon_background_color": "#000000",
-            "title_size": 16,
-            "title_spacing": 15,
             "title_color": "#e1e1e1",
-            "text_size": 13,
-            "text_color": "#ffffff",
+            "title_size": 16,
             "feature_1_icon": "shopify://shop_images/Feel_Present_Again.png",
             "feature_1_title": "Feel Present Again",
-            "feature_1_text": "",
             "feature_2_icon": "shopify://shop_images/Calm_That_Fits_Your_Day.png",
             "feature_2_title": "Calm That Fits Your Day",
-            "feature_2_text": "",
             "feature_3_icon": "shopify://shop_images/Reset_Anywhere_Anytime.png",
             "feature_3_title": "Reset Anywhere, Anytime",
-            "feature_3_text": "",
             "feature_4_icon": "shopify://shop_images/Mindful_Habits.png",
             "feature_4_title": "Mindful Habits",
-            "feature_4_text": "",
             "feature_5_icon": "shopify://shop_images/Screenless_Wellness.png",
             "feature_5_title": "Screenless Wellness",
-            "feature_5_text": "",
             "feature_6_icon": "shopify://shop_images/Meaningful_Gift.png",
-            "feature_6_title": "Meaningful Gift",
-            "feature_6_text": ""
+            "feature_6_title": "Meaningful Gift"
           },
           "blocks": {}
         }
@@ -689,6 +669,44 @@
         "background_color": "#0a0a0a",
         "text_color": "#ffffff",
         "heading_color": "#ffffff"
+      }
+    },
+    "overlay_breathe_symbol": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "heading_ov1": {
+          "type": "heading",
+          "settings": {
+            "heading": "BREATHE",
+            "heading_size": "h0",
+            "heading_html_tag": "h2"
+          }
+        },
+        "text_ov1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>This archaic Sanskrit symbol gracefully inspires us to embrace our natural responses. It represents life's first and final acts, portraying the elegant symmetry of our existence.</p>"
+          }
+        },
+        "button_ov1": {
+          "type": "button",
+          "settings": {
+            "button_text": "Shop Breathelet",
+            "button_link": "shopify://products/breathelet-onefit"
+          }
+        }
+      },
+      "block_order": [
+        "heading_ov1",
+        "text_ov1",
+        "button_ov1"
+      ],
+      "settings": {
+        "full_width": true,
+        "image": "shopify://shop_images/b5.png",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
       }
     },
     "image_with_text_tHGRPd": {
@@ -1207,6 +1225,7 @@
     "image_with_text_bcbTad",
     "image_with_text_KkkWmD",
     "editorial_breathe_symbol",
+    "overlay_breathe_symbol",
     "video_with_text_6kqVVV",
     "apps_EWV9wq",
     "1779445986c7e74670",
