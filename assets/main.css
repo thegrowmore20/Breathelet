@@ -4343,15 +4343,9 @@ main > .shopify-section:first-child .section--full-width:not(.section--no-paddin
 .cart-modal-item .qty-selector__button {
   height: 2.25rem;
   width: 2.25rem;
-  background: #555;
-  color: #fff;
-  border-radius: 50%;
 }
 .buy-btn-wrap .qty-selector__button {
   background: #222;
-}
-.cart-modal-item .qty-selector__button:hover {
-  background: #444;
 }
 @media screen and (max-width: 520px){
   .cart-page .qty-selector__button,
