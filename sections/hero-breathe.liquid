@@ -4,18 +4,17 @@
 {% endcomment %}
 
 {% stylesheet %}
-/* ── hero-breathe design tokens ─────────────────────────── */
-/* Defined here until these are promoted to settings_schema.json */
+/* ── hero-breathe design tokens — aliased from global CSS vars ── */
 .hero-breathe {
-  --hb-bg:          #080706; /* lint-ignore: token definition, not a hardcoded usage */
-  --hb-fg:          #F4EEE8; /* lint-ignore */
-  --hb-fg-muted:    #857870; /* lint-ignore */
-  --hb-accent:      #A57C72; /* lint-ignore */
-  --hb-star:        #D4A843; /* lint-ignore */
-  --hb-bg-glass:    rgba(8, 7, 6, 0.75); /* lint-ignore */
-  --hb-border:      rgba(255, 255, 255, 0.1); /* lint-ignore */
-  --hb-border-bar:  rgba(255, 255, 255, 0.07); /* lint-ignore */
-  --hb-surface:     rgba(255, 255, 255, 0.05); /* lint-ignore */
+  --hb-bg:          rgb(var(--color-base-background));
+  --hb-fg:          rgb(var(--color-base-foreground));
+  --hb-fg-muted:    rgb(var(--color-base-foreground) / 55%);
+  --hb-accent:      rgb(var(--button-secondary-background));
+  --hb-star:        rgb(var(--color-rating-star));
+  --hb-bg-glass:    rgb(var(--color-base-background) / 75%);
+  --hb-border:      rgb(var(--color-base-foreground) / 10%);
+  --hb-border-bar:  rgb(var(--color-base-foreground) / 7%);
+  --hb-surface:     rgb(var(--color-base-foreground) / 5%);
   --hb-ease:        cubic-bezier(.2, .7, .2, 1);
 }
 
@@ -41,7 +40,7 @@
 
 .hb-grid {
   display: grid;
-  grid-template-columns: 1fr 1.05fr;
+  grid-template-columns: 1.3fr 1fr;
   align-items: center;
   gap: 20px;
   min-height: calc(100vh - 68px - 68px);
@@ -53,7 +52,6 @@
 .hb-text {
   display: flex;
   flex-direction: column;
-  max-width: 540px;
 }
 
 /* Eyebrow pill */
@@ -97,7 +95,7 @@
   font-family: 'Instrument Serif', Georgia, serif;
   font-weight: 400;
   letter-spacing: -0.02em;
-  font-size: clamp(44px, min(5.6vw, 10vh), 92px);
+  font-size: clamp(44px, 4.8vw, 76px);
   line-height: 0.94;
   margin: 20px 0 18px;
   color: var(--hb-fg);
@@ -332,13 +330,13 @@
 .hb-watermark {
   position: absolute;
   left: 50%;
-  bottom: 7%;
-  transform: translateX(-50%);
+  top: 50%;
+  transform: translate(-50%, -40%);
   font-family: 'Instrument Serif', Georgia, serif;
-  font-size: clamp(100px, 20vw, 320px);
+  font-size: clamp(150px, 27vw, 430px);
   line-height: 0.8;
   letter-spacing: -0.04em;
-  color: rgba(255, 255, 255, 0.025);
+  color: rgb(var(--color-base-foreground) / 4%);
   white-space: nowrap;
   user-select: none;
   pointer-events: none;
@@ -389,7 +387,8 @@
 
   .hb-watermark {
     font-size: clamp(80px, 30vw, 180px);
-    bottom: 18%;
+    top: 50%;
+    transform: translate(-50%, -40%);
   }
 }
 
@@ -423,7 +422,7 @@
 >
 
   {%- comment -%} Background watermark {%- endcomment -%}
-  <span class="hb-watermark" aria-hidden="true">BREATHE</span>
+  <span class="hb-watermark" aria-hidden="true">Breathelet</span>
 
   <div class="hb-wrap">
     <div class="hb-grid">
