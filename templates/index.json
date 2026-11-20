@@ -9,6 +9,52 @@
  */
 {
   "sections": {
+    "hero_breathe_01": {
+      "type": "hero-breathe",
+      "blocks": {
+        "hb_chip_1": {
+          "type": "hotspot",
+          "settings": {
+            "label": "Gentle vibration module",
+            "pos_x": 68,
+            "pos_y": 50
+          }
+        },
+        "hb_chip_2": {
+          "type": "hotspot",
+          "settings": {
+            "label": "Hook closure",
+            "pos_x": 80,
+            "pos_y": 66
+          }
+        },
+        "hb_chip_3": {
+          "type": "hotspot",
+          "settings": {
+            "label": "Adjustable cord",
+            "pos_x": 63,
+            "pos_y": 87
+          }
+        }
+      },
+      "block_order": ["hb_chip_1", "hb_chip_2", "hb_chip_3"],
+      "settings": {
+        "eyebrow": "Digital detox jewelry",
+        "heading_top": "A gentle vibration that",
+        "heading_italic": "brings you back.",
+        "body": "A soft pulse only you can feel, every 60–150 minutes, to breathe, reset and stay present. No screen. No app.",
+        "cta_text": "Shop Breathelet",
+        "cta_url": "shopify://products/breathelet-onefit",
+        "play_text": "See how it works",
+        "show_rating": true,
+        "rating_score": "4.2",
+        "rating_count": "100",
+        "bar_1": "No app. No screen.",
+        "bar_2": "Water-resistant",
+        "bar_3": "14-day battery",
+        "bar_4": "Adjustable fit"
+      }
+    },
     "slideshow_7aaerb": {
       "type": "slideshow",
       "blocks": {
@@ -1144,6 +1190,7 @@
     }
   },
   "order": [
+    "hero_breathe_01",
     "slideshow_7aaerb",
     "featured_collection_PHPzLB",
     "featured_collection_jdUFMc",

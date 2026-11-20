@@ -1,0 +1,771 @@
+{% comment %}
+  Hero Breathe — dark-mode split hero (V3 design)
+  LCP: product_image (eager, fetchpriority high — 1 per page)
+{% endcomment %}
+
+{% stylesheet %}
+/* ── hero-breathe design tokens ─────────────────────────── */
+/* Defined here until these are promoted to settings_schema.json */
+.hero-breathe {
+  --hb-bg:          #080706; /* lint-ignore: token definition, not a hardcoded usage */
+  --hb-fg:          #F4EEE8; /* lint-ignore */
+  --hb-fg-muted:    #857870; /* lint-ignore */
+  --hb-accent:      #A57C72; /* lint-ignore */
+  --hb-star:        #D4A843; /* lint-ignore */
+  --hb-bg-glass:    rgba(8, 7, 6, 0.75); /* lint-ignore */
+  --hb-border:      rgba(255, 255, 255, 0.1); /* lint-ignore */
+  --hb-border-bar:  rgba(255, 255, 255, 0.07); /* lint-ignore */
+  --hb-surface:     rgba(255, 255, 255, 0.05); /* lint-ignore */
+  --hb-ease:        cubic-bezier(.2, .7, .2, 1);
+}
+
+/* ── layout ─────────────────────────────────────────────── */
+.hero-breathe {
+  position: relative;
+  background: var(--hb-bg);
+  color: var(--hb-fg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+.hb-wrap {
+  flex: 1;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 40px;
+  width: 100%;
+}
+
+.hb-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  align-items: center;
+  gap: 20px;
+  min-height: calc(100vh - 68px - 68px);
+  min-height: calc(100svh - 68px - 68px);
+  padding: 60px 0 24px;
+}
+
+/* ── TEXT COLUMN ─────────────────────────────────────────── */
+.hb-text {
+  display: flex;
+  flex-direction: column;
+  max-width: 540px;
+}
+
+/* Eyebrow pill */
+.hb-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--hb-fg-muted);
+  border: 1px solid var(--hb-border);
+  background: var(--hb-surface);
+  padding: 7px 14px;
+  border-radius: 999px;
+  width: fit-content;
+  margin-bottom: 20px;
+}
+
+.hb-dot {
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--hb-accent);
+  flex-shrink: 0;
+}
+
+@keyframes hb-beat {
+  0%, 100% { transform: scale(.8); opacity: .5; }
+  50%       { transform: scale(1.25); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hb-dot { animation: hb-beat 5.5s ease-in-out infinite; }
+}
+
+/* Heading — split across two lines; second line italic + muted */
+.hb-heading {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  font-size: clamp(44px, min(5.6vw, 10vh), 92px);
+  line-height: 0.94;
+  margin: 0 0 20px;
+  color: var(--hb-fg);
+}
+
+.hb-heading em {
+  font-style: italic;
+  color: var(--hb-fg-muted);
+  display: block;
+}
+
+/* Body */
+.hb-body {
+  font-size: clamp(15px, 1.2vw, 17px);
+  line-height: 1.6;
+  color: var(--hb-fg-muted);
+  max-width: 420px;
+  margin-bottom: 28px;
+}
+
+/* CTA row */
+.hb-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.hb-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 52px;
+  padding: 0 28px;
+  border-radius: 999px;
+  background: var(--hb-fg);
+  color: var(--hb-bg);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  transition: transform 0.3s var(--hb-ease), opacity 0.25s;
+  white-space: nowrap;
+}
+
+@media (hover: hover) {
+  .hb-btn:hover { opacity: .88; transform: translateY(-2px); }
+  .hb-btn:hover .hb-arr { transform: translateX(4px); }
+}
+
+.hb-arr {
+  display: inline-block;
+  transition: transform 0.3s var(--hb-ease);
+}
+
+.hb-btn:focus-visible {
+  outline: 2px solid var(--hb-accent);
+  outline-offset: 3px;
+}
+
+/* Play ghost button */
+.hb-play {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--hb-fg);
+  text-decoration: none;
+}
+
+.hb-play-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(244, 238, 232, 0.35);
+  font-size: 10px;
+  padding-left: 2px;
+  flex-shrink: 0;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+@media (hover: hover) {
+  .hb-play:hover .hb-play-circle {
+    background: rgba(244, 238, 232, 0.08);
+    border-color: rgba(244, 238, 232, 0.65);
+  }
+}
+
+.hb-play:focus-visible {
+  outline: 2px solid var(--hb-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Rating proof row */
+.hb-proof {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--hb-fg-muted);
+}
+
+.hb-stars {
+  color: var(--hb-star);
+  letter-spacing: 2px;
+  font-size: 13px;
+}
+
+.hb-proof b {
+  color: var(--hb-fg);
+  font-weight: 600;
+}
+
+/* ── STAGE: product + chips ─────────────────────────────── */
+.hb-stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 100%;
+  padding: 40px 0;
+}
+
+.hb-float {
+  position: relative;
+  width: min(50vw, 580px);
+  aspect-ratio: 1;
+}
+
+@keyframes hb-float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-12px); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hb-float { animation: hb-float 7s ease-in-out infinite; }
+}
+
+.hb-prod-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 40px 40px rgba(0, 0, 0, 0.65));
+  display: block;
+}
+
+.hb-ground {
+  position: absolute;
+  left: 50%;
+  bottom: -2%;
+  width: 44%;
+  height: 20px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(0,0,0,.55), transparent);
+  filter: blur(6px);
+  pointer-events: none;
+  display: block;
+}
+
+@keyframes hb-ground {
+  0%, 100% { transform: translateX(-50%) scale(1);   opacity: .65; }
+  50%       { transform: translateX(-50%) scale(.82); opacity: .35; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hb-ground { animation: hb-ground 7s ease-in-out infinite; }
+}
+
+/* Annotation hotspot chips */
+.hb-hot {
+  position: absolute;
+  left: var(--hx, 68%);
+  top: var(--hy, 50%);
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--hb-fg);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+.hb-hot-dot {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--hb-accent);
+  flex-shrink: 0;
+  display: block;
+}
+
+.hb-hot-dot::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1px solid var(--hb-accent);
+}
+
+@keyframes hb-ping {
+  0%   { transform: scale(.5); opacity: .8; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hb-hot-dot::after                       { animation: hb-ping 2.6s ease-out infinite; }
+  .hb-hot:nth-child(2) .hb-hot-dot::after  { animation-delay: .9s; }
+  .hb-hot:nth-child(3) .hb-hot-dot::after  { animation-delay: 1.8s; }
+  .hb-hot:nth-child(4) .hb-hot-dot::after  { animation-delay: 2.7s; }
+}
+
+.hb-hot-label {
+  background: var(--hb-bg-glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--hb-border);
+  padding: 7px 14px;
+  border-radius: 999px;
+}
+
+/* Background watermark */
+.hb-watermark {
+  position: absolute;
+  left: 50%;
+  bottom: 7%;
+  transform: translateX(-50%);
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: clamp(100px, 20vw, 320px);
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+  color: rgba(255, 255, 255, 0.025);
+  white-space: nowrap;
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── BOTTOM FEATURE BAR ─────────────────────────────────── */
+.hb-bar {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px 20px;
+  padding: 16px 40px 24px;
+  border-top: 1px solid var(--hb-border-bar);
+  font-size: 12px;
+  color: var(--hb-fg-muted);
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.hb-bar-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hb-bar-dot {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--hb-accent);
+  flex-shrink: 0;
+}
+
+/* ── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 991px) {
+  .hb-grid {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding: 32px 0 20px;
+    gap: 32px;
+  }
+
+  .hb-stage { order: -1; }
+  .hb-float { width: min(80vw, 320px); }
+  .hb-hot   { display: none; }
+
+  .hb-watermark {
+    font-size: clamp(80px, 30vw, 180px);
+    bottom: 18%;
+  }
+}
+
+@media (max-width: 767px) {
+  .hb-heading { font-size: clamp(36px, 11vw, 56px); }
+  .hb-body    { max-width: 100%; font-size: 15px; }
+}
+
+@media (max-width: 575px) {
+  .hb-wrap { padding: 0 20px; }
+  .hb-bar  { padding: 16px 20px 20px; justify-content: flex-start; gap: 10px 24px; }
+  .hb-cta-row { gap: 14px; }
+  .hb-btn     { height: 48px; padding: 0 22px; }
+}
+
+@media (max-width: 359px) {
+  .hb-cta-row { flex-direction: column; align-items: flex-start; }
+}
+{% endstylesheet %}
+
+{%- assign has_image = section.settings.product_image != blank -%}
+
+<section
+  class="hero-breathe"
+  aria-label="{{ section.settings.eyebrow | default: 'Breathelet hero' }}"
+  {{ section.shopify_attributes }}
+>
+
+  {%- comment -%} Background watermark {%- endcomment -%}
+  <span class="hb-watermark" aria-hidden="true">BREATHE</span>
+
+  <div class="hb-wrap">
+    <div class="hb-grid">
+
+      {%- comment -%} ── TEXT COLUMN ── {%- endcomment -%}
+      <div class="hb-text">
+
+        {%- if section.settings.eyebrow != blank -%}
+          <div class="hb-pill">
+            <i class="hb-dot" aria-hidden="true"></i>
+            {{- section.settings.eyebrow -}}
+          </div>
+        {%- endif -%}
+
+        <h1 class="hb-heading">
+          {{- section.settings.heading_top -}}
+          {%- if section.settings.heading_italic != blank -%}
+            <em>{{- section.settings.heading_italic -}}</em>
+          {%- endif -%}
+        </h1>
+
+        {%- if section.settings.body != blank -%}
+          <p class="hb-body">{{- section.settings.body -}}</p>
+        {%- endif -%}
+
+        <div class="hb-cta-row">
+          {%- if section.settings.cta_text != blank -%}
+            <a
+              href="{{ section.settings.cta_url | default: routes.all_products_collection_url }}"
+              class="hb-btn"
+            >
+              {{- section.settings.cta_text -}}
+              <span class="hb-arr" aria-hidden="true">→</span>
+            </a>
+          {%- endif -%}
+
+          {%- if section.settings.play_text != blank -%}
+            <a
+              href="{{ section.settings.play_url | default: '#' }}"
+              class="hb-play"
+              {%- if section.settings.play_url == blank %} aria-disabled="true"{% endif -%}
+            >
+              <span class="hb-play-circle" aria-hidden="true">▶</span>
+              {{- section.settings.play_text -}}
+            </a>
+          {%- endif -%}
+        </div>
+
+        {%- if section.settings.show_rating -%}
+          {%- liquid
+            if shop.metafields.loox['global_stats'] != blank
+              assign loox_parts = shop.metafields.loox['global_stats'] | split: ','
+              assign r_score = loox_parts[0]
+              assign r_count = loox_parts[1]
+            else
+              assign r_score = section.settings.rating_score | default: '4.2'
+              assign r_count = section.settings.rating_count | default: '100'
+            endif
+          -%}
+          <div class="hb-proof" aria-label="{{ r_score }} out of 5 stars, {{ r_count }} reviews">
+            <span class="hb-stars" aria-hidden="true">★★★★★</span>
+            <b>{{ r_score }}</b>
+            <span>{{ section.settings.rating_label | default: 'from' }} {{ r_count }} {{ section.settings.rating_suffix | default: 'reviews' }}</span>
+          </div>
+        {%- endif -%}
+
+      </div>
+
+      {%- comment -%} ── IMAGE + ANNOTATION CHIPS ── {%- endcomment -%}
+      <div class="hb-stage">
+        <div class="hb-float">
+
+          {%- if has_image -%}
+            {{
+              section.settings.product_image
+              | image_url: width: 1200
+              | image_tag:
+                class: 'hb-prod-img',
+                widths: '352, 550, 832, 1200, 1500',
+                sizes: '(min-width: 992px) min(50vw, 580px), min(80vw, 320px)',
+                loading: 'eager',
+                fetchpriority: 'high',
+                width: section.settings.product_image.width,
+                height: section.settings.product_image.height,
+                alt: section.settings.product_image.alt | default: 'Breathelet mindful wearable bracelet'
+            }}
+          {%- else -%}
+            <div
+              style="width:100%;height:100%;background:#131110;border-radius:50%;display:grid;place-items:center;overflow:hidden;"
+              aria-label="Product image placeholder"
+            >
+              {%- render 'placeholder', type: 'product' -%}
+            </div>
+          {%- endif -%}
+
+          <span class="hb-ground" aria-hidden="true"></span>
+
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'hotspot' and block.settings.label != blank -%}
+              <div
+                class="hb-hot"
+                style="--hx: {{ block.settings.pos_x }}%; --hy: {{ block.settings.pos_y }}%;"
+                {{ block.shopify_attributes }}
+              >
+                <span class="hb-hot-dot" aria-hidden="true"></span>
+                <span class="hb-hot-label">{{ block.settings.label }}</span>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  {%- comment -%} ── BOTTOM FEATURE BAR ── {%- endcomment -%}
+  {%- liquid
+    assign has_bar = false
+    for i in (1..4)
+      assign bar_key = 'bar_' | append: i
+      assign bar_val = section.settings[bar_key]
+      if bar_val != blank
+        assign has_bar = true
+        break
+      endif
+    endfor
+  -%}
+  {%- if has_bar -%}
+    <div class="hb-bar" role="list">
+      {%- for i in (1..4) -%}
+        {%- assign bar_key = 'bar_' | append: i -%}
+        {%- assign bar_val = section.settings[bar_key] -%}
+        {%- if bar_val != blank -%}
+          <div class="hb-bar-item" role="listitem">
+            <span class="hb-bar-dot" aria-hidden="true"></span>
+            {{ bar_val }}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+
+</section>
+
+{% schema %}
+{
+  "name": "Hero: Breathe",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow label",
+      "default": "Digital detox jewelry"
+    },
+    {
+      "type": "text",
+      "id": "heading_top",
+      "label": "Heading — first line",
+      "default": "A gentle vibration that"
+    },
+    {
+      "type": "text",
+      "id": "heading_italic",
+      "label": "Heading — italic line",
+      "default": "brings you back.",
+      "info": "Displayed in italic, muted colour below the first line"
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body text",
+      "default": "A soft pulse only you can feel, every 60–150 minutes, to breathe, reset and stay present. No screen. No app."
+    },
+    {
+      "type": "header",
+      "content": "Call to action"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button text",
+      "default": "Shop Breathelet"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button link"
+    },
+    {
+      "type": "text",
+      "id": "play_text",
+      "label": "Play link text",
+      "default": "See how it works"
+    },
+    {
+      "type": "url",
+      "id": "play_url",
+      "label": "Play link URL"
+    },
+    {
+      "type": "header",
+      "content": "Rating"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "label": "Show rating row",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "rating_score",
+      "label": "Rating score (fallback)",
+      "default": "4.2",
+      "info": "Used only when Loox global_stats metafield is unavailable"
+    },
+    {
+      "type": "text",
+      "id": "rating_count",
+      "label": "Review count (fallback)",
+      "default": "100"
+    },
+    {
+      "type": "text",
+      "id": "rating_label",
+      "label": "Rating prefix",
+      "default": "from"
+    },
+    {
+      "type": "text",
+      "id": "rating_suffix",
+      "label": "Rating suffix",
+      "default": "reviews"
+    },
+    {
+      "type": "header",
+      "content": "Product image"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Product image",
+      "info": "LCP element — upload a transparent PNG or WebP of the bracelet on a dark background"
+    },
+    {
+      "type": "header",
+      "content": "Feature bar"
+    },
+    {
+      "type": "text",
+      "id": "bar_1",
+      "label": "Feature 1",
+      "default": "No app. No screen."
+    },
+    {
+      "type": "text",
+      "id": "bar_2",
+      "label": "Feature 2",
+      "default": "Water-resistant"
+    },
+    {
+      "type": "text",
+      "id": "bar_3",
+      "label": "Feature 3",
+      "default": "14-day battery"
+    },
+    {
+      "type": "text",
+      "id": "bar_4",
+      "label": "Feature 4",
+      "default": "Adjustable fit"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "hotspot",
+      "name": "Annotation chip",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Feature label"
+        },
+        {
+          "type": "range",
+          "id": "pos_x",
+          "label": "Horizontal position (%)",
+          "min": 10,
+          "max": 95,
+          "step": 1,
+          "default": 68,
+          "info": "Distance from left edge of image container"
+        },
+        {
+          "type": "range",
+          "id": "pos_y",
+          "label": "Vertical position (%)",
+          "min": 10,
+          "max": 95,
+          "step": 1,
+          "default": 50,
+          "info": "Distance from top edge of image container"
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "presets": [
+    {
+      "name": "Hero: Breathe",
+      "blocks": [
+        {
+          "type": "hotspot",
+          "settings": {
+            "label": "Gentle vibration module",
+            "pos_x": 68,
+            "pos_y": 50
+          }
+        },
+        {
+          "type": "hotspot",
+          "settings": {
+            "label": "Hook closure",
+            "pos_x": 80,
+            "pos_y": 66
+          }
+        },
+        {
+          "type": "hotspot",
+          "settings": {
+            "label": "Adjustable cord",
+            "pos_x": 63,
+            "pos_y": 87
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
