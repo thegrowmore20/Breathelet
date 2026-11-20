@@ -473,20 +473,20 @@
         </div>
 
         {%- if section.settings.show_rating -%}
-          {%- liquid
-            if shop.metafields.loox['global_stats'] != blank
-              assign loox_parts = shop.metafields.loox['global_stats'] | split: ','
-              assign r_score = loox_parts[0]
-              assign r_count = loox_parts[1]
-            else
-              assign r_score = section.settings.rating_score | default: '4.2'
-              assign r_count = section.settings.rating_count | default: '100'
-            endif
-          -%}
-          <div class="hb-proof" aria-label="{{ r_score }} out of 5 stars, {{ r_count }} reviews">
-            <span class="hb-stars" aria-hidden="true">★★★★★</span>
-            <b>{{ r_score }}</b>
-            <span>{{ section.settings.rating_label | default: 'from' }} {{ r_count }} {{ section.settings.rating_suffix | default: 'reviews' }}</span>
+          <div class="hb-proof">
+            {%- if shop.metafields.loox['global_stats'] != blank -%}
+              {%- assign loox_parts = shop.metafields.loox['global_stats'] | split: ',' -%}
+              <div
+                class="loox-rating loox-rating-hp"
+                data-rating="{{ loox_parts[0] }}"
+                data-raters="{{ loox_parts[1] }}"
+                data-pattern="[rating] ([count])"
+              ></div>
+            {%- else -%}
+              <span class="hb-stars" aria-hidden="true">★★★★★</span>
+              <b>{{ section.settings.rating_score | default: '4.2' }}</b>
+              <span>{{ section.settings.rating_label | default: 'from' }} {{ section.settings.rating_count | default: '100' }} {{ section.settings.rating_suffix | default: 'reviews' }}</span>
+            {%- endif -%}
           </div>
         {%- endif -%}
 

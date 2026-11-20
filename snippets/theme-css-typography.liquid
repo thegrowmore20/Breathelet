@@ -105,6 +105,17 @@
         --accordion-font-weight: var(--font-body-weight);
     {% endcase %}
 
+    /* Subheading — weight 500, used for eyebrows, chips, section sub-titles */
+    --font-subheading-family: var(--font-body-family);
+    --font-subheading-weight: {{ settings.type_subheading_weight | default: 500 }};
+    --font-subheading-style: var(--font-body-style);
+    --font-subheading-transform: {{ settings.type_subheading_transform | default: 'uppercase' }};
+
+    /* Accent — weight 600, used for prices, badges, CTA labels */
+    --font-accent-family: var(--font-body-family);
+    --font-accent-weight: {{ settings.type_accent_weight | default: 600 }};
+    --font-accent-style: var(--font-body-style);
+
     --font-heading-scale: 1;
     --size-text-h0: calc(var(--size-h0-rfs) * var(--font-heading-scale));
     --size-text-h1: calc(var(--size-h1-rfs) * var(--font-heading-scale));

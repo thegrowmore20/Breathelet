@@ -1,3 +1,14 @@
+{% stylesheet %}
+/* Reset heading scale for cart line item titles */
+.product-name {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0;
+  text-transform: none;
+}
+{% endstylesheet %}
+
 <style>
   #shopify-section-{{ section.id }} .button-view-cart {
     {% render 'button-vars',

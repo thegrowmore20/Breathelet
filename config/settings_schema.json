@@ -484,6 +484,51 @@
       },
       {
         "type": "header",
+        "content": "Subheading"
+      },
+      {
+        "type": "select",
+        "id": "type_subheading_weight",
+        "label": "Weight",
+        "options": [
+          { "value": "400", "label": "Regular — 400" },
+          { "value": "500", "label": "Medium — 500" },
+          { "value": "600", "label": "Semibold — 600" },
+          { "value": "700", "label": "Bold — 700" }
+        ],
+        "default": "500",
+        "info": "Used for eyebrow labels, section sub-titles and UI chips"
+      },
+      {
+        "type": "select",
+        "id": "type_subheading_transform",
+        "label": "Letter case",
+        "options": [
+          { "value": "none",       "label": "As typed" },
+          { "value": "uppercase",  "label": "UPPERCASE" },
+          { "value": "capitalize", "label": "Title Case" }
+        ],
+        "default": "uppercase"
+      },
+      {
+        "type": "header",
+        "content": "Accent text"
+      },
+      {
+        "type": "select",
+        "id": "type_accent_weight",
+        "label": "Weight",
+        "options": [
+          { "value": "400", "label": "Regular — 400" },
+          { "value": "500", "label": "Medium — 500" },
+          { "value": "600", "label": "Semibold — 600" },
+          { "value": "700", "label": "Bold — 700" }
+        ],
+        "default": "600",
+        "info": "Used for price, badges, CTA labels and highlighted text"
+      },
+      {
+        "type": "header",
         "content": "t:settings_schema.typography.headers.font_selection"
       },
       {
