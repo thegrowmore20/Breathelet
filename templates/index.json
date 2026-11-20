@@ -704,6 +704,9 @@
       "settings": {
         "full_width": true,
         "image": "shopify://shop_images/b5.png",
+        "content_alignment": "md:content-bottom-left",
+        "content_alignment_mobile": "content-bottom-left",
+        "min_height": 640,
         "text_color": "#ffffff",
         "overlay_color": "#000000",
         "overlay_opacity": 30
