@@ -24,8 +24,8 @@
           "type": "hotspot",
           "settings": {
             "label": "Hook closure",
-            "pos_x": 80,
-            "pos_y": 66
+            "pos_x": 72,
+            "pos_y": 52
           }
         },
         "hb_chip_3": {
