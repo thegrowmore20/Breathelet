@@ -17,7 +17,7 @@
     
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="">
     <link rel="canonical" href="{{ canonical_url }}">
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
@@ -70,6 +70,11 @@
         --font-body-style: normal;
         --font-body-weight: 400;
         --font-body-weight-bold: 600;
+
+        /* Force nav to Inter regardless of theme setting */
+        --navigation-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        --navigation-font-weight: 400;
+        --navigation-font-style: normal;
 
           /* Font sizes — UI */
         --size-text-xs:    12px;
