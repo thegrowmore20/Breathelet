@@ -280,6 +280,7 @@
     },
     "image_with_text_KkkWmD": {
       "type": "image-with-text",
+      "disabled": true,
       "blocks": {
         "heading_Uf3Kni": {
           "type": "heading",
@@ -611,7 +612,7 @@
       "name": "General USPs",
       "settings": {
         "full_width": true,
-        "bg_color": "#000000",
+        "bg_color": "#0a0a0a",
         "vertical_layout": true,
         "show_divider": false,
         "heading": "Buy with Confidence",
@@ -622,7 +623,7 @@
         "intro_text_2": "",
         "intro_img_url_1": "https://airvapeusa.com/cdn/shop/files/icon_Warranty_3.svg?v=1774515664",
         "intro_img_url_2": "https://airvapeusa.com/cdn/shop/files/icon_MoneyBack_Gurantee_3.svg?v=1774515656",
-        "link_color": "#ffd814",
+        "link_color": "#A57C72",
         "background_color": "",
         "text_color": "",
         "heading_color": "",
@@ -632,6 +633,13 @@
     "editorial_breathe_symbol": {
       "type": "image-with-text-editorial",
       "blocks": {
+        "eyebrow_1": {
+          "type": "eyebrow",
+          "settings": {
+            "number": "01",
+            "label": "THE SYMBOL"
+          }
+        },
         "heading_1": {
           "type": "heading",
           "settings": {
@@ -656,6 +664,7 @@
         }
       },
       "block_order": [
+        "eyebrow_1",
         "heading_1",
         "text_1",
         "link_1"
@@ -667,12 +676,13 @@
         "min_height_desktop": 560,
         "min_height_mobile": 300,
         "background_color": "#0a0a0a",
-        "text_color": "#ffffff",
+        "text_color": "#c8b5b1",
         "heading_color": "#ffffff"
       }
     },
     "overlay_breathe_symbol": {
       "type": "image-with-text-overlay",
+      "disabled": true,
       "blocks": {
         "heading_ov1": {
           "type": "heading",
@@ -736,8 +746,8 @@
             "button_link": "shopify://products/breathelet-onefit",
             "button_style": "",
             "button_size": "text-sm md:text-base",
-            "button_background_color": "#ffffff",
-            "button_text_color": "#000000",
+            "button_background_color": "#A57C72",
+            "button_text_color": "#ffffff",
             "button_hover_style": "outline",
             "button_hover_size": "",
             "button_hover_background_color": "",
@@ -858,8 +868,8 @@
             "button_link": "shopify://products/breathelet-onefit",
             "button_style": "",
             "button_size": "text-sm md:text-base",
-            "button_background_color": "#ffffff",
-            "button_text_color": "#000000",
+            "button_background_color": "#A57C72",
+            "button_text_color": "#ffffff",
             "button_hover_style": "outline",
             "button_hover_size": "",
             "button_hover_background_color": "",
@@ -1222,29 +1232,29 @@
   },
   "order": [
     "slideshow_7aaerb",
+    "homepage_usps_jQz9Ba",
     "featured_collection_PHPzLB",
-    "featured_collection_jdUFMc",
+    "1771334505e4d5ee02",
     "fa63dde0-c7d9-4ac7-9f3d-90ef6a67184f",
     "image_with_text_bcbTad",
-    "image_with_text_KkkWmD",
     "editorial_breathe_symbol",
-    "overlay_breathe_symbol",
     "video_with_text_6kqVVV",
     "apps_EWV9wq",
-    "1779445986c7e74670",
-    "1771334505e4d5ee02",
-    "video_RLKz98",
-    "custom_section_HgdMYY",
-    "homepage_usps_jQz9Ba",
     "image_with_text_tHGRPd",
-    "multicolumn_Pxn6VQ",
     "image_with_text_WjQwNJ",
     "video_with_text_dPhCKa",
+    "1779445986c7e74670",
+    "video_RLKz98",
+    "two_column_flex_new",
+    "47953464-d278-497d-be52-ea15912c52d9",
+    "featured_collection_jdUFMc",
+    "image_with_text_KkkWmD",
+    "overlay_breathe_symbol",
+    "custom_section_HgdMYY",
+    "multicolumn_Pxn6VQ",
     "featured_product_9ybD34",
     "rich_text_zPXUB9",
     "177133889400aad7f9",
-    "featured_collection_MU6wJG",
-    "two_column_flex_new",
-    "47953464-d278-497d-be52-ea15912c52d9"
+    "featured_collection_MU6wJG"
   ]
 }
