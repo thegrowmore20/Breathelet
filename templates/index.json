@@ -37,7 +37,6 @@
           }
         }
       },
-      "disabled": true,
       "block_order": ["hb_chip_1", "hb_chip_2", "hb_chip_3"],
       "settings": {
         "eyebrow": "Digital detox jewelry",
