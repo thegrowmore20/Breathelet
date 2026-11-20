@@ -62,6 +62,7 @@
     {{ 'main.css' | asset_url | stylesheet_tag }}
     <style>
       :root {
+        /* Fonts */
         --font-heading-family: 'Instrument Serif', Georgia, serif;
         --font-heading-style: normal;
         --font-heading-weight: 400;
@@ -69,7 +70,18 @@
         --font-body-style: normal;
         --font-body-weight: 400;
         --font-body-weight-bold: 600;
+
+        /* Font sizes */
+        --size-text-xs:   12px; /* eyebrows, chips, pill labels */
+        --size-text-sm:   14px; /* buttons, nav, rating, captions */
+        --size-text-base: 16px; /* body copy (desktop) */
+        --size-text-lg:   18px;
+        --label-font-size: 12px;
       }
+
+      /* Body: 16px desktop → 14px mobile */
+      body { font-size: 16px; }
+      @media (max-width: 767px) { body { font-size: 14px; } }
     </style>
   </head>
   <body
