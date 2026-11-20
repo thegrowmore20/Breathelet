@@ -9,6 +9,37 @@
  */
 {
   "sections": {
+    "hero_split_main": {
+      "type": "hero-split",
+      "settings": {
+        "min_height": 680,
+        "eyebrow": "DIGITAL DETOX JEWELRY",
+        "heading": "A gentle vibration that",
+        "heading_italic": "brings you back.",
+        "text": "A soft pulse only you can feel, every 60–150 minutes, to breathe, reset and stay present. No screen. No app.",
+        "button_text": "Shop Breathelet",
+        "button_link": "shopify://products/breathelet-onefit",
+        "video_text": "See how it works",
+        "video_link": "https://www.youtube.com/watch?v=lP3cyKI98PU",
+        "show_rating": true,
+        "rating_score": "4.2",
+        "rating_text": "from 100 reviews",
+        "watermark": "Breathe",
+        "chip_1": "Gentle vibration module",
+        "chip_2": "Hook closure",
+        "chip_3": "Adjustable cord",
+        "trust_1": "Water-resistant",
+        "trust_2": "Up to 14 days battery",
+        "trust_3": "No app required",
+        "trust_4": "Risk-free · satisfaction guaranteed",
+        "background_color": "#f4f3f0",
+        "heading_color": "#111111",
+        "heading_italic_color": "#999999",
+        "text_color": "#555555",
+        "btn_bg": "#111111",
+        "btn_color": "#ffffff"
+      }
+    },
     "slideshow_7aaerb": {
       "type": "slideshow",
       "blocks": {
@@ -1144,6 +1175,7 @@
     }
   },
   "order": [
+    "hero_split_main",
     "slideshow_7aaerb",
     "featured_collection_PHPzLB",
     "featured_collection_jdUFMc",
