@@ -11,6 +11,7 @@
   "sections": {
     "hero_breathe_01": {
       "type": "hero-breathe",
+      "disabled": true,
       "blocks": {
         "hb_chip_1": {
           "type": "hotspot",
