@@ -410,7 +410,11 @@
 }
 {% endstylesheet %}
 
-{%- assign has_image = section.settings.product_image != blank -%}
+{%- if section.settings.product_image != blank -%}
+  {%- assign has_image = true -%}
+{%- else -%}
+  {%- assign has_image = false -%}
+{%- endif -%}
 
 <section
   class="hero-breathe"
