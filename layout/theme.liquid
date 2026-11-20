@@ -21,6 +21,9 @@
     <meta name="theme-color" content="">
     <link rel="canonical" href="{{ canonical_url }}">
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     {% if settings.favicon != blank %}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
@@ -57,15 +60,15 @@
     %}
 
     {{ 'main.css' | asset_url | stylesheet_tag }}
-        <link rel="preload" as="font" type="font/woff2" href="{{ 'Montserrat-Thin.woff2' | file_url }}" crossorigin>
     <style>
-      @font-face {
-          font-family: 'Montserrat';
-          src: url('{{ 'Montserrat-Thin.woff2' | file_url }}') format('woff2'),
-              url('{{ 'Montserrat-Thin.woff' | file_url }}') format('woff');
-          font-weight: 100;
-          font-style: normal;
-          font-display: swap;
+      :root {
+        --font-heading-family: 'Instrument Serif', Georgia, serif;
+        --font-heading-style: normal;
+        --font-heading-weight: 400;
+        --font-body-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        --font-body-style: normal;
+        --font-body-weight: 400;
+        --font-body-weight-bold: 600;
       }
     </style>
   </head>
