@@ -278,42 +278,6 @@
         "heading_color": "#ffffff"
       }
     },
-    "image_with_text_KkkWmD": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading_Uf3Kni": {
-          "type": "heading",
-          "settings": {
-            "heading": "BREATHE",
-            "heading_size": "h2",
-            "heading_html_tag": "h2"
-          }
-        },
-        "text_r8kHw3": {
-          "type": "text",
-          "settings": {
-            "text": "<p>This archaic Sanskrit symbol gracefully inspires us to embrace our natural responses. It represents life’s first and final acts, portraying the elegant symmetry of our existence.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "heading_Uf3Kni",
-        "text_r8kHw3"
-      ],
-      "settings": {
-        "full_width": true,
-        "remove_bottom_spacing": false,
-        "image": "shopify://shop_images/b5.png",
-        "image_size": "",
-        "image_position": "right",
-        "reverse_order": true,
-        "image_width": 50,
-        "text_alignment": "text-left",
-        "background_color": "#000000",
-        "text_color": "#ffffff",
-        "heading_color": "#ffffff"
-      }
-    },
     "video_with_text_6kqVVV": {
       "type": "video-with-text",
       "blocks": {
@@ -669,47 +633,6 @@
         "background_color": "#0a0a0a",
         "text_color": "#ffffff",
         "heading_color": "#ffffff"
-      }
-    },
-    "overlay_breathe_symbol": {
-      "type": "image-with-text-overlay",
-      "blocks": {
-        "heading_ov1": {
-          "type": "heading",
-          "settings": {
-            "heading": "BREATHE",
-            "heading_size": "h0",
-            "heading_html_tag": "h2"
-          }
-        },
-        "text_ov1": {
-          "type": "text",
-          "settings": {
-            "text": "<p>This archaic Sanskrit symbol gracefully inspires us to embrace our natural responses. It represents life's first and final acts, portraying the elegant symmetry of our existence.</p>"
-          }
-        },
-        "button_ov1": {
-          "type": "button",
-          "settings": {
-            "button_text": "Shop Breathelet",
-            "button_link": "shopify://products/breathelet-onefit"
-          }
-        }
-      },
-      "block_order": [
-        "heading_ov1",
-        "text_ov1",
-        "button_ov1"
-      ],
-      "settings": {
-        "full_width": true,
-        "image": "shopify://shop_images/b5.png",
-        "content_alignment": "md:content-bottom-left",
-        "content_alignment_mobile": "content-bottom-left",
-        "min_height": 640,
-        "text_color": "#ffffff",
-        "overlay_color": "#000000",
-        "overlay_opacity": 30
       }
     },
     "image_with_text_tHGRPd": {
@@ -1226,9 +1149,7 @@
     "featured_collection_jdUFMc",
     "fa63dde0-c7d9-4ac7-9f3d-90ef6a67184f",
     "image_with_text_bcbTad",
-    "image_with_text_KkkWmD",
     "editorial_breathe_symbol",
-    "overlay_breathe_symbol",
     "video_with_text_6kqVVV",
     "apps_EWV9wq",
     "1779445986c7e74670",
