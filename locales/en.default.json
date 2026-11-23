@@ -11,7 +11,6 @@
   "general": {
     "submit": "Submit",
     "continue_shopping": "Continue shopping",
-    "redirecting": "Redirecting…",
     "social": {
       "links": {
         "twitter": "Twitter",
@@ -307,7 +306,6 @@
     },
     "product": {
       "add_to_cart": "Add to cart",
-      "buy_it_now": "Buy it now",
       "include_taxes": "Tax included",
       "exclude_taxes": "Tax excluded",
       "on_sale": "Sale",

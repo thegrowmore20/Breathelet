@@ -2873,33 +2873,18 @@ details[open] > .mobile-menu-accordion-trigger.side-menu-item .collapse-chevron 
   flex-direction: column;
   height: 100%;
 
-  border: 1px solid rgb(var(--color-foreground) / 0.18);
-  padding: 0.5rem;
+  border: 1px solid #f5ebeb;
+  padding: 10px;
   transform: translateY(0);
-  transition: transform 200ms ease;
+  transition: transform .1s ease;
 
   --color-background: var(--color-product-card-background);
   --color-foreground: var(--color-product-card-text);
 
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .product-card:hover {
-    transform: translateY(-4px);
+  &:hover{
+    transform: translateY(-5px);
   }
 
-  .product-card:hover .product-card__image {
-    transform: scale(1.03);
-  }
-}
-
-.product-card .media {
-  background: rgb(var(--color-product-card-background));
-  overflow: hidden;
-}
-
-.product-card__image {
-  transition: transform 240ms ease;
 }
 @media (max-width: 480px) {
   .product-card {
@@ -2922,18 +2907,6 @@ details[open] > .mobile-menu-accordion-trigger.side-menu-item .collapse-chevron 
 }
 .product-card .price {
   align-items: flex-end;
-  gap: 0.5rem;
-  line-height: 1.1;
-}
-.product-card .price .sale-price,
-.product-card .price > .regular-price {
-  font-size: clamp(1.125rem, 1.5vw, 1.375rem);
-  font-weight: 600;
-}
-.product-card .price s.regular-price {
-  color: rgb(var(--color-foreground) / 0.55);
-  font-size: 0.8125rem;
-  font-weight: 400;
 }
 .product-card .regular-price .price-from {
   opacity: 0.75;
@@ -3694,7 +3667,7 @@ body {
 }
 .product-name {
   font-family: var(--product-card-font-family);
-  font-weight: var(--product-card-font-weight);
+  font-weight: var(--product-card-font-family);
   overflow-wrap: anywhere;
 
    display: -webkit-box;
@@ -11211,10 +11184,9 @@ ul.menu .menu-item{
 
 /* card product css */
 quick-add-button.no-js-hidden button {
-  background: rgb(var(--color-base-accent));
-  min-height: 44px;
-  padding: 0 2rem;
-  color: rgb(var(--color-base-accent-foreground));
+  background: #a57c72;
+  padding: 10px 32px;
+  color: #000;
   transition: background 0.18s, box-shadow 0.18s;
 }
 .product-card__info quick-add-button.no-js-hidden button {
@@ -11222,8 +11194,8 @@ quick-add-button.no-js-hidden button {
   font-weight: 500;
 }
 quick-add-button.no-js-hidden button:hover {
-  background: rgb(var(--color-base-accent) / 0.85) !important;
-  box-shadow: 0 3px 10px rgb(var(--color-base-accent) / 0.35) !important;
+  background: #8a6640 !important;
+  box-shadow: 0 3px 10px rgba(224, 169, 109, 0.35) !important;
   filter: none !important;
 }
 .button:not(.button-outline):not(.button-light) {

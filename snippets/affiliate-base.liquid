@@ -6,8 +6,12 @@
   affiliate section so each one is self-contained; the JS guards against
   double-initialisation with `window.__affInit`.
 
-  Affiliate typography inherits the theme-wide Montserrat tokens.
+  Fonts (Fraunces + Hanken Grotesk) are loaded here so they only load on the
+  affiliate page. Duplicate <link>s across sections are de-duped by the browser.
 {% endcomment -%}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   .aff-root {
     --paper:#F8F5F2;
@@ -21,8 +25,8 @@
     --line-strong:rgba(43,44,48,.22);
     --on-dark:#F1EDE9;
     --on-dark-soft:#A9A4A6;
-    --serif:var(--font-heading-family);
-    --sans:var(--font-body-family);
+    --serif:"Fraunces",Georgia,serif;
+    --sans:"Hanken Grotesk",system-ui,sans-serif;
     --aff-maxw:1180px;
     --aff-pad:clamp(1.25rem,5vw,4rem);
     --aff-section-y:clamp(5rem,12vw,9rem);

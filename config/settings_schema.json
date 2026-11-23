@@ -428,7 +428,7 @@
         "id": "rose_gold",
         "label": "Rose Gold",
         "default": "#B76E79"
-      }
+      },
     ]
   },
   {
@@ -441,7 +441,7 @@
       {
         "type": "font_picker",
         "id": "type_heading_font",
-        "default": "instrument_sans_n4",
+        "default": "inter_n8",
         "label": "t:settings_schema.typography.settings.type_heading_font.label"
       },
       {
@@ -460,7 +460,7 @@
       {
         "type": "font_picker",
         "id": "type_body_font",
-        "default": "montserrat_n4",
+        "default": "inter_n4",
         "label": "t:settings_schema.typography.settings.type_body_font.label"
       },
       {

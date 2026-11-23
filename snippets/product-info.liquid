@@ -230,20 +230,14 @@
                 <div data-icon="icon_{{ i }}" class="icon-text-item">
                   {% if icon %}
                     {% assign icon_alt =  icon.alt | default: 'trust badge icon' %}
-                    {% assign icon_style = 'width: ' | append: block.settings.icon_size | append: 'px;' %}
                     <div class="icon-wrapper">
-                      {{
-                        icon
-                        | image_url: width: 100
-                        | image_tag:
-                          widths: '44, 88, 100',
-                          sizes: '100px',
-                          width: 100,
-                          height: icon.height,
-                          alt: icon_alt,
-                          style: icon_style,
-                          loading: lazyload
-                      }}
+                      <img 
+                        src="{{ icon | image_url: width: 100, format: 'webp' }}"
+                        alt="{{ icon_alt }}" 
+                        width="100" height="{{ icon.height }}"
+                        style="width: {{ block.settings.icon_size }}px;"
+                        loading="{{ lazyload }}"
+                      >
                     </div>
                   {% endif %}
 
