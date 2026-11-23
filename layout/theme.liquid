@@ -109,6 +109,27 @@
       /* H0 — display / hero */
       .h0 { font-size: clamp(52px, min(6.4vw, 11vh), 108px); line-height: .92; }
 
+      /* Typography roles: Instrument Sans for headings, Montserrat for UI. */
+      h1, h2, h3, h4, h5, h6,
+      .h0, .h1, .h2, .h3, .h4, .h5, .h6,
+      .slide-content-inner split-lines {
+        font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        font-style: normal;
+      }
+
+      .button,
+      .slide-buttons .button,
+      .hb-btn,
+      .hb-play,
+      nav a,
+      .header a,
+      .menu-item,
+      .dropdown-menu-item,
+      .side-menu-item {
+        font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        font-style: normal;
+      }
+
       @media (max-width: 767px) {
         h1, .h1 { font-size: clamp(36px, 11vw, 56px); }
         h2, .h2 { font-size: clamp(28px, 9vw,  44px); }
