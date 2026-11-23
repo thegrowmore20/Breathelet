@@ -88,9 +88,9 @@
             <lqip-element class="image-loader h-full">
               {{
                 card_image
-                | image_url: width: 1440
+                | image_url: width: 1920
                 | image_tag:
-                  widths: '360, 450, 540, 630, 720, 900, 1050, 1200, 1320, 1440',
+                  widths: '352, 550, 832, 1200, 1500, 1920',
                   sizes: sizes,
                   loading: 'lazy',
                   class: 'product-card__image product-thumbnail-shade'
@@ -113,9 +113,9 @@
               >
                 {{
                   card_product.images[1]
-                  | image_url: width: 1440
+                  | image_url: width: 1920
                   | image_tag:
-                    widths: '360, 450, 540, 630, 720, 900, 1050, 1200, 1320, 1440',
+                    widths: '352, 550, 832, 1200, 1500, 1920',
                     sizes: sizes,
                     loading: 'lazy',
                     fetchpriority: 'low',

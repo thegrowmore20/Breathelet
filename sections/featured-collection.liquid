@@ -30,6 +30,15 @@ data-animation-group="{{ section.id }}-product-cards"
 {% endcapture %}
 
 <style>
+  #shopify-section-{{ section.id }} .section-body {
+    --product-card-max-width: 22.5rem;
+  }
+
+  #shopify-section-{{ section.id }} .product-card {
+    max-width: var(--product-card-max-width);
+    margin-inline: auto;
+  }
+
   #shopify-section-{{ section.id }} .product-name {
     min-height: 3em;
   }

@@ -2,10 +2,10 @@
 <form method="post" id="custom-checkout-form" action="{{ routes.cart_add_url }}" novalidate="novalidate" data-type="add-to-cart-form" enctype="multipart/form-data">
     <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
     <input type="hidden" name="quantity" value="1">
-    <input type="hidden" name="return_to" value="/checkout">
+    <input type="hidden" name="return_to" value="{{ routes.root_url }}checkout">
     
     <button type="submit" id="custom-checkout-button-pdp" class="custom-checkout-btn button button-primary" style="width: 100%;">
-    <span id="custom-checkout-text">Buy it Now</span>
+    <span id="custom-checkout-text">{{ 'products.product.buy_it_now' | t }}</span>
     </button>
 </form>
 </div>
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnText = document.getElementById('custom-checkout-text');
     this.classList.add('is-loading');
     this.disabled = true;
-    btnText.textContent = 'Redirecting...';
+    btnText.textContent = '{{ 'general.redirecting' | t }}';
 
     setTimeout(async () => {
         try {
@@ -46,10 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (!response.ok) throw new Error('Cart submission failed');
-        window.location.href = '/checkout';
+        window.location.href = '{{ routes.root_url }}checkout';
 
         } catch (error) {
-        console.error('Checkout Error:', error);
         checkoutBtn.closest('form').submit();
         }
     }, 0);
@@ -60,14 +59,14 @@ document.addEventListener('DOMContentLoaded', () => {
     .custom-checkout-btn {
             width: 100%;                  
             min-height: 48px;
-            transition: all .2s ease;
+            transition: opacity .2s ease;
     }    
     .custom-checkout-btn:hover{
-        background-color: #333333;
+        opacity: .85;
     }
-    @media screen and (max-width: 520px){
+    @media (max-width: 575px){
         .custom-checkout-btn {                 
-            min-height: 40px;
+            min-height: 48px;
         }  
     }
     </style>
