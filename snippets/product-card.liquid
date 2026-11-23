@@ -33,6 +33,8 @@
     assign card_product = null
   endif
 
+  assign product_card_layout = layout | default: 'grid'
+
   assign product_card_info_class = 'text-left items-start'
 
   # variant-aware fields: default to product, override when a variant is passed
@@ -75,9 +77,10 @@
   endif
 
   assign size_option = card_product.options_by_name[settings.product_card_size_option_name]
+  assign product_card_description = card_product.description | strip_html | truncate: 120
 %}
 
-<div class="product-card group color rounded-block {{ class }}" {{ attrs }}>
+<div class="product-card product-card--{{ product_card_layout }} group color rounded-block {{ class }}" {{ attrs }}>
   <div class="relative overflow-hidden group/media">
     <a href="{{ url }}" tabindex="-1" data-instant aria-label="{{ card_product.title | default: 'Product' }}">
       <div
@@ -208,6 +211,10 @@
       <a data-instant href="{{ url }}"{% if card_variant %} data-vcard-title{% endif %}>{{ card_title | default: 'Product' }}</a>
     </h2>
 
+    {% if product_card_layout == 'list' and product_card_description != blank %}
+      <p class="product-card__description">{{ product_card_description }}</p>
+    {% endif %}
+
     <a href="/#looxReviews">
       <div class="loox-rating"
         data-pattern="[rating] ([count])"
@@ -219,7 +226,7 @@
       </div>
     </a>
 
-    <div class="mt-2"{% if card_variant %} data-vcard-price{% endif %}>
+    <div class="product-card__price mt-2"{% if card_variant %} data-vcard-price{% endif %}>
       {% if card_product %}
         {% render 'price', product: card_product, use_variant: card_variant %}
       {% else %}

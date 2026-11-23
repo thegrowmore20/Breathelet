@@ -1389,6 +1389,33 @@
         "products_count": {
           "label": "Maximum products to show"
         },
+        "content_width": {
+          "label": "Content width",
+          "options__0": {
+            "label": "Narrow"
+          },
+          "options__1": {
+            "label": "Medium"
+          },
+          "options__2": {
+            "label": "Normal (1075px)"
+          },
+          "options__3": {
+            "label": "Container"
+          },
+          "options__4": {
+            "label": "Full width"
+          }
+        },
+        "display_layout": {
+          "label": "Product layout",
+          "options__0": {
+            "label": "Grid"
+          },
+          "options__1": {
+            "label": "List"
+          }
+        },
         "grid_columns": {
           "label": "Products per row"
         },
