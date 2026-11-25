@@ -116,3 +116,9 @@
 - sections/philosophy.liquid: switched to `{% render 'section-attrs' %}` + `.section-body`, removed redundant horizontal `margin`/`padding` on `.phil` and `.wrap` that double-padded inside `.section--full-width`, and aligned media breakpoints to canonical `991px`/`575px`.
 - Verified `bento-benefits`, `specs-every-day`, `gift-banners`, `community-cards`, and `ritual-accordion` already use `section-bg-number-vars` + `section-attrs` + `.section-body` with no vertical padding overrides.
 - Pushed to theme 204901220687 (--only) and GitHub.
+
+
+## 2026-11-25 - center bento-benefits header & emphasize Breathelet/Instagram headings
+- sections/bento-benefits.liquid: centered `.section-header` (`text-center`) and `.heading` (`margin-inline: auto`).
+- templates/index.json: updated headings to `Why Do People Love <em>Breathelet</em>?` and `Follow Us On <em>Instagram</em>`.
+- Pushed to theme 204901220687 (--only) and GitHub.
