@@ -1,0 +1,318 @@
+{% render 'section-bg-number-vars' %}
+
+{%- liquid
+  assign accent_color = section.settings.accent_color | default: '#A57C72'
+  assign accent_rgb = '165 124 114'
+  if section.settings.accent_color != blank
+    assign accent_rgb = section.settings.accent_color.rgb
+  endif
+  assign card_bg = section.settings.card_background | default: '#0E0D0C'
+-%}
+
+{%- capture cb_style -%}
+  --cb-primary: {{ section.settings.primary_color | default: '#000000' }};
+  --cb-accent: {{ accent_color }};
+  --cb-accent-rgb: {{ accent_rgb }};
+  --cb-card: {{ card_bg }};
+{%- endcapture -%}
+
+<section {% render 'section-attrs', class: 'cb-section', style: cb_style %}>
+  <div class="section-body">
+    <div
+      class="cb-card"
+      data-animation="block"
+      data-animation-group="{{ section.id }}"
+    >
+      <div class="cb-head">
+        {%- if section.settings.eyebrow != blank -%}
+          <div class="subheading cb-eyebrow">{{ section.settings.eyebrow | escape }}</div>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="heading {{ section.settings.heading_size | default: 'h0' }} cb-heading">
+            {{ section.settings.heading }}
+          </h2>
+        {%- endif -%}
+        {%- if section.settings.subtext != blank -%}
+          <p class="cb-sub">{{ section.settings.subtext | escape }}</p>
+        {%- endif -%}
+      </div>
+
+      {%- if section.blocks.size > 0 -%}
+        <div class="cb-badges">
+          {%- for block in section.blocks -%}
+            {%- unless forloop.first -%}
+              <span class="cb-sep" aria-hidden="true"></span>
+            {%- endunless -%}
+            <div class="cb-badge" {{ block.shopify_attributes }}>
+              {%- if block.settings.image != blank -%}
+                {%- assign badge_alt = block.settings.image.alt | default: block.settings.label | default: 'Guarantee badge' -%}
+                <div class="cb-badge__media">
+                  {{
+                    block.settings.image
+                    | image_url: width: 352
+                    | image_tag:
+                      widths: '352, 550',
+                      sizes: '(max-width: 575px) 128px, 192px',
+                      width: 192,
+                      height: 192,
+                      alt: badge_alt,
+                      loading: 'lazy'
+                  }}
+                </div>
+              {%- endif -%}
+              {%- if block.settings.label != blank -%}
+                <span class="cb-badge__label">{{ block.settings.label | escape }}</span>
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .cb-section {
+    --cb-muted: rgb(var(--color-foreground) / 72%);
+    --cb-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .cb-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: clamp(38px, 4.8vw, 62px) clamp(24px, 4vw, 56px);
+    border-radius: 32px;
+    border: 1px solid rgb(var(--cb-accent-rgb) / 28%);
+    background:
+      radial-gradient(62% 56% at 50% 0%, rgb(var(--cb-accent-rgb) / 14%) 0%, transparent 72%),
+      linear-gradient(180deg, rgb(var(--cb-accent-rgb) / 5%) 0%, var(--cb-card) 58%, var(--cb-primary) 100%);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 7%);
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .cb-head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    max-width: 680px;
+  }
+
+  .cb-eyebrow {
+    color: var(--cb-accent);
+  }
+
+  .cb-heading {
+    margin: 0;
+    color: rgb(var(--color-foreground));
+  }
+
+  .cb-heading em {
+    font-style: italic;
+    color: var(--cb-accent);
+    padding-right: 0.08em;
+  }
+
+  .cb-sub {
+    margin: 4px 0 0;
+    font-size: clamp(14px, 1.15vw, 16px);
+    line-height: 1.6;
+    color: var(--cb-muted);
+    max-width: 48ch;
+  }
+
+  .cb-badges {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(24px, 5vw, 72px);
+    margin-top: clamp(28px, 3.2vw, 44px);
+    width: 100%;
+  }
+
+  .cb-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    transition: transform 300ms var(--cb-ease);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .cb-badge:hover {
+      transform: translateY(-4px);
+    }
+  }
+
+  .cb-badge__media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(132px, 15vw, 192px);
+    height: clamp(132px, 15vw, 192px);
+    padding: 12px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgb(var(--cb-accent-rgb) / 11%) 0%, transparent 72%);
+  }
+
+  .cb-badge__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .cb-badge__label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgb(var(--color-foreground) / 86%);
+  }
+
+  .cb-sep {
+    width: 1px;
+    height: clamp(72px, 9vw, 112px);
+    background: linear-gradient(180deg, transparent, rgb(var(--cb-accent-rgb) / 42%), transparent);
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 575px) {
+    .cb-card {
+      border-radius: 24px;
+      padding: 30px 18px;
+    }
+
+    .cb-badges {
+      flex-wrap: nowrap;
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .cb-badge__media {
+      width: 120px;
+      height: 120px;
+      padding: 6px;
+    }
+
+    .cb-sep {
+      height: 64px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cb-badge {
+      transition: none;
+    }
+
+    .cb-badge:hover {
+      transform: none;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Confidence banner",
+  "class": "section-confidence-banner",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Our promise"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Wrap a word in <em> for the italic accent.",
+      "default": "Buy with <em>Confidence</em>"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        { "value": "h0", "label": "3X-Large" },
+        { "value": "h1", "label": "2X-Large" },
+        { "value": "h2", "label": "X-Large" },
+        { "value": "h3", "label": "Large" },
+        { "value": "h4", "label": "Medium" },
+        { "value": "h5", "label": "Small" },
+        { "value": "h6", "label": "X-Small" }
+      ],
+      "default": "h0"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Risk Free Shopping & Satisfaction Guaranteed"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#F4F0EE"
+    },
+    {
+      "type": "color",
+      "id": "primary_color",
+      "label": "Primary",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Secondary (accent)",
+      "default": "#A57C72"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#0E0D0C"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Guarantee badge",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Badge image"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Optional label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Confidence banner",
+      "blocks": [
+        { "type": "badge" },
+        { "type": "badge" }
+      ]
+    }
+  ]
+}
+{% endschema %}
