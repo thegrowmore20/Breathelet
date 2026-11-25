@@ -187,3 +187,8 @@
 ## 2026-11-25 - tint Specs every day icons to rose gold (#A57C72)
 - sections/specs-every-day.liquid: applied exact `#A57C72` rose-gold CSS `filter` tint to `.sp-top .sp-icon-img`.
 - Pushed to theme 204901220687 (--only sections/specs-every-day.liquid) and GitHub.
+
+
+## 2026-11-25 - disable General USPs section on homepage
+- templates/index.json: set `"disabled": true` on `homepage_usps_jQz9Ba` (`General USPs`) now that its badges and icons are merged into `specs_every_day_home`.
+- Pushed to theme 204901220687 (--only templates/index.json) and GitHub.
