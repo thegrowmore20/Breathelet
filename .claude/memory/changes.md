@@ -143,3 +143,9 @@
 ## 2026-11-25 - toggle off hide_controls on homepage Video section
 - templates/index.json: set `hide_controls` to `false` on `video_RLKz98`.
 - Pushed to theme 204901220687 (--only templates/index.json) and GitHub.
+
+
+## 2026-11-25 - revert General USPs redesign
+- sections/homepage-usps.liquid: restored original version from commit `36e7c11`.
+- templates/index.json: restored `homepage_usps_jQz9Ba` settings (`heading: "Buy with Confidence"`, removed `eyebrow`, `accent_color`, `card_background`).
+- Pushed to theme 204901220687 (--only) and GitHub.
