@@ -4,6 +4,7 @@
   --primary: {{ section.settings.primary_color }};
   --accent: {{ section.settings.accent_color }};
   --accent-rgb: {{ section.settings.accent_color.rgb }};
+  --sp-card-background: {{ section.settings.card_background }};
 {%- endcapture -%}
 
 <section {% render 'section-attrs', class: 'sp', style: accent_style %}>
@@ -17,7 +18,7 @@
       {%- endif -%}
     </div>
 
-    <div class="sp-box" style="--sp-card-background: {{ section.settings.card_background }};">
+    <div class="sp-box">
       {%- for block in section.blocks -%}
         <div
           class="sp-cell"
@@ -52,63 +53,71 @@
 
 {% stylesheet %}
   .sp {
-    --sp-line: rgb(var(--color-foreground) / 9%);
-    --sp-mute: rgb(var(--color-foreground) / 65%);
-    --sp-ink-2: rgb(var(--color-foreground) / 75%);
+    --sp-line: rgb(var(--color-foreground) / 10%);
+    --sp-mute: rgb(var(--color-foreground) / 70%);
+    --sp-ink-2: rgb(var(--color-foreground) / 72%);
   }
 
   .sp .eyebrow {
     font-size: 11px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--sp-mute);
-    font-weight: 500;
+    color: var(--accent);
+    font-weight: 600;
   }
 
   .sp-head {
     text-align: center;
-    margin-bottom: 56px;
+    margin-bottom: clamp(32px, 5vh, 52px);
   }
 
   .sp-head h2 {
     font-family: var(--font-heading-family);
     font-weight: 400;
     letter-spacing: -0.015em;
-    line-height: 1.05;
-    font-size: clamp(36px, 4.6vw, 68px);
-    margin-top: 16px;
+    line-height: 1.06;
+    font-size: clamp(34px, 4.4vw, 62px);
+    margin-top: 14px;
+    color: rgb(var(--color-foreground));
   }
 
   .sp-head h2 em {
     font-style: italic;
     color: var(--accent);
+    padding-right: 0.08em;
   }
 
   .sp-box {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    background: var(--sp-card-background, #fff);
-    border-radius: 36px;
+    background: var(--sp-card-background);
+    border-radius: 32px;
     overflow: hidden;
     border: 1px solid var(--sp-line);
+    box-shadow: inset 0 1px 0 rgb(var(--color-foreground) / 6%);
   }
 
   .sp-cell {
     position: relative;
-    padding: 34px 34px 38px;
-    min-height: 290px;
+    padding: 34px 32px 36px;
+    min-height: 276px;
     display: flex;
     flex-direction: column;
     border-right: 1px solid var(--sp-line);
   }
 
   .sp-cell:last-child {
-    border: 0;
+    border-right: 0;
   }
 
-  .sp-cell:hover {
-    background: var(--primary);
-    color: rgb(var(--sp-card-rgb, 255 255 255));
+  @media (hover: hover) and (pointer: fine) {
+    .sp-cell:hover {
+      background: radial-gradient(circle at 88% 16%, rgb(var(--accent-rgb) / 16%), transparent 56%), var(--sp-card-background);
+    }
+
+    .sp-cell:hover .sp-top svg {
+      transform: translateY(-2px);
+    }
   }
 
   .sp-top {
@@ -120,38 +129,38 @@
 
   .sp-top span {
     font-size: 11px;
+    font-weight: 600;
     letter-spacing: 0.16em;
-    color: var(--sp-mute);
+    color: var(--accent);
   }
 
   .sp-top svg {
     color: var(--accent);
-    width: 54px;
-    height: 54px;
+    width: 46px;
+    height: 46px;
     fill: none;
     stroke: currentColor;
     stroke-width: 1.4;
     stroke-linecap: round;
     stroke-linejoin: round;
+    transition: transform 240ms cubic-bezier(0.2, 0.7, 0.2, 1);
   }
 
   .sp-cell b {
     font-family: var(--font-heading-family);
     font-weight: 400;
-    font-size: clamp(28px, 2.6vw, 38px);
-    line-height: 1;
+    font-size: clamp(26px, 2.4vw, 34px);
+    line-height: 1.04;
     letter-spacing: -0.01em;
-    margin-top: 60px;
+    margin-top: 52px;
+    color: rgb(var(--color-foreground));
   }
 
   .sp-cell p {
-    font-size: 13px;
+    font-size: 13.5px;
+    line-height: 1.55;
     color: var(--sp-ink-2);
-    margin-top: 12px;
-  }
-
-  .sp-cell:hover p {
-    color: rgb(var(--color-background) / 65%);
+    margin-top: 10px;
   }
 
   @media (max-width: 991px) {
@@ -168,23 +177,35 @@
     }
 
     .sp-cell {
-      min-height: 240px;
+      min-height: 230px;
     }
   }
 
   @media (max-width: 575px) {
     .sp-box {
       grid-template-columns: 1fr;
+      border-radius: 24px;
     }
 
     .sp-cell {
       border-right: 0;
       border-bottom: 1px solid var(--sp-line);
-      min-height: 200px;
+      min-height: 196px;
+      padding: 26px 24px 28px;
+    }
+
+    .sp-cell:last-child {
+      border-bottom: 0;
     }
 
     .sp-cell b {
-      margin-top: 34px;
+      margin-top: 32px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sp-top svg {
+      transition: none;
     }
   }
 {% endstylesheet %}
@@ -197,11 +218,11 @@
   "settings": [
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Built for every day" },
     { "type": "inline_richtext", "id": "heading", "label": "Heading", "info": "Wrap a word in <em> for the italic accent.", "default": "Made to <em>disappear</em> on your wrist." },
-    { "type": "color", "id": "background_color", "label": "Background", "default": "#ECECEA" },
-    { "type": "color", "id": "text_color", "label": "Text", "default": "#000000" },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#000000" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#F4F0EE" },
     { "type": "color", "id": "primary_color", "label": "Primary", "default": "#000000" },
     { "type": "color", "id": "accent_color", "label": "Secondary (accent)", "default": "#A57C72" },
-    { "type": "color", "id": "card_background", "label": "Card background", "default": "#FFFFFF" }
+    { "type": "color", "id": "card_background", "label": "Card background", "default": "#0E0D0C" }
   ],
   "blocks": [
     {

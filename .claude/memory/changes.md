@@ -17,3 +17,11 @@
 - index.json: bento_benefits_home now has 5 tile blocks.
 - specs, gift, love, community: primary #000000 / accent #A57C72 colour settings replace theme button tokens.
 
+
+## 2026-11-25 - dark luxury palette & visual polish
+- specs-every-day.liquid: switched from light grey/white to #000000 bg + #0E0D0C surface + #A57C72 eyebrow/numbers/icons/em, fixed italic kerning.
+- gift-banners.liquid: switched section bg to #000000, warm obsidian #141211 + #0B0A0A cards with #A57C72 ambient glow & CTAs, refined right-card image padding/scrim to eliminate text overlap.
+- love-cards.liquid: CSS grid row alignment so numbers/icons/dividers align across all 6 cards, #0C0B0A surface, #A57C72 numbers/accents, responsive 6/3/2/scroll.
+- community-cards.liquid: strengthened bottom scrim for text contrast, unified button weights/focus rings, hover polish + reduced-motion support.
+- Pushed to theme 204901220687 (--only) and GitHub.
+
