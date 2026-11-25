@@ -25,3 +25,10 @@
 - community-cards.liquid: strengthened bottom scrim for text contrast, unified button weights/focus rings, hover polish + reduced-motion support.
 - Pushed to theme 204901220687 (--only) and GitHub.
 
+
+## 2026-11-25 - typography alignment, background banners, dynamic product price, arrows removed
+- community-cards.liquid: removed top-right arrows (.cm-go), aligned eyebrow to theme .subheading and card headings to theme heading_size classes.
+- gift-banners.liquid: converted card images to full-bleed background images with gradient scrim, added optional product picker + show_price toggle for dynamic price/link, removed hardcoded .99 from index.json, aligned eyebrow to .subheading and heading to theme heading_size.
+- specs-every-day.liquid & love-cards.liquid: aligned section headings to theme h0 (3X-Large) via heading_size setting and eyebrows to theme .subheading.
+- Pushed to theme 204901220687 (--only) and GitHub.
+

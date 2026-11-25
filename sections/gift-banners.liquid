@@ -14,75 +14,75 @@
   <div class="section-body">
     <div class="banner">
       {%- for block in section.blocks -%}
-        {%- assign is_light = false -%}
-        {%- if block.settings.style == 'light' -%}
-          {%- assign is_light = true -%}
-        {%- endif -%}
-        <div
+        {%- liquid
+          assign is_light = false
+          if block.settings.style == 'light'
+            assign is_light = true
+          endif
+          assign card_product = block.settings.product
+          assign btn_link = block.settings.button_link
+          if btn_link == blank and card_product != blank
+            assign btn_link = card_product.url
+          endif
+        -%}
+        <article
           class="bn {% if is_light %}lt{% else %}dk{% endif %}"
           data-animation="block"
           data-animation-group="{{ section.id }}"
           {{ block.shopify_attributes }}
         >
           {%- if block.settings.image != blank -%}
-            {%- if is_light -%}
-              {{
-                block.settings.image
-                | image_url: width: 1200
-                | image_tag:
-                  class: 'pimg',
-                  widths: '352, 550, 832, 1200',
-                  sizes: '(min-width: 992px) 30vw, 52vw',
-                  loading: 'lazy',
-                  alt: block.settings.image.alt
-              }}
-            {%- else -%}
-              {{
-                block.settings.image
-                | image_url: width: 1200
-                | image_tag:
-                  class: 'bg',
-                  widths: '352, 550, 832, 1200',
-                  sizes: '(min-width: 992px) 50vw, 100vw',
-                  loading: 'lazy',
-                  alt: block.settings.image.alt
-              }}
-            {%- endif -%}
+            {{
+              block.settings.image
+              | image_url: width: 1500
+              | image_tag:
+                class: 'bg',
+                widths: '352, 550, 832, 1200, 1500',
+                sizes: '(min-width: 992px) 50vw, 100vw',
+                loading: 'lazy',
+                alt: block.settings.image.alt
+            }}
+          {%- elsif card_product != blank and card_product.featured_image != blank -%}
+            {{
+              card_product.featured_image
+              | image_url: width: 1500
+              | image_tag:
+                class: 'bg',
+                widths: '352, 550, 832, 1200, 1500',
+                sizes: '(min-width: 992px) 50vw, 100vw',
+                loading: 'lazy',
+                alt: card_product.featured_image.alt
+            }}
           {%- endif -%}
           <div class="bn-t">
             {%- if block.settings.eyebrow != blank -%}
-              <div class="eyebrow">{{ block.settings.eyebrow | escape }}</div>
+              <div class="subheading">{{ block.settings.eyebrow | escape }}</div>
             {%- endif -%}
             {%- if block.settings.heading != blank -%}
-              <h2>{{ block.settings.heading }}</h2>
+              <h2 class="{{ section.settings.heading_size | default: 'h2' }}">{{ block.settings.heading }}</h2>
             {%- endif -%}
             {%- if block.settings.text != blank -%}
               <p>{{ block.settings.text | escape }}</p>
             {%- endif -%}
-            {%- if block.settings.button_label != blank and block.settings.button_link != blank -%}
+            {%- if block.settings.button_label != blank and btn_link != blank -%}
               <a
-                href="{{ block.settings.button_link }}"
+                href="{{ btn_link }}"
                 class="btn {% if is_light %}btn-dark{% else %}btn-light{% endif %}"
               >
                 {{- block.settings.button_label | escape -}}
+                {%- if block.settings.show_price and card_product != blank -%}
+                  {{- ' · ' -}}{{ card_product.price | money }}
+                {%- endif -%}
               </a>
             {%- endif -%}
           </div>
-        </div>
+        </article>
       {%- endfor -%}
     </div>
   </div>
 </section>
 
 {% stylesheet %}
-  .gift .eyebrow {
-    font-size: 11px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--accent);
-    font-weight: 600;
-  }
-
   .gift .banner {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -93,13 +93,19 @@
     position: relative;
     border-radius: 28px;
     overflow: hidden;
-    min-height: min(450px, 58svh);
+    min-height: min(500px, 64svh);
     background: var(--bn-dark-background);
     color: rgb(var(--bn-dark-rgb));
     display: flex;
     align-items: flex-end;
+    isolation: isolate;
     border: 1px solid rgb(var(--bn-dark-rgb) / 10%);
     box-shadow: inset 0 1px 0 rgb(var(--bn-dark-rgb) / 6%);
+  }
+
+  .gift .bn.lt {
+    background: var(--bn-panel);
+    border-color: rgb(var(--accent-rgb) / 28%);
   }
 
   .gift .bn > img.bg {
@@ -107,21 +113,23 @@
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    padding: 4% 4% 38% 36%;
-    filter: drop-shadow(0 24px 32px rgb(0 0 0 / 55%));
-    transition: transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1);
+    object-fit: cover;
+    object-position: center;
+    z-index: -2;
+    transition: transform 900ms cubic-bezier(0.2, 0.7, 0.2, 1);
   }
 
   .gift .bn::after {
     content: '';
     position: absolute;
     inset: 0;
+    z-index: -1;
     background: linear-gradient(
       0deg,
       rgb(var(--bn-dark-background-rgb, 11 10 10) / 96%) 0%,
-      rgb(var(--bn-dark-background-rgb, 11 10 10) / 72%) 42%,
-      transparent 72%
+      rgb(var(--bn-dark-background-rgb, 11 10 10) / 76%) 46%,
+      rgb(var(--bn-dark-background-rgb, 11 10 10) / 18%) 78%,
+      transparent 100%
     );
     pointer-events: none;
   }
@@ -129,21 +137,21 @@
   .gift .bn-t {
     position: relative;
     z-index: 2;
-    padding: clamp(28px, 3.2vw, 40px);
-    max-width: 520px;
+    padding: clamp(28px, 3.4vw, 44px);
+    max-width: 540px;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 12px;
     align-items: flex-start;
   }
 
+  .gift .bn-t .subheading {
+    color: var(--accent);
+  }
+
   .gift .bn-t h2 {
-    font-family: var(--font-heading-family);
-    font-weight: 400;
-    letter-spacing: -0.015em;
-    line-height: 1.05;
-    font-size: clamp(32px, 3.4vw, 48px);
     color: rgb(var(--bn-dark-rgb));
+    margin: 0;
   }
 
   .gift .bn-t h2 em {
@@ -153,34 +161,10 @@
   }
 
   .gift .bn-t p {
-    color: rgb(var(--bn-dark-rgb) / 78%);
+    color: rgb(var(--bn-dark-rgb) / 82%);
     font-size: 15px;
     line-height: 1.6;
-  }
-
-  .gift .bn.lt {
-    background: radial-gradient(circle at 80% 42%, rgb(var(--accent-rgb) / 18%), transparent 54%), var(--bn-panel);
-    color: rgb(var(--bn-dark-rgb));
-    border-color: rgb(var(--accent-rgb) / 30%);
-  }
-
-  .gift .bn.lt::after {
-    display: none;
-  }
-
-  .gift .bn.lt .pimg {
-    position: absolute;
-    right: -1%;
-    top: 4%;
-    width: 58%;
-    aspect-ratio: 1;
-    object-fit: contain;
-    filter: drop-shadow(0 28px 34px rgb(0 0 0 / 55%));
-    transition: transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1);
-  }
-
-  .gift .bn.lt .bn-t {
-    max-width: 58%;
+    margin: 0;
   }
 
   .gift .btn {
@@ -195,7 +179,7 @@
     font-weight: 600;
     white-space: nowrap;
     text-decoration: none;
-    margin-top: 6px;
+    margin-top: 8px;
     transition: transform 240ms cubic-bezier(0.2, 0.7, 0.2, 1);
   }
 
@@ -215,18 +199,12 @@
   }
 
   @media (hover: hover) and (pointer: fine) {
-    .gift .bn {
-      transition: transform 280ms cubic-bezier(0.2, 0.7, 0.2, 1);
-    }
-
     .gift .bn:hover {
-      transform: translateY(-4px);
       border-color: rgb(var(--accent-rgb) / 55%);
     }
 
-    .gift .bn:hover .pimg,
     .gift .bn:hover > img.bg {
-      transform: scale(1.04);
+      transform: scale(1.05);
     }
 
     .gift .btn:hover {
@@ -246,50 +224,22 @@
     .gift .banner {
       grid-template-columns: 1fr;
     }
-
-    .gift .bn.lt .bn-t {
-      max-width: 66%;
-    }
-
-    .gift .bn.lt .pimg {
-      width: 48%;
-      top: 4%;
-    }
   }
 
   @media (max-width: 575px) {
     .gift .bn {
-      min-height: 390px;
+      min-height: 420px;
       border-radius: 24px;
-    }
-
-    .gift .bn.lt .bn-t {
-      max-width: none;
-      padding-top: 180px;
-    }
-
-    .gift .bn.lt .pimg {
-      width: 56%;
-      right: 4%;
-      top: 2%;
-    }
-
-    .gift .bn > img.bg {
-      padding: 4% 4% 46% 24%;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .gift .bn,
     .gift .btn,
-    .gift .bn.lt .pimg,
     .gift .bn > img.bg {
       transition: none;
     }
 
-    .gift .bn:hover,
     .gift .btn:hover,
-    .gift .bn:hover .pimg,
     .gift .bn:hover > img.bg {
       transform: none;
     }
@@ -302,12 +252,27 @@
   "class": "section-gift-banners",
   "max_blocks": 2,
   "settings": [
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Card heading size",
+      "options": [
+        { "value": "h0", "label": "3X-Large" },
+        { "value": "h1", "label": "2X-Large" },
+        { "value": "h2", "label": "X-Large" },
+        { "value": "h3", "label": "Large" },
+        { "value": "h4", "label": "Medium" },
+        { "value": "h5", "label": "Small" },
+        { "value": "h6", "label": "X-Small" }
+      ],
+      "default": "h2"
+    },
     { "type": "color", "id": "background_color", "label": "Background", "default": "#000000" },
     { "type": "color", "id": "text_color", "label": "Text", "default": "#F4F0EE" },
     { "type": "color", "id": "primary_color", "label": "Primary", "default": "#000000" },
     { "type": "color", "id": "accent_color", "label": "Secondary (accent)", "default": "#A57C72" },
-    { "type": "color", "id": "panel_background", "label": "First banner surface", "default": "#141211" },
-    { "type": "color", "id": "dark_background", "label": "Second banner surface", "default": "#0B0A0A" },
+    { "type": "color", "id": "panel_background", "label": "First banner fallback surface", "default": "#141211" },
+    { "type": "color", "id": "dark_background", "label": "Second banner fallback surface", "default": "#0B0A0A" },
     { "type": "color", "id": "dark_text", "label": "Banner text", "default": "#F4F0EE" }
   ],
   "blocks": [
@@ -318,19 +283,21 @@
         {
           "type": "select",
           "id": "style",
-          "label": "Style",
+          "label": "Button & border accent",
           "options": [
-            { "value": "light", "label": "Warm accent card, product on the right" },
-            { "value": "dark", "label": "Obsidian card, image behind text" }
+            { "value": "light", "label": "Accent button" },
+            { "value": "dark", "label": "Light button" }
           ],
           "default": "light"
         },
-        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "image_picker", "id": "image", "label": "Background image" },
+        { "type": "product", "id": "product", "label": "Product (optional — dynamic price & link)" },
+        { "type": "checkbox", "id": "show_price", "label": "Show product price on button", "default": true },
         { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "For someone you love" },
         { "type": "inline_richtext", "id": "heading", "label": "Heading", "info": "Wrap a word in <em> for the italic accent.", "default": "Gift love they’ll <em>remember.</em>" },
         { "type": "textarea", "id": "text", "label": "Text", "default": "Give a meaningful daily reminder that keeps your care close, through every soft cue and quiet reset." },
         { "type": "text", "id": "button_label", "label": "Button label", "default": "Gift Breathelet" },
-        { "type": "url", "id": "button_link", "label": "Button link" }
+        { "type": "url", "id": "button_link", "label": "Button link (overrides product link)" }
       ]
     }
   ],
@@ -338,15 +305,16 @@
     {
       "name": "Gift banners",
       "blocks": [
-        { "type": "banner", "settings": { "style": "light" } },
+        { "type": "banner", "settings": { "style": "light", "show_price": false } },
         {
           "type": "banner",
           "settings": {
             "style": "dark",
+            "show_price": true,
             "eyebrow": "Eternal Love Pair",
             "heading": "Two Breathelets. <em>One connection.</em>",
             "text": "One shared reminder to breathe, reset, and stay present — together.",
-            "button_label": "Buy the Pair · $59.99"
+            "button_label": "Buy the Pair"
           }
         }
       ]

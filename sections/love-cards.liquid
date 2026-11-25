@@ -9,9 +9,16 @@
 
 <section {% render 'section-attrs', class: 'hz', style: accent_style %}>
   <div class="hz-stage">
-    <div class="section-body hz-head" data-animation="block" data-animation-group="{{ section.id }}-head">
+    <div
+      class="section-body section-header section-content-spacing hz-head"
+      data-animation="block"
+      data-animation-group="{{ section.id }}-head"
+    >
+      {%- if section.settings.eyebrow != blank -%}
+        <div class="subheading">{{ section.settings.eyebrow | escape }}</div>
+      {%- endif -%}
       {%- if section.settings.heading != blank -%}
-        <div><h2>{{ section.settings.heading }}</h2></div>
+        <h2 class="heading {{ section.settings.heading_size | default: 'h0' }}">{{ section.settings.heading }}</h2>
       {%- endif -%}
     </div>
 
@@ -62,7 +69,6 @@
     padding-bottom: 0;
     overflow: hidden;
     --hz-line: rgb(var(--color-foreground) / 10%);
-    --hz-tx2: rgb(var(--color-foreground) / 65%);
     --hz-ac: var(--accent);
   }
 
@@ -78,16 +84,15 @@
     text-align: center;
   }
 
-  .hz h2 {
-    font-family: var(--font-heading-family);
-    font-weight: 400;
-    letter-spacing: -0.015em;
-    line-height: 1.06;
-    font-size: clamp(32px, 3.8vw, 52px);
+  .hz-head .subheading {
+    color: var(--hz-ac);
+  }
+
+  .hz-head .heading {
     color: rgb(var(--color-foreground));
   }
 
-  .hz h2 em {
+  .hz-head .heading em {
     font-style: italic;
     color: var(--hz-ac);
     padding-right: 0.08em;
@@ -255,7 +260,23 @@
   "class": "section-love-cards",
   "max_blocks": 8,
   "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
     { "type": "inline_richtext", "id": "heading", "label": "Heading", "info": "Wrap a word in <em> for the accent colour.", "default": "Why do people love <em>Breathelet?</em>" },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        { "value": "h0", "label": "3X-Large" },
+        { "value": "h1", "label": "2X-Large" },
+        { "value": "h2", "label": "X-Large" },
+        { "value": "h3", "label": "Large" },
+        { "value": "h4", "label": "Medium" },
+        { "value": "h5", "label": "Small" },
+        { "value": "h6", "label": "X-Small" }
+      ],
+      "default": "h0"
+    },
     { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop Breathelet" },
     { "type": "url", "id": "button_link", "label": "Button link" },
     { "type": "color", "id": "background_color", "label": "Background", "default": "#000000" },

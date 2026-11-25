@@ -9,12 +9,16 @@
 
 <section {% render 'section-attrs', class: 'sp', style: accent_style %}>
   <div class="section-body">
-    <div class="sp-head" data-animation="block" data-animation-group="{{ section.id }}-head">
+    <div
+      class="section-header section-content-spacing sp-head rfs:mb-12"
+      data-animation="block"
+      data-animation-group="{{ section.id }}-head"
+    >
       {%- if section.settings.eyebrow != blank -%}
-        <div class="eyebrow">{{ section.settings.eyebrow | escape }}</div>
+        <div class="subheading">{{ section.settings.eyebrow | escape }}</div>
       {%- endif -%}
       {%- if section.settings.heading != blank -%}
-        <h2>{{ section.settings.heading }}</h2>
+        <h2 class="heading {{ section.settings.heading_size | default: 'h0' }}">{{ section.settings.heading }}</h2>
       {%- endif -%}
     </div>
 
@@ -54,34 +58,22 @@
 {% stylesheet %}
   .sp {
     --sp-line: rgb(var(--color-foreground) / 10%);
-    --sp-mute: rgb(var(--color-foreground) / 70%);
     --sp-ink-2: rgb(var(--color-foreground) / 72%);
-  }
-
-  .sp .eyebrow {
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--accent);
-    font-weight: 600;
   }
 
   .sp-head {
     text-align: center;
-    margin-bottom: clamp(32px, 5vh, 52px);
   }
 
-  .sp-head h2 {
-    font-family: var(--font-heading-family);
-    font-weight: 400;
-    letter-spacing: -0.015em;
-    line-height: 1.06;
-    font-size: clamp(34px, 4.4vw, 62px);
-    margin-top: 14px;
+  .sp-head .subheading {
+    color: var(--accent);
+  }
+
+  .sp-head .heading {
     color: rgb(var(--color-foreground));
   }
 
-  .sp-head h2 em {
+  .sp-head .heading em {
     font-style: italic;
     color: var(--accent);
     padding-right: 0.08em;
@@ -218,6 +210,21 @@
   "settings": [
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Built for every day" },
     { "type": "inline_richtext", "id": "heading", "label": "Heading", "info": "Wrap a word in <em> for the italic accent.", "default": "Made to <em>disappear</em> on your wrist." },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        { "value": "h0", "label": "3X-Large" },
+        { "value": "h1", "label": "2X-Large" },
+        { "value": "h2", "label": "X-Large" },
+        { "value": "h3", "label": "Large" },
+        { "value": "h4", "label": "Medium" },
+        { "value": "h5", "label": "Small" },
+        { "value": "h6", "label": "X-Small" }
+      ],
+      "default": "h0"
+    },
     { "type": "color", "id": "background_color", "label": "Background", "default": "#000000" },
     { "type": "color", "id": "text_color", "label": "Text", "default": "#F4F0EE" },
     { "type": "color", "id": "primary_color", "label": "Primary", "default": "#000000" },
