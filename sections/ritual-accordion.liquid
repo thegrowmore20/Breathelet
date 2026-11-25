@@ -1,10 +1,25 @@
 {% render 'section-bg-number-vars' %}
 
+{%- liquid
+  assign first_ratio = '1 / 1'
+  if section.settings.image_aspect_ratio == 'auto'
+    for block in section.blocks
+      if block.settings.image != blank
+        assign first_ratio = block.settings.image.aspect_ratio
+        break
+      endif
+    endfor
+  else
+    assign first_ratio = section.settings.image_aspect_ratio | default: '1 / 1'
+  endif
+-%}
+
 {%- capture ritual_style -%}
   --primary: {{ section.settings.primary_color }};
   --accent: {{ section.settings.accent_color }};
   --accent-rgb: {{ section.settings.accent_color.rgb }};
   --rit-surface: {{ section.settings.media_background }};
+  --rit-ratio: {{ first_ratio }};
 {%- endcapture -%}
 
 <section {% render 'section-attrs', class: 'ritual', style: ritual_style %}>
@@ -47,13 +62,21 @@
         </div>
       </div>
 
-      <div class="rit-m" data-animation="block" data-animation-group="{{ section.id }}-media">
+      <div
+        class="rit-m{% if section.settings.image_aspect_ratio == 'auto' %} rit-m--auto{% endif %}"
+        data-animation="block"
+        data-animation-group="{{ section.id }}-media"
+      >
         {%- for block in section.blocks -%}
           {%- assign img_class = 'rit-img' -%}
           {%- if forloop.first -%}
             {%- assign img_class = 'rit-img on' -%}
           {%- endif -%}
-          <div class="{{ img_class }}" data-media-index="{{ forloop.index0 }}">
+          <div
+            class="{{ img_class }}"
+            data-media-index="{{ forloop.index0 }}"
+            {% if block.settings.image != blank %}data-aspect-ratio="{{ block.settings.image.aspect_ratio }}"{% endif %}
+          >
             {%- if block.settings.image != blank -%}
               {{
                 block.settings.image
@@ -98,8 +121,13 @@
             trigger.setAttribute('aria-expanded', 'true');
 
             const idx = item.dataset.index;
+            const mediaBox = this.querySelector('.rit-m');
             for (const slide of this.querySelectorAll('.rit-img')) {
-              slide.classList.toggle('on', slide.dataset.mediaIndex === idx);
+              const isMatch = slide.dataset.mediaIndex === idx;
+              slide.classList.toggle('on', isMatch);
+              if (isMatch && mediaBox && mediaBox.classList.contains('rit-m--auto') && slide.dataset.aspectRatio) {
+                mediaBox.style.setProperty('--rit-ratio', slide.dataset.aspectRatio);
+              }
             }
           },
           { signal }
@@ -309,13 +337,17 @@
 
   .rit-m {
     position: relative;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: var(--rit-ratio, 1 / 1);
     max-height: 78svh;
     width: 100%;
     border-radius: 16px;
     overflow: hidden;
     background: var(--rit-surface);
     border: 1px solid var(--rit-line);
+  }
+
+  .rit-m--auto {
+    max-height: none;
   }
 
   .rit-img {
@@ -346,7 +378,6 @@
 
     .rit-m {
       order: -1;
-      aspect-ratio: 1 / 0.85;
       max-height: none;
     }
   }
@@ -382,6 +413,21 @@
   "class": "section-ritual-accordion",
   "max_blocks": 6,
   "settings": [
+    {
+      "type": "select",
+      "id": "image_aspect_ratio",
+      "label": "Image aspect ratio",
+      "options": [
+        { "value": "auto", "label": "Auto (adapt to image)" },
+        { "value": "1 / 1", "label": "Square (1:1)" },
+        { "value": "4 / 3", "label": "Landscape (4:3)" },
+        { "value": "16 / 9", "label": "Landscape wide (16:9)" },
+        { "value": "3 / 4", "label": "Portrait (3:4)" },
+        { "value": "4 / 5", "label": "Portrait (4:5)" },
+        { "value": "2 / 3", "label": "Portrait tall (2:3)" }
+      ],
+      "default": "1 / 1"
+    },
     { "type": "color", "id": "background_color", "label": "Background", "default": "#000000" },
     { "type": "color", "id": "text_color", "label": "Text", "default": "#F4F0EE" },
     { "type": "color", "id": "primary_color", "label": "Primary", "default": "#000000" },

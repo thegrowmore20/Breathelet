@@ -58,3 +58,8 @@
 - templates/index.json: added ritual_accordion_home after community_cards_home with 3 items and images.
 - Pushed to theme 204901220687 (--only) and GitHub.
 
+
+## 2026-11-25 - ritual accordion image aspect ratio setting
+- sections/ritual-accordion.liquid: added image_aspect_ratio setting (Auto, Square 1:1, Landscape 4:3, Landscape wide 16:9, Portrait 3:4, Portrait 4:5, Portrait tall 2:3) with dynamic --rit-ratio updates in auto mode.
+- Pushed to theme 204901220687 (--only sections/ritual-accordion.liquid) and GitHub.
+
