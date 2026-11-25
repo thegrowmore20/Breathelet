@@ -94,3 +94,8 @@
 - snippets/video-player.liquid: omitted `controls` attribute on `<video-player>` when `hide_controls` is true (backwards-compatible for all other sections).
 - templates/index.json: enabled `hide_controls: true` on `video_RLKz98`.
 - Pushed to theme 204901220687 (--only) and GitHub.
+
+
+## 2026-11-25 - remove padding from .hz-stage
+- sections/love-cards.liquid: removed `padding: clamp(44px, 7vh, 76px) 0;` from `.hz-stage`.
+- Pushed to theme 204901220687 (--only sections/love-cards.liquid) and GitHub.
