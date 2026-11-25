@@ -182,3 +182,8 @@
 ## 2026-11-25 - increase guarantee badge size another 25% in Specs every day
 - sections/specs-every-day.liquid: scaled `.sp-assurance__badge` by another +25% (`clamp(150px, 15vw, 185px)`, mobile `144px`) and separator height (`106px`, mobile `85px`).
 - Pushed to theme 204901220687 (--only sections/specs-every-day.liquid) and GitHub.
+
+
+## 2026-11-25 - tint Specs every day icons to rose gold (#A57C72)
+- sections/specs-every-day.liquid: applied exact `#A57C72` rose-gold CSS `filter` tint to `.sp-top .sp-icon-img`.
+- Pushed to theme 204901220687 (--only sections/specs-every-day.liquid) and GitHub.
