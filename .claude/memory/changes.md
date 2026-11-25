@@ -127,3 +127,8 @@
 ## 2026-11-25 - enable General USPs section on homepage
 - templates/index.json: removed `"disabled": true` from `homepage_usps_jQz9Ba` (`General USPs`).
 - Pushed to theme 204901220687 (--only templates/index.json) and GitHub.
+
+
+## 2026-11-25 - include question mark in em on reviews heading
+- templates/index.json: updated heading to `Why Do People Love <em>Breathelet?</em>`.
+- Pushed to theme 204901220687 (--only templates/index.json) and GitHub.
