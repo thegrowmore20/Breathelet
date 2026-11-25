@@ -47,13 +47,13 @@
 
 <div class="price-wrapper relative">
   <div class="flex items-center gap-4">
-    <div class="price flex flex-wrap flex-row-reverse justify-end whitespace-nowrap gap-x-2">
+    <div class="price flex flex-wrap whitespace-nowrap gap-x-2">
       {%- if onsale %}
         {% comment %} On sale - Sale price {% endcomment %}
-        <span class="visually-hidden order-2">
+        <span class="visually-hidden">
           {{ 'products.product.price.sale_price' | t }}
         </span>
-        <span class="sale-price order-2 font-bold">
+        <span class="sale-price font-bold">
           {{ money_price }}
         </span>
 

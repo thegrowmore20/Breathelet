@@ -99,3 +99,8 @@
 ## 2026-11-25 - remove padding from .hz-stage
 - sections/love-cards.liquid: removed `padding: clamp(44px, 7vh, 76px) 0;` from `.hz-stage`.
 - Pushed to theme 204901220687 (--only sections/love-cards.liquid) and GitHub.
+
+
+## 2026-11-25 - show current price before compare-at price
+- snippets/price.liquid: removed `flex-row-reverse justify-end` on `.price` and `order-2` on `.sale-price` (and its screen-reader label) so current/sale price renders first and compare-at price second across product cards and PDP.
+- Pushed to theme 204901220687 (--only snippets/price.liquid) and GitHub.
