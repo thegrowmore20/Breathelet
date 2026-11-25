@@ -293,6 +293,9 @@
         "colors_headings": {
           "label": "Heading"
         },
+        "colors_heading_accent": {
+          "label": "Heading accent (italic / em)"
+        },
         "colors_primary_button_background": {
           "label": "Background"
         },

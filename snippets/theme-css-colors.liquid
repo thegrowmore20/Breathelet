@@ -9,6 +9,7 @@
       --color-base-background: {{ settings.colors_background.rgb }};
       --color-base-foreground: {{ settings.colors_text.rgb }};
       --color-base-headings: {{ settings.colors_headings.rgb }};
+      --color-heading-accent: {% if settings.colors_heading_accent != blank %}{{ settings.colors_heading_accent.rgb }}{% else %}165 124 114{% endif %};
       --color-base-accent: {{ settings.colors_text.rgb }};
       --color-base-accent-foreground: {% render 'generate-foreground-color', background: settings.colors_text %};
 

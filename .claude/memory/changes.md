@@ -1,4 +1,4 @@
-﻿## 2026-11-25 - bento/philosophy spacing alignment
+## 2026-11-25 - bento/philosophy spacing alignment
 - sections/bento-benefits.liquid: wrapper now 'section section--full-width' + render 'section-bg-number-vars'.
 - sections/philosophy.liquid: added render 'section-bg-number-vars'.
 - Pushed to theme 204901220687 (Breathelet Revamp | Before Black Friday V2) with --only on those two files.
@@ -79,3 +79,11 @@
 - Restored sections/ritual-accordion.liquid (kebab-case per AGENTS.md) and renamed index.json section key from ritual_accordion_home to ritual_accordion.
 - Pushed to theme 204901220687 (--only) and GitHub.
 
+
+
+## 2026-11-25 - global heading italic/em accent color
+- config/settings_schema.json & locales/en.default.schema.json: added `colors_heading_accent` color setting (default `#a57c72`) under Theme Settings > Colors.
+- snippets/theme-css-colors.liquid: output `--color-heading-accent` CSS custom property with `165 124 114` fallback when unset.
+- assets/main.css: added global `:where(h1, h2, h3, h4, h5, h6, .h0, .h1, .h2, .h3, .h4, .h5, .h6, .heading) em` italic + accent color rule.
+- snippets/rich-text-blocks.liquid: removed `| escape` from heading output so `<em>` renders in all richtext heading blocks.
+- Pushed to theme 204901220687 (--only) and GitHub.

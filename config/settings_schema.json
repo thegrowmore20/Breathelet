@@ -175,6 +175,12 @@
         "default": "#0a0b0c"
       },
       {
+        "type": "color",
+        "id": "colors_heading_accent",
+        "label": "t:settings_schema.colors.settings.colors_heading_accent.label",
+        "default": "#a57c72"
+      },
+      {
         "type": "header",
         "content": "t:settings_schema.colors.headers.primary_button"
       },
@@ -264,7 +270,7 @@
         "type": "color",
         "id": "colors_product_sale_badge",
         "label": "t:settings_schema.colors.settings.colors_product_sale_badge.label",
-        "default": "#d12b23"
+        "default": "#A57C72"
       },
       {
         "type": "color",
@@ -484,51 +490,6 @@
       },
       {
         "type": "header",
-        "content": "Subheading"
-      },
-      {
-        "type": "select",
-        "id": "type_subheading_weight",
-        "label": "Weight",
-        "options": [
-          { "value": "400", "label": "Regular — 400" },
-          { "value": "500", "label": "Medium — 500" },
-          { "value": "600", "label": "Semibold — 600" },
-          { "value": "700", "label": "Bold — 700" }
-        ],
-        "default": "500",
-        "info": "Used for eyebrow labels, section sub-titles and UI chips"
-      },
-      {
-        "type": "select",
-        "id": "type_subheading_transform",
-        "label": "Letter case",
-        "options": [
-          { "value": "none",       "label": "As typed" },
-          { "value": "uppercase",  "label": "UPPERCASE" },
-          { "value": "capitalize", "label": "Title Case" }
-        ],
-        "default": "uppercase"
-      },
-      {
-        "type": "header",
-        "content": "Accent text"
-      },
-      {
-        "type": "select",
-        "id": "type_accent_weight",
-        "label": "Weight",
-        "options": [
-          { "value": "400", "label": "Regular — 400" },
-          { "value": "500", "label": "Medium — 500" },
-          { "value": "600", "label": "Semibold — 600" },
-          { "value": "700", "label": "Bold — 700" }
-        ],
-        "default": "600",
-        "info": "Used for price, badges, CTA labels and highlighted text"
-      },
-      {
-        "type": "header",
         "content": "t:settings_schema.typography.headers.font_selection"
       },
       {
@@ -549,7 +510,7 @@
             "label": "t:settings_schema.typography.settings.type_button_font.options__2.label"
           }
         ],
-        "default": "body_bold"
+        "default": "body"
       },
       {
         "type": "select",
@@ -589,7 +550,7 @@
             "label": "t:settings_schema.typography.settings.type_navigation_font.options__2.label"
           }
         ],
-        "default": "body_bold"
+        "default": "body"
       },
       {
         "type": "select",
