@@ -220,11 +220,16 @@
 
   @media (max-width: 991px) {
     .bento-section .bento {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .bento-section .tile.s2,
     .bento-section .tile.s4 {
+      grid-column: span 1;
+    }
+
+    .bento-section .tile:first-child,
+    .bento-section .tile--spotlight {
       grid-column: span 2;
     }
   }
@@ -240,7 +245,9 @@
     }
 
     .bento-section .tile.s2,
-    .bento-section .tile.s4 {
+    .bento-section .tile.s4,
+    .bento-section .tile:first-child,
+    .bento-section .tile--spotlight {
       grid-column: span 1;
     }
   }

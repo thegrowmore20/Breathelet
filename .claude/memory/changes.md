@@ -172,3 +172,8 @@
 ## 2026-11-25 - increase guarantee badge size by 25% in Specs every day
 - sections/specs-every-day.liquid: scaled `.sp-assurance__badge` by +25% (`clamp(120px, 12vw, 148px)`, mobile `115px`) and separator height (`85px`, mobile `68px`).
 - Pushed to theme 204901220687 (--only sections/specs-every-day.liquid) and GitHub.
+
+
+## 2026-11-25 - tablet 2-column grid for bento-benefits cards
+- sections/bento-benefits.liquid: on tablet (`576px–991px`), kept the first/spotlight card ("Feel present again") full width (`span 2`) and made the remaining cards 2 columns (`span 1`, 50% each); mobile (`<= 575px`) remains single column.
+- Pushed to theme 204901220687 (--only sections/bento-benefits.liquid) and GitHub.
