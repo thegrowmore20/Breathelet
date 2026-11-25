@@ -52,3 +52,9 @@
 - templates/index.json: set show_price to false on gift_banners_home banner_2 while keeping PDP link to eternal-love-pair-set.
 - Pushed to theme 204901220687 (--only templates/index.json) and GitHub.
 
+
+## 2026-11-25 - ritual accordion section
+- New: sections/ritual-accordion.liquid extracted from home-dark.vercel.app (#how .ritual) without the bottom CTA button; uses <ritual-accordion> Web Component, grid-template-rows <= 280ms with contain: layout paint, prefers-reduced-motion, #000000/#A57C72 palette.
+- templates/index.json: added ritual_accordion_home after community_cards_home with 3 items and images.
+- Pushed to theme 204901220687 (--only) and GitHub.
+

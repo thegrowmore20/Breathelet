@@ -338,7 +338,41 @@
       },
       "block_order": ["card_1", "card_2"],
       "settings": {}
-    },    "fa63dde0-c7d9-4ac7-9f3d-90ef6a67184f": {
+    },
+    "ritual_accordion_home": {
+      "type": "ritual-accordion",
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {
+            "title": "You can't control your stress without controlling your breath",
+            "content": "<p>Breathelet sends a gentle random vibration every 60–150 minutes, a soft reminder to:</p><ul><li>Be present in the moment</li><li>Take a deep breath</li><li>Correct your posture</li><li>Hydrate</li><li>Build Mindful Habits</li></ul>",
+            "image": "shopify://shop_images/WhatsApp_Image_2026-10-05_at_6.54.30_PM.jpg"
+          }
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {
+            "title": "Digital detox jewelry.",
+            "content": "<p>You check your phone 150 times a day. Breathelet reminds you to check yourself. <strong>A vibration only you can feel.</strong></p>",
+            "image": "shopify://shop_images/d989e3f2-1a42-444b-97e3-2879e680b4ff-1.jpg"
+          }
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {
+            "title": "BREATHE",
+            "content": "<p>This archaic Sanskrit symbol gracefully inspires us to embrace our natural responses. It represents life’s first and final acts, portraying the elegant symmetry of our existence.</p>",
+            "link_label": "SHOP BREATHELET →",
+            "link_url": "shopify://products/breathelet-onefit",
+            "image": "shopify://shop_images/b5.png"
+          }
+        }
+      },
+      "block_order": ["item_1", "item_2", "item_3"],
+      "settings": {}
+    },
+    "fa63dde0-c7d9-4ac7-9f3d-90ef6a67184f": {
       "type": "image-with-text",
       "blocks": {
         "ec265dd3-f55f-46a2-9caf-3bf07ff3a06d": {
@@ -984,6 +1018,7 @@
     "gift_banners_home",
     "love_cards_home",
     "community_cards_home",
+    "ritual_accordion_home",
     "fa63dde0-c7d9-4ac7-9f3d-90ef6a67184f",
     "image_with_text_bcbTad",
     "editorial_breathe_symbol",

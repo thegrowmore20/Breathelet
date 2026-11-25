@@ -1,0 +1,434 @@
+{% render 'section-bg-number-vars' %}
+
+{%- capture ritual_style -%}
+  --primary: {{ section.settings.primary_color }};
+  --accent: {{ section.settings.accent_color }};
+  --accent-rgb: {{ section.settings.accent_color.rgb }};
+  --rit-surface: {{ section.settings.media_background }};
+{%- endcapture -%}
+
+<section {% render 'section-attrs', class: 'ritual', style: ritual_style %}>
+  <div class="section-body">
+    <ritual-accordion class="rit">
+      <div class="rit-l" data-animation="block" data-animation-group="{{ section.id }}-acc">
+        <div class="rit-acc">
+          {%- for block in section.blocks -%}
+            {%- assign is_open = forloop.first -%}
+            <div
+              class="ri{% if is_open %} open{% endif %}"
+              data-index="{{ forloop.index0 }}"
+              {{ block.shopify_attributes }}
+            >
+              <button
+                type="button"
+                class="ri-h"
+                aria-expanded="{% if is_open %}true{% else %}false{% endif %}"
+                aria-controls="RitualPanel-{{ section.id }}-{{ forloop.index }}"
+              >
+                <span>{{ block.settings.title | escape }}</span>
+                <i aria-hidden="true"></i>
+              </button>
+              <div class="ri-p" id="RitualPanel-{{ section.id }}-{{ forloop.index }}">
+                <div>
+                  <div class="ri-b">
+                    {%- if block.settings.content != blank -%}
+                      <div class="ri-content">{{ block.settings.content }}</div>
+                    {%- endif -%}
+                    {%- if block.settings.link_label != blank and block.settings.link_url != blank -%}
+                      <a href="{{ block.settings.link_url }}" class="ri-link">
+                        {{- block.settings.link_label | escape -}}
+                      </a>
+                    {%- endif -%}
+                  </div>
+                </div>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+
+      <div class="rit-m" data-animation="block" data-animation-group="{{ section.id }}-media">
+        {%- for block in section.blocks -%}
+          {%- assign img_class = 'rit-img' -%}
+          {%- if forloop.first -%}
+            {%- assign img_class = 'rit-img on' -%}
+          {%- endif -%}
+          <div class="{{ img_class }}" data-media-index="{{ forloop.index0 }}">
+            {%- if block.settings.image != blank -%}
+              {{
+                block.settings.image
+                | image_url: width: 1500
+                | image_tag:
+                  widths: '352, 550, 832, 1200, 1500',
+                  sizes: '(min-width: 992px) 52vw, 100vw',
+                  loading: 'lazy',
+                  alt: block.settings.image.alt
+              }}
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    </ritual-accordion>
+  </div>
+</section>
+
+{% javascript %}
+  if (!customElements.get('ritual-accordion')) {
+    class RitualAccordion extends HTMLElement {
+      connectedCallback() {
+        this._controller = new AbortController();
+        const { signal } = this._controller;
+
+        this.addEventListener(
+          'click',
+          (event) => {
+            const trigger = event.target.closest('.ri-h');
+            if (!trigger || !this.contains(trigger)) return;
+
+            const item = trigger.closest('.ri');
+            if (!item || item.classList.contains('open')) return;
+
+            for (const openItem of this.querySelectorAll('.ri.open')) {
+              openItem.classList.remove('open');
+              const btn = openItem.querySelector('.ri-h');
+              if (btn) btn.setAttribute('aria-expanded', 'false');
+            }
+
+            item.classList.add('open');
+            trigger.setAttribute('aria-expanded', 'true');
+
+            const idx = item.dataset.index;
+            for (const slide of this.querySelectorAll('.rit-img')) {
+              slide.classList.toggle('on', slide.dataset.mediaIndex === idx);
+            }
+          },
+          { signal }
+        );
+      }
+
+      disconnectedCallback() {
+        if (this._controller) this._controller.abort();
+      }
+    }
+
+    customElements.define('ritual-accordion', RitualAccordion);
+  }
+{% endjavascript %}
+
+{% stylesheet %}
+  .ritual {
+    --rit-line: rgb(var(--color-foreground) / 10%);
+    --rit-tx2: rgb(var(--color-foreground) / 68%);
+    --rit-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .rit {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: clamp(40px, 6vw, 110px);
+    align-items: center;
+  }
+
+  .rit-l {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .rit-acc {
+    width: 100%;
+    border-top: 1px solid var(--rit-line);
+    align-self: start;
+  }
+
+  .ri {
+    border-bottom: 1px solid var(--rit-line);
+  }
+
+  .ri-h {
+    width: 100%;
+    min-height: 44px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    text-align: left;
+    padding: 30px 0;
+    font-family: var(--font-heading-family);
+    font-size: clamp(22px, 2.2vw, 32px);
+    font-weight: 400;
+    line-height: 1.22;
+    letter-spacing: -0.01em;
+    color: var(--rit-tx2);
+    background: none;
+    border: 0;
+    cursor: pointer;
+  }
+
+  .ri-h:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
+
+  .ri.open .ri-h,
+  .ri-h:hover {
+    color: rgb(var(--color-foreground));
+  }
+
+  .ri-h i {
+    position: relative;
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+
+  .ri-h i::before,
+  .ri-h i::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 14px;
+    height: 1.5px;
+    background: currentColor;
+    transition: transform 280ms var(--rit-ease);
+  }
+
+  .ri-h i::after {
+    transform: rotate(90deg);
+  }
+
+  .ri.open .ri-h i::after {
+    transform: rotate(0deg);
+  }
+
+  .ri-p {
+    display: grid;
+    grid-template-rows: 0fr;
+    contain: layout paint;
+    transition: grid-template-rows 280ms var(--rit-ease);
+  }
+
+  .ri-p > div {
+    overflow: hidden;
+  }
+
+  .ri.open .ri-p {
+    grid-template-rows: 1fr;
+  }
+
+  .ri-b {
+    padding: 0 0 32px;
+    display: grid;
+    gap: 18px;
+    color: var(--rit-tx2);
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 560px;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 280ms var(--rit-ease), transform 280ms var(--rit-ease);
+  }
+
+  .ri.open .ri-b {
+    opacity: 1;
+    transform: none;
+  }
+
+  .ri-content p {
+    margin: 0;
+  }
+
+  .ri-content p + p,
+  .ri-content p + ul {
+    margin-top: 14px;
+  }
+
+  .ri-content ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 8px;
+  }
+
+  .ri-content li {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    color: rgb(var(--color-foreground));
+  }
+
+  .ri-content li::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .ri-content strong,
+  .ri-content b {
+    color: rgb(var(--color-foreground));
+    font-weight: 600;
+  }
+
+  .ri-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    justify-self: start;
+    position: relative;
+  }
+
+  .ri-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 8px;
+    height: 1px;
+    background: currentColor;
+  }
+
+  .ri-link:hover {
+    color: rgb(var(--accent-rgb) / 82%);
+  }
+
+  .ri-link:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .rit-m {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    max-height: 78svh;
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--rit-surface);
+    border: 1px solid var(--rit-line);
+  }
+
+  .rit-img {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transform: scale(1.04);
+    transition: opacity 600ms var(--rit-ease), transform 900ms var(--rit-ease);
+  }
+
+  .rit-img.on {
+    opacity: 1;
+    transform: none;
+  }
+
+  .rit-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  @media (max-width: 991px) {
+    .rit {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .rit-m {
+      order: -1;
+      aspect-ratio: 1 / 0.85;
+      max-height: none;
+    }
+  }
+
+  @media (max-width: 575px) {
+    .ri-h {
+      padding: 22px 0;
+    }
+
+    .ri-b {
+      padding-bottom: 24px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ri-h i::before,
+    .ri-h i::after,
+    .ri-p,
+    .ri-b,
+    .rit-img {
+      transition: none;
+    }
+
+    .rit-img {
+      transform: none;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Ritual accordion",
+  "class": "section-ritual-accordion",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#000000" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#F4F0EE" },
+    { "type": "color", "id": "primary_color", "label": "Primary", "default": "#000000" },
+    { "type": "color", "id": "accent_color", "label": "Secondary (accent)", "default": "#A57C72" },
+    { "type": "color", "id": "media_background", "label": "Media fallback surface", "default": "#0E0D0C" }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "BREATHE" },
+        { "type": "richtext", "id": "content", "label": "Content", "default": "<p>This archaic Sanskrit symbol gracefully inspires us to embrace our natural responses. It represents life’s first and final acts, portraying the elegant symmetry of our existence.</p>" },
+        { "type": "text", "id": "link_label", "label": "Inline link label (optional)" },
+        { "type": "url", "id": "link_url", "label": "Inline link URL" },
+        { "type": "image_picker", "id": "image", "label": "Image" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ritual accordion",
+      "blocks": [
+        {
+          "type": "item",
+          "settings": {
+            "title": "You can't control your stress without controlling your breath",
+            "content": "<p>Breathelet sends a gentle random vibration every 60–150 minutes, a soft reminder to:</p><ul><li>Be present in the moment</li><li>Take a deep breath</li><li>Correct your posture</li><li>Hydrate</li><li>Build Mindful Habits</li></ul>"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "title": "Digital detox jewelry.",
+            "content": "<p>You check your phone 150 times a day. Breathelet reminds you to check yourself. <strong>A vibration only you can feel.</strong></p>"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "title": "BREATHE",
+            "content": "<p>This archaic Sanskrit symbol gracefully inspires us to embrace our natural responses. It represents life’s first and final acts, portraying the elegant symmetry of our existence.</p>",
+            "link_label": "SHOP BREATHELET →"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
