@@ -167,3 +167,8 @@
 - sections/specs-every-day.liquid: wrapped `.sp-box` and an integrated `.sp-assurance` bottom strip inside one unified `.sp-frame` (#0E0D0C surface, #A57C72 accent, `mix-blend-mode: screen` on icons and guarantee badges so opaque black backgrounds disappear cleanly).
 - templates/index.json: removed standalone `confidence_banner` from homepage and enabled `show_confidence_strip` + badges on `specs_every_day_home`.
 - Pushed to theme 204901220687 (--only) and GitHub.
+
+
+## 2026-11-25 - increase guarantee badge size by 25% in Specs every day
+- sections/specs-every-day.liquid: scaled `.sp-assurance__badge` by +25% (`clamp(120px, 12vw, 148px)`, mobile `115px`) and separator height (`85px`, mobile `68px`).
+- Pushed to theme 204901220687 (--only sections/specs-every-day.liquid) and GitHub.
