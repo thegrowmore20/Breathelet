@@ -63,3 +63,9 @@
 - sections/ritual-accordion.liquid: added image_aspect_ratio setting (Auto, Square 1:1, Landscape 4:3, Landscape wide 16:9, Portrait 3:4, Portrait 4:5, Portrait tall 2:3) with dynamic --rit-ratio updates in auto mode.
 - Pushed to theme 204901220687 (--only sections/ritual-accordion.liquid) and GitHub.
 
+
+## 2026-11-25 - rename ritual-accordion to ritual_accordion
+- Renamed sections/ritual-accordion.liquid -> sections/ritual_accordion.liquid per user request (overrides AGENTS.md kebab-case convention).
+- Updated templates/index.json ritual_accordion_home type to ritual_accordion.
+- Pushed to theme 204901220687 (--only) and GitHub.
+

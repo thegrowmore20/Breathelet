@@ -340,7 +340,7 @@
       "settings": {}
     },
     "ritual_accordion_home": {
-      "type": "ritual-accordion",
+      "type": "ritual_accordion",
       "blocks": {
         "item_1": {
           "type": "item",
