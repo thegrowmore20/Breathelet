@@ -42,3 +42,8 @@
 - sections/philosophy.liquid: added theme data-animation stagger + <philosophy-stats> custom element count-up animation (cubic ease-out, tabular-nums for 0 CLS, prefers-reduced-motion safe, works without JS).
 - Pushed to theme 204901220687 (--only sections/philosophy.liquid) and GitHub.
 
+
+## 2026-11-25 - featured collection headings to 3XL (h0)
+- templates/index.json: updated featured_collection_PHPzLB (Shop Breathelet) and featured_collection_rJaDDf (Shop Accessories) heading_size from h2 to h0 (3X-Large).
+- Pushed to theme 204901220687 (--only templates/index.json) and GitHub.
+
