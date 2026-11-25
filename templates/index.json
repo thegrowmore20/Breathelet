@@ -877,7 +877,7 @@
         "autoplay": true,
         "loop": true,
         "mute": true,
-        "hide_controls": true,
+        "hide_controls": false,
         "image_size": "media--ratio-16-9",
         "subheading": "",
         "heading": "",

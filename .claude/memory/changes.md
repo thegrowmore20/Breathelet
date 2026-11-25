@@ -138,3 +138,8 @@
 - sections/homepage-usps.liquid: redesigned assurance hero panel and 4-column USP cards in #000000/#A57C72/#0D0B0A palette using `{% stylesheet %}`, editorial serif `h0` heading with `<em>` accent support, eyebrow label, radial rose-taupe glow, vertical hairline badge divider, numbered cards with circular icon medallions, `data-animation="block"`, canonical breakpoints (991px/575px), and `prefers-reduced-motion`. Preserved all existing schema IDs.
 - templates/index.json: updated `homepage_usps_jQz9Ba` with `eyebrow: "OUR PROMISE"`, `heading: "Buy with <em>Confidence</em>"`, `accent_color: "#a57c72"`, `card_background: "#0d0b0a"`.
 - Pushed to theme 204901220687 (--only) and GitHub.
+
+
+## 2026-11-25 - toggle off hide_controls on homepage Video section
+- templates/index.json: set `hide_controls` to `false` on `video_RLKz98`.
+- Pushed to theme 204901220687 (--only templates/index.json) and GitHub.
