@@ -1,0 +1,231 @@
+{% render 'section-bg-number-vars' %}
+
+<section {% render 'section-attrs', class: 'sp' %}>
+  <div class="section-body">
+    <div class="sp-head" data-animation="block" data-animation-group="{{ section.id }}-head">
+      {%- if section.settings.eyebrow != blank -%}
+        <div class="eyebrow">{{ section.settings.eyebrow | escape }}</div>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2>{{ section.settings.heading }}</h2>
+      {%- endif -%}
+    </div>
+
+    <div class="sp-box" style="--sp-card-background: {{ section.settings.card_background }};">
+      {%- for block in section.blocks -%}
+        <div
+          class="sp-cell"
+          data-animation="block"
+          data-animation-group="{{ section.id }}-cells"
+          {{ block.shopify_attributes }}
+        >
+          <div class="sp-top">
+            <span>{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
+            {%- case block.settings.icon -%}
+              {%- when 'drop' -%}
+                <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path pathLength="1" d="M24 6C24 6 11 20 11 29a13 13 0 0 0 26 0C37 20 24 6 24 6z"/><path pathLength="1" d="M18 30a6 6 0 0 0 6 6"/></svg>
+              {%- when 'battery' -%}
+                <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><rect pathLength="1" x="5" y="14" width="34" height="20" rx="5"/><path pathLength="1" d="M43 21v6"/><path pathLength="1" d="M13 22h14v4H13z"/></svg>
+              {%- when 'no_app' -%}
+                <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><rect pathLength="1" x="14" y="5" width="20" height="38" rx="5"/><path pathLength="1" d="M6 42L42 6"/></svg>
+              {%- when 'fit' -%}
+                <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><circle pathLength="1" cx="24" cy="24" r="15"/><path pathLength="1" d="M4 24h8M36 24h8M9 19l-5 5 5 5M39 19l5 5-5 5"/></svg>
+            {%- endcase -%}
+          </div>
+          {%- if block.settings.title != blank -%}
+            <b>{{ block.settings.title | escape }}</b>
+          {%- endif -%}
+          {%- if block.settings.text != blank -%}
+            <p>{{ block.settings.text | escape }}</p>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .sp {
+    --sp-line: rgb(var(--color-foreground) / 9%);
+    --sp-mute: rgb(var(--color-foreground) / 65%);
+    --sp-ink-2: rgb(var(--color-foreground) / 75%);
+  }
+
+  .sp .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--sp-mute);
+    font-weight: 500;
+  }
+
+  .sp-head {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .sp-head h2 {
+    font-family: var(--font-heading-family);
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    line-height: 1.05;
+    font-size: clamp(36px, 4.6vw, 68px);
+    margin-top: 16px;
+  }
+
+  .sp-head h2 em {
+    font-style: italic;
+    color: var(--sp-mute);
+  }
+
+  .sp-box {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: var(--sp-card-background, #fff);
+    border-radius: 36px;
+    overflow: hidden;
+    border: 1px solid var(--sp-line);
+  }
+
+  .sp-cell {
+    position: relative;
+    padding: 34px 34px 38px;
+    min-height: 290px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--sp-line);
+  }
+
+  .sp-cell:last-child {
+    border: 0;
+  }
+
+  .sp-cell:hover {
+    background: rgb(var(--color-foreground));
+    color: rgb(var(--color-background));
+  }
+
+  .sp-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: auto;
+  }
+
+  .sp-top span {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    color: var(--sp-mute);
+  }
+
+  .sp-top svg {
+    width: 54px;
+    height: 54px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .sp-cell b {
+    font-family: var(--font-heading-family);
+    font-weight: 400;
+    font-size: clamp(28px, 2.6vw, 38px);
+    line-height: 1;
+    letter-spacing: -0.01em;
+    margin-top: 60px;
+  }
+
+  .sp-cell p {
+    font-size: 13px;
+    color: var(--sp-ink-2);
+    margin-top: 12px;
+  }
+
+  .sp-cell:hover p {
+    color: rgb(var(--color-background) / 65%);
+  }
+
+  @media (max-width: 991px) {
+    .sp-box {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .sp-cell:nth-child(2) {
+      border-right: 0;
+    }
+
+    .sp-cell:nth-child(-n + 2) {
+      border-bottom: 1px solid var(--sp-line);
+    }
+
+    .sp-cell {
+      min-height: 240px;
+    }
+  }
+
+  @media (max-width: 575px) {
+    .sp-box {
+      grid-template-columns: 1fr;
+    }
+
+    .sp-cell {
+      border-right: 0;
+      border-bottom: 1px solid var(--sp-line);
+      min-height: 200px;
+    }
+
+    .sp-cell b {
+      margin-top: 34px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Specs every day",
+  "class": "section-specs-every-day",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Built for every day" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "info": "Wrap a word in <em> for the italic accent.", "default": "Made to <em>disappear</em> on your wrist." },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#ECECEA" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#0B0B0B" },
+    { "type": "color", "id": "card_background", "label": "Card background", "default": "#FFFFFF" }
+  ],
+  "blocks": [
+    {
+      "type": "spec",
+      "name": "Spec",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "drop", "label": "Water drop" },
+            { "value": "battery", "label": "Battery" },
+            { "value": "no_app", "label": "No app" },
+            { "value": "fit", "label": "Adjustable fit" }
+          ],
+          "default": "drop"
+        },
+        { "type": "text", "id": "title", "label": "Title", "default": "Water-resistant" },
+        { "type": "text", "id": "text", "label": "Text", "default": "Durable for everyday wear" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Specs every day",
+      "blocks": [
+        { "type": "spec", "settings": { "icon": "drop", "title": "Water-resistant", "text": "Durable for everyday wear" } },
+        { "type": "spec", "settings": { "icon": "battery", "title": "14-day battery", "text": "Lasts up to two weeks" } },
+        { "type": "spec", "settings": { "icon": "no_app", "title": "No app required", "text": "No screen, no setup" } },
+        { "type": "spec", "settings": { "icon": "fit", "title": "Adjustable fit", "text": "Comfortable on any wrist" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

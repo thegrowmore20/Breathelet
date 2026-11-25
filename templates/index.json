@@ -9,54 +9,6 @@
  */
 {
   "sections": {
-    "hero_breathe_01": {
-      "type": "hero-breathe",
-      "disabled": true,
-      "blocks": {
-        "hb_chip_1": {
-          "type": "hotspot",
-          "settings": {
-            "label": "Gentle vibration module",
-            "pos_x": 68,
-            "pos_y": 50
-          }
-        },
-        "hb_chip_2": {
-          "type": "hotspot",
-          "settings": {
-            "label": "Hook closure",
-            "pos_x": 82,
-            "pos_y": 38
-          }
-        },
-        "hb_chip_3": {
-          "type": "hotspot",
-          "settings": {
-            "label": "Adjustable cord",
-            "pos_x": 63,
-            "pos_y": 87
-          }
-        }
-      },
-      "block_order": ["hb_chip_1", "hb_chip_2", "hb_chip_3"],
-      "settings": {
-        "eyebrow": "Digital detox jewelry",
-        "heading_top": "A gentle vibration that",
-        "heading_italic": "brings you back.",
-        "body": "A soft pulse only you can feel, every 60–150 minutes, to breathe, reset and stay present. No screen. No app.",
-        "cta_text": "Shop Breathelet",
-        "cta_url": "shopify://products/breathelet-onefit",
-        "play_text": "See how it works",
-        "show_rating": true,
-        "rating_score": "4.2",
-        "rating_count": "100",
-        "product_image": "shopify://shop_images/1_01fded21-45c6-4335-882b-117aa244f239.webp",
-        "bar_1": "",
-        "bar_2": "",
-        "bar_3": "",
-        "bar_4": ""
-      }
-    },
     "slideshow_7aaerb": {
       "type": "slideshow",
       "blocks": {
@@ -105,7 +57,7 @@
             "desktop_text_alignment": "left",
             "subheading": "",
             "heading": "A Gentle Vibration That Brings You Back.",
-            "heading_size": "h3",
+            "heading_size": "h1",
             "text": "",
             "hide_text_on_mobile": false,
             "button_size": "text-xs md:text-sm",
@@ -139,7 +91,7 @@
             "desktop_text_alignment": "left",
             "subheading": "",
             "heading": "No App, No Screen, No Bluetooth.",
-            "heading_size": "h3",
+            "heading_size": "h1",
             "text": "",
             "hide_text_on_mobile": false,
             "button_size": "text-xs md:text-sm",
@@ -187,6 +139,8 @@
       "name": "t:sections.featured-collection.name",
       "settings": {
         "full_width": true,
+        "content_width": "normal",
+        "display_layout": "grid",
         "carousel": true,
         "show_variants": true,
         "products_count": 8,
@@ -197,7 +151,7 @@
         ],
         "collection": "",
         "subheading": "",
-        "heading": "",
+        "heading": "Shop Breathelet",
         "heading_size": "h2",
         "text_alignment": "text-center",
         "link_text": "View all",
@@ -208,24 +162,25 @@
         "heading_html_tag": "p"
       }
     },
-    "featured_collection_jdUFMc": {
+    "featured_collection_rJaDDf": {
       "type": "featured-collection",
-      "disabled": true,
       "name": "t:sections.featured-collection.name",
       "settings": {
         "full_width": true,
+        "content_width": "normal",
+        "display_layout": "list",
         "carousel": true,
-        "show_variants": false,
+        "show_variants": true,
         "products_count": 8,
         "grid_columns": 3,
         "grid_columns_mobile": "2",
         "products": [
-          "eternal-love-pair",
-          "breathelet-onefit"
+          "charging-dock",
+          "breathelet-onefit-replacement-strings"
         ],
         "collection": "",
         "subheading": "",
-        "heading": "",
+        "heading": "Shop Accessories",
         "heading_size": "h2",
         "text_alignment": "text-center",
         "link_text": "View all",
@@ -236,7 +191,144 @@
         "heading_html_tag": "p"
       }
     },
-    "fa63dde0-c7d9-4ac7-9f3d-90ef6a67184f": {
+    "philosophy_home": {
+      "type": "philosophy",
+      "name": "Philosophy",
+      "blocks": {
+        "philosophy_heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "A Proper Conscious, Deep Breath",
+            "heading_size": "h0",
+            "heading_html_tag": "h2"
+          }
+        },
+        "philosophy_text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Perfect for any wrist, Breathelet helps you stay present, build better routines, and support daily clarity with soft vibration reminders designed to keep you aligned all day. For a full reset, sit straight, relax your shoulders, inhale deeply through your nose, let your breath expand, then exhale slowly and completely.</p>"
+          }
+        },
+        "philosophy_bio": {
+          "type": "bio",
+          "settings": {
+            "author_image": "shopify://shop_images/610954032627835120-james-nestor-web-photo-by-julie-floersch-copy.0.436.1864.1065.two-thirds.webp",
+            "author_name": "James Nestor",
+            "author_designation": "famous researcher on breathing",
+            "quotation_text": "<em>“A rhythm of 5.5-second inhales followed by 5.5-second exhales is the most efficient breathing pattern.”</em>"
+          }
+        }
+      },
+      "block_order": [
+        "philosophy_heading",
+        "philosophy_text",
+        "philosophy_bio"
+      ],
+      "settings": {
+        "video": "",
+        "video_poster": "",
+        "autoplay": true,
+        "loop": true,
+        "video_label": "Inhale 5.5s · Exhale 5.5s",
+        "stat_1_value": "5.5s",
+        "stat_1_label": "INHALE",
+        "stat_2_value": "5.5s",
+        "stat_2_label": "EXHALE",
+        "stat_3_value": "150×",
+        "stat_3_label": "PHONE CHECKS / DAY"
+      }
+    },
+    "bento_benefits_home": {
+      "type": "bento-benefits",
+      "name": "Bento benefits",
+      "settings": {}
+    },
+    "specs_every_day_home": {
+      "type": "specs-every-day",
+      "blocks": {
+        "spec_1": { "type": "spec", "settings": { "icon": "drop", "title": "Water-resistant", "text": "Durable for everyday wear" } },
+        "spec_2": { "type": "spec", "settings": { "icon": "battery", "title": "14-day battery", "text": "Lasts up to two weeks" } },
+        "spec_3": { "type": "spec", "settings": { "icon": "no_app", "title": "No app required", "text": "No screen, no setup" } },
+        "spec_4": { "type": "spec", "settings": { "icon": "fit", "title": "Adjustable fit", "text": "Comfortable on any wrist" } }
+      },
+      "block_order": ["spec_1", "spec_2", "spec_3", "spec_4"],
+      "settings": {}
+    },
+    "gift_banners_home": {
+      "type": "gift-banners",
+      "blocks": {
+        "banner_1": {
+          "type": "banner",
+          "settings": {
+            "style": "light",
+            "image": "shopify://shop_images/2_efbd635d-548c-40df-b31a-e4cd21e69ab2.webp",
+            "eyebrow": "For someone you love",
+            "heading": "Gift love they’ll <em>remember.</em>",
+            "text": "Give a meaningful daily reminder that keeps your care close, through every soft cue and quiet reset.",
+            "button_label": "Gift Breathelet",
+            "button_link": "/collections/all"
+          }
+        },
+        "banner_2": {
+          "type": "banner",
+          "settings": {
+            "style": "dark",
+            "image": "shopify://shop_images/3_9748f5be-627b-4256-b1ea-3063ec83df72.webp",
+            "eyebrow": "Eternal Love Pair",
+            "heading": "Two Breathelets. <em>One connection.</em>",
+            "text": "One shared reminder to breathe, reset, and stay present — together.",
+            "button_label": "Buy the Pair · $59.99",
+            "button_link": "/collections/all"
+          }
+        }
+      },
+      "block_order": ["banner_1", "banner_2"],
+      "settings": {}
+    },
+    "love_cards_home": {
+      "type": "love-cards",
+      "blocks": {
+        "card_1": { "type": "card", "settings": { "icon": "smile", "title": "Feel Present Again" } },
+        "card_2": { "type": "card", "settings": { "icon": "sunrise", "title": "Calm That Fits Your Day" } },
+        "card_3": { "type": "card", "settings": { "icon": "reset", "title": "Reset Anywhere, Anytime" } },
+        "card_4": { "type": "card", "settings": { "icon": "mind", "title": "Mindful Habits" } },
+        "card_5": { "type": "card", "settings": { "icon": "care", "title": "Screenless Wellness" } },
+        "card_6": { "type": "card", "settings": { "icon": "gift", "title": "Meaningful Gift" } }
+      },
+      "block_order": ["card_1", "card_2", "card_3", "card_4", "card_5", "card_6"],
+      "settings": {
+        "button_link": "/products/breathelet-onefit"
+      }
+    },
+    "community_cards_home": {
+      "type": "community-cards",
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/WhatsApp_Image_2026-10-12_at_12.26.45_PM.webp",
+            "heading": "Join Our Influencer Community",
+            "text": "Share mindful living, everyday calm, and meaningful wellness with your audience through authentic content.",
+            "button_label": "Become an Influencer",
+            "button_link": "https://api.collabs.shopify.com/creator/signup/community_application/5e6f391d2a834f1a?origin=THEME_EXTENSION",
+            "button_style": "accent"
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/Wholesale.webp",
+            "heading": "Partner With Breathelet",
+            "text": "Bring mindful wellness to your customers with wholesale pricing designed for retailers, distributors, and gift programs.",
+            "button_label": "Get Wholesale Quote",
+            "button_link": "/pages/request-a-quote",
+            "button_style": "white"
+          }
+        }
+      },
+      "block_order": ["card_1", "card_2"],
+      "settings": {}
+    },    "fa63dde0-c7d9-4ac7-9f3d-90ef6a67184f": {
       "type": "image-with-text",
       "blocks": {
         "ec265dd3-f55f-46a2-9caf-3bf07ff3a06d": {
@@ -322,6 +414,51 @@
         "image_width": 50,
         "text_alignment": "text-left",
         "background_color": "#000000",
+        "text_color": "#ffffff",
+        "heading_color": "#ffffff"
+      }
+    },
+    "editorial_breathe_symbol": {
+      "type": "image-with-text-editorial",
+      "blocks": {
+        "heading_1": {
+          "type": "heading",
+          "settings": {
+            "heading": "BREATHE",
+            "heading_size": "h0",
+            "heading_html_tag": "h2"
+          }
+        },
+        "text_1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>This archaic Sanskrit symbol gracefully inspires us to embrace our natural responses. It represents life’s first and final acts, portraying the elegant symmetry of our existence.</p>"
+          }
+        },
+        "link_1": {
+          "type": "link",
+          "settings": {
+            "text": "Shop Breathelet",
+            "url": "shopify://products/breathelet-onefit",
+            "show_arrow": true
+          }
+        }
+      },
+      "block_order": [
+        "heading_1",
+        "text_1",
+        "link_1"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_bottom_spacing": false,
+        "image": "shopify://shop_images/b5.png",
+        "image_size": "",
+        "image_inset": 24,
+        "image_position": "right",
+        "min_height_desktop": 560,
+        "min_height_mobile": 300,
+        "background_color": "#0a0a0a",
         "text_color": "#ffffff",
         "heading_color": "#ffffff"
       }
@@ -507,65 +644,6 @@
         "heading_html_tag": "p"
       }
     },
-    "custom_section_HgdMYY": {
-      "type": "custom-section",
-      "blocks": {
-        "product_meta_short_i4BNrV": {
-          "type": "product-meta-short",
-          "name": "Product Shorts",
-          "settings": {
-            "metafield_namespace": "custom",
-            "metafield_key": "",
-            "max_items": 10,
-            "autoplay": true,
-            "muted": true,
-            "video_border_radius": 12,
-            "slides_desktop": 4,
-            "slides_medium": 3,
-            "slides_mobile": 2,
-            "slide_gap": 15,
-            "desktop_width_percent": 100,
-            "section_padding": 0,
-            "auto_change": false,
-            "auto_change_interval": 4,
-            "show_arrows": true,
-            "show_dots": true,
-            "controls_spacing": 25,
-            "arrow_size": 40,
-            "arrow_background": "#000000",
-            "arrow_color": "#ffffff",
-            "arrow_hover_background": "#333333",
-            "arrow_hover_color": "#ffffff",
-            "dot_size": 8,
-            "dot_color": "#cccccc",
-            "dot_active_color": "#e0a96d"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "product_meta_short_i4BNrV"
-      ],
-      "disabled": true,
-      "name": "Custom Section",
-      "settings": {
-        "full_width": true,
-        "remove_horizontal_space": false,
-        "remove_vertical_space": false,
-        "content_width": "normal",
-        "subheading": "",
-        "heading": "FOLLOW US ON YOUTUBE",
-        "heading_size": "h2",
-        "text_alignment": "text-center",
-        "link_text": "<svg xmlns=\"http://www.w3.org/2000/svg\" x=\"0px\" y=\"0px\" width=\"25\" height=\"25\" viewbox=\"0 0 48 48\"><path fill=\"#FF3D00\" d=\"M43.2,33.9c-0.4,2.1-2.1,3.7-4.2,4c-3.3,0.5-8.8,1.1-15,1.1c-6.1,0-11.6-0.6-15-1.1c-2.1-0.3-3.8-1.9-4.2-4C4.4,31.6,4,28.2,4,24c0-4.2,0.4-7.6,0.8-9.9c0.4-2.1,2.1-3.7,4.2-4C12.3,9.6,17.8,9,24,9c6.2,0,11.6,0.6,15,1.1c2.1,0.3,3.8,1.9,4.2,4c0.4,2.3,0.9,5.7,0.9,9.9C44,28.2,43.6,31.6,43.2,33.9z\"></path><path fill=\"#FFF\" d=\"M20 31L20 17 32 24z\"></path></svg>@Breathelet",
-        "link_url": "https://www.youtube.com/@Breathelet",
-        "new_tab": false,
-        "heading_html_tag": "h2",
-        "background_color": "",
-        "text_color": "",
-        "heading_color": ""
-      }
-    },
     "homepage_usps_jQz9Ba": {
       "type": "homepage-usps",
       "blocks": {
@@ -641,48 +719,6 @@
         "heading_html_tag": "h2"
       }
     },
-    "editorial_breathe_symbol": {
-      "type": "image-with-text-editorial",
-      "blocks": {
-        "heading_1": {
-          "type": "heading",
-          "settings": {
-            "heading": "BREATHE",
-            "heading_size": "h0",
-            "heading_html_tag": "h2"
-          }
-        },
-        "text_1": {
-          "type": "text",
-          "settings": {
-            "text": "<p>This archaic Sanskrit symbol gracefully inspires us to embrace our natural responses. It represents life’s first and final acts, portraying the elegant symmetry of our existence.</p>"
-          }
-        },
-        "link_1": {
-          "type": "link",
-          "settings": {
-            "text": "Shop Breathelet",
-            "url": "shopify://products/breathelet-onefit",
-            "show_arrow": true
-          }
-        }
-      },
-      "block_order": [
-        "heading_1",
-        "text_1",
-        "link_1"
-      ],
-      "settings": {
-        "full_width": true,
-        "image": "shopify://shop_images/b5.png",
-        "image_position": "right",
-        "min_height_desktop": 560,
-        "min_height_mobile": 300,
-        "background_color": "#0a0a0a",
-        "text_color": "#ffffff",
-        "heading_color": "#ffffff"
-      }
-    },
     "image_with_text_tHGRPd": {
       "type": "image-with-text",
       "blocks": {
@@ -733,76 +769,6 @@
         "background_color": "#000000",
         "text_color": "#ffffff",
         "heading_color": "#ffffff"
-      }
-    },
-    "multicolumn_Pxn6VQ": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_x7jMzy": {
-          "type": "column",
-          "settings": {
-            "video_autoplay": true,
-            "heading": "15-day returns ",
-            "heading_size": "h5",
-            "content": "",
-            "link_url": "",
-            "link_text": "",
-            "link_style": "button",
-            "heading_html_tag": "p"
-          }
-        },
-        "column_KfE8Dc": {
-          "type": "column",
-          "settings": {
-            "video_autoplay": true,
-            "heading": "Lifetime replacement",
-            "heading_size": "h5",
-            "content": "",
-            "link_url": "",
-            "link_text": "",
-            "link_style": "button",
-            "heading_html_tag": "p"
-          }
-        },
-        "column_DwbRUR": {
-          "type": "column",
-          "settings": {
-            "video_autoplay": true,
-            "heading": "Water-resistant",
-            "heading_size": "h5",
-            "content": "",
-            "link_url": "",
-            "link_text": "",
-            "link_style": "button",
-            "heading_html_tag": "p"
-          }
-        }
-      },
-      "block_order": [
-        "column_x7jMzy",
-        "column_KfE8Dc",
-        "column_DwbRUR"
-      ],
-      "disabled": true,
-      "name": "t:sections.multicolumn.presets__0.name",
-      "settings": {
-        "full_width": true,
-        "enable_swipe_on_mobile": false,
-        "number_of_columns_on_desktop": 3,
-        "space_between_columns": 48,
-        "image_width": 100,
-        "image_size": "",
-        "column_text_alignment": "text-center items-center",
-        "column_text_alignment_mobile": "",
-        "subheading": "",
-        "heading": "",
-        "heading_size": "h4",
-        "content": "",
-        "text_alignment": "text-center",
-        "background_color": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_html_tag": "p"
       }
     },
     "image_with_text_WjQwNJ": {
@@ -895,199 +861,6 @@
         "background_color": "",
         "text_color": "",
         "heading_color": ""
-      }
-    },
-    "featured_product_9ybD34": {
-      "type": "featured-product",
-      "blocks": {
-        "title_qxpjjD": {
-          "type": "title",
-          "settings": {
-            "heading_size": "h2",
-            "text_color": ""
-          }
-        },
-        "rating_3mY8jc": {
-          "type": "rating",
-          "settings": {
-            "show_empty_rating": false,
-            "star_size": 20
-          }
-        },
-        "price_LcGYdh": {
-          "type": "price",
-          "settings": {
-            "show_taxes_notice": false,
-            "use_bold_font": true
-          }
-        },
-        "variant_picker_FFz6wj": {
-          "type": "variant_picker",
-          "settings": {
-            "hide_sold_out_variants": false,
-            "type": "radio",
-            "color_picker_type": "radio",
-            "block_style_rounded": false,
-            "block_style": "filled",
-            "size_chart_page": "",
-            "size_chart_option_name": "Size"
-          }
-        },
-        "inventory_krijVW": {
-          "type": "inventory",
-          "settings": {
-            "enable_low_stock_message": false,
-            "enable_backorder_message": false,
-            "low_stock_threshold": 5
-          }
-        },
-        "quantity_selector_AYifwB": {
-          "type": "quantity_selector",
-          "settings": {}
-        },
-        "buy_buttons_rgTktY": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_dynamic_checkout_buttons": true,
-            "show_gift_card_recipient": true,
-            "add_to_cart_background_color": "",
-            "add_to_cart_text_color": "",
-            "buy_it_now_background_color": "",
-            "buy_it_now_text_color": ""
-          }
-        }
-      },
-      "block_order": [
-        "title_qxpjjD",
-        "rating_3mY8jc",
-        "price_LcGYdh",
-        "variant_picker_FFz6wj",
-        "inventory_krijVW",
-        "quantity_selector_AYifwB",
-        "buy_buttons_rgTktY"
-      ],
-      "disabled": true,
-      "name": "t:sections.featured-product.presets__0.name",
-      "settings": {
-        "full_width": true,
-        "featured_product": "eternal-love-pair",
-        "desktop_media_width": 56,
-        "media_size": "1",
-        "media_layout_desktop": "carousel_horizontal",
-        "media_mobile_indicator": "dots",
-        "media_zoom": "lightbox",
-        "media_enable_video_autoplay": false,
-        "media_enable_video_looping": false,
-        "media_fit_height": true,
-        "background_color": "",
-        "text_color": "",
-        "heading_color": ""
-      }
-    },
-    "rich_text_zPXUB9": {
-      "type": "rich-text",
-      "blocks": {
-        "text_h3gqdn": {
-          "type": "text",
-          "settings": {
-            "text": "<p>                                                              </p>"
-          }
-        },
-        "text_eCDkXP": {
-          "type": "text",
-          "settings": {
-            "text": "<p>The breath should not be forced, without tension in your body, and without a loud sound.</p><p>James Nestor, the famous researcher on breathing, mentions that a rhythm of “5.5-second inhales followed by 5.5-second exhales” is the most efficient breathing pattern.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "text_h3gqdn",
-        "text_eCDkXP"
-      ],
-      "disabled": true,
-      "name": "t:sections.rich-text.presets__0.name",
-      "settings": {
-        "full_width": true,
-        "content_alignment": "mx-auto",
-        "text_alignment": "text-center",
-        "content_width": "normal",
-        "background_color": "",
-        "text_color": "",
-        "heading_color": ""
-      }
-    },
-    "177133889400aad7f9": {
-      "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_634672e_C6V3eQ": {
-          "type": "ai_gen_block_634672e",
-          "settings": {
-            "desktop_width_percent": 100,
-            "columns_desktop": 3,
-            "columns_mobile": "2",
-            "alignment": "center",
-            "grid_gap": 10,
-            "section_padding": 30,
-            "item_background_color": "#000000",
-            "item_border_radius": 8,
-            "item_padding": 25,
-            "logo_max_width": 80,
-            "spacing_below_logo": 0,
-            "title_font_size": 16,
-            "title_color": "#ffffff",
-            "spacing_below_title": 8,
-            "text_font_size": 13,
-            "text_color": "#ffffff",
-            "logo_1": "shopify://shop_images/icons-01.svg",
-            "title_1": "No app. No Bluetooth. No screen.",
-            "text_1": "No setup. No syncing. No dopamine traps. No EMF.",
-            "logo_2": "shopify://shop_images/icons-02.svg",
-            "title_2": "Water-resistant",
-            "text_2": "Cry. sweat. shower. live. It’s made for daily wear.",
-            "logo_3": "shopify://shop_images/icons-03.svg",
-            "title_3": "Gentle randomized vibrations",
-            "text_3": "A soft touch — not a buzz.",
-            "logo_4": "shopify://shop_images/icons-04.svg",
-            "title_4": "Looks like jewelry, not a gadget",
-            "text_4": "Minimal design. Premium feel.",
-            "logo_5": "shopify://shop_images/icons-05.svg",
-            "title_5": "Giftable price",
-            "text_5": "From 39.99 — the easiest “yes” gift.",
-            "logo_6": "shopify://shop_images/icons-06.svg",
-            "title_6": "Two styles",
-            "text_6": "Choose your fit: Rose Gold or Gunmetal."
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_634672e_C6V3eQ"
-      ],
-      "disabled": true,
-      "settings": {}
-    },
-    "featured_collection_MU6wJG": {
-      "type": "featured-collection",
-      "disabled": true,
-      "settings": {
-        "full_width": true,
-        "carousel": true,
-        "show_variants": false,
-        "products_count": 8,
-        "grid_columns": 4,
-        "grid_columns_mobile": "2",
-        "products": [],
-        "collection": "accessories",
-        "subheading": "",
-        "heading": "Accessories",
-        "heading_size": "h2",
-        "text_alignment": "text-center",
-        "link_text": "View all",
-        "link_url": "shopify://collections/accessories",
-        "background_color": "#0a0b0c",
-        "text_color": "",
-        "heading_color": "",
-        "heading_html_tag": "p"
       }
     },
     "two_column_flex_new": {
@@ -1192,10 +965,15 @@
     }
   },
   "order": [
-    "hero_breathe_01",
     "slideshow_7aaerb",
     "featured_collection_PHPzLB",
-    "featured_collection_jdUFMc",
+    "featured_collection_rJaDDf",
+    "philosophy_home",
+    "bento_benefits_home",
+    "specs_every_day_home",
+    "gift_banners_home",
+    "love_cards_home",
+    "community_cards_home",
     "fa63dde0-c7d9-4ac7-9f3d-90ef6a67184f",
     "image_with_text_bcbTad",
     "editorial_breathe_symbol",
@@ -1204,16 +982,10 @@
     "1779445986c7e74670",
     "1771334505e4d5ee02",
     "video_RLKz98",
-    "custom_section_HgdMYY",
     "homepage_usps_jQz9Ba",
     "image_with_text_tHGRPd",
-    "multicolumn_Pxn6VQ",
     "image_with_text_WjQwNJ",
     "video_with_text_dPhCKa",
-    "featured_product_9ybD34",
-    "rich_text_zPXUB9",
-    "177133889400aad7f9",
-    "featured_collection_MU6wJG",
     "two_column_flex_new",
     "47953464-d278-497d-be52-ea15912c52d9"
   ]
