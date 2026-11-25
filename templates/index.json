@@ -948,9 +948,12 @@
       "settings": {
         "full_width": true,
         "bg_color": "#000000",
+        "accent_color": "#a57c72",
+        "card_background": "#0d0b0a",
         "vertical_layout": true,
         "show_divider": false,
-        "heading": "Buy with Confidence",
+        "eyebrow": "OUR PROMISE",
+        "heading": "Buy with <em>Confidence</em>",
         "text_1": "Risk Free Shopping & Satisfaction Guaranteed",
         "intro_img_1": "shopify://shop_images/Lifetime_Warranty_3.png",
         "intro_text_1": "",

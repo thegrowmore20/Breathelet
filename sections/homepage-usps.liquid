@@ -5,599 +5,749 @@
   if section.settings.intro_img_1 != blank or section.settings.intro_img_url_1 != blank or section.settings.intro_img_2 != blank or section.settings.intro_img_url_2 != blank
     assign has_intro_image = true
   endif
+
+  assign heading_tag = section.settings.heading_html_tag | default: 'h2'
+  assign accent_color = section.settings.accent_color | default: '#a57c72'
+  assign accent_rgb = '165 124 114'
+  if section.settings.accent_color != blank
+    assign accent_rgb = section.settings.accent_color.rgb
+  endif
+  assign card_bg = section.settings.card_background | default: '#0d0b0a'
 -%}
 
-<style>
-	#shopify-section-{{ section.id }} {
-		--content-width: {% render 'get-content-width', type: section.settings.content_width %};
-	}
-</style>
-<section {% render 'section-attrs' %}>
-	<div class="section-body trim-margins">
-		<div class="services-container {% if section.settings.vertical_layout %}services-vertical-layout text-center{% endif %}" style="background-color: {{ section.settings.bg_color }};">
-			{% if has_intro_image %}
-			<div class="services-intro {% if section.settings.show_divider %}has-divider{% endif %}">
-				<h2 class="uppercase">{{ section.settings.heading | escape }}</h2>
-				{% if section.settings.text_1 != blank %}
-					<p>{{ section.settings.text_1 }}</p>
-				{% endif %}
-				<div class="intro-images">
-					{% if section.settings.intro_img_1 != blank %}
-						{% assign alt_intro_img_1 = section.settings.intro_img_1.alt | default: 'Limited Warranty' %}
-						<div class="service-intro-main intro-main-image-1">
-						{{
-							section.settings.intro_img_1
-							| image_url: width: 280
-							| image_tag:
-								widths: '140, 280, 420, 560',
-								sizes: '(max-width: 480px) 140px, (max-width: 768px) 280px, 280px',
-								width: 280,
-								height: 280,
-								alt: alt_intro_img_1,
-								loading: 'lazy'
-						}}
-						{% if section.settings.intro_text_1 != blank %}
-							<h3 class="mt-3 font-bold"> {{ section.settings.intro_text_1 }}  </h3>
-						{% endif %}
-					</div>
-					{% elsif section.settings.intro_img_url_1 != blank %}
-						<img src="{{ section.settings.intro_img_url_1 }}" alt="Intro image" loading="lazy" width="280" height="auto">
-					{% endif %}
-					{% if section.settings.intro_img_2 != blank %}
-						{% assign alt_intro_img_2 = section.settings.intro_img_2.alt | default: '30 Days Guarantee' %}
-						<div class="service-intro-main intro-main-image-2">
-						{{
-							section.settings.intro_img_2
-							| image_url: width: 280
-							| image_tag:
-								widths: '140, 280, 420, 560',
-								sizes: '(max-width: 480px) 140px, (max-width: 768px) 280px, 280px',
-								width: 280,
-								height: 280,
-								alt: alt_intro_img_2,
-								loading: 'lazy'
-						}}
-						{% if section.settings.intro_text_2 != blank %}
-							<h3 class="mt-3 font-bold"> {{ section.settings.intro_text_2 }}  </h3>
-						{% endif %}
-					</div>
-					{% elsif section.settings.intro_img_url_2 != blank %}
-						<img src="{{ section.settings.intro_img_url_2 }}" alt="Intro image" loading="lazy" width="280" height="auto">
-					{% endif %}
-				</div>
-					</div>
-					{% endif %}
-					<div class="services-grid">
-						{% for block in section.blocks %}
-							<div class="service-card" {{ block.shopify_attributes }}>
-								{% if block.settings.icon_html != blank %}
-									<div class="service-icon">
-										{{ block.settings.icon_html }}
-									</div>
-								{% elsif block.settings.icon_image != blank %}
-									<div class="service-icon">										
-										{% assign alt_image = block.settings.icon_image.alt | default: block.settings.title %}
-										{{
-											block.settings.icon_image
-											| image_url: width: 88
-											| image_tag:
-												widths: '44, 88, 132',
-												sizes: '88px',
-												width: 88,
-												height: 88,
-												alt: alt_image,
-												loading: 'lazy'
-											}}
+{%- capture usps_style -%}
+  --usps-bg: {{ section.settings.bg_color | default: '#000000' }};
+  --usps-accent: {{ accent_color }};
+  --usps-accent-rgb: {{ accent_rgb }};
+  --usps-card: {{ card_bg }};
+  --usps-link: {{ section.settings.link_color | default: accent_color }};
+{%- endcapture -%}
 
-										</div>
-									{% endif %}
-									
-									<h3>{{ block.settings.title | escape }}</h3>
-									<p>{{ block.settings.text }}</p>
-									
-									{% if block.settings.link_label != blank and block.settings.link_url != blank %}
-										<a href="{{ block.settings.link_url }}" class="service-link" style="color: {{ section.settings.link_color }};">{{ block.settings.link_label | escape }}</a>
-									{% endif %}
-								</div>
-							{% endfor %}
-						</div>
-					</div>
-				</div>
-			</section>
-			<style>
-				/* CSS adapted for section id wrapper to prevent conflicts */
-				#shopify-section-{{ section.id }} .services-container {
-					color: #ffffff;
-					width: 100%;
-					border-radius: 8px;
-					display: flex;
-					gap: 80px;
-				}
+<section {% render 'section-attrs', class: 'usps-section', style: usps_style %}>
+  <div class="section-body">
+    <div class="usps-wrap{% if section.settings.vertical_layout %} usps-wrap--vertical{% endif %}">
+      {%- if has_intro_image -%}
+        <div
+          class="usps-intro{% if section.settings.show_divider %} usps-intro--divider{% endif %}"
+          data-animation="block"
+          data-animation-group="{{ section.id }}-intro"
+        >
+          <div class="usps-intro__header">
+            {%- if section.settings.eyebrow != blank -%}
+              <div class="subheading usps-intro__eyebrow">{{ section.settings.eyebrow | escape }}</div>
+            {%- endif -%}
+            {%- if section.settings.heading != blank -%}
+              <{{ heading_tag }} class="heading h0 usps-intro__heading">{{ section.settings.heading }}</{{ heading_tag }}>
+            {%- endif -%}
+            {%- if section.settings.text_1 != blank -%}
+              <p class="usps-intro__sub">{{ section.settings.text_1 | escape }}</p>
+            {%- endif -%}
+          </div>
 
-				#shopify-section-{{ section.id }} .services-container.services-vertical-layout {
-					flex-direction: column;
-					gap: 50px;
-				}
+          <div class="usps-badges">
+            {%- if section.settings.intro_img_1 != blank -%}
+              {%- assign alt_intro_img_1 = section.settings.intro_img_1.alt | default: 'Lifetime Warranty' -%}
+              <div class="usps-badge">
+                <div class="usps-badge__media">
+                  {{
+                    section.settings.intro_img_1
+                    | image_url: width: 352
+                    | image_tag:
+                      widths: '352, 550',
+                      sizes: '(max-width: 575px) 130px, 190px',
+                      width: 190,
+                      height: 190,
+                      alt: alt_intro_img_1,
+                      loading: 'lazy'
+                  }}
+                </div>
+                {%- if section.settings.intro_text_1 != blank -%}
+                  <h3 class="usps-badge__label">{{ section.settings.intro_text_1 | escape }}</h3>
+                {%- endif -%}
+              </div>
+            {%- elsif section.settings.intro_img_url_1 != blank -%}
+              <div class="usps-badge">
+                <div class="usps-badge__media">
+                  <img
+                    src="{{ section.settings.intro_img_url_1 }}"
+                    alt="{{ section.settings.intro_text_1 | default: 'Lifetime Warranty' | escape }}"
+                    loading="lazy"
+                    width="190"
+                    height="190"
+                  >
+                </div>
+                {%- if section.settings.intro_text_1 != blank -%}
+                  <h3 class="usps-badge__label">{{ section.settings.intro_text_1 | escape }}</h3>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
 
-				{% if has_intro_image %}
-				#shopify-section-{{ section.id }} .services-intro {
-					flex: 0 0 35%;
-					display: flex;
-					flex-direction: column;
-					position: relative;
-					border: 1px solid;
-					border-radius: 12px;
-					padding: 2rem;
-					box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-				}
-				#shopify-section-{{ section.id }} .services-intro.has-divider::after {
-					content: '';
-					position: absolute;
-					right: -40px;
-					top: 0;
-					bottom: 0;
-					width: 1px;
-					background-color: rgba(255, 255, 255, 0.2);
-				}
-				#shopify-section-{{ section.id }} .services-container.services-vertical-layout .services-intro.has-divider::after {
-					width: 100%;
-					height: 1px;
-					top: auto;
-					bottom: -30px;
-					right: 0;
-					left: 0;
-				}
-				#shopify-section-{{ section.id }} .services-intro h2 {
-					font-size: 2.2rem;
-					line-height: 1.25;
-					margin-bottom: 24px;					;
-					color: #ffffff;
-				}
-				#shopify-section-{{ section.id }} .services-intro p {
-					font-size: 1rem;
-					line-height: 1.6;
-					margin-bottom: 24px;
-					color: #e0e0e0;
-				}
-				#shopify-section-{{ section.id }} .intro-images {
-					display: flex;
-					flex-wrap: wrap;
-					gap: 20px;
-					margin-top: 16px;
-					justify-content: center;
-					align-items: center;
-				}
-				#shopify-section-{{ section.id }} .intro-images img {
-					max-width: 180px;
-					height: auto;
-					object-fit: contain;
-				}
-				#shopify-section-{{ section.id }} .services-container.services-vertical-layout .intro-images img {
-					max-width: 280px;
-					margin-left: auto;
-					margin-right: auto;
-				}
-				{% endif %}
-				#shopify-section-{{ section.id }} .services-grid {
-					flex: 1;
-					display: grid;
-					grid-template-columns: repeat(2, 1fr);
-					grid-row-gap: 25px;
-					grid-column-gap: 25px;
-				}
-				#shopify-section-{{ section.id }} .services-container.services-vertical-layout .services-grid {
-					grid-template-columns: repeat(4, 1fr);
-				}
-				#shopify-section-{{ section.id }} .service-card {
-					display: flex;
-					flex-direction: column;
-					background-color: #202020;
-					padding: 2rem 1rem;		
-					border-radius: 12px;	
-				}
-				#shopify-section-{{ section.id }} .services-container.services-vertical-layout .service-card {
-					align-items: center;
-				}
-				#shopify-section-{{ section.id }} .service-icon {
-					width: 68px;
-					height: 68px;
-					margin-bottom: 20px;
-					display: flex;
-					align-items: center;
-					justify-content: center;
-					color: #ffffff;
-				}
-				#shopify-section-{{ section.id }} .services-container.services-vertical-layout .service-icon {
-					width: 80px;
-					height: 80px;
-					margin-bottom: 10px;
-				}
-				#shopify-section-{{ section.id }} .service-icon > svg,
-				#shopify-section-{{ section.id }} .service-icon > img {
-					width: 50px;
-					height: 50px;
-					object-fit: contain;
-				}
-				#shopify-section-{{ section.id }} .services-container.services-vertical-layout .service-icon > svg,
-				#shopify-section-{{ section.id }} .services-container.services-vertical-layout .service-icon > img {
-					width: 70px;
-					height: 70px;
-					object-fit: contain;
-				}
-				#shopify-section-{{ section.id }} .service-card h3 {
-					font-size: 1.3rem;
-					margin-bottom: 12px;
-					font-weight: 600;
-					    margin-bottom: .5rem;
-					color: #ffffff;
-				}
-				#shopify-section-{{ section.id }} .service-card p {
-					font-size: 0.95rem;
-					line-height: 1.6;
-					color: #e0e0e0;
-					margin-bottom: 16px;
-					flex-grow: 1;
-					margin-bottom: 0;
-				}
-				#shopify-section-{{ section.id }} .service-link {
-					text-decoration: none;
-					font-weight: 500;
-					font-size: 0.95rem;
-				}
-				#shopify-section-{{ section.id }} .service-link:hover {
-					text-decoration: underline;
-				}
-				@media screen and (max-width: 992px) {
-					#shopify-section-{{ section.id }} .services-container {
-						flex-direction: column;
-						padding: 40px;
-						gap: 50px;
-					}
-					#shopify-section-{{ section.id }} .services-intro {
-						flex: auto;
-					}
-					#shopify-section-{{ section.id }} .services-intro.has-divider::after {
-						display: none;
-					}
-					#shopify-section-{{ section.id }} .services-container.services-vertical-layout .services-intro.has-divider::after {
-						display: block;
-					}
-				}
-				
-				@media screen and (max-width: 992px) {
-					#shopify-section-{{ section.id }} .services-grid {
-						grid-template-columns: 1fr 1fr;
-						grid-row-gap: 20px;
-					}
-					#shopify-section-{{ section.id }} .services-container.services-vertical-layout .services-grid {
-						grid-template-columns: repeat(2, 1fr);
-					}
-					#shopify-section-{{ section.id }} .intro-images img {
-						max-width: min(20%, 150px);
-						margin-left: auto;
-						margin-right: auto;
-					}
-					#shopify-section-{{ section.id }} .intro-images {
-						flex-wrap: nowrap;
-						justify-content: center;
-						align-items: center;
-					}
-					
-					
-					#shopify-section-{{ section.id }} .services-container{
-						padding: 0;
-					}
-					
-				}
-				@media screen and (max-width: 767px) {
-					#shopify-section-{{ section.id }} .services-grid {
-						grid-template-columns: 1fr;
-						grid-row-gap: 20px;
-					}
-					#shopify-section-{{ section.id }} .services-container.services-vertical-layout .services-grid {
-						grid-template-columns: repeat(2, 1fr);
-						column-gap: 15px
-					}
-					
-					#shopify-section-{{ section.id }} .intro-images {        
-						justify-content: flex-start;        
-					}
-					
-					#shopify-section-{{ section.id }} .intro-images img {
-						max-width: min(45%, 150px);
-						margin-left: auto;
-						margin-right: auto;
-					}
+            {%- if section.settings.intro_img_1 != blank or section.settings.intro_img_url_1 != blank -%}
+              {%- if section.settings.intro_img_2 != blank or section.settings.intro_img_url_2 != blank -%}
+                <span class="usps-badges__sep" aria-hidden="true"></span>
+              {%- endif -%}
+            {%- endif -%}
 
-					#shopify-section-{{ section.id }} .services-container.services-vertical-layout .intro-images img {
-						max-width: min(calc(100% - 10px), 200px);
-						margin-left: auto;
-						margin-right: auto;
-					}
-					
-					#shopify-section-{{ section.id }} .services-container{
-						padding: 10px 0;
-						gap: 40px;
-					}
-					#shopify-section-{{ section.id }} .services-intro h2 {
-						font-size: 1.9rem;
-					}
-					
-					#shopify-section-{{ section.id }} .service-card{
-						align-items: center;
-					}
-					#shopify-section-{{ section.id }} .services-container.services-vertical-layout .service-card h3 {
-						font-size: .8rem;
-						margin-bottom: .2rem;
-					}
-					#shopify-section-{{ section.id }} .services-container.services-vertical-layout .service-icon {
-						width: 60px;
-						height: 60px;
-						margin-bottom: 10px;
-					}
-					#shopify-section-{{ section.id }} .services-container.services-vertical-layout .service-icon > svg,
-					#shopify-section-{{ section.id }} .services-container.services-vertical-layout .service-icon > img {
-						width: 50px;
-						height: 50px;
-					}
-				}
-				@media screen and (max-width: 520px) {
-					#shopify-section-{{ section.id }} .services-intro {
-						padding: 1rem
-					}
-					#shopify-section-{{ section.id }} .services-intro h2 {
-						font-size: 1.6rem;
-						margin-bottom: .5rem;
-					}
-					#shopify-section-{{ section.id }} .intro-images {
-						gap: 0px;
-					}
-					#shopify-section-{{ section.id }} .services-container.services-vertical-layout {
-						gap: 25px;
-					}
-					#shopify-section-{{ section.id }} .services-container.services-vertical-layout .services-grid {
-						gap: 8px;
-					}
-					#shopify-section-{{ section.id }} .services-container.services-vertical-layout .service-card {
-						padding: 1rem .5rem;
-					}
-					#shopify-section-{{ section.id }} .services-container.services-vertical-layout .service-card p {
-						font-size: 10px;						
-					}
-					#shopify-section-{{ section.id }} .services-intro p {
-						margin-bottom: .5rem;						
-					}
-				}
-			</style>
-			{% schema %}
-			{
-				"name": "General USPs",
-				"settings": [
-					{
-						"type": "checkbox",
-						"id": "full_width",
-						"label": "t:sections.all.full_width.label",
-						"default": true
-					},
-					{
-						"type": "color",
-						"id": "bg_color",
-						"label": "Container Background Color",
-						"default": "#333333"
-					},
-					{
-						"id": "vertical_layout",
-						"type": "checkbox",
-						"label": "Vertical Layout"
-					},
-					{
-						"type": "checkbox",
-						"id": "show_divider",
-						"label": "Show Vertical Divider",
-						"default": true
-					},
-					{
-						"type": "text",
-						"id": "heading",
-						"label": "Heading",
-						"default": "Premium Assurance with Lifetime Support"
-					},
-					{
-						"type": "textarea",
-						"id": "text_1",
-						"label": "Paragraph",
-						"default": "Enjoy peace of mind with our 30-day money-back guarantee and a lifetime warranty, proving our commitment to high-quality, trusted products since 2013."
-					},
-					{
-						"type": "image_picker",
-						"id": "intro_img_1",
-						"label": "First Intro Image"
-					},
-					{
-						"type": "text",
-						"id": "intro_text_1",
-						"label": "First Image Text",
-						"default": "LIFETIME WARRANTY"
-					},
-					{
-						"type": "image_picker",
-						"id": "intro_img_2",
-						"label": "Second Intro Image"
-					},
-					{
-						"type": "text",
-						"id": "intro_text_2",
-						"label": "First Image Text",
-						"default": "30 DAYS GUARANTEE"
-					},
-					{
-						"type": "text",
-						"id": "intro_img_url_1",
-						"label": "First Intro Image URL (overridden by picker above)",
-						"default": "https://airvapeusa.com/cdn/shop/files/icon_Warranty_3.svg?v=1774515664"
-					},
-					{
-						"type": "text",
-						"id": "intro_img_url_2",
-						"label": "Second Intro Image URL (overridden by picker above)",
-						"default": "https://airvapeusa.com/cdn/shop/files/icon_MoneyBack_Gurantee_3.svg?v=1774515656"
-					},
-					{
-						"type": "color",
-						"id": "link_color",
-						"label": "Service Link Color",
-						"default": "#ffd814"
-					},
-					{
-						"type": "header",
-						"content": "t:sections.all.headers.colors"
-					},
-					{
-						"type": "color",
-						"label": "t:sections.all.background_color.label",
-						"id": "background_color"
-					},
-					{
-						"type": "color",
-						"label": "t:sections.all.text_color.label",
-						"id": "text_color"
-					},
-					{
-						"type": "color",
-						"label": "t:sections.all.heading_color.label",
-						"id": "heading_color"
-					},
-					{
-						"type": "header",
-						"content": "t:sections.all.headers.seo"
-					},
-					{
-						"type": "select",
-						"id": "heading_html_tag",
-						"label": "t:sections.all.heading_html_tag.label",
-						"options": [
-							{
-								"value": "h1",
-								"label": "h1"
-							},
-							{
-								"value": "h2",
-								"label": "h2"
-							},
-							{
-								"value": "h3",
-								"label": "h3"
-							},
-							{
-								"value": "h4",
-								"label": "h4"
-							},
-							{
-								"value": "h5",
-								"label": "h5"
-							},
-							{
-								"value": "h6",
-								"label": "h6"
-							},
-							{
-								"value": "p",
-								"label": "p"
-							},
-							{
-								"value": "span",
-								"label": "span"
-							},
-							{
-								"value": "div",
-								"label": "div"
-							}
-						],
-						"default": "p",
-						"info": "t:sections.all.heading_html_tag.info"
-					}
-				],
-				"blocks": [
-					{
-						"type": "service",
-						"name": "Service Item",
-						"limit": 6,
-						"settings": [
-							{
-								"type": "html",
-								"id": "icon_html",
-								"label": "Icon HTML (SVG)"
-							},
-							{
-								"type": "image_picker",
-								"id": "icon_image",
-								"label": "Icon Image (if SVG is blank)"
-							},
-							{
-								"type": "text",
-								"id": "title",
-								"label": "Title",
-								"default": "Service Name"
-							},
-							{
-								"type": "textarea",
-								"id": "text",
-								"label": "Description",
-								"default": "Describe your service here."
-							},
-							{
-								"type": "text",
-								"id": "link_label",
-								"label": "Link Label",
-								"default": "More about this service"
-							},
-							{
-								"type": "url",
-								"id": "link_url",
-								"label": "Link URL"
-							}
-						]
-					}
-				],
-				"presets": [
-					{
-						"name": "General USPs",
-						"category": "Custom Sections",
-						"blocks": [
-							{
-								"type": "service",
-								"settings": {
-									"title": "FAST HEAT-UP",
-									"text": "Ready to go in seconds",
-									"link_label": ""
-								}
-							},
-							{
-								"type": "service",
-								"settings": {
-									"title": "PURE FLAVOUR",
-									"text": "Crisp vapor with precision",
-									"link_label": ""
-								}
-							},
-							{
-								"type": "service",
-								"settings": {
-									"title": "EASY TO USE",
-									"text": "Effortless enjoyment",
-									"link_label": ""
-								}
-							},
-							{
-								"type": "service",
-								"settings": {
-									"title": "LONG BATTERY LIFE",
-									"text": "Enjoy more sessions",
-									"link_label": ""
-								}
-							}
-						]
-					}
-				]
-			}
-			{% endschema %}
+            {%- if section.settings.intro_img_2 != blank -%}
+              {%- assign alt_intro_img_2 = section.settings.intro_img_2.alt | default: '15 Days Moneyback Guarantee' -%}
+              <div class="usps-badge">
+                <div class="usps-badge__media">
+                  {{
+                    section.settings.intro_img_2
+                    | image_url: width: 352
+                    | image_tag:
+                      widths: '352, 550',
+                      sizes: '(max-width: 575px) 130px, 190px',
+                      width: 190,
+                      height: 190,
+                      alt: alt_intro_img_2,
+                      loading: 'lazy'
+                  }}
+                </div>
+                {%- if section.settings.intro_text_2 != blank -%}
+                  <h3 class="usps-badge__label">{{ section.settings.intro_text_2 | escape }}</h3>
+                {%- endif -%}
+              </div>
+            {%- elsif section.settings.intro_img_url_2 != blank -%}
+              <div class="usps-badge">
+                <div class="usps-badge__media">
+                  <img
+                    src="{{ section.settings.intro_img_url_2 }}"
+                    alt="{{ section.settings.intro_text_2 | default: '15 Days Moneyback Guarantee' | escape }}"
+                    loading="lazy"
+                    width="190"
+                    height="190"
+                  >
+                </div>
+                {%- if section.settings.intro_text_2 != blank -%}
+                  <h3 class="usps-badge__label">{{ section.settings.intro_text_2 | escape }}</h3>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endif -%}
+
+      <div class="usps-grid">
+        {%- for block in section.blocks -%}
+          <article
+            class="usps-card"
+            data-animation="block"
+            data-animation-group="{{ section.id }}-cards"
+            {{ block.shopify_attributes }}
+          >
+            <span class="usps-card__num" aria-hidden="true">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
+
+            {%- if block.settings.icon_html != blank -%}
+              <div class="usps-card__icon" aria-hidden="true">
+                {{ block.settings.icon_html }}
+              </div>
+            {%- elsif block.settings.icon_image != blank -%}
+              {%- assign alt_image = block.settings.icon_image.alt | default: block.settings.title -%}
+              <div class="usps-card__icon">
+                {{
+                  block.settings.icon_image
+                  | image_url: width: 352
+                  | image_tag:
+                    widths: '352',
+                    sizes: '36px',
+                    width: 36,
+                    height: 36,
+                    alt: alt_image,
+                    loading: 'lazy'
+                }}
+              </div>
+            {%- endif -%}
+
+            {%- if block.settings.title != blank -%}
+              <h3 class="usps-card__title">{{ block.settings.title | escape }}</h3>
+            {%- endif -%}
+
+            {%- if block.settings.text != blank -%}
+              <p class="usps-card__text">{{ block.settings.text | escape }}</p>
+            {%- endif -%}
+
+            <span class="usps-card__rule" aria-hidden="true"></span>
+
+            {%- if block.settings.link_label != blank and block.settings.link_url != blank -%}
+              <a href="{{ block.settings.link_url }}" class="usps-card__link">
+                {{ block.settings.link_label | escape }}
+              </a>
+            {%- endif -%}
+          </article>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .usps-section {
+    --usps-line: rgb(var(--color-foreground) / 10%);
+    --usps-muted: rgb(var(--color-foreground) / 68%);
+    --usps-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .usps-wrap {
+    display: flex;
+    gap: clamp(28px, 4vw, 56px);
+    width: 100%;
+    background-color: var(--usps-bg);
+    color: rgb(var(--color-foreground));
+  }
+
+  .usps-wrap--vertical {
+    flex-direction: column;
+    gap: clamp(20px, 2.5vw, 28px);
+  }
+
+  .usps-intro {
+    position: relative;
+    flex: 0 0 38%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: clamp(36px, 4.5vw, 58px) clamp(24px, 4vw, 52px);
+    border-radius: 28px;
+    border: 1px solid rgb(var(--usps-accent-rgb) / 26%);
+    background:
+      radial-gradient(62% 58% at 50% 0%, rgb(var(--usps-accent-rgb) / 15%) 0%, transparent 72%),
+      linear-gradient(180deg, rgb(var(--usps-accent-rgb) / 6%) 0%, var(--usps-card) 58%, var(--usps-bg) 100%);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 8%);
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .usps-wrap--vertical .usps-intro {
+    flex: auto;
+    width: 100%;
+  }
+
+  .usps-intro__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    max-width: 680px;
+  }
+
+  .usps-intro__eyebrow {
+    color: var(--usps-accent);
+  }
+
+  .usps-intro__heading {
+    margin: 0;
+    color: rgb(var(--color-foreground));
+  }
+
+  .usps-intro__heading em {
+    color: var(--usps-accent);
+    font-style: italic;
+    padding-right: 0.08em;
+  }
+
+  .usps-intro__sub {
+    margin: 4px 0 0;
+    font-size: clamp(14px, 1.15vw, 16px);
+    line-height: 1.6;
+    color: var(--usps-muted);
+    max-width: 48ch;
+  }
+
+  .usps-badges {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(24px, 5vw, 72px);
+    margin-top: clamp(28px, 3.2vw, 42px);
+    width: 100%;
+  }
+
+  .usps-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    transition: transform 320ms var(--usps-ease);
+  }
+
+  .usps-badge:hover {
+    transform: translateY(-4px);
+  }
+
+  .usps-badge__media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(132px, 16vw, 186px);
+    height: clamp(132px, 16vw, 186px);
+    border-radius: 50%;
+    padding: 14px;
+    background: radial-gradient(circle, rgb(var(--usps-accent-rgb) / 10%) 0%, transparent 72%);
+  }
+
+  .usps-badge__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .usps-badge__label {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgb(var(--color-foreground) / 88%);
+  }
+
+  .usps-badges__sep {
+    width: 1px;
+    height: clamp(72px, 9vw, 110px);
+    background: linear-gradient(180deg, transparent, rgb(var(--usps-accent-rgb) / 42%), transparent);
+    flex-shrink: 0;
+  }
+
+  .usps-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(12px, 1.5vw, 20px);
+  }
+
+  .usps-wrap--vertical .usps-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .usps-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: clamp(26px, 2.6vw, 36px) clamp(18px, 2vw, 26px);
+    border-radius: 22px;
+    background: var(--usps-card);
+    border: 1px solid var(--usps-line);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 5%);
+    transition: transform 300ms var(--usps-ease);
+    overflow: hidden;
+  }
+
+  .usps-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border: 1px solid rgb(var(--usps-accent-rgb) / 45%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 300ms var(--usps-ease);
+  }
+
+  .usps-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .usps-card:hover::after {
+    opacity: 1;
+  }
+
+  .usps-card__num {
+    position: absolute;
+    top: 16px;
+    left: 18px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    color: var(--usps-accent);
+    opacity: 0.78;
+  }
+
+  .usps-card__icon {
+    width: 60px;
+    height: 60px;
+    margin-top: 8px;
+    margin-bottom: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(var(--usps-accent-rgb) / 10%);
+    border: 1px solid rgb(var(--usps-accent-rgb) / 28%);
+    color: rgb(var(--color-foreground));
+  }
+
+  .usps-card__icon svg,
+  .usps-card__icon img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    display: block;
+  }
+
+  .usps-card__title {
+    margin: 0 0 8px;
+    font-family: var(--font-body-family);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    line-height: 1.35;
+    color: rgb(var(--color-foreground));
+  }
+
+  .usps-card__text {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--usps-muted);
+    max-width: 24ch;
+  }
+
+  .usps-card__rule {
+    display: block;
+    width: 24px;
+    height: 1px;
+    margin-top: 18px;
+    background: rgb(var(--usps-accent-rgb) / 55%);
+    transform-origin: center;
+    transition: transform 300ms var(--usps-ease);
+  }
+
+  .usps-card:hover .usps-card__rule {
+    transform: scaleX(1.9);
+  }
+
+  .usps-card__link {
+    margin-top: 14px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--usps-link);
+    text-decoration: none;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .usps-card__link:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  @media (max-width: 991px) {
+    .usps-wrap {
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .usps-wrap--vertical .usps-grid,
+    .usps-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 575px) {
+    .usps-intro {
+      border-radius: 22px;
+      padding: 28px 18px;
+    }
+
+    .usps-badges {
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .usps-badge__media {
+      width: 118px;
+      height: 118px;
+      padding: 8px;
+    }
+
+    .usps-badges__sep {
+      height: 64px;
+    }
+
+    .usps-grid,
+    .usps-wrap--vertical .usps-grid {
+      gap: 10px;
+    }
+
+    .usps-card {
+      border-radius: 18px;
+      padding: 22px 14px;
+    }
+
+    .usps-card__num {
+      top: 12px;
+      left: 12px;
+      font-size: 10px;
+    }
+
+    .usps-card__icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 14px;
+    }
+
+    .usps-card__icon svg,
+    .usps-card__icon img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .usps-card__title {
+      font-size: 11.5px;
+      letter-spacing: 0.09em;
+    }
+
+    .usps-card__text {
+      font-size: 12.5px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .usps-badge,
+    .usps-card,
+    .usps-card::after,
+    .usps-card__rule {
+      transition: none;
+    }
+
+    .usps-badge:hover,
+    .usps-card:hover {
+      transform: none;
+    }
+
+    .usps-card:hover .usps-card__rule {
+      transform: none;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "General USPs",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "t:sections.all.full_width.label",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Container Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color",
+      "default": "#a57c72"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card Surface Color",
+      "default": "#0d0b0a"
+    },
+    {
+      "id": "vertical_layout",
+      "type": "checkbox",
+      "label": "Vertical Layout",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_divider",
+      "label": "Show Vertical Divider",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "OUR PROMISE"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Buy with <em>Confidence</em>"
+    },
+    {
+      "type": "textarea",
+      "id": "text_1",
+      "label": "Paragraph",
+      "default": "Risk Free Shopping & Satisfaction Guaranteed"
+    },
+    {
+      "type": "image_picker",
+      "id": "intro_img_1",
+      "label": "First Intro Image"
+    },
+    {
+      "type": "text",
+      "id": "intro_text_1",
+      "label": "First Image Text",
+      "default": "LIFETIME WARRANTY"
+    },
+    {
+      "type": "image_picker",
+      "id": "intro_img_2",
+      "label": "Second Intro Image"
+    },
+    {
+      "type": "text",
+      "id": "intro_text_2",
+      "label": "Second Image Text",
+      "default": "15 DAYS GUARANTEE"
+    },
+    {
+      "type": "text",
+      "id": "intro_img_url_1",
+      "label": "First Intro Image URL (overridden by picker above)"
+    },
+    {
+      "type": "text",
+      "id": "intro_img_url_2",
+      "label": "Second Intro Image URL (overridden by picker above)"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Service Link Color",
+      "default": "#a57c72"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.headers.colors"
+    },
+    {
+      "type": "color",
+      "label": "t:sections.all.background_color.label",
+      "id": "background_color"
+    },
+    {
+      "type": "color",
+      "label": "t:sections.all.text_color.label",
+      "id": "text_color"
+    },
+    {
+      "type": "color",
+      "label": "t:sections.all.heading_color.label",
+      "id": "heading_color"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.headers.seo"
+    },
+    {
+      "type": "select",
+      "id": "heading_html_tag",
+      "label": "t:sections.all.heading_html_tag.label",
+      "options": [
+        { "value": "h1", "label": "h1" },
+        { "value": "h2", "label": "h2" },
+        { "value": "h3", "label": "h3" },
+        { "value": "h4", "label": "h4" },
+        { "value": "h5", "label": "h5" },
+        { "value": "h6", "label": "h6" },
+        { "value": "p", "label": "p" },
+        { "value": "span", "label": "span" },
+        { "value": "div", "label": "div" }
+      ],
+      "default": "h2",
+      "info": "t:sections.all.heading_html_tag.info"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "service",
+      "name": "Service Item",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "html",
+          "id": "icon_html",
+          "label": "Icon HTML (SVG)"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon Image (if SVG is blank)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Service Name"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "Describe your service here."
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Link Label",
+          "default": "More about this service"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "General USPs",
+      "category": "Custom Sections",
+      "blocks": [
+        {
+          "type": "service",
+          "settings": {
+            "title": "WATER-RESISTANT",
+            "text": "Durable for everyday wear",
+            "link_label": ""
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "title": "LONG BATTERY",
+            "text": "Lasts up to 14 days",
+            "link_label": ""
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "title": "NO APP REQUIRED",
+            "text": "No screen, No setup",
+            "link_label": ""
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "title": "ADJUSTABLE FIT",
+            "text": "Fits comfortably on any wrist",
+            "link_label": ""
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
