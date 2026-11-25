@@ -104,3 +104,8 @@
 ## 2026-11-25 - show current price before compare-at price
 - snippets/price.liquid: removed `flex-row-reverse justify-end` on `.price` and `order-2` on `.sale-price` (and its screen-reader label) so current/sale price renders first and compare-at price second across product cards and PDP.
 - Pushed to theme 204901220687 (--only snippets/price.liquid) and GitHub.
+
+
+## 2026-11-25 - emphasize Breathelet and Accessories headings
+- templates/index.json: updated featured collection headings to `Shop <em>Breathelet</em>` and `Shop <em>Accessories</em>`.
+- Pushed to theme 204901220687 (--only templates/index.json) and GitHub.
