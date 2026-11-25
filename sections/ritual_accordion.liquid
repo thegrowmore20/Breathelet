@@ -49,11 +49,6 @@
                     {%- if block.settings.content != blank -%}
                       <div class="ri-content">{{ block.settings.content }}</div>
                     {%- endif -%}
-                    {%- if block.settings.link_label != blank and block.settings.link_url != blank -%}
-                      <a href="{{ block.settings.link_url }}" class="ri-link">
-                        {{- block.settings.link_label | escape -}}
-                      </a>
-                    {%- endif -%}
                   </div>
                 </div>
               </div>
@@ -302,39 +297,6 @@
     font-weight: 600;
   }
 
-  .ri-link {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    color: var(--accent);
-    font-weight: 600;
-    font-size: 13px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    text-decoration: none;
-    justify-self: start;
-    position: relative;
-  }
-
-  .ri-link::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 8px;
-    height: 1px;
-    background: currentColor;
-  }
-
-  .ri-link:hover {
-    color: rgb(var(--accent-rgb) / 82%);
-  }
-
-  .ri-link:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 3px;
-  }
-
   .rit-m {
     position: relative;
     aspect-ratio: var(--rit-ratio, 1 / 1);
@@ -441,8 +403,6 @@
       "settings": [
         { "type": "text", "id": "title", "label": "Title", "default": "BREATHE" },
         { "type": "richtext", "id": "content", "label": "Content", "default": "<p>This archaic Sanskrit symbol gracefully inspires us to embrace our natural responses. It represents life’s first and final acts, portraying the elegant symmetry of our existence.</p>" },
-        { "type": "text", "id": "link_label", "label": "Inline link label (optional)" },
-        { "type": "url", "id": "link_url", "label": "Inline link URL" },
         { "type": "image_picker", "id": "image", "label": "Image" }
       ]
     }
@@ -469,8 +429,7 @@
           "type": "item",
           "settings": {
             "title": "BREATHE",
-            "content": "<p>This archaic Sanskrit symbol gracefully inspires us to embrace our natural responses. It represents life’s first and final acts, portraying the elegant symmetry of our existence.</p>",
-            "link_label": "SHOP BREATHELET →"
+            "content": "<p>This archaic Sanskrit symbol gracefully inspires us to embrace our natural responses. It represents life’s first and final acts, portraying the elegant symmetry of our existence.</p>"
           }
         }
       ]

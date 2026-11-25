@@ -69,3 +69,8 @@
 - Updated templates/index.json ritual_accordion_home type to ritual_accordion.
 - Pushed to theme 204901220687 (--only) and GitHub.
 
+
+## 2026-11-25 - remove inline link from ritual_accordion
+- sections/ritual_accordion.liquid & templates/index.json: removed .ri-link markup, CSS, and link_label/link_url settings.
+- Pushed to theme 204901220687 (--only) and GitHub.
+
