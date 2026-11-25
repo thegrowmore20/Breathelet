@@ -123,6 +123,7 @@
     font-weight: 400;
     font-size: clamp(40px, 4vw, 54px);
     line-height: 1;
+    font-variant-numeric: tabular-nums;
   }
 
   #shopify-section-{{ section.id }} .stats span {
@@ -227,11 +228,11 @@
     <div class="wrap phil-grid" id="philIn" data-animation-auto-order>
     <div class="phil-copy">
       {% render 'rich-text-blocks', prose_class: 'prose', heading_emphasis: 'Deep Breath' %}
-      <div class="stats">
-        <div><b>{{ section.settings.stat_1_value }}</b><span>{{ section.settings.stat_1_label }}</span></div>
-        <div><b>{{ section.settings.stat_2_value }}</b><span>{{ section.settings.stat_2_label }}</span></div>
-        <div><b>{{ section.settings.stat_3_value }}</b><span>{{ section.settings.stat_3_label }}</span></div>
-      </div>
+      <philosophy-stats class="stats">
+        <div data-animation="block" data-animation-group="{{ section.id }}"><b>{{ section.settings.stat_1_value }}</b><span>{{ section.settings.stat_1_label }}</span></div>
+        <div data-animation="block" data-animation-group="{{ section.id }}"><b>{{ section.settings.stat_2_value }}</b><span>{{ section.settings.stat_2_label }}</span></div>
+        <div data-animation="block" data-animation-group="{{ section.id }}"><b>{{ section.settings.stat_3_value }}</b><span>{{ section.settings.stat_3_label }}</span></div>
+      </philosophy-stats>
     </div>
     <div class="vid" data-animation="block" data-animation-group="{{ section.id }}">
       {% if section.settings.video != blank %}
@@ -252,6 +253,78 @@
     </div>
   </div>
 </section>
+
+{% javascript %}
+  if (!customElements.get('philosophy-stats')) {
+    class PhilosophyStats extends HTMLElement {
+      connectedCallback() {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+          return;
+        }
+
+        const targets = [];
+        for (const el of this.querySelectorAll('b')) {
+          const raw = el.textContent.trim();
+          const match = raw.match(/^([^0-9.-]*)(-?\d+(?:\.\d+)?)(.*)$/);
+          if (!match) continue;
+          const decimals = match[2].includes('.') ? match[2].split('.')[1].length : 0;
+          targets.push({
+            el,
+            prefix: match[1],
+            end: parseFloat(match[2]),
+            decimals,
+            suffix: match[3],
+          });
+        }
+
+        if (!targets.length) return;
+
+        this._observer = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (!entry.isIntersecting) continue;
+              this._observer.disconnect();
+              this._animate(targets);
+              break;
+            }
+          },
+          { threshold: 0.35 }
+        );
+
+        this._observer.observe(this);
+      }
+
+      _animate(targets) {
+        const duration = 1200;
+        const start = performance.now();
+
+        const step = (now) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+
+          for (const item of targets) {
+            const val = item.end * eased;
+            const formatted = item.decimals > 0 ? val.toFixed(item.decimals) : String(Math.round(val));
+            item.el.textContent = item.prefix + formatted + item.suffix;
+          }
+
+          if (progress < 1) {
+            this._raf = requestAnimationFrame(step);
+          }
+        };
+
+        this._raf = requestAnimationFrame(step);
+      }
+
+      disconnectedCallback() {
+        if (this._observer) this._observer.disconnect();
+        if (this._raf) cancelAnimationFrame(this._raf);
+      }
+    }
+
+    customElements.define('philosophy-stats', PhilosophyStats);
+  }
+{% endjavascript %}
 
 {% schema %}
 {

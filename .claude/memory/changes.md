@@ -37,3 +37,8 @@
 - templates/index.json: wired gift_banners_home banner_2 product to eternal-love-pair-set (dynamic price + shopify://products/eternal-love-pair-set PDP redirect).
 - Pushed to theme 204901220687 (--only templates/index.json) and GitHub.
 
+
+## 2026-11-25 - philosophy stats animation
+- sections/philosophy.liquid: added theme data-animation stagger + <philosophy-stats> custom element count-up animation (cubic ease-out, tabular-nums for 0 CLS, prefers-reduced-motion safe, works without JS).
+- Pushed to theme 204901220687 (--only sections/philosophy.liquid) and GitHub.
+
