@@ -31,7 +31,9 @@
   {% if background == true %}
     background
   {% else %}
-    controls
+    {% unless hide_controls %}
+      controls
+    {% endunless %}
     {% if loop %}
       loop
     {% endif %}

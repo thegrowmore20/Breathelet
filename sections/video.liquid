@@ -42,7 +42,8 @@
         sizes: poster_sizes,
         autoplay: section.settings.autoplay,
         loop: section.settings.loop,
-        muted: section.settings.mute
+        muted: section.settings.mute,
+        hide_controls: section.settings.hide_controls
       %}
     </div>
   </div>
@@ -97,6 +98,12 @@
       "type": "checkbox",
       "id": "mute",
       "label": "Mute video",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_controls",
+      "label": "Hide controls",
       "default": false
     },
     {

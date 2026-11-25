@@ -87,3 +87,10 @@
 - assets/main.css: added global `:where(h1, h2, h3, h4, h5, h6, .h0, .h1, .h2, .h3, .h4, .h5, .h6, .heading) em` italic + accent color rule.
 - snippets/rich-text-blocks.liquid: removed `| escape` from heading output so `<em>` renders in all richtext heading blocks.
 - Pushed to theme 204901220687 (--only) and GitHub.
+
+
+## 2026-11-25 - hide controls option in Video section
+- sections/video.liquid: added `hide_controls` checkbox setting (default `false`) and passed `hide_controls` to `video-player`.
+- snippets/video-player.liquid: omitted `controls` attribute on `<video-player>` when `hide_controls` is true (backwards-compatible for all other sections).
+- templates/index.json: enabled `hide_controls: true` on `video_RLKz98`.
+- Pushed to theme 204901220687 (--only) and GitHub.

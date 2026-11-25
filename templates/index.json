@@ -193,7 +193,6 @@
     },
     "philosophy_home": {
       "type": "philosophy",
-      "name": "Philosophy",
       "blocks": {
         "philosophy_heading": {
           "type": "heading",
@@ -224,9 +223,8 @@
         "philosophy_text",
         "philosophy_bio"
       ],
+      "name": "Philosophy",
       "settings": {
-        "video": "",
-        "video_poster": "",
         "autoplay": true,
         "loop": true,
         "video_label": "Inhale 5.5s · Exhale 5.5s",
@@ -240,27 +238,139 @@
     },
     "bento_benefits_home": {
       "type": "bento-benefits",
-      "name": "Bento benefits",
       "blocks": {
-        "tile_1": { "type": "tile", "settings": {"style":"spotlight","width":"s4","marker":"number","title":"Feel present again","text":"A vibration only you can feel. You check your phone 150 times a day — Breathelet reminds you to check yourself."} },
-        "tile_2": { "type": "tile", "settings": {"style":"light","width":"s2","marker":"icon","icon":"plus","title":"Reset anywhere","text":"Desk, commute, kitchen. Wherever you are, anytime."} },
-        "tile_3": { "type": "tile", "settings": {"style":"light","width":"s2","marker":"icon","icon":"lines","title":"Mindful habits","text":"Posture, hydration, breath — small cues, lasting routines."} },
-        "tile_4": { "type": "tile", "settings": {"style":"light","width":"s2","marker":"big_text","big_text":"0","title":"Screens. Apps.","text":"No setup, no notifications. Just wear it."} },
-        "tile_5": { "type": "tile", "settings": {"style":"light","width":"s2","marker":"icon","icon":"drop","title":"A meaningful gift","text":"Give someone a daily reminder that you care."} }
+        "tile_1": {
+          "type": "tile",
+          "settings": {
+            "style": "spotlight",
+            "width": "s4",
+            "marker": "number",
+            "icon": "plus",
+            "big_text": "0",
+            "title": "Feel present again",
+            "text": "A vibration only you can feel. You check your phone 150 times a day — Breathelet reminds you to check yourself."
+          }
+        },
+        "tile_2": {
+          "type": "tile",
+          "settings": {
+            "style": "light",
+            "width": "s2",
+            "marker": "icon",
+            "icon": "plus",
+            "big_text": "0",
+            "title": "Reset anywhere",
+            "text": "Desk, commute, kitchen. Wherever you are, anytime."
+          }
+        },
+        "tile_3": {
+          "type": "tile",
+          "settings": {
+            "style": "light",
+            "width": "s2",
+            "marker": "icon",
+            "icon": "lines",
+            "big_text": "0",
+            "title": "Mindful habits",
+            "text": "Posture, hydration, breath — small cues, lasting routines."
+          }
+        },
+        "tile_4": {
+          "type": "tile",
+          "settings": {
+            "style": "light",
+            "width": "s2",
+            "marker": "big_text",
+            "icon": "plus",
+            "big_text": "0",
+            "title": "Screens. Apps.",
+            "text": "No setup, no notifications. Just wear it."
+          }
+        },
+        "tile_5": {
+          "type": "tile",
+          "settings": {
+            "style": "light",
+            "width": "s2",
+            "marker": "icon",
+            "icon": "drop",
+            "big_text": "0",
+            "title": "A meaningful gift",
+            "text": "Give someone a daily reminder that you care."
+          }
+        }
       },
-      "block_order": ["tile_1", "tile_2", "tile_3", "tile_4", "tile_5"],
-      "settings": {}
+      "block_order": [
+        "tile_1",
+        "tile_2",
+        "tile_3",
+        "tile_4",
+        "tile_5"
+      ],
+      "name": "Bento benefits",
+      "settings": {
+        "eyebrow": "Why people love it",
+        "heading": "Calm that <em>fits your day.</em>",
+        "heading_size": "h0",
+        "background_color": "#000000",
+        "text_color": "#ffffff",
+        "primary_color": "#000000",
+        "secondary_color": "#a57c72",
+        "card_background": "#ffffff"
+      }
     },
     "specs_every_day_home": {
       "type": "specs-every-day",
       "blocks": {
-        "spec_1": { "type": "spec", "settings": { "icon": "drop", "title": "Water-resistant", "text": "Durable for everyday wear" } },
-        "spec_2": { "type": "spec", "settings": { "icon": "battery", "title": "14-day battery", "text": "Lasts up to two weeks" } },
-        "spec_3": { "type": "spec", "settings": { "icon": "no_app", "title": "No app required", "text": "No screen, no setup" } },
-        "spec_4": { "type": "spec", "settings": { "icon": "fit", "title": "Adjustable fit", "text": "Comfortable on any wrist" } }
+        "spec_1": {
+          "type": "spec",
+          "settings": {
+            "icon": "drop",
+            "title": "Water-resistant",
+            "text": "Durable for everyday wear"
+          }
+        },
+        "spec_2": {
+          "type": "spec",
+          "settings": {
+            "icon": "battery",
+            "title": "14-day battery",
+            "text": "Lasts up to two weeks"
+          }
+        },
+        "spec_3": {
+          "type": "spec",
+          "settings": {
+            "icon": "no_app",
+            "title": "No app required",
+            "text": "No screen, no setup"
+          }
+        },
+        "spec_4": {
+          "type": "spec",
+          "settings": {
+            "icon": "fit",
+            "title": "Adjustable fit",
+            "text": "Comfortable on any wrist"
+          }
+        }
       },
-      "block_order": ["spec_1", "spec_2", "spec_3", "spec_4"],
-      "settings": {}
+      "block_order": [
+        "spec_1",
+        "spec_2",
+        "spec_3",
+        "spec_4"
+      ],
+      "settings": {
+        "eyebrow": "Built for every day",
+        "heading": "Made to <em>disappear</em> on your wrist.",
+        "heading_size": "h0",
+        "background_color": "#000000",
+        "text_color": "#f4f0ee",
+        "primary_color": "#000000",
+        "accent_color": "#a57c72",
+        "card_background": "#0e0d0c"
+      }
     },
     "gift_banners_home": {
       "type": "gift-banners",
@@ -270,6 +380,8 @@
           "settings": {
             "style": "light",
             "image": "shopify://shop_images/2_efbd635d-548c-40df-b31a-e4cd21e69ab2.webp",
+            "product": "",
+            "show_price": true,
             "eyebrow": "For someone you love",
             "heading": "Gift love they’ll <em>remember.</em>",
             "text": "Give a meaningful daily reminder that keeps your care close, through every soft cue and quiet reset.",
@@ -292,22 +404,86 @@
           }
         }
       },
-      "block_order": ["banner_1", "banner_2"],
-      "settings": {}
+      "block_order": [
+        "banner_1",
+        "banner_2"
+      ],
+      "settings": {
+        "heading_size": "h2",
+        "background_color": "#000000",
+        "text_color": "#f4f0ee",
+        "primary_color": "#000000",
+        "accent_color": "#a57c72",
+        "panel_background": "#141211",
+        "dark_background": "#0b0a0a",
+        "dark_text": "#f4f0ee"
+      }
     },
     "love_cards_home": {
       "type": "love-cards",
       "blocks": {
-        "card_1": { "type": "card", "settings": { "icon": "smile", "title": "Feel Present Again" } },
-        "card_2": { "type": "card", "settings": { "icon": "sunrise", "title": "Calm That Fits Your Day" } },
-        "card_3": { "type": "card", "settings": { "icon": "reset", "title": "Reset Anywhere, Anytime" } },
-        "card_4": { "type": "card", "settings": { "icon": "mind", "title": "Mindful Habits" } },
-        "card_5": { "type": "card", "settings": { "icon": "care", "title": "Screenless Wellness" } },
-        "card_6": { "type": "card", "settings": { "icon": "gift", "title": "Meaningful Gift" } }
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "icon": "smile",
+            "title": "Feel Present Again"
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "icon": "sunrise",
+            "title": "Calm That Fits Your Day"
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "icon": "reset",
+            "title": "Reset Anywhere, Anytime"
+          }
+        },
+        "card_4": {
+          "type": "card",
+          "settings": {
+            "icon": "mind",
+            "title": "Mindful Habits"
+          }
+        },
+        "card_5": {
+          "type": "card",
+          "settings": {
+            "icon": "care",
+            "title": "Screenless Wellness"
+          }
+        },
+        "card_6": {
+          "type": "card",
+          "settings": {
+            "icon": "gift",
+            "title": "Meaningful Gift"
+          }
+        }
       },
-      "block_order": ["card_1", "card_2", "card_3", "card_4", "card_5", "card_6"],
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3",
+        "card_4",
+        "card_5",
+        "card_6"
+      ],
       "settings": {
-        "button_link": "/products/breathelet-onefit"
+        "eyebrow": "",
+        "heading": "",
+        "heading_size": "h0",
+        "button_label": "Shop Breathelet",
+        "button_link": "/products/breathelet-onefit",
+        "background_color": "#000000",
+        "text_color": "#f4f0ee",
+        "card_background": "#0c0b0a",
+        "primary_color": "#000000",
+        "accent_color": "#a57c72"
       }
     },
     "community_cards_home": {
@@ -317,6 +493,7 @@
           "type": "card",
           "settings": {
             "image": "shopify://shop_images/WhatsApp_Image_2026-10-12_at_12.26.45_PM.webp",
+            "eyebrow": "",
             "heading": "Join Our Influencer Community",
             "text": "Share mindful living, everyday calm, and meaningful wellness with your audience through authentic content.",
             "button_label": "Become an Influencer",
@@ -328,6 +505,7 @@
           "type": "card",
           "settings": {
             "image": "shopify://shop_images/Wholesale.webp",
+            "eyebrow": "",
             "heading": "Partner With Breathelet",
             "text": "Bring mindful wellness to your customers with wholesale pricing designed for retailers, distributors, and gift programs.",
             "button_label": "Get Wholesale Quote",
@@ -336,8 +514,17 @@
           }
         }
       },
-      "block_order": ["card_1", "card_2"],
-      "settings": {}
+      "block_order": [
+        "card_1",
+        "card_2"
+      ],
+      "settings": {
+        "heading_size": "h2",
+        "background_color": "#000000",
+        "text_color": "#f4f0ee",
+        "primary_color": "#000000",
+        "accent_color": "#a57c72"
+      }
     },
     "ritual_accordion": {
       "type": "ritual-accordion",
@@ -367,8 +554,19 @@
           }
         }
       },
-      "block_order": ["item_1", "item_2", "item_3"],
-      "settings": {}
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3"
+      ],
+      "settings": {
+        "image_aspect_ratio": "1 / 1",
+        "background_color": "#000000",
+        "text_color": "#f4f0ee",
+        "primary_color": "#000000",
+        "accent_color": "#a57c72",
+        "media_background": "#0e0d0c"
+      }
     },
     "fa63dde0-c7d9-4ac7-9f3d-90ef6a67184f": {
       "type": "image-with-text",
@@ -401,6 +599,7 @@
         "heading_w8eNt4",
         "bdb75fd8-0a89-4189-9614-b2d55f963058"
       ],
+      "disabled": true,
       "settings": {
         "full_width": false,
         "remove_bottom_spacing": false,
@@ -446,6 +645,7 @@
         "heading_HnYWbb",
         "text_G3yyBY"
       ],
+      "disabled": true,
       "settings": {
         "full_width": false,
         "remove_bottom_spacing": false,
@@ -491,6 +691,7 @@
         "text_1",
         "link_1"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "remove_bottom_spacing": false,
@@ -544,6 +745,7 @@
         "text_rAkiMf",
         "bio_xX9PmC"
       ],
+      "disabled": true,
       "name": "t:sections.video-with-text.presets__0.name",
       "settings": {
         "custom_class": "",
@@ -588,9 +790,9 @@
         "remove_horizontal_space": false,
         "remove_vertical_space": false,
         "subheading": "",
-        "heading": "WHY DO PEOPLE LOVE BREATHELET?",
+        "heading": "Why Do People Love Breathelet?",
         "content": "",
-        "heading_size": "h2",
+        "heading_size": "h0",
         "text_alignment": "text-center",
         "link_text": "View all",
         "link_url": "",
@@ -617,9 +819,9 @@
         "remove_horizontal_space": false,
         "remove_vertical_space": false,
         "subheading": "",
-        "heading": "FOLLOW US ON INSTAGRAM",
+        "heading": "Follow Us On Instagram",
         "content": "",
-        "heading_size": "h2",
+        "heading_size": "h0",
         "text_alignment": "text-center",
         "link_text": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"25px\" height=\"25px\" viewbox=\"0 0 2500 2500\"><defs><radialgradient id=\"0\" cx=\"332.14\" cy=\"2511.81\" r=\"3263.54\" gradientunits=\"userSpaceOnUse\"><stop offset=\".09\" stop-color=\"#fa8f21\"></stop><stop offset=\".78\" stop-color=\"#d82d7e\"></stop></radialgradient><radialgradient id=\"1\" cx=\"1516.14\" cy=\"2623.81\" r=\"2572.12\" gradientunits=\"userSpaceOnUse\"><stop offset=\".64\" stop-color=\"#8c3aaa\" stop-opacity=\"0\"></stop><stop offset=\"1\" stop-color=\"#8c3aaa\"></stop></radialgradient></defs><path d=\"M833.4,1250c0-230.11,186.49-416.7,416.6-416.7s416.7,186.59,416.7,416.7-186.59,416.7-416.7,416.7S833.4,1480.11,833.4,1250m-225.26,0c0,354.5,287.36,641.86,641.86,641.86S1891.86,1604.5,1891.86,1250,1604.5,608.14,1250,608.14,608.14,895.5,608.14,1250M1767.27,582.69a150,150,0,1,0,150.06-149.94h-0.06a150.07,150.07,0,0,0-150,149.94M745,2267.47c-121.87-5.55-188.11-25.85-232.13-43-58.36-22.72-100-49.78-143.78-93.5s-70.88-85.32-93.5-143.68c-17.16-44-37.46-110.26-43-232.13-6.06-131.76-7.27-171.34-7.27-505.15s1.31-373.28,7.27-505.15c5.55-121.87,26-188,43-232.13,22.72-58.36,49.78-100,93.5-143.78s85.32-70.88,143.78-93.5c44-17.16,110.26-37.46,232.13-43,131.76-6.06,171.34-7.27,505-7.27s373.28,1.31,505.15,7.27c121.87,5.55,188,26,232.13,43,58.36,22.62,100,49.78,143.78,93.5s70.78,85.42,93.5,143.78c17.16,44,37.46,110.26,43,232.13,6.06,131.87,7.27,171.34,7.27,505.15s-1.21,373.28-7.27,505.15c-5.55,121.87-25.95,188.11-43,232.13-22.72,58.36-49.78,100-93.5,143.68s-85.42,70.78-143.78,93.5c-44,17.16-110.26,37.46-232.13,43-131.76,6.06-171.34,7.27-505.15,7.27s-373.28-1.21-505-7.27M734.65,7.57c-133.07,6.06-224,27.16-303.41,58.06C349,97.54,279.38,140.35,209.81,209.81S97.54,349,65.63,431.24c-30.9,79.46-52,170.34-58.06,303.41C1.41,867.93,0,910.54,0,1250s1.41,382.07,7.57,515.35c6.06,133.08,27.16,223.95,58.06,303.41,31.91,82.19,74.62,152,144.18,221.43S349,2402.37,431.24,2434.37c79.56,30.9,170.34,52,303.41,58.06C868,2498.49,910.54,2500,1250,2500s382.07-1.41,515.35-7.57c133.08-6.06,223.95-27.16,303.41-58.06,82.19-32,151.86-74.72,221.43-144.18s112.18-139.24,144.18-221.43c30.9-79.46,52.1-170.34,58.06-303.41,6.06-133.38,7.47-175.89,7.47-515.35s-1.41-382.07-7.47-515.35c-6.06-133.08-27.16-224-58.06-303.41-32-82.19-74.72-151.86-144.18-221.43S2150.95,97.54,2068.86,65.63c-79.56-30.9-170.44-52.1-303.41-58.06C1632.17,1.51,1589.56,0,1250.1,0S868,1.41,734.65,7.57\" fill=\"url(#0)\"></path><path d=\"M833.4,1250c0-230.11,186.49-416.7,416.6-416.7s416.7,186.59,416.7,416.7-186.59,416.7-416.7,416.7S833.4,1480.11,833.4,1250m-225.26,0c0,354.5,287.36,641.86,641.86,641.86S1891.86,1604.5,1891.86,1250,1604.5,608.14,1250,608.14,608.14,895.5,608.14,1250M1767.27,582.69a150,150,0,1,0,150.06-149.94h-0.06a150.07,150.07,0,0,0-150,149.94M745,2267.47c-121.87-5.55-188.11-25.85-232.13-43-58.36-22.72-100-49.78-143.78-93.5s-70.88-85.32-93.5-143.68c-17.16-44-37.46-110.26-43-232.13-6.06-131.76-7.27-171.34-7.27-505.15s1.31-373.28,7.27-505.15c5.55-121.87,26-188,43-232.13,22.72-58.36,49.78-100,93.5-143.78s85.32-70.88,143.78-93.5c44-17.16,110.26-37.46,232.13-43,131.76-6.06,171.34-7.27,505-7.27s373.28,1.31,505.15,7.27c121.87,5.55,188,26,232.13,43,58.36,22.62,100,49.78,143.78,93.5s70.78,85.42,93.5,143.78c17.16,44,37.46,110.26,43,232.13,6.06,131.87,7.27,171.34,7.27,505.15s-1.21,373.28-7.27,505.15c-5.55,121.87-25.95,188.11-43,232.13-22.72,58.36-49.78,100-93.5,143.68s-85.42,70.78-143.78,93.5c-44,17.16-110.26,37.46-232.13,43-131.76,6.06-171.34,7.27-505.15,7.27s-373.28-1.21-505-7.27M734.65,7.57c-133.07,6.06-224,27.16-303.41,58.06C349,97.54,279.38,140.35,209.81,209.81S97.54,349,65.63,431.24c-30.9,79.46-52,170.34-58.06,303.41C1.41,867.93,0,910.54,0,1250s1.41,382.07,7.57,515.35c6.06,133.08,27.16,223.95,58.06,303.41,31.91,82.19,74.62,152,144.18,221.43S349,2402.37,431.24,2434.37c79.56,30.9,170.34,52,303.41,58.06C868,2498.49,910.54,2500,1250,2500s382.07-1.41,515.35-7.57c133.08-6.06,223.95-27.16,303.41-58.06,82.19-32,151.86-74.72,221.43-144.18s112.18-139.24,144.18-221.43c30.9-79.46,52.1-170.34,58.06-303.41,6.06-133.38,7.47-175.89,7.47-515.35s-1.41-382.07-7.47-515.35c-6.06-133.08-27.16-224-58.06-303.41-32-82.19-74.72-151.86-144.18-221.43S2150.95,97.54,2068.86,65.63c-79.56-30.9-170.44-52.1-303.41-58.06C1632.17,1.51,1589.56,0,1250.1,0S868,1.41,734.65,7.57\" fill=\"url(#1)\"></path></svg>@thebreathelet",
         "link_url": "https://www.instagram.com/thebreathelet",
@@ -663,17 +865,19 @@
       "block_order": [
         "ai_gen_block_icon_features_v2_69n6nc"
       ],
+      "disabled": true,
       "settings": {}
     },
     "video_RLKz98": {
       "type": "video",
       "name": "t:sections.video.presets__0.name",
       "settings": {
-        "full_width": false,
+        "full_width": true,
         "video_url": "https://www.youtube.com/watch?v=lP3cyKI98PU",
         "autoplay": true,
         "loop": true,
         "mute": true,
+        "hide_controls": true,
         "image_size": "media--ratio-16-9",
         "subheading": "",
         "heading": "",
@@ -740,6 +944,7 @@
         "service_kNbwh8",
         "service_AJebgc"
       ],
+      "disabled": true,
       "name": "General USPs",
       "settings": {
         "full_width": true,
@@ -799,6 +1004,7 @@
         "text_bHQAA3",
         "button_qJcVAf"
       ],
+      "disabled": true,
       "settings": {
         "full_width": false,
         "remove_bottom_spacing": false,
@@ -851,6 +1057,7 @@
         "text_hzBErV",
         "button_wtdHzk"
       ],
+      "disabled": true,
       "settings": {
         "full_width": false,
         "remove_bottom_spacing": false,
@@ -971,6 +1178,7 @@
         "tcf_col_1",
         "tcf_col_2"
       ],
+      "disabled": true,
       "name": "Two-column flex",
       "settings": {
         "full_width": true,
