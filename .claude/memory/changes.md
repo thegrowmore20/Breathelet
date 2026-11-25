@@ -122,3 +122,8 @@
 - sections/bento-benefits.liquid: centered `.section-header` (`text-center`) and `.heading` (`margin-inline: auto`).
 - templates/index.json: updated headings to `Why Do People Love <em>Breathelet</em>?` and `Follow Us On <em>Instagram</em>`.
 - Pushed to theme 204901220687 (--only) and GitHub.
+
+
+## 2026-11-25 - enable General USPs section on homepage
+- templates/index.json: removed `"disabled": true` from `homepage_usps_jQz9Ba` (`General USPs`).
+- Pushed to theme 204901220687 (--only templates/index.json) and GitHub.
