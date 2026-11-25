@@ -325,6 +325,7 @@
         "spec_1": {
           "type": "spec",
           "settings": {
+            "icon_image": "shopify://shop_images/Water-Resistant_1.png",
             "icon": "drop",
             "title": "Water-resistant",
             "text": "Durable for everyday wear"
@@ -333,6 +334,7 @@
         "spec_2": {
           "type": "spec",
           "settings": {
+            "icon_image": "shopify://shop_images/Long_Battery_1.png",
             "icon": "battery",
             "title": "14-day battery",
             "text": "Lasts up to two weeks"
@@ -341,6 +343,7 @@
         "spec_3": {
           "type": "spec",
           "settings": {
+            "icon_image": "shopify://shop_images/No_App_Required_1.png",
             "icon": "no_app",
             "title": "No app required",
             "text": "No screen, no setup"
@@ -349,6 +352,7 @@
         "spec_4": {
           "type": "spec",
           "settings": {
+            "icon_image": "shopify://shop_images/Adjustable_fit_1.png",
             "icon": "fit",
             "title": "Adjustable fit",
             "text": "Comfortable on any wrist"

@@ -32,16 +32,31 @@
         >
           <div class="sp-top">
             <span>{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
-            {%- case block.settings.icon -%}
-              {%- when 'drop' -%}
-                <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path pathLength="1" d="M24 6C24 6 11 20 11 29a13 13 0 0 0 26 0C37 20 24 6 24 6z"/><path pathLength="1" d="M18 30a6 6 0 0 0 6 6"/></svg>
-              {%- when 'battery' -%}
-                <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><rect pathLength="1" x="5" y="14" width="34" height="20" rx="5"/><path pathLength="1" d="M43 21v6"/><path pathLength="1" d="M13 22h14v4H13z"/></svg>
-              {%- when 'no_app' -%}
-                <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><rect pathLength="1" x="14" y="5" width="20" height="38" rx="5"/><path pathLength="1" d="M6 42L42 6"/></svg>
-              {%- when 'fit' -%}
-                <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><circle pathLength="1" cx="24" cy="24" r="15"/><path pathLength="1" d="M4 24h8M36 24h8M9 19l-5 5 5 5M39 19l5 5-5 5"/></svg>
-            {%- endcase -%}
+            {%- if block.settings.icon_image != blank -%}
+              {{
+                block.settings.icon_image
+                | image_url: width: 352
+                | image_tag:
+                  class: 'sp-icon-img',
+                  widths: '352',
+                  sizes: '46px',
+                  width: 46,
+                  height: 46,
+                  loading: 'lazy',
+                  alt: ''
+              }}
+            {%- else -%}
+              {%- case block.settings.icon -%}
+                {%- when 'drop' -%}
+                  <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path pathLength="1" d="M24 6C24 6 11 20 11 29a13 13 0 0 0 26 0C37 20 24 6 24 6z"/><path pathLength="1" d="M18 30a6 6 0 0 0 6 6"/></svg>
+                {%- when 'battery' -%}
+                  <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><rect pathLength="1" x="5" y="14" width="34" height="20" rx="5"/><path pathLength="1" d="M43 21v6"/><path pathLength="1" d="M13 22h14v4H13z"/></svg>
+                {%- when 'no_app' -%}
+                  <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><rect pathLength="1" x="14" y="5" width="20" height="38" rx="5"/><path pathLength="1" d="M6 42L42 6"/></svg>
+                {%- when 'fit' -%}
+                  <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><circle pathLength="1" cx="24" cy="24" r="15"/><path pathLength="1" d="M4 24h8M36 24h8M9 19l-5 5 5 5M39 19l5 5-5 5"/></svg>
+              {%- endcase -%}
+            {%- endif -%}
           </div>
           {%- if block.settings.title != blank -%}
             <b>{{ block.settings.title | escape }}</b>
@@ -107,7 +122,8 @@
       background: radial-gradient(circle at 88% 16%, rgb(var(--accent-rgb) / 16%), transparent 56%), var(--sp-card-background);
     }
 
-    .sp-cell:hover .sp-top svg {
+    .sp-cell:hover .sp-top svg,
+    .sp-cell:hover .sp-top .sp-icon-img {
       transform: translateY(-2px);
     }
   }
@@ -135,6 +151,14 @@
     stroke-width: 1.4;
     stroke-linecap: round;
     stroke-linejoin: round;
+    transition: transform 240ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .sp-top .sp-icon-img {
+    width: 46px;
+    height: 46px;
+    object-fit: contain;
+    display: block;
     transition: transform 240ms cubic-bezier(0.2, 0.7, 0.2, 1);
   }
 
@@ -196,7 +220,8 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .sp-top svg {
+    .sp-top svg,
+    .sp-top .sp-icon-img {
       transition: none;
     }
   }
@@ -236,6 +261,12 @@
       "type": "spec",
       "name": "Spec",
       "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon image",
+          "info": "Overrides the built-in icon when set."
+        },
         {
           "type": "select",
           "id": "icon",

@@ -149,3 +149,9 @@
 - sections/homepage-usps.liquid: restored original version from commit `36e7c11`.
 - templates/index.json: restored `homepage_usps_jQz9Ba` settings (`heading: "Buy with Confidence"`, removed `eyebrow`, `accent_color`, `card_background`).
 - Pushed to theme 204901220687 (--only) and GitHub.
+
+
+## 2026-11-25 - use General USPs icons in Specs every day section
+- sections/specs-every-day.liquid: added `icon_image` image_picker setting to `spec` blocks (overrides built-in SVG when set) with canonical `image_url`/`image_tag`, `46x46` styling, hover lift, and `prefers-reduced-motion`.
+- templates/index.json: assigned the 4 General USPs icons (`Water-Resistant_1.png`, `Long_Battery_1.png`, `No_App_Required_1.png`, `Adjustable_fit_1.png`) to `specs_every_day_home`.
+- Pushed to theme 204901220687 (--only) and GitHub.
