@@ -109,3 +109,10 @@
 ## 2026-11-25 - emphasize Breathelet and Accessories headings
 - templates/index.json: updated featured collection headings to `Shop <em>Breathelet</em>` and `Shop <em>Accessories</em>`.
 - Pushed to theme 204901220687 (--only templates/index.json) and GitHub.
+
+
+## 2026-11-25 - standardize theme section spacing utilities
+- sections/love-cards.liquid: removed `padding-top: 0; padding-bottom: 0;` from `.section.hz` so it inherits `.section--full-width` theme vertical spacing (`--section-vertical-spacing`).
+- sections/philosophy.liquid: switched to `{% render 'section-attrs' %}` + `.section-body`, removed redundant horizontal `margin`/`padding` on `.phil` and `.wrap` that double-padded inside `.section--full-width`, and aligned media breakpoints to canonical `991px`/`575px`.
+- Verified `bento-benefits`, `specs-every-day`, `gift-banners`, `community-cards`, and `ritual-accordion` already use `section-bg-number-vars` + `section-attrs` + `.section-body` with no vertical padding overrides.
+- Pushed to theme 204901220687 (--only) and GitHub.

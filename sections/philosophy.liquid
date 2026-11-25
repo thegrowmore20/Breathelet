@@ -8,8 +8,6 @@
     --phil-serif: var(--font-heading-family, Georgia, serif);
     --phil-sans: var(--font-body-family, system-ui, sans-serif);
     background: transparent;
-    margin: 0 16px;
-    padding: 0;
     color: #fff;
     isolation: isolate;
     position: relative;
@@ -29,9 +27,7 @@
   }
 
   #shopify-section-{{ section.id }} .wrap {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 32px;
+    width: 100%;
   }
 
   #shopify-section-{{ section.id }} .phil-grid {
@@ -187,22 +183,14 @@
     50% { opacity: 1; transform: scale(1.15); }
   }
 
-  @media (max-width: 980px) {
-    #shopify-section-{{ section.id }} .wrap {
-      padding: 0 22px;
-    }
-
+  @media (max-width: 991px) {
     #shopify-section-{{ section.id }} .phil-grid {
       grid-template-columns: 1fr;
       gap: 40px;
     }
   }
 
-  @media (max-width: 560px) {
-    #shopify-section-{{ section.id }} .phil {
-      margin: 0 8px;
-    }
-
+  @media (max-width: 575px) {
     #shopify-section-{{ section.id }} .phil-bg {
       border-radius: 32px;
     }
@@ -222,10 +210,11 @@
 
 {% render 'section-bg-number-vars' %}
 
-<section class="section section--full-width" id="how">
-  <div class="phil">
-    <div class="phil-bg" id="philBg"></div>
-    <div class="wrap phil-grid" id="philIn" data-animation-auto-order>
+<section {% render 'section-attrs' %} id="how">
+  <div class="section-body">
+    <div class="phil">
+      <div class="phil-bg" id="philBg"></div>
+      <div class="wrap phil-grid" id="philIn" data-animation-auto-order>
     <div class="phil-copy">
       {% render 'rich-text-blocks', prose_class: 'prose', heading_emphasis: 'Deep Breath' %}
       <philosophy-stats class="stats">
@@ -250,6 +239,7 @@
       {% endif %}
       <div class="vid-tag"><i></i>{{ section.settings.video_label }}</div>
     </div>
+      </div>
     </div>
   </div>
 </section>
