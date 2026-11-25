@@ -47,3 +47,8 @@
 - templates/index.json: updated featured_collection_PHPzLB (Shop Breathelet) and featured_collection_rJaDDf (Shop Accessories) heading_size from h2 to h0 (3X-Large).
 - Pushed to theme 204901220687 (--only templates/index.json) and GitHub.
 
+
+## 2026-11-25 - hide price on Buy the Pair button
+- templates/index.json: set show_price to false on gift_banners_home banner_2 while keeping PDP link to eternal-love-pair-set.
+- Pushed to theme 204901220687 (--only templates/index.json) and GitHub.
+
