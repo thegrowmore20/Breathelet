@@ -319,40 +319,6 @@
         "card_background": "#ffffff"
       }
     },
-    "confidence_banner": {
-      "type": "confidence-banner",
-      "blocks": {
-        "badge_1": {
-          "type": "badge",
-          "settings": {
-            "image": "shopify://shop_images/Lifetime_Warranty_3.png",
-            "label": ""
-          }
-        },
-        "badge_2": {
-          "type": "badge",
-          "settings": {
-            "image": "shopify://shop_images/15_Days_Return.png",
-            "label": ""
-          }
-        }
-      },
-      "block_order": [
-        "badge_1",
-        "badge_2"
-      ],
-      "settings": {
-        "eyebrow": "Our promise",
-        "heading": "Buy with <em>Confidence</em>",
-        "heading_size": "h0",
-        "subtext": "Risk Free Shopping & Satisfaction Guaranteed",
-        "background_color": "#000000",
-        "text_color": "#F4F0EE",
-        "primary_color": "#000000",
-        "accent_color": "#A57C72",
-        "card_background": "#0E0D0C"
-      }
-    },
     "specs_every_day_home": {
       "type": "specs-every-day",
       "blocks": {
@@ -403,6 +369,12 @@
         "eyebrow": "Built for every day",
         "heading": "Made to <em>disappear</em> on your wrist.",
         "heading_size": "h0",
+        "show_confidence_strip": true,
+        "confidence_eyebrow": "Our promise",
+        "confidence_heading": "Buy with <em>Confidence</em>",
+        "confidence_subtext": "Risk Free Shopping & Satisfaction Guaranteed",
+        "badge_1_image": "shopify://shop_images/Lifetime_Warranty_3.png",
+        "badge_2_image": "shopify://shop_images/15_Days_Return.png",
         "background_color": "#000000",
         "text_color": "#f4f0ee",
         "primary_color": "#000000",
@@ -1257,7 +1229,6 @@
     "featured_collection_rJaDDf",
     "philosophy_home",
     "bento_benefits_home",
-    "confidence_banner",
     "specs_every_day_home",
     "gift_banners_home",
     "love_cards_home",

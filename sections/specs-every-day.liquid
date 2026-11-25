@@ -22,50 +22,114 @@
       {%- endif -%}
     </div>
 
-    <div class="sp-box">
-      {%- for block in section.blocks -%}
-        <div
-          class="sp-cell"
-          data-animation="block"
-          data-animation-group="{{ section.id }}-cells"
-          {{ block.shopify_attributes }}
-        >
-          <div class="sp-top">
-            <span>{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
-            {%- if block.settings.icon_image != blank -%}
-              {{
-                block.settings.icon_image
-                | image_url: width: 352
-                | image_tag:
-                  class: 'sp-icon-img',
-                  widths: '352',
-                  sizes: '46px',
-                  width: 46,
-                  height: 46,
-                  loading: 'lazy',
-                  alt: ''
-              }}
-            {%- else -%}
-              {%- case block.settings.icon -%}
-                {%- when 'drop' -%}
-                  <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path pathLength="1" d="M24 6C24 6 11 20 11 29a13 13 0 0 0 26 0C37 20 24 6 24 6z"/><path pathLength="1" d="M18 30a6 6 0 0 0 6 6"/></svg>
-                {%- when 'battery' -%}
-                  <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><rect pathLength="1" x="5" y="14" width="34" height="20" rx="5"/><path pathLength="1" d="M43 21v6"/><path pathLength="1" d="M13 22h14v4H13z"/></svg>
-                {%- when 'no_app' -%}
-                  <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><rect pathLength="1" x="14" y="5" width="20" height="38" rx="5"/><path pathLength="1" d="M6 42L42 6"/></svg>
-                {%- when 'fit' -%}
-                  <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><circle pathLength="1" cx="24" cy="24" r="15"/><path pathLength="1" d="M4 24h8M36 24h8M9 19l-5 5 5 5M39 19l5 5-5 5"/></svg>
-              {%- endcase -%}
+    <div class="sp-frame">
+      <div class="sp-box">
+        {%- for block in section.blocks -%}
+          <div
+            class="sp-cell"
+            data-animation="block"
+            data-animation-group="{{ section.id }}-cells"
+            {{ block.shopify_attributes }}
+          >
+            <div class="sp-top">
+              <span>{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
+              {%- if block.settings.icon_image != blank -%}
+                {{
+                  block.settings.icon_image
+                  | image_url: width: 352
+                  | image_tag:
+                    class: 'sp-icon-img',
+                    widths: '352',
+                    sizes: '46px',
+                    width: 46,
+                    height: 46,
+                    loading: 'lazy',
+                    alt: ''
+                }}
+              {%- else -%}
+                {%- case block.settings.icon -%}
+                  {%- when 'drop' -%}
+                    <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path pathLength="1" d="M24 6C24 6 11 20 11 29a13 13 0 0 0 26 0C37 20 24 6 24 6z"/><path pathLength="1" d="M18 30a6 6 0 0 0 6 6"/></svg>
+                  {%- when 'battery' -%}
+                    <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><rect pathLength="1" x="5" y="14" width="34" height="20" rx="5"/><path pathLength="1" d="M43 21v6"/><path pathLength="1" d="M13 22h14v4H13z"/></svg>
+                  {%- when 'no_app' -%}
+                    <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><rect pathLength="1" x="14" y="5" width="20" height="38" rx="5"/><path pathLength="1" d="M6 42L42 6"/></svg>
+                  {%- when 'fit' -%}
+                    <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><circle pathLength="1" cx="24" cy="24" r="15"/><path pathLength="1" d="M4 24h8M36 24h8M9 19l-5 5 5 5M39 19l5 5-5 5"/></svg>
+                {%- endcase -%}
+              {%- endif -%}
+            </div>
+            {%- if block.settings.title != blank -%}
+              <b>{{ block.settings.title | escape }}</b>
+            {%- endif -%}
+            {%- if block.settings.text != blank -%}
+              <p>{{ block.settings.text | escape }}</p>
             {%- endif -%}
           </div>
-          {%- if block.settings.title != blank -%}
-            <b>{{ block.settings.title | escape }}</b>
-          {%- endif -%}
-          {%- if block.settings.text != blank -%}
-            <p>{{ block.settings.text | escape }}</p>
+        {%- endfor -%}
+      </div>
+
+      {%- if section.settings.show_confidence_strip -%}
+        <div
+          class="sp-assurance"
+          data-animation="block"
+          data-animation-group="{{ section.id }}-assurance"
+        >
+          <div class="sp-assurance__copy">
+            {%- if section.settings.confidence_eyebrow != blank -%}
+              <div class="subheading sp-assurance__eyebrow">{{ section.settings.confidence_eyebrow | escape }}</div>
+            {%- endif -%}
+            {%- if section.settings.confidence_heading != blank -%}
+              <h3 class="sp-assurance__heading">{{ section.settings.confidence_heading }}</h3>
+            {%- endif -%}
+            {%- if section.settings.confidence_subtext != blank -%}
+              <p class="sp-assurance__sub">{{ section.settings.confidence_subtext | escape }}</p>
+            {%- endif -%}
+          </div>
+
+          {%- if section.settings.badge_1_image != blank or section.settings.badge_2_image != blank -%}
+            <div class="sp-assurance__badges">
+              {%- if section.settings.badge_1_image != blank -%}
+                {%- assign badge_1_alt = section.settings.badge_1_image.alt | default: 'Lifetime Warranty' -%}
+                <div class="sp-assurance__badge">
+                  {{
+                    section.settings.badge_1_image
+                    | image_url: width: 352
+                    | image_tag:
+                      widths: '352',
+                      sizes: '(max-width: 575px) 96px, 118px',
+                      width: 118,
+                      height: 118,
+                      loading: 'lazy',
+                      alt: badge_1_alt
+                  }}
+                </div>
+              {%- endif -%}
+
+              {%- if section.settings.badge_1_image != blank and section.settings.badge_2_image != blank -%}
+                <span class="sp-assurance__sep" aria-hidden="true"></span>
+              {%- endif -%}
+
+              {%- if section.settings.badge_2_image != blank -%}
+                {%- assign badge_2_alt = section.settings.badge_2_image.alt | default: '15 Days Moneyback Guarantee' -%}
+                <div class="sp-assurance__badge">
+                  {{
+                    section.settings.badge_2_image
+                    | image_url: width: 352
+                    | image_tag:
+                      widths: '352',
+                      sizes: '(max-width: 575px) 96px, 118px',
+                      width: 118,
+                      height: 118,
+                      loading: 'lazy',
+                      alt: badge_2_alt
+                  }}
+                </div>
+              {%- endif -%}
+            </div>
           {%- endif -%}
         </div>
-      {%- endfor -%}
+      {%- endif -%}
     </div>
   </div>
 </section>
@@ -94,9 +158,7 @@
     padding-right: 0.08em;
   }
 
-  .sp-box {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+  .sp-frame {
     background: var(--sp-card-background);
     border-radius: 32px;
     overflow: hidden;
@@ -104,10 +166,15 @@
     box-shadow: inset 0 1px 0 rgb(var(--color-foreground) / 6%);
   }
 
+  .sp-box {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
   .sp-cell {
     position: relative;
     padding: 34px 32px 36px;
-    min-height: 276px;
+    min-height: 268px;
     display: flex;
     flex-direction: column;
     border-right: 1px solid var(--sp-line);
@@ -125,6 +192,10 @@
     .sp-cell:hover .sp-top svg,
     .sp-cell:hover .sp-top .sp-icon-img {
       transform: translateY(-2px);
+    }
+
+    .sp-assurance__badge:hover {
+      transform: translateY(-3px);
     }
   }
 
@@ -159,6 +230,7 @@
     height: 46px;
     object-fit: contain;
     display: block;
+    mix-blend-mode: screen;
     transition: transform 240ms cubic-bezier(0.2, 0.7, 0.2, 1);
   }
 
@@ -179,6 +251,86 @@
     margin-top: 10px;
   }
 
+  .sp-assurance {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(24px, 4vw, 56px);
+    padding: clamp(26px, 3vw, 38px) clamp(28px, 3.6vw, 48px);
+    border-top: 1px solid var(--sp-line);
+    background:
+      linear-gradient(95deg, rgb(var(--accent-rgb) / 10%) 0%, transparent 52%, rgb(var(--accent-rgb) / 6%) 100%),
+      var(--sp-card-background);
+  }
+
+  .sp-assurance__copy {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-align: left;
+    max-width: 460px;
+  }
+
+  .sp-assurance__eyebrow {
+    color: var(--accent);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+  }
+
+  .sp-assurance__heading {
+    margin: 0;
+    font-family: var(--font-heading-family);
+    font-weight: 400;
+    font-size: clamp(28px, 2.8vw, 40px);
+    line-height: 1.06;
+    letter-spacing: -0.01em;
+    color: rgb(var(--color-foreground));
+  }
+
+  .sp-assurance__heading em {
+    font-style: italic;
+    color: var(--accent);
+    padding-right: 0.08em;
+  }
+
+  .sp-assurance__sub {
+    margin: 4px 0 0;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--sp-ink-2);
+  }
+
+  .sp-assurance__badges {
+    display: flex;
+    align-items: center;
+    gap: clamp(20px, 3vw, 40px);
+    flex-shrink: 0;
+  }
+
+  .sp-assurance__badge {
+    width: clamp(96px, 9.5vw, 118px);
+    height: clamp(96px, 9.5vw, 118px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 260ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .sp-assurance__badge img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    mix-blend-mode: screen;
+  }
+
+  .sp-assurance__sep {
+    width: 1px;
+    height: 68px;
+    background: linear-gradient(180deg, transparent, rgb(var(--accent-rgb) / 45%), transparent);
+    flex-shrink: 0;
+  }
+
   @media (max-width: 991px) {
     .sp-box {
       grid-template-columns: 1fr 1fr;
@@ -195,12 +347,27 @@
     .sp-cell {
       min-height: 230px;
     }
+
+    .sp-assurance {
+      flex-direction: column;
+      text-align: center;
+      padding: 32px 24px;
+      gap: 24px;
+    }
+
+    .sp-assurance__copy {
+      align-items: center;
+      text-align: center;
+    }
   }
 
   @media (max-width: 575px) {
+    .sp-frame {
+      border-radius: 24px;
+    }
+
     .sp-box {
       grid-template-columns: 1fr;
-      border-radius: 24px;
     }
 
     .sp-cell {
@@ -217,12 +384,34 @@
     .sp-cell b {
       margin-top: 32px;
     }
+
+    .sp-assurance {
+      padding: 28px 20px;
+    }
+
+    .sp-assurance__badges {
+      gap: 20px;
+    }
+
+    .sp-assurance__badge {
+      width: 92px;
+      height: 92px;
+    }
+
+    .sp-assurance__sep {
+      height: 54px;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
     .sp-top svg,
-    .sp-top .sp-icon-img {
+    .sp-top .sp-icon-img,
+    .sp-assurance__badge {
       transition: none;
+    }
+
+    .sp-assurance__badge:hover {
+      transform: none;
     }
   }
 {% endstylesheet %}
@@ -250,6 +439,14 @@
       ],
       "default": "h0"
     },
+    { "type": "header", "content": "Confidence assurance strip" },
+    { "type": "checkbox", "id": "show_confidence_strip", "label": "Show Buy with Confidence strip", "default": true },
+    { "type": "text", "id": "confidence_eyebrow", "label": "Assurance eyebrow", "default": "Our promise" },
+    { "type": "inline_richtext", "id": "confidence_heading", "label": "Assurance heading", "default": "Buy with <em>Confidence</em>" },
+    { "type": "text", "id": "confidence_subtext", "label": "Assurance subtext", "default": "Risk Free Shopping & Satisfaction Guaranteed" },
+    { "type": "image_picker", "id": "badge_1_image", "label": "Guarantee badge 1" },
+    { "type": "image_picker", "id": "badge_2_image", "label": "Guarantee badge 2" },
+    { "type": "header", "content": "Colors" },
     { "type": "color", "id": "background_color", "label": "Background", "default": "#000000" },
     { "type": "color", "id": "text_color", "label": "Text", "default": "#F4F0EE" },
     { "type": "color", "id": "primary_color", "label": "Primary", "default": "#000000" },

@@ -161,3 +161,9 @@
 - New: sections/confidence-banner.liquid in #000000/#A57C72/#0E0D0C palette with `section-bg-number-vars`, `section-attrs`, `.section-body`, `{% stylesheet %}`, editorial `h0` heading (`<em>` accent), radial glow, dynamic `badge` blocks, hairline divider, `data-animation="block"`, and `prefers-reduced-motion`.
 - templates/index.json: added `confidence_banner` right above `specs_every_day_home` with Lifetime Warranty and 15 Days Return badges.
 - Pushed to theme 204901220687 (--only) and GitHub.
+
+
+## 2026-11-25 - merge Buy with Confidence into Specs every day section
+- sections/specs-every-day.liquid: wrapped `.sp-box` and an integrated `.sp-assurance` bottom strip inside one unified `.sp-frame` (#0E0D0C surface, #A57C72 accent, `mix-blend-mode: screen` on icons and guarantee badges so opaque black backgrounds disappear cleanly).
+- templates/index.json: removed standalone `confidence_banner` from homepage and enabled `show_confidence_strip` + badges on `specs_every_day_home`.
+- Pushed to theme 204901220687 (--only) and GitHub.
