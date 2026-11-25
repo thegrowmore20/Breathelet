@@ -282,11 +282,13 @@
           "settings": {
             "style": "dark",
             "image": "shopify://shop_images/3_9748f5be-627b-4256-b1ea-3063ec83df72.webp",
+            "product": "eternal-love-pair-set",
+            "show_price": true,
             "eyebrow": "Eternal Love Pair",
             "heading": "Two Breathelets. <em>One connection.</em>",
             "text": "One shared reminder to breathe, reset, and stay present — together.",
             "button_label": "Buy the Pair",
-            "button_link": "/collections/all"
+            "button_link": "shopify://products/eternal-love-pair-set"
           }
         }
       },

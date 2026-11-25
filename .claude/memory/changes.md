@@ -32,3 +32,8 @@
 - specs-every-day.liquid & love-cards.liquid: aligned section headings to theme h0 (3X-Large) via heading_size setting and eyebrows to theme .subheading.
 - Pushed to theme 204901220687 (--only) and GitHub.
 
+
+## 2026-11-25 - Buy the Pair PDP link & dynamic price
+- templates/index.json: wired gift_banners_home banner_2 product to eternal-love-pair-set (dynamic price + shopify://products/eternal-love-pair-set PDP redirect).
+- Pushed to theme 204901220687 (--only templates/index.json) and GitHub.
+
