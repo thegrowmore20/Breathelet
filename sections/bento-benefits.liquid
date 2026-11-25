@@ -1,97 +1,110 @@
 {% render 'section-bg-number-vars' %}
 
-<section class="section section--full-width" {{ section.shopify_attributes }}>
+{%- capture bento_style -%}
+  --bento-primary: {{ section.settings.primary_color }};
+  --bento-primary-rgb: {{ section.settings.primary_color.rgb }};
+  --bento-secondary: {{ section.settings.secondary_color }};
+  --bento-secondary-rgb: {{ section.settings.secondary_color.rgb }};
+  --bento-card: {{ section.settings.card_background }};
+  --bento-card-rgb: {{ section.settings.card_background.rgb }};
+{%- endcapture -%}
+
+<section {% render 'section-attrs', class: 'bento-section', style: bento_style %}>
   <div class="section-body">
-    <div class="section-header section-content-spacing rfs:mb-12 prose-align text-left">
-      <div class="rv">
-        <div class="subheading eyebrow">Why people love it</div>
-        <h2 class="heading {{ section.settings.heading_size | default: 'h0' }}">Calm that <em>fits your day.</em></h2>
+    {%- if section.settings.eyebrow != blank or section.settings.heading != blank -%}
+      <div
+        class="section-header section-content-spacing rfs:mb-12 prose-align text-left"
+        data-animation="block"
+        data-animation-group="{{ section.id }}-head"
+      >
+        {%- if section.settings.eyebrow != blank -%}
+          <div class="subheading eyebrow">{{ section.settings.eyebrow | escape }}</div>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="heading {{ section.settings.heading_size | default: 'h0' }}">{{ section.settings.heading }}</h2>
+        {%- endif -%}
       </div>
-    </div>
+    {%- endif -%}
+
     <div class="bento grid gap-5">
-      <div class="tile tile--spotlight s4 dark rounded-block p-6 md:p-8 rv">
-        <div class="num">01</div>
-        <div><h3>Feel present again</h3><p>A vibration only you can feel. You check your phone 150 times a day — Breathelet reminds you to check yourself.</p></div>
-      </div>
-      <div class="tile s2 color rounded-block p-6 md:p-8 rv d1">
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5v14"/></svg></div>
-        <div><h3>Reset anywhere</h3><p>Desk, commute, kitchen. Wherever you are, anytime.</p></div>
-      </div>
-      <div class="tile s2 color rounded-block p-6 md:p-8 rv">
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div>
-        <div><h3>Mindful habits</h3><p>Posture, hydration, breath — small cues, lasting routines.</p></div>
-      </div>
-      <div class="tile s2 color rounded-block p-6 md:p-8 rv d1">
-        <div class="big">0</div>
-        <div><h3>Screens. Apps.</h3><p>No setup, no notifications. Just wear it.</p></div>
-      </div>
-      <div class="tile s2 color rounded-block p-6 md:p-8 rv d2">
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-16 0c0-5 8-10 8-10s8 5 8 10z"/></svg></div>
-        <div><h3>A meaningful gift</h3><p>Give someone a daily reminder that you care.</p></div>
-      </div>
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign tile_class = 'tile ' | append: block.settings.width
+          case block.settings.style
+            when 'spotlight'
+              assign tile_class = tile_class | append: ' tile--spotlight dark'
+            when 'dark'
+              assign tile_class = tile_class | append: ' dark'
+            else
+              assign tile_class = tile_class | append: ' color'
+          endcase
+        -%}
+        <div
+          class="{{ tile_class }} rounded-block p-6 md:p-8"
+          data-animation="block"
+          data-animation-group="{{ section.id }}-tiles"
+          {{ block.shopify_attributes }}
+        >
+          {%- case block.settings.marker -%}
+            {%- when 'number' -%}
+              <div class="num">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</div>
+            {%- when 'big_text' -%}
+              {%- if block.settings.big_text != blank -%}
+                <div class="big">{{ block.settings.big_text | escape }}</div>
+              {%- endif -%}
+            {%- when 'icon' -%}
+              <div class="ic">
+                {%- case block.settings.icon -%}
+                  {%- when 'plus' -%}
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M12 5v14"/></svg>
+                  {%- when 'lines' -%}
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+                  {%- when 'drop' -%}
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 12a8 8 0 1 1-16 0c0-5 8-10 8-10s8 5 8 10z"/></svg>
+                  {%- when 'check' -%}
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 13l4 4L19 7"/></svg>
+                  {%- when 'heart' -%}
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>
+                {%- endcase -%}
+              </div>
+          {%- endcase -%}
+          <div>
+            {%- if block.settings.title != blank -%}
+              <h3>{{ block.settings.title | escape }}</h3>
+            {%- endif -%}
+            {%- if block.settings.text != blank -%}
+              <p>{{ block.settings.text | escape }}</p>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
     </div>
   </div>
 </section>
 
-{% javascript %}
-  (() => {
-    const items = document.querySelectorAll('.section-bento .rv');
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    if (reduceMotion || !('IntersectionObserver' in window)) {
-      items.forEach((item) => item.classList.add('in'));
-      return;
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-
-    items.forEach((item) => observer.observe(item));
-  })();
-{% endjavascript %}
-
 {% stylesheet %}
-  .section-bento {
-    --bento-primary: #0b0b0b;
-    --bento-secondary: #a57c72;
-    --bento-body-muted: #5c5551;
-    --bento-card-border: rgba(11, 11, 11, 0.12);
-    --bento-dark-border: rgba(165, 124, 114, 0.42);
+  .bento-section {
+    --bento-body-muted: rgb(var(--bento-primary-rgb) / 70%);
+    --bento-card-border: rgb(var(--bento-primary-rgb) / 12%);
+    --bento-dark-border: rgb(var(--bento-secondary-rgb) / 42%);
     --bento-ease: cubic-bezier(0.2, 0, 0, 1);
-    background: transparent;
-    color: #ffffff;
   }
 
-  .section-bento .section-body {
-    background: transparent;
-  }
-
-  .section-bento .section-header {
-    color: #ffffff;
-  }
-
-  .section-bento .section-header .eyebrow {
+  .bento-section .section-header .eyebrow {
     color: var(--bento-secondary);
   }
 
-  .section-bento .section-header .heading {
+  .bento-section .section-header .heading {
     max-width: 760px;
     margin-top: 16px;
-    color: #ffffff;
   }
 
-  .section-bento .section-header .heading em {
+  .bento-section .section-header .heading em {
     color: var(--bento-secondary);
     font-style: italic;
   }
 
-  .section-bento h3 {
+  .bento-section h3 {
     font-family: var(--font-heading-family, Georgia, serif);
     font-weight: 400;
     letter-spacing: -0.02em;
@@ -99,72 +112,71 @@
     text-wrap: balance;
   }
 
-  .section-bento .bento {
+  .bento-section .bento {
     grid-template-columns: repeat(6, minmax(0, 1fr));
   }
 
-  .section-bento .tile {
+  .bento-section .tile {
     position: relative;
     display: flex;
     min-height: 19rem;
     flex-direction: column;
     justify-content: space-between;
     overflow: hidden;
-    transition: transform 240ms var(--bento-ease), box-shadow 240ms var(--bento-ease), border-color 240ms var(--bento-ease);
   }
 
-  .section-bento .tile.color {
-    --color-background: 255 255 255;
-    --color-foreground: 11 11 11;
+  .bento-section .tile.color {
     border: 1px solid var(--bento-card-border);
+    background-color: var(--bento-card);
     color: var(--bento-primary);
   }
 
-  .section-bento .tile--spotlight {
-    min-height: 19rem;
+  .bento-section .tile--spotlight {
     border: 1px solid var(--bento-dark-border);
-    background: radial-gradient(circle at 92% 12%, rgba(165, 124, 114, 0.18), transparent 30%), var(--bento-primary);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    background: radial-gradient(circle at 92% 12%, rgb(var(--bento-secondary-rgb) / 18%), transparent 30%), var(--bento-primary);
   }
 
   @media (hover: hover) and (pointer: fine) {
-    .section-bento .tile:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.18);
+    .bento-section .tile {
+      transition: transform 240ms var(--bento-ease);
     }
 
-    .section-bento .tile--spotlight:hover {
+    .bento-section .tile:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 1rem 2.5rem rgb(var(--bento-primary-rgb) / 18%);
+    }
+
+    .bento-section .tile--spotlight:hover {
       border-color: var(--bento-secondary);
-      box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.08);
     }
   }
 
-  .section-bento .tile.s2 {
+  .bento-section .tile.s2 {
     grid-column: span 2;
   }
 
-  .section-bento .tile.s4 {
+  .bento-section .tile.s4 {
     grid-column: span 4;
   }
 
-  .section-bento .tile.dark {
+  .bento-section .tile.dark {
     background-color: var(--bento-primary);
-    color: #ffffff;
+    color: var(--bento-card);
   }
 
-  .section-bento .tile .num {
+  .bento-section .tile .num {
     color: var(--bento-secondary);
     font-size: 12px;
     font-weight: 600;
     letter-spacing: 0.14em;
   }
 
-  .section-bento .tile h3 {
+  .bento-section .tile h3 {
     margin-top: auto;
     font-size: clamp(1.75rem, 2.7vw, 2.5rem);
   }
 
-  .section-bento .tile p {
+  .bento-section .tile p {
     max-width: 360px;
     margin-top: 12px;
     color: var(--bento-body-muted);
@@ -173,11 +185,11 @@
     line-height: 1.55;
   }
 
-  .section-bento .tile.dark p {
-    color: rgba(255, 255, 255, 0.72);
+  .bento-section .tile.dark p {
+    color: rgb(var(--bento-card-rgb) / 72%);
   }
 
-  .section-bento .tile .big {
+  .bento-section .tile .big {
     font-family: var(--font-heading-family, Georgia, serif);
     color: var(--bento-secondary);
     font-size: clamp(5rem, 8vw, 7rem);
@@ -185,17 +197,17 @@
     line-height: 0.9;
   }
 
-  .section-bento .ic {
+  .bento-section .ic {
     display: grid;
     width: 46px;
     height: 46px;
     place-items: center;
-    border: 1px solid rgba(165, 124, 114, 0.45);
+    border: 1px solid rgb(var(--bento-secondary-rgb) / 45%);
     border-radius: 50%;
     color: var(--bento-secondary);
   }
 
-  .section-bento .ic svg {
+  .bento-section .ic svg {
     width: 20px;
     height: 20px;
     fill: none;
@@ -205,60 +217,39 @@
     stroke-width: 1.5;
   }
 
-  .section-bento .rv {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 300ms var(--bento-ease), transform 300ms var(--bento-ease);
-  }
-
-  .section-bento .rv.in {
-    opacity: 1;
-    transform: none;
-  }
-
-  .section-bento .d1 {
-    transition-delay: 0.1s;
-  }
-
-  .section-bento .d2 {
-    transition-delay: 0.2s;
-  }
-
   @media (max-width: 991px) {
-    .section-bento .bento {
+    .bento-section .bento {
       grid-template-columns: 1fr 1fr;
     }
 
-    .section-bento .tile.s2,
-    .section-bento .tile.s4 {
+    .bento-section .tile.s2,
+    .bento-section .tile.s4 {
       grid-column: span 2;
     }
   }
 
   @media (max-width: 575px) {
-    .section-bento .tile,
-    .section-bento .tile--spotlight {
+    .bento-section .tile,
+    .bento-section .tile--spotlight {
       min-height: 15rem;
     }
 
-    .section-bento .bento {
+    .bento-section .bento {
       grid-template-columns: 1fr;
     }
 
-    .section-bento .tile.s2,
-    .section-bento .tile.s4 {
+    .bento-section .tile.s2,
+    .bento-section .tile.s4 {
       grid-column: span 1;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .section-bento .tile,
-    .section-bento .rv {
+    .bento-section .tile {
       transition: none;
     }
 
-    .section-bento .rv {
-      opacity: 1;
+    .bento-section .tile:hover {
       transform: none;
     }
   }
@@ -269,6 +260,8 @@
   "name": "Bento benefits",
   "class": "section-bento",
   "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Why people love it" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "info": "Wrap a word in <em> for the accent colour.", "default": "Calm that <em>fits your day.</em>" },
     {
       "type": "select",
       "id": "heading_size",
@@ -283,11 +276,81 @@
         { "value": "h6", "label": "X-Small" }
       ],
       "default": "h0"
+    },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#000000" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#FFFFFF" },
+    { "type": "color", "id": "primary_color", "label": "Primary (dark tiles, light tile text)", "default": "#000000" },
+    { "type": "color", "id": "secondary_color", "label": "Secondary (accent)", "default": "#A57C72" },
+    { "type": "color", "id": "card_background", "label": "Light tile background", "default": "#FFFFFF" }
+  ],
+  "blocks": [
+    {
+      "type": "tile",
+      "name": "Tile",
+      "settings": [
+        {
+          "type": "select",
+          "id": "style",
+          "label": "Style",
+          "options": [
+            { "value": "spotlight", "label": "Spotlight (dark with glow)" },
+            { "value": "dark", "label": "Dark" },
+            { "value": "light", "label": "Light" }
+          ],
+          "default": "light"
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Width",
+          "options": [
+            { "value": "s2", "label": "Narrow (2 of 6 columns)" },
+            { "value": "s4", "label": "Wide (4 of 6 columns)" }
+          ],
+          "default": "s2"
+        },
+        {
+          "type": "select",
+          "id": "marker",
+          "label": "Top marker",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "number", "label": "Number" },
+            { "value": "icon", "label": "Icon" },
+            { "value": "big_text", "label": "Big text" }
+          ],
+          "default": "icon"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "plus", "label": "Plus" },
+            { "value": "lines", "label": "Lines" },
+            { "value": "drop", "label": "Drop" },
+            { "value": "check", "label": "Check" },
+            { "value": "heart", "label": "Heart" }
+          ],
+          "default": "plus"
+        },
+        { "type": "text", "id": "big_text", "label": "Big text", "default": "0" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Reset anywhere" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Desk, commute, kitchen. Wherever you are, anytime." }
+      ]
     }
   ],
   "presets": [
     {
-      "name": "Bento benefits"
+      "name": "Bento benefits",
+      "blocks": [
+        { "type": "tile", "settings": { "style": "spotlight", "width": "s4", "marker": "number", "title": "Feel present again", "text": "A vibration only you can feel. You check your phone 150 times a day — Breathelet reminds you to check yourself." } },
+        { "type": "tile", "settings": { "style": "light", "width": "s2", "marker": "icon", "icon": "plus", "title": "Reset anywhere", "text": "Desk, commute, kitchen. Wherever you are, anytime." } },
+        { "type": "tile", "settings": { "style": "light", "width": "s2", "marker": "icon", "icon": "lines", "title": "Mindful habits", "text": "Posture, hydration, breath — small cues, lasting routines." } },
+        { "type": "tile", "settings": { "style": "light", "width": "s2", "marker": "big_text", "big_text": "0", "title": "Screens. Apps.", "text": "No setup, no notifications. Just wear it." } },
+        { "type": "tile", "settings": { "style": "light", "width": "s2", "marker": "icon", "icon": "drop", "title": "A meaningful gift", "text": "Give someone a daily reminder that you care." } }
+      ]
     }
   ]
 }

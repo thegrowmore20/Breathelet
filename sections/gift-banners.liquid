@@ -5,6 +5,8 @@
   --bn-panel: {{ section.settings.panel_background }};
   --bn-dark-background: {{ section.settings.dark_background }};
   --bn-dark-rgb: {{ section.settings.dark_text.rgb }};
+  --primary: {{ section.settings.primary_color }};
+  --accent: {{ section.settings.accent_color }};
 {%- endcapture -%}
 
 <section {% render 'section-attrs', class: 'gift', style: gift_style %}>
@@ -139,7 +141,7 @@
 
   .gift .bn-t h2 em {
     font-style: italic;
-    color: rgb(var(--bn-dark-rgb) / 66%);
+    color: var(--accent);
   }
 
   .gift .bn-t p {
@@ -148,7 +150,7 @@
   }
 
   .gift .bn.dk .eyebrow {
-    color: rgb(var(--bn-dark-rgb) / 80%);
+    color: var(--accent);
   }
 
   .gift .bn.lt {
@@ -165,7 +167,7 @@
   }
 
   .gift .bn.lt h2 em {
-    color: var(--bn-mute);
+    color: var(--accent);
   }
 
   .gift .bn.lt .pimg {
@@ -197,13 +199,13 @@
   }
 
   .gift .btn-dark {
-    background: rgb(var(--color-foreground));
-    color: rgb(var(--color-background));
+    background: var(--primary);
+    color: rgb(var(--bn-dark-rgb));
   }
 
   .gift .btn-light {
-    background: rgb(var(--bn-dark-rgb));
-    color: var(--bn-dark-background);
+    background: var(--accent);
+    color: var(--primary);
   }
 
   @media (max-width: 991px) {
@@ -229,7 +231,9 @@
   "max_blocks": 2,
   "settings": [
     { "type": "color", "id": "background_color", "label": "Background", "default": "#F4F4F2" },
-    { "type": "color", "id": "text_color", "label": "Text", "default": "#0B0B0B" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#000000" },
+    { "type": "color", "id": "primary_color", "label": "Primary", "default": "#000000" },
+    { "type": "color", "id": "accent_color", "label": "Secondary (accent)", "default": "#A57C72" },
     { "type": "color", "id": "panel_background", "label": "Light banner background", "default": "#ECECEA" },
     { "type": "color", "id": "dark_background", "label": "Dark banner background", "default": "#161616" },
     { "type": "color", "id": "dark_text", "label": "Dark banner text", "default": "#FFFFFF" }

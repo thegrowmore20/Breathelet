@@ -11,3 +11,9 @@
 - Repaired mojibake (UTF-8 double-encoding) I introduced earlier in bento-benefits.liquid and philosophy.liquid.
 - Dropped from source: gsap scroll, rv/fade JS, stroke-draw, counter, add-to-cart JS, non-transform hover transitions.
 
+
+## 2026-11-25 - bento dynamic + palette
+- bento-benefits.liquid rebuilt: eyebrow/heading settings, tile blocks (style, width, marker, icon, title, text), colour settings; rv JS removed in favour of theme data-animation (fixes content hidden without JS).
+- index.json: bento_benefits_home now has 5 tile blocks.
+- specs, gift, love, community: primary #000000 / accent #A57C72 colour settings replace theme button tokens.
+

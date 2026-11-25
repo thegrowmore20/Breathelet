@@ -1,6 +1,12 @@
 {% render 'section-bg-number-vars' %}
 
-<section {% render 'section-attrs', class: 'hz' %}>
+{%- capture accent_style -%}
+  --primary: {{ section.settings.primary_color }};
+  --accent: {{ section.settings.accent_color }};
+  --accent-rgb: {{ section.settings.accent_color.rgb }};
+{%- endcapture -%}
+
+<section {% render 'section-attrs', class: 'hz', style: accent_style %}>
   <div class="hz-stage">
     <div class="section-body hz-head" data-animation="block" data-animation-group="{{ section.id }}-head">
       {%- if section.settings.heading != blank -%}
@@ -56,7 +62,7 @@
     overflow: hidden;
     --hz-line: rgb(var(--color-foreground) / 10%);
     --hz-tx2: rgb(var(--color-foreground) / 65%);
-    --hz-ac: rgb(var(--button-primary-background));
+    --hz-ac: var(--accent);
   }
 
   .hz-stage {
@@ -105,7 +111,7 @@
   }
 
   .fcard:hover {
-    border-color: rgb(var(--button-primary-background) / 70%);
+    border-color: rgb(var(--accent-rgb) / 70%);
   }
 
   .fcard .n {
@@ -168,12 +174,12 @@
   }
 
   .hz .btn-ac {
-    background: rgb(var(--button-primary-background));
-    color: rgb(var(--button-primary-foreground));
+    background: var(--accent);
+    color: var(--primary);
   }
 
   .hz .btn-ac:hover {
-    background: rgb(var(--button-primary-background-hover, var(--button-primary-background)));
+    background: rgb(var(--accent-rgb) / 85%);
   }
 
   @media (max-width: 575px) {
@@ -199,7 +205,9 @@
     { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop Breathelet" },
     { "type": "url", "id": "button_link", "label": "Button link" },
     { "type": "color", "id": "background_color", "label": "Background", "default": "#000000" },
-    { "type": "color", "id": "text_color", "label": "Text", "default": "#F4F0EE" }
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#F4F0EE" },
+    { "type": "color", "id": "primary_color", "label": "Primary", "default": "#000000" },
+    { "type": "color", "id": "accent_color", "label": "Secondary (accent)", "default": "#A57C72" }
   ],
   "blocks": [
     {

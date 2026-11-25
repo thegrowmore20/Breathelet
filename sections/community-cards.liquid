@@ -1,6 +1,12 @@
 {% render 'section-bg-number-vars' %}
 
-<section {% render 'section-attrs', class: 'cm' %}>
+{%- capture accent_style -%}
+  --primary: {{ section.settings.primary_color }};
+  --accent: {{ section.settings.accent_color }};
+  --accent-rgb: {{ section.settings.accent_color.rgb }};
+{%- endcapture -%}
+
+<section {% render 'section-attrs', class: 'cm', style: accent_style %}>
   <div class="section-body">
     <div class="cm-row">
       {%- for block in section.blocks -%}
@@ -50,7 +56,7 @@
 {% stylesheet %}
   .cm {
     --cm-line: rgb(var(--color-foreground) / 10%);
-    --cm-ac: rgb(var(--button-primary-background));
+    --cm-ac: var(--accent);
   }
 
   .cm-row {
@@ -117,7 +123,7 @@
   .cm-card:hover .cm-go {
     background: var(--cm-ac);
     border-color: var(--cm-ac);
-    color: rgb(var(--button-primary-foreground));
+    color: var(--primary);
     transform: rotate(45deg);
   }
 
@@ -160,11 +166,11 @@
 
   .cm .btn-ac {
     background: var(--cm-ac);
-    color: rgb(var(--button-primary-foreground));
+    color: var(--primary);
   }
 
   .cm .btn-ac:hover {
-    background: rgb(var(--button-primary-background-hover, var(--button-primary-background)));
+    background: rgb(var(--accent-rgb) / 85%);
   }
 
   .cm .btn-w {
@@ -198,7 +204,9 @@
   "max_blocks": 3,
   "settings": [
     { "type": "color", "id": "background_color", "label": "Background", "default": "#000000" },
-    { "type": "color", "id": "text_color", "label": "Text", "default": "#F4F0EE" }
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#F4F0EE" },
+    { "type": "color", "id": "primary_color", "label": "Primary", "default": "#000000" },
+    { "type": "color", "id": "accent_color", "label": "Secondary (accent)", "default": "#A57C72" }
   ],
   "blocks": [
     {

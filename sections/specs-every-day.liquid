@@ -1,6 +1,12 @@
 {% render 'section-bg-number-vars' %}
 
-<section {% render 'section-attrs', class: 'sp' %}>
+{%- capture accent_style -%}
+  --primary: {{ section.settings.primary_color }};
+  --accent: {{ section.settings.accent_color }};
+  --accent-rgb: {{ section.settings.accent_color.rgb }};
+{%- endcapture -%}
+
+<section {% render 'section-attrs', class: 'sp', style: accent_style %}>
   <div class="section-body">
     <div class="sp-head" data-animation="block" data-animation-group="{{ section.id }}-head">
       {%- if section.settings.eyebrow != blank -%}
@@ -75,7 +81,7 @@
 
   .sp-head h2 em {
     font-style: italic;
-    color: var(--sp-mute);
+    color: var(--accent);
   }
 
   .sp-box {
@@ -101,8 +107,8 @@
   }
 
   .sp-cell:hover {
-    background: rgb(var(--color-foreground));
-    color: rgb(var(--color-background));
+    background: var(--primary);
+    color: rgb(var(--sp-card-rgb, 255 255 255));
   }
 
   .sp-top {
@@ -119,6 +125,7 @@
   }
 
   .sp-top svg {
+    color: var(--accent);
     width: 54px;
     height: 54px;
     fill: none;
@@ -191,7 +198,9 @@
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Built for every day" },
     { "type": "inline_richtext", "id": "heading", "label": "Heading", "info": "Wrap a word in <em> for the italic accent.", "default": "Made to <em>disappear</em> on your wrist." },
     { "type": "color", "id": "background_color", "label": "Background", "default": "#ECECEA" },
-    { "type": "color", "id": "text_color", "label": "Text", "default": "#0B0B0B" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#000000" },
+    { "type": "color", "id": "primary_color", "label": "Primary", "default": "#000000" },
+    { "type": "color", "id": "accent_color", "label": "Secondary (accent)", "default": "#A57C72" },
     { "type": "color", "id": "card_background", "label": "Card background", "default": "#FFFFFF" }
   ],
   "blocks": [

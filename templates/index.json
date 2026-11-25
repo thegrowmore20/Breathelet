@@ -241,6 +241,14 @@
     "bento_benefits_home": {
       "type": "bento-benefits",
       "name": "Bento benefits",
+      "blocks": {
+        "tile_1": { "type": "tile", "settings": {"style":"spotlight","width":"s4","marker":"number","title":"Feel present again","text":"A vibration only you can feel. You check your phone 150 times a day — Breathelet reminds you to check yourself."} },
+        "tile_2": { "type": "tile", "settings": {"style":"light","width":"s2","marker":"icon","icon":"plus","title":"Reset anywhere","text":"Desk, commute, kitchen. Wherever you are, anytime."} },
+        "tile_3": { "type": "tile", "settings": {"style":"light","width":"s2","marker":"icon","icon":"lines","title":"Mindful habits","text":"Posture, hydration, breath — small cues, lasting routines."} },
+        "tile_4": { "type": "tile", "settings": {"style":"light","width":"s2","marker":"big_text","big_text":"0","title":"Screens. Apps.","text":"No setup, no notifications. Just wear it."} },
+        "tile_5": { "type": "tile", "settings": {"style":"light","width":"s2","marker":"icon","icon":"drop","title":"A meaningful gift","text":"Give someone a daily reminder that you care."} }
+      },
+      "block_order": ["tile_1", "tile_2", "tile_3", "tile_4", "tile_5"],
       "settings": {}
     },
     "specs_every_day_home": {
