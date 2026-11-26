@@ -261,3 +261,14 @@
 - templates/index.json: changed all 13 `"heading_size": "h0"` entries to `"h1"` (2XL).
 - sections/video-architectural-steps.liquid: changed `.video-arch__heading` class from `h0` to `h1` (2XL).
 - Pushed to theme 204901220687 (--only) and GitHub.
+
+
+## 2026-11-26 - homepage performance, video deferral, alt attributes, and CSS deduplication
+- sections/slideshow.liquid: set `preload: 'none'` on Slides 2-3 videos (only Slide 1 preloads metadata) and added `alt=""` to `video_tag` fallback `<img>` elements.
+- sections/video-architectural-steps.liquid: deferred video playback with `preload: 'none'` + `IntersectionObserver`, added `alt=""` to `video_tag` fallback `<img>`, added `decoding: 'async'` and `content-visibility: auto`, and replaced 17 hex fallbacks with theme custom properties (0 lint warnings).
+- sections/philosophy.liquid: set `preload="none"` + viewport `IntersectionObserver` playback on fallback `<video>` so the 1.94 MB video does not download on initial load.
+- sections/featured-collection.liquid: moved 3.6 KB static inline `<style>` (previously duplicated twice on homepage = 7.2 KB) into bundled `{% stylesheet %}`.
+- sections/ritual-accordion.liquid, sections/gift-banners.liquid, sections/community-cards.liquid: added non-empty `alt` fallbacks (fixes 7 missing-alt Lighthouse A11y/SEO failures), `decoding: 'async'`, and `content-visibility: auto`.
+- sections/specs-every-day.liquid, sections/bento-benefits.liquid: added `content-visibility: auto`.
+- templates/index.json: set `autoplay: false` on YouTube `video_RLKz98` so YouTube's third-party iframe loads on interaction.
+- Pushed to theme 204901220687 (--only) and GitHub.

@@ -32,6 +32,7 @@
           {{ block.shopify_attributes }}
         >
           {%- if block.settings.image != blank -%}
+            {%- assign banner_alt = block.settings.image.alt | default: block.settings.heading | strip_html | default: 'Breathelet gift banner' -%}
             {{
               block.settings.image
               | image_url: width: 1500
@@ -40,9 +41,11 @@
                 widths: '352, 550, 832, 1200, 1500',
                 sizes: '(min-width: 992px) 50vw, 100vw',
                 loading: 'lazy',
-                alt: block.settings.image.alt
+                decoding: 'async',
+                alt: banner_alt
             }}
           {%- elsif card_product != blank and card_product.featured_image != blank -%}
+            {%- assign prod_alt = card_product.featured_image.alt | default: card_product.title -%}
             {{
               card_product.featured_image
               | image_url: width: 1500
@@ -51,7 +54,8 @@
                 widths: '352, 550, 832, 1200, 1500',
                 sizes: '(min-width: 992px) 50vw, 100vw',
                 loading: 'lazy',
-                alt: card_product.featured_image.alt
+                decoding: 'async',
+                alt: prod_alt
             }}
           {%- endif -%}
           <div class="bn-t">
@@ -83,6 +87,11 @@
 </section>
 
 {% stylesheet %}
+  .gift {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 560px;
+  }
+
   .gift .banner {
     display: grid;
     grid-template-columns: 1fr 1fr;

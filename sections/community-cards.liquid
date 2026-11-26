@@ -17,6 +17,7 @@
           {{ block.shopify_attributes }}
         >
           {%- if block.settings.image != blank -%}
+            {%- assign cm_alt = block.settings.image.alt | default: block.settings.heading | default: 'Breathelet community' -%}
             {{
               block.settings.image
               | image_url: width: 1500
@@ -24,7 +25,8 @@
                 widths: '352, 550, 832, 1200, 1500',
                 sizes: '(min-width: 768px) 50vw, 100vw',
                 loading: 'lazy',
-                alt: block.settings.image.alt
+                decoding: 'async',
+                alt: cm_alt
             }}
           {%- endif -%}
           <div class="cm-shade"></div>
@@ -57,6 +59,8 @@
   .cm {
     --cm-line: rgb(var(--color-foreground) / 10%);
     --cm-ac: var(--accent);
+    content-visibility: auto;
+    contain-intrinsic-size: auto 560px;
   }
 
   .cm-row {

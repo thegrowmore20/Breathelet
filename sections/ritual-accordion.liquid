@@ -73,6 +73,7 @@
             {% if block.settings.image != blank %}data-aspect-ratio="{{ block.settings.image.aspect_ratio }}"{% endif %}
           >
             {%- if block.settings.image != blank -%}
+              {%- assign ritual_alt = block.settings.image.alt | default: block.settings.title | default: 'Breathelet ritual' -%}
               {{
                 block.settings.image
                 | image_url: width: 1500
@@ -80,7 +81,8 @@
                   widths: '352, 550, 832, 1200, 1500',
                   sizes: '(min-width: 992px) 52vw, 100vw',
                   loading: 'lazy',
-                  alt: block.settings.image.alt
+                  decoding: 'async',
+                  alt: ritual_alt
               }}
             {%- endif -%}
           </div>

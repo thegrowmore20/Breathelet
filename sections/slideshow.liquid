@@ -92,9 +92,11 @@
         if forloop.first
           assign loading = 'eager'
           assign fetchpriority = 'high'
+          assign video_preload = 'metadata'
         else
           assign loading = 'lazy'
           assign fetchpriority = 'auto'
+          assign video_preload = 'none'
         endif
       %}
 
@@ -127,10 +129,12 @@
                   | video_tag:
                     muted: true,
                     loop: true,
+                    preload: video_preload,
                     width: block.settings.video.sources[0].width,
                     height: block.settings.video.sources[0].height,
                     class: 'max-md:hidden',
                     image_size: '480x'
+                  | replace: '<img ', '<img alt="" '
                 }}
               </div>
               <div
@@ -142,10 +146,12 @@
                   | video_tag:
                     muted: true,
                     loop: true,
+                    preload: video_preload,
                     width: block.settings.mobile_video.sources[0].width,
                     height: block.settings.mobile_video.sources[0].height,
                     class: 'md:hidden',
                     image_size: '360x'
+                  | replace: '<img ', '<img alt="" '
                 }}
               </div>
             {% else %}
@@ -158,9 +164,11 @@
                   | video_tag:
                     muted: true,
                     loop: true,
+                    preload: video_preload,
                     width: block.settings.video.sources[0].width,
                     height: block.settings.video.sources[0].height,
                     image_size: '480x'
+                  | replace: '<img ', '<img alt="" '
                 }}
               </div>
             {% endif %}

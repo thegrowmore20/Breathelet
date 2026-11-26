@@ -229,11 +229,11 @@
       {% else %}
         <video
           src="{{ philosophy_video_url }}"
-          {% if section.settings.autoplay %}autoplay{% endif %}
+          data-autoplay="{{ section.settings.autoplay }}"
           muted
           {% if section.settings.loop %}loop{% endif %}
           playsinline
-          preload="metadata"
+          preload="none"
           {% if section.settings.video_poster != blank %}poster="{{ section.settings.video_poster | image_url: width: 1200 }}"{% endif %}
         ></video>
       {% endif %}
@@ -248,7 +248,26 @@
   if (!customElements.get('philosophy-stats')) {
     class PhilosophyStats extends HTMLElement {
       connectedCallback() {
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+        const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const sectionEl = this.closest('section');
+        const vid = sectionEl ? sectionEl.querySelector('video[data-autoplay="true"]') : null;
+        if (vid && !reduced && 'IntersectionObserver' in window) {
+          this._vidObserver = new IntersectionObserver(
+            (entries) => {
+              for (const entry of entries) {
+                if (entry.isIntersecting) {
+                  vid.play().catch(() => {});
+                } else if (!vid.paused) {
+                  vid.pause();
+                }
+              }
+            },
+            { rootMargin: '150px 0px', threshold: 0.05 }
+          );
+          this._vidObserver.observe(vid);
+        }
+
+        if (reduced || !('IntersectionObserver' in window)) {
           return;
         }
 
@@ -308,6 +327,7 @@
 
       disconnectedCallback() {
         if (this._observer) this._observer.disconnect();
+        if (this._vidObserver) this._vidObserver.disconnect();
         if (this._raf) cancelAnimationFrame(this._raf);
       }
     }

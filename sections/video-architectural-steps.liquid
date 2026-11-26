@@ -62,19 +62,22 @@
             | video_tag:
               class: 'video-arch__video',
               image_size: '1400x',
-              autoplay: section.settings.autoplay,
+              autoplay: false,
               loop: section.settings.loop,
               muted: true,
               playsinline: true,
-              controls: false
+              preload: 'none',
+              controls: false,
+              data-autoplay: section.settings.autoplay
+            | replace: '<img ', '<img alt="" '
           }}
 
           {%- if section.settings.show_play_button -%}
             <button
               type="button"
               class="video-arch__play-btn"
-              aria-label="{% if section.settings.autoplay %}Pause video{% else %}Play video{% endif %}"
-              aria-pressed="{% if section.settings.autoplay %}false{% else %}true{% endif %}"
+              aria-label="Play video"
+              aria-pressed="true"
             >
               <span class="video-arch__play-circle" aria-hidden="true">
                 <svg class="video-arch__icon video-arch__icon--pause" viewBox="0 0 16 16" fill="currentColor" focusable="false">
@@ -88,6 +91,7 @@
             </button>
           {%- endif -%}
         {%- elsif section.settings.fallback_image != blank -%}
+          {%- assign fallback_alt = section.settings.fallback_image.alt | default: section.settings.heading | strip_html | escape -%}
           {{
             section.settings.fallback_image
             | image_url: width: 1920
@@ -96,7 +100,8 @@
               widths: '352, 550, 832, 1200, 1500, 1920',
               sizes: '(min-width: 1200px) 1120px, 100vw',
               loading: img_loading,
-              alt: section.settings.fallback_image.alt
+              decoding: 'async',
+              alt: fallback_alt
           }}
         {%- else -%}
           <div class="video-arch__placeholder">
@@ -159,21 +164,39 @@
           btn.setAttribute('aria-label', paused ? 'Play video' : 'Pause video');
         };
 
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-          video.pause();
-        }
+        const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const wantsAuto = video.dataset.autoplay === 'true' && !reduced;
+        this._userPaused = false;
         sync();
 
         video.addEventListener('play', sync, { signal });
         video.addEventListener('pause', sync, { signal });
+
+        if (wantsAuto && 'IntersectionObserver' in window) {
+          this._io = new IntersectionObserver(
+            (entries) => {
+              for (const entry of entries) {
+                if (entry.isIntersecting && !this._userPaused) {
+                  video.play().catch(() => {});
+                } else if (!entry.isIntersecting && !video.paused) {
+                  video.pause();
+                }
+              }
+            },
+            { rootMargin: '150px 0px', threshold: 0.05 }
+          );
+          this._io.observe(this);
+        }
 
         if (btn) {
           btn.addEventListener(
             'click',
             () => {
               if (video.paused) {
+                this._userPaused = false;
                 video.play().catch(() => {});
               } else {
+                this._userPaused = true;
                 video.pause();
               }
             },
@@ -184,6 +207,7 @@
 
       disconnectedCallback() {
         if (this._ac) this._ac.abort();
+        if (this._io) this._io.disconnect();
       }
     }
     customElements.define('video-arch-player', VideoArchPlayer);
@@ -192,8 +216,10 @@
 
 {% stylesheet %}
   .video-arch {
-    background-color: var(--vas-bg, #0d0d0d);
-    color: var(--vas-text, #ffffff);
+    background-color: var(--vas-bg);
+    color: var(--vas-text);
+    content-visibility: auto;
+    contain-intrinsic-size: auto 700px;
   }
 
   .video-arch.video-arch--custom-pad {
@@ -222,16 +248,16 @@
   }
 
   .video-arch__eyebrow {
-    color: var(--vas-accent, #a57c72);
+    color: var(--vas-accent);
   }
 
   .video-arch__heading {
-    color: var(--vas-text, #ffffff);
+    color: var(--vas-text);
   }
 
   .video-arch__heading em {
     font-style: italic;
-    color: var(--vas-accent, #a57c72);
+    color: var(--vas-accent);
     padding-right: 0.08em;
   }
 
@@ -240,14 +266,14 @@
     font-family: var(--font-body-family);
     font-size: 0.95rem;
     line-height: 1.55;
-    color: var(--vas-muted, #9a9a9a);
+    color: var(--vas-muted);
   }
 
   .video-arch__media-frame {
     display: block;
     width: 100%;
     padding: 8px;
-    border: 1px solid var(--vas-border, #242424);
+    border: 1px solid var(--vas-border);
     border-radius: 16px;
     background: transparent;
   }
@@ -258,7 +284,7 @@
     aspect-ratio: var(--vas-ratio-mobile, 16 / 9);
     border-radius: 10px;
     overflow: hidden;
-    background-color: #000000;
+    background-color: var(--vas-bg);
   }
 
   @media (min-width: 768px) {
@@ -290,7 +316,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    color: #ffffff;
+    color: var(--vas-text);
   }
 
   .video-arch__play-circle {
@@ -308,7 +334,7 @@
   }
 
   .video-arch__play-btn:focus-visible {
-    outline: 2px solid var(--vas-accent, #c6a86b);
+    outline: 2px solid var(--vas-accent);
     outline-offset: 2px;
     border-radius: 50%;
   }
@@ -336,8 +362,8 @@
     padding: 0;
     display: grid;
     grid-template-columns: 1fr;
-    border-top: 1px solid var(--vas-border, #242424);
-    border-bottom: 1px solid var(--vas-border, #242424);
+    border-top: 1px solid var(--vas-border);
+    border-bottom: 1px solid var(--vas-border);
   }
 
   .video-arch__step {
@@ -345,7 +371,7 @@
     align-items: flex-start;
     gap: 14px;
     padding: 20px 0;
-    border-bottom: 1px solid var(--vas-border, #242424);
+    border-bottom: 1px solid var(--vas-border);
   }
 
   .video-arch__step:last-child {
@@ -360,7 +386,7 @@
     .video-arch__step {
       padding: 24px 28px;
       border-bottom: 0;
-      border-right: 1px solid var(--vas-border, #242424);
+      border-right: 1px solid var(--vas-border);
     }
 
     .video-arch__step:first-child {
@@ -377,7 +403,7 @@
     font-family: var(--font-heading-family);
     font-size: 1.1rem;
     line-height: 1.25;
-    color: var(--vas-accent, #c6a86b);
+    color: var(--vas-accent);
     flex-shrink: 0;
   }
 
@@ -391,7 +417,7 @@
     font-size: 1.15rem;
     font-weight: 400;
     line-height: 1.25;
-    color: var(--vas-text, #ffffff);
+    color: var(--vas-text);
   }
 
   .video-arch__step-desc {
@@ -399,7 +425,7 @@
     font-family: var(--font-body-family);
     font-size: 0.875rem;
     line-height: 1.5;
-    color: var(--vas-muted, #9a9a9a);
+    color: var(--vas-muted);
   }
 
   @media (prefers-reduced-motion: reduce) {
