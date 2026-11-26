@@ -290,3 +290,9 @@
   - Added YouTube thumbnail (`https://img.youtube.com/vi/{{ video_url.id }}/hqdefault.jpg`) fallback inside the non-autoplay poster button in `snippets/video-player.liquid` so YouTube videos without a custom `video_poster` never show Shopify's gray `lifestyle-1` placeholder SVG; added `type="button"` to the poster `<button>`.
   - Re-enabled `"autoplay": true` on `video_RLKz98` in `templates/index.json` (poster background thumbnail already renders behind the autoplay iframe while loading).
 - **Verification:** `lint-edit.mjs` (0 errors, 0 warnings), `theme-check.mjs` (exit 0).
+
+## 2026-11-26 — Fix black box on hover for assurance badges in specs-every-day
+- **Files:** `sections/specs-every-day.liquid`
+- **Summary:**
+  - Moved `mix-blend-mode: screen` from `.sp-assurance__badge img` to `.sp-assurance__badge` so `transform: translateY(-3px)` on `.sp-assurance__badge:hover` no longer creates an isolating stacking context that broke blending and revealed the PNG's black background.
+- **Verification:** `lint-edit.mjs`, `theme-check.mjs`, and live browser hover check on `#204901220687`.
