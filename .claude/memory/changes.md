@@ -278,3 +278,8 @@
 - sections/philosophy.liquid: moved 5 KB inline `<style>` into bundled `{% stylesheet %}`, replaced all 14 hardcoded hex colors with theme CSS custom properties (0 lint warnings), added `content-visibility: auto`, and applied theme layout utilities.
 - sections/bento-benefits.liquid, sections/specs-every-day.liquid, sections/video-architectural-steps.liquid, sections/ritual-accordion.liquid, sections/gift-banners.liquid, sections/community-cards.liquid: replaced duplicated flex/grid/positioning/overflow/margin/radius rules with existing `assets/main.css` utilities and removed redundant `em` accent rules now handled globally.
 - Pushed to theme 204901220687 (--nodelete --only) and GitHub.
+
+
+## 2026-11-26 - FCP optimizations in layout/theme.liquid
+- layout/theme.liquid: added `preload: true` to `main.css` (Early Hints), removed `<link rel="preload">` on 96.1 KB `Montserrat-Thin.woff2`, replaced forced synchronous layout reflow in `setScrollbarWidth()` with `window.innerWidth - document.documentElement.clientWidth`, avoided double-evaluating `content_for_layout` by outputting `content_str`, and removed `maximum-scale=5` from viewport meta.
+- Pushed to theme 204901220687 (--nodelete --only layout/theme.liquid) and GitHub.

@@ -17,13 +17,10 @@
     
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5"> <!-- lint-ignore: intentional maximum-scale -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="">
     <link rel="canonical" href="{{ canonical_url }}">
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
     {% if settings.favicon != blank %}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
@@ -59,59 +56,15 @@
       render 'theme-css-icons'
     %}
 
-    {{ 'main.css' | asset_url | stylesheet_tag }}
+    {{ 'main.css' | asset_url | stylesheet_tag: preload: true }}
     <style>
-      :root {
-        /* Fonts */
-        --font-heading-family: 'Instrument Serif', Georgia, serif;
-        --font-heading-style: normal;
-        --font-heading-weight: 400;
-        --font-body-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        --font-body-style: normal;
-        --font-body-weight: 400;
-        --font-body-weight-bold: 600;
-
-        /* Force nav to Inter regardless of theme setting */
-        --navigation-font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        --navigation-font-weight: 400;
-        --navigation-font-style: normal;
-
-          /* Font sizes — UI */
-        --size-text-xs:    12px;
-        --size-text-sm:    14px;
-        --size-text-base:  16px;
-        --size-text-lg:    18px;
-        --label-font-size: 12px;
-      }
-
-      /* Body: 16px desktop → 14px mobile */
-      body { font-size: 16px; }
-      @media (max-width: 767px) { body { font-size: 14px; } }
-
-      /* Heading scale — V3 */
-      h1, h2, h3, h4, h5, h6,
-      .h0, .h1, .h2, .h3, .h4, .h5, .h6 {
-        font-family: var(--font-heading-family);
-        font-weight: 400;
-        letter-spacing: -0.02em;
-        line-height: 1;
-      }
-
-      h1, .h1 { font-size: clamp(44px, min(5.6vw, 10vh), 92px); line-height: .94; }
-      h2, .h2 { font-size: clamp(38px, min(5.4vw, 9vh),  78px); line-height: .96; }
-      h3, .h3 { font-size: clamp(28px, 2.8vw, 40px);             line-height: 1.04; }
-      h4, .h4 { font-size: clamp(21px, 2vw,   27px);             line-height: 1.1;  }
-      h5, .h5 { font-size: 16px; line-height: 1.3; letter-spacing: 0; }
-      h6, .h6 { font-size: 14px; line-height: 1.4; letter-spacing: 0; }
-
-      /* H0 — display / hero */
-      .h0 { font-size: clamp(52px, min(6.4vw, 11vh), 108px); line-height: .92; }
-
-      @media (max-width: 767px) {
-        h1, .h1 { font-size: clamp(36px, 11vw, 56px); }
-        h2, .h2 { font-size: clamp(28px, 9vw,  44px); }
-        h3, .h3 { font-size: clamp(22px, 7vw,  32px); }
-        .h0      { font-size: clamp(38px, 12vw, 60px); }
+      @font-face {
+          font-family: 'Montserrat';
+          src: url('{{ 'Montserrat-Thin.woff2' | file_url }}') format('woff2'),
+              url('{{ 'Montserrat-Thin.woff' | file_url }}') format('woff');
+          font-weight: 100;
+          font-style: normal;
+          font-display: swap;
       }
     </style>
   </head>
@@ -128,13 +81,8 @@
     <script>
       function setScrollbarWidth() {
         if (document.body.classList.contains('no-scroll')) return;
-
-        const w = document.body.getBoundingClientRect().width;
-        document.body.style.overflow = 'hidden';
-        const w2 = document.body.getBoundingClientRect().width;
-        document.body.style.overflow = null;
-
-        document.documentElement.style.setProperty('--scrollbar-width', `${w2 - w}px`);
+        const sbw = Math.max(0, window.innerWidth - document.documentElement.clientWidth);
+        document.documentElement.style.setProperty('--scrollbar-width', `${sbw}px`);
       }
 
       setScrollbarWidth();
@@ -201,7 +149,7 @@
         tabindex="-1"
         class="{% if request.page_type == 'product' %} product-grid {% endif %}"
       >
-        {{ content_for_layout }}
+        {{ content_str }}
         {% sections 'footer-group' %}
       </main>
 
