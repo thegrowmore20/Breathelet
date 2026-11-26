@@ -11320,10 +11320,10 @@ quick-add-button.no-js-hidden button .spinner .path {
   align-items: flex-start !important;
 }
 .mega__menu_products .product-card {
-  border-color: rgb(var(--button-secondary-background) / 60%);
+  border: 1px solid #f2f2f2;
 }
 .mega__menu_products .product-card:hover {
-  border-color: rgb(var(--button-secondary-background) / 60%);
+  border: 1px solid #f2f2f2;
 }
 .mega__menu_products .loox-rating {
   text-align: left !important;
