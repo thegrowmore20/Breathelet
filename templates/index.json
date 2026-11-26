@@ -431,6 +431,7 @@
     },
     "love_cards_home": {
       "type": "love-cards",
+      "disabled": true,
       "blocks": {
         "card_1": {
           "type": "card",
@@ -1284,28 +1285,28 @@
   "order": [
     "slideshow_7aaerb",
     "featured_collection_PHPzLB",
-    "featured_collection_rJaDDf",
     "philosophy_home",
+    "ritual_accordion",
     "bento_benefits_home",
     "specs_every_day_home",
+    "video_architectural_steps",
+    "apps_EWV9wq",
     "gift_banners_home",
-    "love_cards_home",
+    "video_RLKz98",
+    "featured_collection_rJaDDf",
+    "1779445986c7e74670",
     "community_cards_home",
-    "ritual_accordion",
+    "47953464-d278-497d-be52-ea15912c52d9",
+    "love_cards_home",
     "fa63dde0-c7d9-4ac7-9f3d-90ef6a67184f",
     "image_with_text_bcbTad",
     "editorial_breathe_symbol",
     "video_with_text_6kqVVV",
-    "apps_EWV9wq",
-    "1779445986c7e74670",
     "1771334505e4d5ee02",
-    "video_RLKz98",
     "homepage_usps_jQz9Ba",
     "image_with_text_tHGRPd",
     "image_with_text_WjQwNJ",
     "video_with_text_dPhCKa",
-    "two_column_flex_new",
-    "video_architectural_steps",
-    "47953464-d278-497d-be52-ea15912c52d9"
+    "two_column_flex_new"
   ]
 }

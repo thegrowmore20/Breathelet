@@ -250,3 +250,8 @@
 - templates/index.json: disabled `video_with_text_dPhCKa` and updated `video_architectural_steps` heading to `OneFit <em>Adjustable</em> Design`.
 - sections/video-architectural-steps.liquid: matched header typography to theme `.subheading` + `.heading.h0` + `rfs:mb-12` (matching `specs-every-day`).
 - Pushed to theme 204901220687 (--only) and GitHub.
+
+
+## 2026-11-26 - reorder homepage sections per CRO & marketing psychology audit
+- templates/index.json: reordered active sections into conversion funnel (Hero -> Shop Breathelet -> Philosophy -> Ritual Accordion -> Bento Benefits -> Specs & Confidence -> OneFit Architectural Video -> Loox Reviews -> Gift Banners -> Brand Video -> Shop Accessories -> Instagram -> Influencer/Partner Cards -> Blog posts) and disabled duplicate `love_cards_home`.
+- Pushed to theme 204901220687 (--only templates/index.json) and GitHub.
