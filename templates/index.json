@@ -1104,6 +1104,7 @@
         "heading_cQWDWQ",
         "text_jKjBFg"
       ],
+      "disabled": true,
       "name": "t:sections.video-with-text.presets__0.name",
       "settings": {
         "custom_class": "",
@@ -1239,7 +1240,7 @@
       ],
       "settings": {
         "eyebrow": "PRECISION SIZING",
-        "heading": "OneFit Adjustable Design",
+        "heading": "OneFit <em>Adjustable</em> Design",
         "subheading": "One size fits all. Engineered to fit every wrist effortlessly.",
         "video": "shopify://files/videos/Breathelet_how-to_upd_v2.webm",
         "autoplay": true,

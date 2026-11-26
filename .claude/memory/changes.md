@@ -244,3 +244,9 @@
 - templates/index.json: updated hero slideshow (`slideshow_7aaerb` all 3 slides) and Blog posts (`47953464-d278-497d-be52-ea15912c52d9`) heading_size to `h0` (3XL).
 - templates/index.json: added `video_architectural_steps` (`video-architectural-steps`) right above Blog posts with `Breathelet_how-to_upd_v2.webm`, `#000000`/`#a57c72` palette, and 3 OneFit steps.
 - Pushed to theme 204901220687 (--only templates/index.json) and GitHub.
+
+
+## 2026-11-26 - disable old OneFit video-with-text and match video-architectural-steps header
+- templates/index.json: disabled `video_with_text_dPhCKa` and updated `video_architectural_steps` heading to `OneFit <em>Adjustable</em> Design`.
+- sections/video-architectural-steps.liquid: matched header typography to theme `.subheading` + `.heading.h0` + `rfs:mb-12` (matching `specs-every-day`).
+- Pushed to theme 204901220687 (--only) and GitHub.

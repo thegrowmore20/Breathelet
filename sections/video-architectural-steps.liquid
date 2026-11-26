@@ -34,15 +34,15 @@
     <div class="video-arch__container">
       {%- if section.settings.eyebrow != blank or section.settings.heading != blank or section.settings.subheading != blank -%}
         <header
-          class="section-header section-content-spacing video-arch__header"
+          class="section-header section-content-spacing rfs:mb-12 video-arch__header"
           data-animation="block"
           data-animation-group="{{ section.id }}-header"
         >
           {%- if section.settings.eyebrow != blank -%}
-            <p class="subheading video-arch__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+            <div class="subheading video-arch__eyebrow">{{ section.settings.eyebrow | escape }}</div>
           {%- endif -%}
           {%- if section.settings.heading != blank -%}
-            <h2 class="heading video-arch__heading">{{ section.settings.heading }}</h2>
+            <h2 class="heading h0 video-arch__heading">{{ section.settings.heading }}</h2>
           {%- endif -%}
           {%- if section.settings.subheading != blank -%}
             <p class="video-arch__subheading">{{ section.settings.subheading | escape }}</p>
@@ -216,32 +216,23 @@
 
   .video-arch__header {
     text-align: center;
-    max-width: 680px;
-    margin: 0 auto 40px;
+    max-width: 780px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .video-arch__eyebrow {
-    margin: 0 0 12px;
-    font-family: var(--font-body-family);
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--vas-accent, #c6a86b);
+    color: var(--vas-accent, #a57c72);
   }
 
   .video-arch__heading {
-    margin: 0 0 14px;
-    font-family: var(--font-heading-family);
-    font-size: clamp(2rem, 4vw, 3.25rem);
-    font-weight: var(--font-heading-weight, 400);
-    line-height: 1.12;
     color: var(--vas-text, #ffffff);
   }
 
   .video-arch__heading em {
     font-style: italic;
-    color: var(--vas-accent, #c6a86b);
+    color: var(--vas-accent, #a57c72);
+    padding-right: 0.08em;
   }
 
   .video-arch__subheading {
