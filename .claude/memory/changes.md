@@ -272,3 +272,9 @@
 - sections/specs-every-day.liquid, sections/bento-benefits.liquid: added `content-visibility: auto`.
 - templates/index.json: set `autoplay: false` on YouTube `video_RLKz98` so YouTube's third-party iframe loads on interaction.
 - Pushed to theme 204901220687 (--only) and GitHub.
+
+
+## 2026-11-26 - refactor all 7 custom homepage sections to use theme CSS utilities
+- sections/philosophy.liquid: moved 5 KB inline `<style>` into bundled `{% stylesheet %}`, replaced all 14 hardcoded hex colors with theme CSS custom properties (0 lint warnings), added `content-visibility: auto`, and applied theme layout utilities.
+- sections/bento-benefits.liquid, sections/specs-every-day.liquid, sections/video-architectural-steps.liquid, sections/ritual-accordion.liquid, sections/gift-banners.liquid, sections/community-cards.liquid: replaced duplicated flex/grid/positioning/overflow/margin/radius rules with existing `assets/main.css` utilities and removed redundant `em` accent rules now handled globally.
+- Pushed to theme 204901220687 (--nodelete --only) and GitHub.

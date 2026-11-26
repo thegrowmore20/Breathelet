@@ -31,10 +31,10 @@
 
 <section {% render 'section-attrs', class: vas_class, style: vas_style %}>
   <div class="section-body">
-    <div class="video-arch__container">
+    <div class="video-arch__container w-full mx-auto">
       {%- if section.settings.eyebrow != blank or section.settings.heading != blank or section.settings.subheading != blank -%}
         <header
-          class="section-header section-content-spacing rfs:mb-12 video-arch__header"
+          class="section-header section-content-spacing text-center mx-auto rfs:mb-12 video-arch__header"
           data-animation="block"
           data-animation-group="{{ section.id }}-header"
         >
@@ -45,17 +45,17 @@
             <h2 class="heading h1 video-arch__heading">{{ section.settings.heading }}</h2>
           {%- endif -%}
           {%- if section.settings.subheading != blank -%}
-            <p class="video-arch__subheading">{{ section.settings.subheading | escape }}</p>
+            <p class="video-arch__subheading m-0">{{ section.settings.subheading | escape }}</p>
           {%- endif -%}
         </header>
       {%- endif -%}
 
     <video-arch-player
-      class="video-arch__media-frame"
+      class="video-arch__media-frame block w-full"
       data-animation="block"
       data-animation-group="{{ section.id }}-media"
     >
-      <div class="video-arch__media-inner">
+      <div class="video-arch__media-inner relative w-full overflow-hidden">
         {%- if section.settings.video != blank -%}
           {{
             section.settings.video
@@ -75,11 +75,11 @@
           {%- if section.settings.show_play_button -%}
             <button
               type="button"
-              class="video-arch__play-btn"
+              class="video-arch__play-btn absolute inline-flex items-center justify-center"
               aria-label="Play video"
               aria-pressed="true"
             >
-              <span class="video-arch__play-circle" aria-hidden="true">
+              <span class="video-arch__play-circle rounded-full inline-flex items-center justify-center" aria-hidden="true">
                 <svg class="video-arch__icon video-arch__icon--pause" viewBox="0 0 16 16" fill="currentColor" focusable="false">
                   <rect x="3" y="2.5" width="3.2" height="11" rx="0.8"/>
                   <rect x="9.8" y="2.5" width="3.2" height="11" rx="0.8"/>
@@ -113,7 +113,7 @@
 
     {%- if section.blocks.size > 0 -%}
       <ul
-        class="video-arch__steps"
+        class="video-arch__steps grid"
         data-animation="block"
         data-animation-group="{{ section.id }}-steps"
       >
@@ -128,8 +128,8 @@
               endif
             endif
           -%}
-          <li class="video-arch__step" {{ block.shopify_attributes }}>
-            <span class="video-arch__step-num" aria-hidden="true">{{ step_num }}</span>
+          <li class="video-arch__step flex items-start" {{ block.shopify_attributes }}>
+            <span class="video-arch__step-num flex-shrink-0" aria-hidden="true">{{ step_num }}</span>
             <div class="video-arch__step-content">
               {%- if block.settings.title != blank -%}
                 <h3 class="video-arch__step-title">{{ block.settings.title | escape }}</h3>
@@ -235,16 +235,11 @@
   }
 
   .video-arch__container {
-    width: 100%;
     max-width: var(--vas-max-width, 1120px);
-    margin: 0 auto;
   }
 
   .video-arch__header {
-    text-align: center;
     max-width: 780px;
-    margin-left: auto;
-    margin-right: auto;
   }
 
   .video-arch__eyebrow {
@@ -255,14 +250,7 @@
     color: var(--vas-text);
   }
 
-  .video-arch__heading em {
-    font-style: italic;
-    color: var(--vas-accent);
-    padding-right: 0.08em;
-  }
-
   .video-arch__subheading {
-    margin: 0;
     font-family: var(--font-body-family);
     font-size: 0.95rem;
     line-height: 1.55;
@@ -270,8 +258,6 @@
   }
 
   .video-arch__media-frame {
-    display: block;
-    width: 100%;
     padding: 8px;
     border: 1px solid var(--vas-border);
     border-radius: 16px;
@@ -279,11 +265,8 @@
   }
 
   .video-arch__media-inner {
-    position: relative;
-    width: 100%;
     aspect-ratio: var(--vas-ratio-mobile, 16 / 9);
     border-radius: 10px;
-    overflow: hidden;
     background-color: var(--vas-bg);
   }
 
@@ -304,7 +287,6 @@
   }
 
   .video-arch__play-btn {
-    position: absolute;
     right: 12px;
     bottom: 12px;
     width: 44px;
@@ -312,9 +294,6 @@
     padding: 0;
     border: 0;
     background: transparent;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
     cursor: pointer;
     color: var(--vas-text);
   }
@@ -322,14 +301,10 @@
   .video-arch__play-circle {
     width: 36px;
     height: 36px;
-    border-radius: 50%;
     background: rgba(0, 0, 0, 0.45);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.16);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
     transition: transform 200ms ease, opacity 200ms ease;
   }
 
@@ -360,15 +335,12 @@
     list-style: none;
     margin: 32px 0 0;
     padding: 0;
-    display: grid;
     grid-template-columns: 1fr;
     border-top: 1px solid var(--vas-border);
     border-bottom: 1px solid var(--vas-border);
   }
 
   .video-arch__step {
-    display: flex;
-    align-items: flex-start;
     gap: 14px;
     padding: 20px 0;
     border-bottom: 1px solid var(--vas-border);
@@ -404,7 +376,6 @@
     font-size: 1.1rem;
     line-height: 1.25;
     color: var(--vas-accent);
-    flex-shrink: 0;
   }
 
   .video-arch__step-content {

@@ -8,10 +8,10 @@
 
 <section {% render 'section-attrs', class: 'cm', style: accent_style %}>
   <div class="section-body">
-    <div class="cm-row">
+    <div class="cm-row flex">
       {%- for block in section.blocks -%}
         <article
-          class="cm-card"
+          class="cm-card relative flex-1 overflow-hidden"
           data-animation="block"
           data-animation-group="{{ section.id }}"
           {{ block.shopify_attributes }}
@@ -22,6 +22,7 @@
               block.settings.image
               | image_url: width: 1500
               | image_tag:
+                class: 'absolute inset-0 w-full h-full',
                 widths: '352, 550, 832, 1200, 1500',
                 sizes: '(min-width: 768px) 50vw, 100vw',
                 loading: 'lazy',
@@ -29,20 +30,20 @@
                 alt: cm_alt
             }}
           {%- endif -%}
-          <div class="cm-shade"></div>
-          <div class="cm-tx">
+          <div class="cm-shade absolute inset-0"></div>
+          <div class="cm-tx absolute">
             {%- if block.settings.eyebrow != blank -%}
               <div class="subheading">{{ block.settings.eyebrow | escape }}</div>
             {%- endif -%}
             {%- if block.settings.heading != blank -%}
-              <h3 class="{{ section.settings.heading_size | default: 'h2' }}">{{ block.settings.heading | escape }}</h3>
+              <h3 class="m-0 {{ section.settings.heading_size | default: 'h2' }}">{{ block.settings.heading | escape }}</h3>
             {%- endif -%}
             {%- if block.settings.text != blank -%}
               <p>{{ block.settings.text | escape }}</p>
             {%- endif -%}
             {%- if block.settings.button_label != blank and block.settings.button_link != blank -%}
               <a
-                class="btn {% if block.settings.button_style == 'white' %}btn-w{% else %}btn-ac{% endif %}"
+                class="btn inline-flex items-center justify-center rounded-full whitespace-nowrap {% if block.settings.button_style == 'white' %}btn-w{% else %}btn-ac{% endif %}"
                 href="{{ block.settings.button_link }}"
               >
                 {{- block.settings.button_label | escape -}}
@@ -64,36 +65,26 @@
   }
 
   .cm-row {
-    display: flex;
     gap: clamp(14px, 1.5vw, 20px);
     height: min(640px, 76svh);
     min-height: 460px;
   }
 
   .cm-card {
-    position: relative;
-    flex: 1 1 0;
     min-width: 0;
     border-radius: 24px;
-    overflow: hidden;
     isolation: isolate;
     border: 1px solid var(--cm-line);
     box-shadow: inset 0 1px 0 rgb(var(--color-foreground) / 6%);
   }
 
   .cm-card img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
     object-fit: cover;
     z-index: -2;
     transition: transform 900ms cubic-bezier(0.2, 0.7, 0.2, 1);
   }
 
   .cm-shade {
-    position: absolute;
-    inset: 0;
     z-index: -1;
     background: linear-gradient(
       0deg,
@@ -109,7 +100,6 @@
   }
 
   .cm-tx {
-    position: absolute;
     left: clamp(24px, 3.4vw, 48px);
     right: clamp(24px, 3.4vw, 48px);
     bottom: clamp(26px, 4.4vh, 48px);
@@ -123,7 +113,6 @@
   .cm-tx h3 {
     max-width: 520px;
     color: rgb(var(--color-foreground));
-    margin: 0;
   }
 
   .cm-tx p {
@@ -135,15 +124,10 @@
   }
 
   .cm .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
     height: 48px;
     padding: 0 28px;
-    border-radius: 99px;
     font-size: 14px;
     font-weight: 600;
-    white-space: nowrap;
     text-decoration: none;
     transition: transform 240ms cubic-bezier(0.2, 0.7, 0.2, 1);
   }

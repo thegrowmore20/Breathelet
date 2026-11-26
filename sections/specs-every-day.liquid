@@ -10,7 +10,7 @@
 <section {% render 'section-attrs', class: 'sp', style: accent_style %}>
   <div class="section-body">
     <div
-      class="section-header section-content-spacing sp-head rfs:mb-12"
+      class="section-header section-content-spacing text-center sp-head rfs:mb-12"
       data-animation="block"
       data-animation-group="{{ section.id }}-head"
     >
@@ -22,16 +22,16 @@
       {%- endif -%}
     </div>
 
-    <div class="sp-frame">
-      <div class="sp-box">
+    <div class="sp-frame overflow-hidden">
+      <div class="sp-box grid">
         {%- for block in section.blocks -%}
           <div
-            class="sp-cell"
+            class="sp-cell relative flex flex-col"
             data-animation="block"
             data-animation-group="{{ section.id }}-cells"
             {{ block.shopify_attributes }}
           >
-            <div class="sp-top">
+            <div class="sp-top flex justify-between items-start">
               <span>{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
               {%- if block.settings.icon_image != blank -%}
                 {{
@@ -71,16 +71,16 @@
 
       {%- if section.settings.show_confidence_strip -%}
         <div
-          class="sp-assurance"
+          class="sp-assurance flex items-center justify-between"
           data-animation="block"
           data-animation-group="{{ section.id }}-assurance"
         >
-          <div class="sp-assurance__copy">
+          <div class="sp-assurance__copy flex flex-col text-left">
             {%- if section.settings.confidence_eyebrow != blank -%}
               <div class="subheading sp-assurance__eyebrow">{{ section.settings.confidence_eyebrow | escape }}</div>
             {%- endif -%}
             {%- if section.settings.confidence_heading != blank -%}
-              <h3 class="sp-assurance__heading">{{ section.settings.confidence_heading }}</h3>
+              <h3 class="sp-assurance__heading m-0">{{ section.settings.confidence_heading }}</h3>
             {%- endif -%}
             {%- if section.settings.confidence_subtext != blank -%}
               <p class="sp-assurance__sub">{{ section.settings.confidence_subtext | escape }}</p>
@@ -88,10 +88,10 @@
           </div>
 
           {%- if section.settings.badge_1_image != blank or section.settings.badge_2_image != blank -%}
-            <div class="sp-assurance__badges">
+            <div class="sp-assurance__badges flex items-center flex-shrink-0">
               {%- if section.settings.badge_1_image != blank -%}
                 {%- assign badge_1_alt = section.settings.badge_1_image.alt | default: 'Lifetime Warranty' -%}
-                <div class="sp-assurance__badge">
+                <div class="sp-assurance__badge flex items-center justify-center">
                   {{
                     section.settings.badge_1_image
                     | image_url: width: 352
@@ -101,18 +101,19 @@
                       width: 185,
                       height: 185,
                       loading: 'lazy',
+                      decoding: 'async',
                       alt: badge_1_alt
                   }}
                 </div>
               {%- endif -%}
 
               {%- if section.settings.badge_1_image != blank and section.settings.badge_2_image != blank -%}
-                <span class="sp-assurance__sep" aria-hidden="true"></span>
+                <span class="sp-assurance__sep flex-shrink-0" aria-hidden="true"></span>
               {%- endif -%}
 
               {%- if section.settings.badge_2_image != blank -%}
                 {%- assign badge_2_alt = section.settings.badge_2_image.alt | default: '15 Days Moneyback Guarantee' -%}
-                <div class="sp-assurance__badge">
+                <div class="sp-assurance__badge flex items-center justify-center">
                   {{
                     section.settings.badge_2_image
                     | image_url: width: 352
@@ -122,6 +123,7 @@
                       width: 185,
                       height: 185,
                       loading: 'lazy',
+                      decoding: 'async',
                       alt: badge_2_alt
                   }}
                 </div>
@@ -142,10 +144,6 @@
     contain-intrinsic-size: auto 620px;
   }
 
-  .sp-head {
-    text-align: center;
-  }
-
   .sp-head .subheading {
     color: var(--accent);
   }
@@ -154,31 +152,20 @@
     color: rgb(var(--color-foreground));
   }
 
-  .sp-head .heading em {
-    font-style: italic;
-    color: var(--accent);
-    padding-right: 0.08em;
-  }
-
   .sp-frame {
     background: var(--sp-card-background);
     border-radius: 32px;
-    overflow: hidden;
     border: 1px solid var(--sp-line);
     box-shadow: inset 0 1px 0 rgb(var(--color-foreground) / 6%);
   }
 
   .sp-box {
-    display: grid;
     grid-template-columns: repeat(4, 1fr);
   }
 
   .sp-cell {
-    position: relative;
     padding: 34px 32px 36px;
     min-height: 268px;
-    display: flex;
-    flex-direction: column;
     border-right: 1px solid var(--sp-line);
   }
 
@@ -202,9 +189,6 @@
   }
 
   .sp-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
     margin-bottom: auto;
   }
 
@@ -254,9 +238,6 @@
   }
 
   .sp-assurance {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     gap: clamp(24px, 4vw, 56px);
     padding: clamp(26px, 3vw, 38px) clamp(28px, 3.6vw, 48px);
     border-top: 1px solid var(--sp-line);
@@ -266,10 +247,7 @@
   }
 
   .sp-assurance__copy {
-    display: flex;
-    flex-direction: column;
     gap: 6px;
-    text-align: left;
     max-width: 460px;
   }
 
@@ -280,19 +258,12 @@
   }
 
   .sp-assurance__heading {
-    margin: 0;
     font-family: var(--font-heading-family);
     font-weight: 400;
     font-size: clamp(28px, 2.8vw, 40px);
     line-height: 1.06;
     letter-spacing: -0.01em;
     color: rgb(var(--color-foreground));
-  }
-
-  .sp-assurance__heading em {
-    font-style: italic;
-    color: var(--accent);
-    padding-right: 0.08em;
   }
 
   .sp-assurance__sub {
@@ -303,18 +274,12 @@
   }
 
   .sp-assurance__badges {
-    display: flex;
-    align-items: center;
     gap: clamp(20px, 3vw, 40px);
-    flex-shrink: 0;
   }
 
   .sp-assurance__badge {
     width: clamp(150px, 15vw, 185px);
     height: clamp(150px, 15vw, 185px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
     transition: transform 260ms cubic-bezier(0.2, 0.7, 0.2, 1);
   }
 
@@ -330,7 +295,6 @@
     width: 1px;
     height: 106px;
     background: linear-gradient(180deg, transparent, rgb(var(--accent-rgb) / 45%), transparent);
-    flex-shrink: 0;
   }
 
   @media (max-width: 991px) {

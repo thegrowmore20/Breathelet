@@ -24,9 +24,9 @@
 
 <section {% render 'section-attrs', class: 'ritual', style: ritual_style %}>
   <div class="section-body">
-    <ritual-accordion class="rit">
-      <div class="rit-l" data-animation="block" data-animation-group="{{ section.id }}-acc">
-        <div class="rit-acc">
+    <ritual-accordion class="rit grid items-center">
+      <div class="rit-l flex flex-col" data-animation="block" data-animation-group="{{ section.id }}-acc">
+        <div class="rit-acc w-full">
           {%- for block in section.blocks -%}
             {%- assign is_open = forloop.first -%}
             <div
@@ -36,12 +36,12 @@
             >
               <button
                 type="button"
-                class="ri-h"
+                class="ri-h w-full flex justify-between items-center text-left"
                 aria-expanded="{% if is_open %}true{% else %}false{% endif %}"
                 aria-controls="RitualPanel-{{ section.id }}-{{ forloop.index }}"
               >
                 <span>{{ block.settings.title | escape }}</span>
-                <i aria-hidden="true"></i>
+                <i class="relative flex-shrink-0" aria-hidden="true"></i>
               </button>
               <div class="ri-p" id="RitualPanel-{{ section.id }}-{{ forloop.index }}">
                 <div>
@@ -145,23 +145,20 @@
     --rit-line: rgb(var(--color-foreground) / 10%);
     --rit-tx2: rgb(var(--color-foreground) / 68%);
     --rit-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+    content-visibility: auto;
+    contain-intrinsic-size: auto 640px;
   }
 
   .rit {
-    display: grid;
     grid-template-columns: 0.9fr 1.1fr;
     gap: clamp(40px, 6vw, 110px);
-    align-items: center;
   }
 
   .rit-l {
-    display: flex;
-    flex-direction: column;
     align-items: stretch;
   }
 
   .rit-acc {
-    width: 100%;
     border-top: 1px solid var(--rit-line);
     align-self: start;
   }
@@ -171,13 +168,8 @@
   }
 
   .ri-h {
-    width: 100%;
     min-height: 44px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     gap: 20px;
-    text-align: left;
     padding: 30px 0;
     font-family: var(--font-heading-family);
     font-size: clamp(22px, 2.2vw, 32px);
@@ -201,10 +193,8 @@
   }
 
   .ri-h i {
-    position: relative;
     width: 14px;
     height: 14px;
-    flex-shrink: 0;
   }
 
   .ri-h i::before,

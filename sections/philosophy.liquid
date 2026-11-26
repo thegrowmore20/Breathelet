@@ -2,247 +2,210 @@
   assign philosophy_video_url = 'https://breathelet.com/cdn/shop/videos/c/vp/e74e973f4ad544b8be5d6086e3271228/e74e973f4ad544b8be5d6086e3271228.SD-480p-1.5Mbps-74686052.mp4'
 %}
 
-<style>
-  #shopify-section-{{ section.id }} .phil {
-    --phil-ink: #0b0b0b;
-    --phil-serif: var(--font-heading-family, Georgia, serif);
-    --phil-sans: var(--font-body-family, system-ui, sans-serif);
-    background: transparent;
-    color: #fff;
-    isolation: isolate;
-    position: relative;
+{% render 'section-bg-number-vars' %}
+
+<section {% render 'section-attrs', class: 'phil-section' %} id="how">
+  <div class="section-body">
+    <div class="phil relative">
+      <div class="phil-bg absolute inset-0" id="philBg"></div>
+      <div class="wrap w-full grid items-center phil-grid" id="philIn" data-animation-auto-order>
+        <div class="phil-copy">
+          {% render 'rich-text-blocks', prose_class: 'prose', heading_emphasis: 'Deep Breath' %}
+          <philosophy-stats class="stats flex">
+            <div data-animation="block" data-animation-group="{{ section.id }}"><b>{{ section.settings.stat_1_value }}</b><span>{{ section.settings.stat_1_label }}</span></div>
+            <div data-animation="block" data-animation-group="{{ section.id }}"><b>{{ section.settings.stat_2_value }}</b><span>{{ section.settings.stat_2_label }}</span></div>
+            <div data-animation="block" data-animation-group="{{ section.id }}"><b>{{ section.settings.stat_3_value }}</b><span>{{ section.settings.stat_3_label }}</span></div>
+          </philosophy-stats>
+        </div>
+        <div class="vid relative overflow-hidden w-full mx-auto" data-animation="block" data-animation-group="{{ section.id }}">
+          {% if section.settings.video != blank %}
+            {% render 'video-player', video: section.settings.video, video_poster: section.settings.video_poster, background: section.settings.autoplay, loop: section.settings.loop, muted: true %}
+          {% else %}
+            <video
+              src="{{ philosophy_video_url }}"
+              data-autoplay="{{ section.settings.autoplay }}"
+              muted
+              {% if section.settings.loop %}loop{% endif %}
+              playsinline
+              preload="none"
+              {% if section.settings.video_poster != blank %}poster="{{ section.settings.video_poster | image_url: width: 1200 }}"{% endif %}
+            ></video>
+          {% endif %}
+          <div class="vid-tag absolute flex items-center gap-2 rounded-full"><i class="rounded-full" aria-hidden="true"></i>{{ section.settings.video_label }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .phil-section {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 600px;
   }
 
-  #shopify-section-{{ section.id }} .phil-bg {
-    position: absolute;
-    inset: 0;
-    background: #000;
+  .phil-section .phil {
+    background: transparent;
+    color: rgb(var(--color-foreground));
+    isolation: isolate;
+  }
+
+  .phil-section .phil-bg {
+    background: rgb(var(--color-background));
     border-radius: 48px;
     z-index: -1;
   }
 
-  #shopify-section-{{ section.id }} .phil .eyebrow,
-  #shopify-section-{{ section.id }} .phil .subheading {
-    color: #8f8f8c;
+  .phil-section .phil .eyebrow,
+  .phil-section .phil .subheading {
+    color: rgb(var(--color-foreground) / 56%);
   }
 
-  #shopify-section-{{ section.id }} .wrap {
-    width: 100%;
-  }
-
-  #shopify-section-{{ section.id }} .phil-grid {
-    display: grid;
+  .phil-section .phil-grid {
     grid-template-columns: 1.1fr 1fr;
     gap: 70px;
-    align-items: center;
   }
 
-  #shopify-section-{{ section.id }} .phil-copy {
+  .phil-section .phil-copy {
     min-width: 0;
   }
 
-  #shopify-section-{{ section.id }} .phil-copy .subheading {
+  .phil-section .phil-copy .subheading {
     margin: 0;
   }
 
-  #shopify-section-{{ section.id }} .phil-copy .h0,
-  #shopify-section-{{ section.id }} .phil-copy .h1,
-  #shopify-section-{{ section.id }} .phil-copy .h2,
-  #shopify-section-{{ section.id }} .phil-copy .h3,
-  #shopify-section-{{ section.id }} .phil-copy .h4,
-  #shopify-section-{{ section.id }} .phil-copy .h5,
-  #shopify-section-{{ section.id }} .phil-copy .h6 {
+  .phil-section .phil-copy :where(.h0, .h1, .h2, .h3, .h4, .h5, .h6) {
     margin-top: 18px;
-    font-family: var(--phil-serif);
     font-weight: 400;
     letter-spacing: -0.02em;
     line-height: 1;
-    color: #fff;
+    color: rgb(var(--color-foreground));
   }
 
-  #shopify-section-{{ section.id }} .phil-copy :where(.h0, .h1, .h2, .h3, .h4, .h5, .h6) em {
-    color: #A57C72;
-    font-style: italic;
-  }
-
-  #shopify-section-{{ section.id }} .phil-copy .prose {
-    color: #b5b5b2;
+  .phil-section .phil-copy .prose {
+    color: rgb(var(--color-foreground) / 72%);
     max-width: 460px;
     margin-top: 26px;
-    font-family: var(--phil-sans);
     font-size: clamp(15px, 1.3vw, 17px);
     line-height: 1.5;
   }
 
-  #shopify-section-{{ section.id }} .phil-copy .prose p {
+  .phil-section .phil-copy .prose p {
     margin: 0;
   }
 
-  #shopify-section-{{ section.id }} .phil-copy .quote-card {
+  .phil-section .phil-copy .quote-card {
     margin-top: 32px;
     padding: 0 0 0 24px;
-    border-left: 1px solid #b7897f;
-    color: #fff;
+    border-left: 1px solid rgb(var(--color-heading-accent, 165 124 114));
+    color: rgb(var(--color-foreground));
   }
 
-  #shopify-section-{{ section.id }} .phil-copy .quote-card .profile-container {
+  .phil-section .phil-copy .quote-card .profile-container {
     margin-bottom: 16px;
   }
 
-  #shopify-section-{{ section.id }} .phil-copy .quote-card .author-name {
-    color: #fff;
-    font-family: var(--phil-sans);
+  .phil-section .phil-copy .quote-card .author-name {
+    color: rgb(var(--color-foreground));
   }
 
-  #shopify-section-{{ section.id }} .phil-copy .quote-card .author-designation {
-    color: #b5b5b2;
-    font-family: var(--phil-sans);
+  .phil-section .phil-copy .quote-card .author-designation {
+    color: rgb(var(--color-foreground) / 72%);
   }
 
-  #shopify-section-{{ section.id }} .phil-copy .quote-card .quote-content p {
-    color: #fff;
-    font-family: var(--phil-sans);
+  .phil-section .phil-copy .quote-card .quote-content p {
+    color: rgb(var(--color-foreground));
     font-size: clamp(18px, 1.8vw, 24px);
     line-height: 1.35;
     margin: 0;
   }
 
-  #shopify-section-{{ section.id }} .stats {
-    display: flex;
+  .phil-section .stats {
     gap: 46px;
     margin-top: 40px;
   }
 
-  #shopify-section-{{ section.id }} .stats b {
+  .phil-section .stats b {
     display: block;
-    font-family: var(--phil-serif);
+    font-family: var(--font-heading-family);
     font-weight: 400;
     font-size: clamp(40px, 4vw, 54px);
     line-height: 1;
     font-variant-numeric: tabular-nums;
   }
 
-  #shopify-section-{{ section.id }} .stats span {
-    font-family: var(--phil-sans);
+  .phil-section .stats span {
     font-size: 11px;
     font-weight: 600;
-    color: #8f8f8c;
+    color: rgb(var(--color-foreground) / 56%);
     letter-spacing: 0.08em;
   }
 
-  #shopify-section-{{ section.id }} .vid {
-    position: relative;
+  .phil-section .vid {
     border-radius: 36px;
-    overflow: hidden;
     aspect-ratio: 1 / 1;
-    background: #000;
-    margin: 0 auto;
-    width: 100%;
-    height: auto;
+    background: rgb(var(--color-background));
   }
 
-  #shopify-section-{{ section.id }} .vid video-player,
-  #shopify-section-{{ section.id }} .vid video,
-  #shopify-section-{{ section.id }} .vid video-player > div {
+  .phil-section .vid video-player,
+  .phil-section .vid video,
+  .phil-section .vid video-player > div {
     display: block;
     width: 100%;
     height: 100%;
   }
 
-  #shopify-section-{{ section.id }} .vid video {
+  .phil-section .vid video {
     object-fit: cover;
   }
 
-  #shopify-section-{{ section.id }} .vid-tag {
-    position: absolute;
+  .phil-section .vid-tag {
     left: 18px;
     bottom: 18px;
-    background: rgba(255, 255, 255, 0.9);
-    color: var(--phil-ink);
+    background: rgb(var(--color-foreground) / 90%);
+    color: rgb(var(--color-background));
     backdrop-filter: blur(10px);
-    border-radius: 99px;
     padding: 9px 16px;
-    font-family: var(--phil-sans);
     font-size: 12px;
     font-weight: 500;
-    display: flex;
-    gap: 8px;
-    align-items: center;
   }
 
-  #shopify-section-{{ section.id }} .vid-tag i {
+  .phil-section .vid-tag i {
     width: 7px;
     height: 7px;
-    border-radius: 50%;
-    background: var(--phil-ink);
-    animation: philosophy-beat-{{ section.id }} 5.5s ease-in-out infinite;
+    background: rgb(var(--color-background));
+    animation: philosophy-beat 5.5s ease-in-out infinite;
   }
 
-  @keyframes philosophy-beat-{{ section.id }} {
+  @keyframes philosophy-beat {
     0%, 100% { opacity: 0.35; transform: scale(0.8); }
     50% { opacity: 1; transform: scale(1.15); }
   }
 
   @media (max-width: 991px) {
-    #shopify-section-{{ section.id }} .phil-grid {
+    .phil-section .phil-grid {
       grid-template-columns: 1fr;
       gap: 40px;
     }
   }
 
   @media (max-width: 575px) {
-    #shopify-section-{{ section.id }} .phil-bg {
+    .phil-section .phil-bg {
       border-radius: 32px;
     }
 
-    #shopify-section-{{ section.id }} .vid-tag {
+    .phil-section .vid-tag {
       left: 14px;
       bottom: 14px;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    #shopify-section-{{ section.id }} .vid-tag i {
+    .phil-section .vid-tag i {
       animation: none;
     }
   }
-</style>
-
-{% render 'section-bg-number-vars' %}
-
-<section {% render 'section-attrs' %} id="how">
-  <div class="section-body">
-    <div class="phil">
-      <div class="phil-bg" id="philBg"></div>
-      <div class="wrap phil-grid" id="philIn" data-animation-auto-order>
-    <div class="phil-copy">
-      {% render 'rich-text-blocks', prose_class: 'prose', heading_emphasis: 'Deep Breath' %}
-      <philosophy-stats class="stats">
-        <div data-animation="block" data-animation-group="{{ section.id }}"><b>{{ section.settings.stat_1_value }}</b><span>{{ section.settings.stat_1_label }}</span></div>
-        <div data-animation="block" data-animation-group="{{ section.id }}"><b>{{ section.settings.stat_2_value }}</b><span>{{ section.settings.stat_2_label }}</span></div>
-        <div data-animation="block" data-animation-group="{{ section.id }}"><b>{{ section.settings.stat_3_value }}</b><span>{{ section.settings.stat_3_label }}</span></div>
-      </philosophy-stats>
-    </div>
-    <div class="vid" data-animation="block" data-animation-group="{{ section.id }}">
-      {% if section.settings.video != blank %}
-        {% render 'video-player', video: section.settings.video, video_poster: section.settings.video_poster, background: section.settings.autoplay, loop: section.settings.loop, muted: true %}
-      {% else %}
-        <video
-          src="{{ philosophy_video_url }}"
-          data-autoplay="{{ section.settings.autoplay }}"
-          muted
-          {% if section.settings.loop %}loop{% endif %}
-          playsinline
-          preload="none"
-          {% if section.settings.video_poster != blank %}poster="{{ section.settings.video_poster | image_url: width: 1200 }}"{% endif %}
-        ></video>
-      {% endif %}
-      <div class="vid-tag"><i></i>{{ section.settings.video_label }}</div>
-    </div>
-      </div>
-    </div>
-  </div>
-</section>
+{% endstylesheet %}
 
 {% javascript %}
   if (!customElements.get('philosophy-stats')) {

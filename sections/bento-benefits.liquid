@@ -40,7 +40,7 @@
           endcase
         -%}
         <div
-          class="{{ tile_class }} rounded-block p-6 md:p-8"
+          class="{{ tile_class }} relative flex flex-col justify-between overflow-hidden rounded-block p-6 md:p-8"
           data-animation="block"
           data-animation-group="{{ section.id }}-tiles"
           {{ block.shopify_attributes }}
@@ -102,11 +102,6 @@
     margin-inline: auto;
   }
 
-  .bento-section .section-header .heading em {
-    color: var(--bento-secondary);
-    font-style: italic;
-  }
-
   .bento-section h3 {
     font-family: var(--font-heading-family, Georgia, serif);
     font-weight: 400;
@@ -120,12 +115,7 @@
   }
 
   .bento-section .tile {
-    position: relative;
-    display: flex;
     min-height: 19rem;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow: hidden;
   }
 
   .bento-section .tile.color {

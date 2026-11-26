@@ -12,7 +12,7 @@
 
 <section {% render 'section-attrs', class: 'gift', style: gift_style %}>
   <div class="section-body">
-    <div class="banner">
+    <div class="banner grid gap-5">
       {%- for block in section.blocks -%}
         {%- liquid
           assign is_light = false
@@ -26,7 +26,7 @@
           endif
         -%}
         <article
-          class="bn {% if is_light %}lt{% else %}dk{% endif %}"
+          class="bn relative overflow-hidden flex items-end {% if is_light %}lt{% else %}dk{% endif %}"
           data-animation="block"
           data-animation-group="{{ section.id }}"
           {{ block.shopify_attributes }}
@@ -37,7 +37,7 @@
               block.settings.image
               | image_url: width: 1500
               | image_tag:
-                class: 'bg',
+                class: 'bg absolute inset-0 w-full h-full',
                 widths: '352, 550, 832, 1200, 1500',
                 sizes: '(min-width: 992px) 50vw, 100vw',
                 loading: 'lazy',
@@ -50,7 +50,7 @@
               card_product.featured_image
               | image_url: width: 1500
               | image_tag:
-                class: 'bg',
+                class: 'bg absolute inset-0 w-full h-full',
                 widths: '352, 550, 832, 1200, 1500',
                 sizes: '(min-width: 992px) 50vw, 100vw',
                 loading: 'lazy',
@@ -58,20 +58,20 @@
                 alt: prod_alt
             }}
           {%- endif -%}
-          <div class="bn-t">
+          <div class="bn-t relative flex flex-col gap-3 items-start">
             {%- if block.settings.eyebrow != blank -%}
               <div class="subheading">{{ block.settings.eyebrow | escape }}</div>
             {%- endif -%}
             {%- if block.settings.heading != blank -%}
-              <h2 class="{{ section.settings.heading_size | default: 'h2' }}">{{ block.settings.heading }}</h2>
+              <h2 class="m-0 {{ section.settings.heading_size | default: 'h2' }}">{{ block.settings.heading }}</h2>
             {%- endif -%}
             {%- if block.settings.text != blank -%}
-              <p>{{ block.settings.text | escape }}</p>
+              <p class="m-0">{{ block.settings.text | escape }}</p>
             {%- endif -%}
             {%- if block.settings.button_label != blank and btn_link != blank -%}
               <a
                 href="{{ btn_link }}"
-                class="btn {% if is_light %}btn-dark{% else %}btn-light{% endif %}"
+                class="btn inline-flex items-center justify-center gap-2 rounded-full whitespace-nowrap mt-2 {% if is_light %}btn-dark{% else %}btn-light{% endif %}"
               >
                 {{- block.settings.button_label | escape -}}
                 {%- if block.settings.show_price and card_product != blank -%}
@@ -93,20 +93,14 @@
   }
 
   .gift .banner {
-    display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
   }
 
   .gift .bn {
-    position: relative;
     border-radius: 28px;
-    overflow: hidden;
     min-height: min(500px, 64svh);
     background: var(--bn-dark-background);
     color: rgb(var(--bn-dark-rgb));
-    display: flex;
-    align-items: flex-end;
     isolation: isolate;
     border: 1px solid rgb(var(--bn-dark-rgb) / 10%);
     box-shadow: inset 0 1px 0 rgb(var(--bn-dark-rgb) / 6%);
@@ -118,10 +112,6 @@
   }
 
   .gift .bn > img.bg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
     object-fit: cover;
     object-position: center;
     z-index: -2;
@@ -144,14 +134,9 @@
   }
 
   .gift .bn-t {
-    position: relative;
     z-index: 2;
     padding: clamp(28px, 3.4vw, 44px);
     max-width: 540px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    align-items: flex-start;
   }
 
   .gift .bn-t .subheading {
@@ -160,35 +145,20 @@
 
   .gift .bn-t h2 {
     color: rgb(var(--bn-dark-rgb));
-    margin: 0;
-  }
-
-  .gift .bn-t h2 em {
-    font-style: italic;
-    color: var(--accent);
-    padding-right: 0.08em;
   }
 
   .gift .bn-t p {
     color: rgb(var(--bn-dark-rgb) / 82%);
     font-size: 15px;
     line-height: 1.6;
-    margin: 0;
   }
 
   .gift .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
     height: 48px;
     padding: 0 28px;
-    border-radius: 99px;
     font-size: 14px;
     font-weight: 600;
-    white-space: nowrap;
     text-decoration: none;
-    margin-top: 8px;
     transition: transform 240ms cubic-bezier(0.2, 0.7, 0.2, 1);
   }
 
