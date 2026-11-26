@@ -233,3 +233,8 @@
 ## 2026-11-26 - revert step_card block changes
 - Restored sections/video-with-text.liquid, snippets/rich-text-blocks.liquid, and templates/index.json to commit `c52359c` (removed `step_card` block markup, styles, schema, and homepage blocks).
 - Pushed to theme 204901220687 (--only) and GitHub.
+
+
+## 2026-11-26 - create video-architectural-steps section
+- New: sections/video-architectural-steps.liquid — centered dark architectural video-and-steps section with BEM classes inside `{% stylesheet %}`, inline `--vas-*` CSS custom properties, double-framed video player (`21/9` desktop, `16/9` mobile), `<video-arch-player>` Web Component play/pause toggle (44x44 touch target, 36x36 visual circle, `prefers-reduced-motion` safe), and 3-column hairline-divided step strip.
+- Pushed to theme 204901220687 (--only sections/video-architectural-steps.liquid) and GitHub.
