@@ -238,3 +238,9 @@
 ## 2026-11-26 - create video-architectural-steps section
 - New: sections/video-architectural-steps.liquid — centered dark architectural video-and-steps section with BEM classes inside `{% stylesheet %}`, inline `--vas-*` CSS custom properties, double-framed video player (`21/9` desktop, `16/9` mobile), `<video-arch-player>` Web Component play/pause toggle (44x44 touch target, 36x36 visual circle, `prefers-reduced-motion` safe), and 3-column hairline-divided step strip.
 - Pushed to theme 204901220687 (--only sections/video-architectural-steps.liquid) and GitHub.
+
+
+## 2026-11-26 - 3XL headings on hero/blog and add video-architectural-steps to homepage
+- templates/index.json: updated hero slideshow (`slideshow_7aaerb` all 3 slides) and Blog posts (`47953464-d278-497d-be52-ea15912c52d9`) heading_size to `h0` (3XL).
+- templates/index.json: added `video_architectural_steps` (`video-architectural-steps`) right above Blog posts with `Breathelet_how-to_upd_v2.webm`, `#000000`/`#a57c72` palette, and 3 OneFit steps.
+- Pushed to theme 204901220687 (--only templates/index.json) and GitHub.

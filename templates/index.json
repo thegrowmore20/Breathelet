@@ -23,7 +23,7 @@
             "desktop_text_alignment": "default",
             "subheading": "",
             "heading": "Breathelet - Premium Mindful Wearable",
-            "heading_size": "h3",
+            "heading_size": "h0",
             "text": "",
             "hide_text_on_mobile": false,
             "button_size": "text-xs md:text-sm",
@@ -57,7 +57,7 @@
             "desktop_text_alignment": "left",
             "subheading": "",
             "heading": "A Gentle Vibration That Brings You Back.",
-            "heading_size": "h1",
+            "heading_size": "h0",
             "text": "",
             "hide_text_on_mobile": false,
             "button_size": "text-xs md:text-sm",
@@ -91,7 +91,7 @@
             "desktop_text_alignment": "left",
             "subheading": "",
             "heading": "No App, No Screen, No Bluetooth.",
-            "heading_size": "h1",
+            "heading_size": "h0",
             "text": "",
             "hide_text_on_mobile": false,
             "button_size": "text-xs md:text-sm",
@@ -1204,6 +1204,62 @@
         "heading_color": ""
       }
     },
+    "video_architectural_steps": {
+      "type": "video-architectural-steps",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "number": "01",
+            "title": "Pull to Fit",
+            "description": "Slide the strings to your exact wrist size"
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "number": "02",
+            "title": "Trim Excess",
+            "description": "Cut away the extra cord length cleanly"
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "number": "03",
+            "title": "Hook & Wear",
+            "description": "Open and close easily anytime with the clasp"
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3"
+      ],
+      "settings": {
+        "eyebrow": "PRECISION SIZING",
+        "heading": "OneFit Adjustable Design",
+        "subheading": "One size fits all. Engineered to fit every wrist effortlessly.",
+        "video": "shopify://files/videos/Breathelet_how-to_upd_v2.webm",
+        "autoplay": true,
+        "loop": true,
+        "show_play_button": true,
+        "desktop_aspect_ratio": "21 / 9",
+        "mobile_aspect_ratio": "16 / 9",
+        "bg_color": "#000000",
+        "accent_color": "#a57c72",
+        "text_color": "#ffffff",
+        "muted_color": "#9a9a9a",
+        "border_color": "#242424",
+        "use_custom_padding": false,
+        "max_width": 1120,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48
+      }
+    },
     "47953464-d278-497d-be52-ea15912c52d9": {
       "type": "featured-blog",
       "settings": {
@@ -1213,7 +1269,7 @@
         "articles_count": 3,
         "grid_columns": 3,
         "heading": "Blog posts",
-        "heading_size": "h2",
+        "heading_size": "h0",
         "text_alignment": "text-left",
         "link_text": "View all",
         "show_category": true,
@@ -1248,6 +1304,7 @@
     "image_with_text_WjQwNJ",
     "video_with_text_dPhCKa",
     "two_column_flex_new",
+    "video_architectural_steps",
     "47953464-d278-497d-be52-ea15912c52d9"
   ]
 }
