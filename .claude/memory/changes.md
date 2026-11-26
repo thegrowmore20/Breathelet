@@ -223,3 +223,8 @@
 - snippets/rich-text-blocks.liquid: added `when 'step_card'` branch rendering uniform `.step-card` markup (`h3` title + `p` description, `block.shopify_attributes`, inline CSS color vars).
 - sections/video-with-text.liquid: added `step_card` block schema (`title`, `description`, `card_bg`, `border_color`) and bundled `{% stylesheet %}` rules (`24px` top margin after non-cards, `14px` between consecutive `.step-card` blocks, subtle hover border brighten, `prefers-reduced-motion`).
 - Pushed to theme 204901220687 (--only) and GitHub.
+
+
+## 2026-11-26 - add 3 step_card blocks to video_with_text_dPhCKa
+- templates/index.json: added 3 `step_card` blocks (`Pull to your perfect fit`, `Trim the extra length`, `Use the hook anytime`) to `video_with_text_dPhCKa`.
+- Pushed to theme 204901220687 (--only templates/index.json) and GitHub.
