@@ -217,3 +217,9 @@
 ## 2026-11-26 - use body font for cart drawer summary totals
 - sections/cart-modal.liquid: set `font-family: var(--font-body-family)` on `.summary-total-price-wrapper`, `.summary-total-compare-wrapper`, and `.cart-modal-subtotal` (`Total Price`, `You Save`, `Subtotal`).
 - Pushed to theme 204901220687 (--only sections/cart-modal.liquid) and GitHub.
+
+
+## 2026-11-26 - add step_card block to Video with text section
+- snippets/rich-text-blocks.liquid: added `when 'step_card'` branch rendering uniform `.step-card` markup (`h3` title + `p` description, `block.shopify_attributes`, inline CSS color vars).
+- sections/video-with-text.liquid: added `step_card` block schema (`title`, `description`, `card_bg`, `border_color`) and bundled `{% stylesheet %}` rules (`24px` top margin after non-cards, `14px` between consecutive `.step-card` blocks, subtle hover border brighten, `prefers-reduced-motion`).
+- Pushed to theme 204901220687 (--only) and GitHub.
