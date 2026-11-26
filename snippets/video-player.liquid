@@ -54,13 +54,23 @@
 >
   {% if background != true %}
   {% unless autoplay %}
-    <button class="cursor-pointer w-full h-full" data-poster aria-label="{{ 'accessibility.play_video' | t }}">
+    <button type="button" class="cursor-pointer w-full h-full" data-poster aria-label="{{ 'accessibility.play_video' | t }}">
       {% if video_poster != blank %}
         {{
           video_poster
           | image_url: width: 3840
           | image_tag: class: 'pointer-events-none select-none', sizes: sizes, loading: 'lazy'
         }}
+      {% elsif video == blank and video_url.type == 'youtube' and video_url.id != blank %}
+        <img
+          src="https://img.youtube.com/vi/{{ video_url.id }}/hqdefault.jpg"
+          alt="{{ 'accessibility.play_video' | t }}"
+          width="480"
+          height="360"
+          loading="lazy"
+          decoding="async"
+          class="pointer-events-none select-none w-full h-full object-cover"
+        >
       {% else %}
         {% render 'placeholder', type: 'lifestyle-1', class: 'placeholder--dark' %}
       {% endif %}

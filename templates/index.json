@@ -885,7 +885,7 @@
       "settings": {
         "full_width": true,
         "video_url": "https://www.youtube.com/watch?v=lP3cyKI98PU",
-        "autoplay": false,
+        "autoplay": true,
         "loop": true,
         "mute": true,
         "hide_controls": false,

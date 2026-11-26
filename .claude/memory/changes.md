@@ -283,3 +283,10 @@
 ## 2026-11-26 - FCP optimizations in layout/theme.liquid
 - layout/theme.liquid: added `preload: true` to `main.css` (Early Hints), removed `<link rel="preload">` on 96.1 KB `Montserrat-Thin.woff2`, replaced forced synchronous layout reflow in `setScrollbarWidth()` with `window.innerWidth - document.documentElement.clientWidth`, avoided double-evaluating `content_for_layout` by outputting `content_str`, and removed `maximum-scale=5` from viewport meta.
 - Pushed to theme 204901220687 (--nodelete --only layout/theme.liquid) and GitHub.
+
+## 2026-11-26 — Video player YouTube thumbnail fallback & homepage video autoplay
+- **Files:** `snippets/video-player.liquid`, `templates/index.json`
+- **Summary:**
+  - Added YouTube thumbnail (`https://img.youtube.com/vi/{{ video_url.id }}/hqdefault.jpg`) fallback inside the non-autoplay poster button in `snippets/video-player.liquid` so YouTube videos without a custom `video_poster` never show Shopify's gray `lifestyle-1` placeholder SVG; added `type="button"` to the poster `<button>`.
+  - Re-enabled `"autoplay": true` on `video_RLKz98` in `templates/index.json` (poster background thumbnail already renders behind the autoplay iframe while loading).
+- **Verification:** `lint-edit.mjs` (0 errors, 0 warnings), `theme-check.mjs` (exit 0).
