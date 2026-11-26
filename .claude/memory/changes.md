@@ -255,3 +255,9 @@
 ## 2026-11-26 - reorder homepage sections per CRO & marketing psychology audit
 - templates/index.json: reordered active sections into conversion funnel (Hero -> Shop Breathelet -> Philosophy -> Ritual Accordion -> Bento Benefits -> Specs & Confidence -> OneFit Architectural Video -> Loox Reviews -> Gift Banners -> Brand Video -> Shop Accessories -> Instagram -> Influencer/Partner Cards -> Blog posts) and disabled duplicate `love_cards_home`.
 - Pushed to theme 204901220687 (--only templates/index.json) and GitHub.
+
+
+## 2026-11-26 - change homepage headings from 3XL (h0) to 2XL (h1)
+- templates/index.json: changed all 13 `"heading_size": "h0"` entries to `"h1"` (2XL).
+- sections/video-architectural-steps.liquid: changed `.video-arch__heading` class from `h0` to `h1` (2XL).
+- Pushed to theme 204901220687 (--only) and GitHub.
