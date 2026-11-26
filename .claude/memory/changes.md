@@ -207,3 +207,8 @@
 ## 2026-11-26 - mega menu product cards border color
 - assets/main.css: updated `.mega__menu_products .product-card` and `:hover` border to `1px solid #f2f2f2`.
 - Pushed to theme 204901220687 (--only assets/main.css) and GitHub.
+
+
+## 2026-11-26 - mega menu product cards hover border rose gold
+- assets/main.css: kept `.mega__menu_products .product-card` default border at `1px solid #f2f2f2` and changed `:hover` border color to rose gold (`rgb(var(--color-heading-accent, 165 124 114))`).
+- Pushed to theme 204901220687 (--only assets/main.css) and GitHub.

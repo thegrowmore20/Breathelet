@@ -11323,7 +11323,7 @@ quick-add-button.no-js-hidden button .spinner .path {
   border: 1px solid #f2f2f2;
 }
 .mega__menu_products .product-card:hover {
-  border: 1px solid #f2f2f2;
+  border-color: rgb(var(--color-heading-accent, 165 124 114));
 }
 .mega__menu_products .loox-rating {
   text-align: left !important;
