@@ -1098,41 +1098,11 @@
           "settings": {
             "text": "<p>One size fits all. Simply pull the strings to your perfect fit, trim the extra length, and use the hook to open and close it anytime.</p>"
           }
-        },
-        "step_card_1": {
-          "type": "step_card",
-          "settings": {
-            "title": "Pull to your perfect fit",
-            "description": "Simply pull both strings until it sits comfortably on your wrist.",
-            "card_bg": "#141414",
-            "border_color": "#222222"
-          }
-        },
-        "step_card_2": {
-          "type": "step_card",
-          "settings": {
-            "title": "Trim the extra length",
-            "description": "Cut away any excess cord cleanly for a tailored fit.",
-            "card_bg": "#141414",
-            "border_color": "#222222"
-          }
-        },
-        "step_card_3": {
-          "type": "step_card",
-          "settings": {
-            "title": "Use the hook anytime",
-            "description": "Easily open and close the clasp whenever you wear it.",
-            "card_bg": "#141414",
-            "border_color": "#222222"
-          }
         }
       },
       "block_order": [
         "heading_cQWDWQ",
-        "text_jKjBFg",
-        "step_card_1",
-        "step_card_2",
-        "step_card_3"
+        "text_jKjBFg"
       ],
       "name": "t:sections.video-with-text.presets__0.name",
       "settings": {

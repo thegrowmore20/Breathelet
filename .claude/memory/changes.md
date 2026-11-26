@@ -228,3 +228,8 @@
 ## 2026-11-26 - add 3 step_card blocks to video_with_text_dPhCKa
 - templates/index.json: added 3 `step_card` blocks (`Pull to your perfect fit`, `Trim the extra length`, `Use the hook anytime`) to `video_with_text_dPhCKa`.
 - Pushed to theme 204901220687 (--only templates/index.json) and GitHub.
+
+
+## 2026-11-26 - revert step_card block changes
+- Restored sections/video-with-text.liquid, snippets/rich-text-blocks.liquid, and templates/index.json to commit `c52359c` (removed `step_card` block markup, styles, schema, and homepage blocks).
+- Pushed to theme 204901220687 (--only) and GitHub.

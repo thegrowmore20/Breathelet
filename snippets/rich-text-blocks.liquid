@@ -90,21 +90,6 @@
           attrs: attrs
         %}
       </div>
-    {% when 'step_card' %}
-      <div
-        class="step-card"
-        data-animation="block"
-        data-animation-group="{{ section.id }}"
-        style="--step-card-bg: {{ block.settings.card_bg | default: '#141414' }}; --step-card-border: {{ block.settings.border_color | default: '#222222' }};"
-        {{ block.shopify_attributes }}
-      >
-        {%- if block.settings.title != blank -%}
-          <h3 class="step-card__title">{{ block.settings.title | escape }}</h3>
-        {%- endif -%}
-        {%- if block.settings.description != blank -%}
-          <p class="step-card__description">{{ block.settings.description | escape }}</p>
-        {%- endif -%}
-      </div>
   {% endcase %}
   {% assign last_type = block.type %}
 {% endfor %}

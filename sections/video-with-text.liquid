@@ -48,51 +48,6 @@
 {% endif %}
 {% render 'media-with-text', media: media, media_class: media_class, media_style: media_style, section_class: vwt_class %}
 
-{% stylesheet %}
-  .step-card {
-    width: 100%;
-    background-color: var(--step-card-bg, #141414);
-    border: 1px solid var(--step-card-border, #222222);
-    border-radius: 10px;
-    padding: 20px 24px;
-    text-align: left;
-    margin: 24px 0 0;
-    transition: border-color 200ms ease;
-  }
-
-  .step-card + .step-card {
-    margin-top: 14px;
-  }
-
-  @media (hover: hover) and (pointer: fine) {
-    .step-card:hover {
-      border-color: rgba(255, 255, 255, 0.16);
-    }
-  }
-
-  .step-card__title {
-    font-family: var(--font-body-family);
-    font-size: 1.05rem;
-    font-weight: 600;
-    line-height: 1.35;
-    margin: 0 0 6px;
-    color: rgb(var(--color-foreground, 255 255 255));
-  }
-
-  .step-card__description {
-    font-size: 0.925rem;
-    line-height: 1.5;
-    margin: 0;
-    color: var(--step-card-muted, #a3a3a3);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .step-card {
-      transition: none;
-    }
-  }
-{% endstylesheet %}
-
 {% schema %}
 {
   "name": "t:sections.video-with-text.name",
@@ -786,37 +741,7 @@
           "label": "Quote Content"
         }
       ]
-    },
-    {
-      "type": "step_card",
-      "name": "Step card",
-      "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Title",
-          "default": "Pull to your perfect fit"
-        },
-        {
-          "type": "textarea",
-          "id": "description",
-          "label": "Description",
-          "default": "Simply pull both strings until it sits comfortably on your wrist."
-        },
-        {
-          "type": "color",
-          "id": "card_bg",
-          "label": "Background color",
-          "default": "#141414"
-        },
-        {
-          "type": "color",
-          "id": "border_color",
-          "label": "Border color",
-          "default": "#222222"
-        }
-      ]
-    }
+    } 
   ],
   "disabled_on": {
     "groups": [
