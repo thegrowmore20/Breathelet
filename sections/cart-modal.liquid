@@ -1,14 +1,3 @@
-{% stylesheet %}
-/* Reset heading scale for cart line item titles */
-.product-name {
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.35;
-  letter-spacing: 0;
-  text-transform: none;
-}
-{% endstylesheet %}
-
 <style>
   #shopify-section-{{ section.id }} .button-view-cart {
     {% render 'button-vars',
@@ -212,6 +201,11 @@
                 #grand-saving svg {
                   width: 14px;
                 }
+                .summary-total-price-wrapper,
+                .summary-total-compare-wrapper,
+                .cart-modal-subtotal {
+                  font-family: var(--font-body-family);
+                }
                 
               </style>
               
@@ -235,7 +229,7 @@
           
             </div>
 
-            <div class="h6 leading-none flex items-center justify-between gap-4 font-600">
+            <div class="h6 leading-none flex items-center justify-between gap-4 font-600 cart-modal-subtotal">
               <div>
                 Subtotal
               </div>

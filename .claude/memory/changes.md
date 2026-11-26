@@ -212,3 +212,8 @@
 ## 2026-11-26 - mega menu product cards hover border rose gold
 - assets/main.css: kept `.mega__menu_products .product-card` default border at `1px solid #f2f2f2` and changed `:hover` border color to rose gold (`rgb(var(--color-heading-accent, 165 124 114))`).
 - Pushed to theme 204901220687 (--only assets/main.css) and GitHub.
+
+
+## 2026-11-26 - use body font for cart drawer summary totals
+- sections/cart-modal.liquid: set `font-family: var(--font-body-family)` on `.summary-total-price-wrapper`, `.summary-total-compare-wrapper`, and `.cart-modal-subtotal` (`Total Price`, `You Save`, `Subtotal`).
+- Pushed to theme 204901220687 (--only sections/cart-modal.liquid) and GitHub.
