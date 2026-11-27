@@ -2,7 +2,7 @@
   if header_mb == null
     case section.settings.heading_size
       when 'h0', 'h1'
-        assign header_mb = 'rfs:mb-12'
+        assign header_mb = 'rfs:mb-8'
       when 'h2', 'h3', 'h4'
         assign header_mb = 'rfs:mb-10'
       when 'h5', 'h6'
@@ -10,7 +10,7 @@
     endcase
 
     if section.settings.content != blank
-      assign header_mb = 'rfs:mb-12'
+      assign header_mb = 'rfs:mb-8'
     endif
   endif
 %}

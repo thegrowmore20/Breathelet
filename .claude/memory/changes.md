@@ -296,3 +296,10 @@
 - **Summary:**
   - Moved `mix-blend-mode: screen` from `.sp-assurance__badge img` to `.sp-assurance__badge` so `transform: translateY(-3px)` on `.sp-assurance__badge:hover` no longer creates an isolating stacking context that broke blending and revealed the PNG's black background.
 - **Verification:** `lint-edit.mjs`, `theme-check.mjs`, and live browser hover check on `#204901220687`.
+
+## 2026-11-27 — Standardize section header bottom margin from rfs:mb-12 to rfs:mb-8
+- **Files:** `snippets/section-header.liquid`, `sections/bento-benefits.liquid`, `sections/specs-every-day.liquid`, `sections/video-architectural-steps.liquid`
+- **Summary:**
+  - Updated `header_mb` in `snippets/section-header.liquid` (`h0`/`h1` and non-blank `content` cases) from `rfs:mb-12` to `rfs:mb-8`.
+  - Updated matching `.section-header` margin utilities in `sections/bento-benefits.liquid`, `sections/specs-every-day.liquid`, and `sections/video-architectural-steps.liquid` from `rfs:mb-12` to `rfs:mb-8`.
+- **Verification:** `lint-edit.mjs` and `theme-check.mjs`.
